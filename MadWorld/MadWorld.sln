@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1700.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MadWorld.Website", "MadWorld.Website\MadWorld.Website.csproj", "{7177F1F5-B2E4-43AB-83A4-F32CACC89E1F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7177F1F5-B2E4-43AB-83A4-F32CACC89E1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7177F1F5-B2E4-43AB-83A4-F32CACC89E1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7177F1F5-B2E4-43AB-83A4-F32CACC89E1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7177F1F5-B2E4-43AB-83A4-F32CACC89E1F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {451A5F6A-EF93-46B7-93C6-739BE812E1CE}
+	EndGlobalSection
+EndGlobal
