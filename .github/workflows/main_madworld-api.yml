@@ -24,9 +24,11 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
+          working-directory: ./MadWorld/MadWorld.API
 
       - name: 'Resolve Project Dependencies Using Dotnet'
         shell: bash
+        working-directory: ./MadWorld/MadWorld.API
         run: |
           pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
           dotnet build --configuration Release --output ./output
