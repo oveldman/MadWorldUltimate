@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MadWorld.API", "MadWorld.AP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MadWorld.Website", "MadWorld.Website\MadWorld.Website.csproj", "{A9044F83-A97B-4155-8613-B6A03F9B68BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MadWorld.Shared", "MadWorld.Shared\MadWorld.Shared.csproj", "{A26A60E3-810E-4400-9AED-CF27B9A470F0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A9044F83-A97B-4155-8613-B6A03F9B68BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9044F83-A97B-4155-8613-B6A03F9B68BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9044F83-A97B-4155-8613-B6A03F9B68BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A26A60E3-810E-4400-9AED-CF27B9A470F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A26A60E3-810E-4400-9AED-CF27B9A470F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A26A60E3-810E-4400-9AED-CF27B9A470F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A26A60E3-810E-4400-9AED-CF27B9A470F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

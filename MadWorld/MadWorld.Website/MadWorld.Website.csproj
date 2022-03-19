@@ -25,4 +25,9 @@
   <ItemGroup>
     <None Remove="Microsoft.Authentication.WebAssembly.Msal" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MadWorld.Shared\MadWorld.Shared.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
