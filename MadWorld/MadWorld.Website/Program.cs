@@ -3,10 +3,12 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using MadWorld.Website;
 using MadWorld.Website.Types;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
+using MadWorld.Website.Extentions;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
+builder.Services.AddScoped<MadWorldAuthorizationMessageHandler>();
 
 string apiUrl = "https://api.mad-world.nl/api/";
 
