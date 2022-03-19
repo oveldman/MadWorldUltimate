@@ -1,12 +1,31 @@
 ﻿using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using MadWorld.Website;
+using MadWorld.Website.Types;
+using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
+string apiUrl = "https://api.mad-world.nl/api/";
+
+if (builder.HostEnvironment.IsDevelopment())
+{
+    apiUrl = "http://localhost:7071/api/";
+}
+
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+builder.Services.AddHttpClient(ApiTypes.MadWorldApiAnonymous, client =>
+{
+    client.BaseAddress = new Uri(apiUrl);
+}).AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
+
+builder.Services.AddHttpClient(ApiTypes.MadWorldApiB2C, client =>
+{
+    client.BaseAddress = new Uri(apiUrl);
+}).AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
+
 
 builder.Services.AddMsalAuthentication(options =>
 {

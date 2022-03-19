@@ -1,0 +1,30 @@
+﻿@page "/testB2C"
+
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using MadWorld.Website.Types;
+@inject IHttpClientFactory clientFactory
+@attribute [Authorize]
+
+<h1>Counter</h1>
+
+<p>@Message</p>
+
+@code {
+    private string Message = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var Http = clientFactory.CreateClient(ApiTypes.MadWorldApiB2C);
+            Message = await Http.GetStringAsync("GetMessageB2C?name=Test");
+        }
+        catch (AccessTokenNotAvailableException exception)
+        {
+            exception.Redirect();
+        }
+    }
+}
+
+
