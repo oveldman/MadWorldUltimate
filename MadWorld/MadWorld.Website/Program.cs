@@ -26,7 +26,7 @@ builder.Services.AddHttpClient(ApiTypes.MadWorldApiAnonymous, client =>
 builder.Services.AddHttpClient(ApiTypes.MadWorldApiB2C, client =>
 {
     client.BaseAddress = new Uri(apiUrl);
-}).AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
+}).AddHttpMessageHandler<MadWorldAuthorizationMessageHandler>();
 
 
 builder.Services.AddMsalAuthentication(options =>
