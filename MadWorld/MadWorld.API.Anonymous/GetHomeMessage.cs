@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-namespace MadWorld.API
+namespace MadWorld.API.Anonymous
 {
     public static class GetHomeMessage
     {
