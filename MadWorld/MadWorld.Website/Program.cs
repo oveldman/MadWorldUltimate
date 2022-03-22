@@ -14,7 +14,7 @@ string apiUrl = "https://api.mad-world.nl/api/";
 
 if (builder.HostEnvironment.IsDevelopment())
 {
-    apiUrl = "http://localhost:7071/api/";
+    //apiUrl = "http://localhost:7071/api/";
 }
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
@@ -28,12 +28,14 @@ builder.Services.AddHttpClient(ApiTypes.MadWorldApiB2C, client =>
     client.BaseAddress = new Uri(apiUrl);
 }).AddHttpMessageHandler<MadWorldAuthorizationMessageHandler>();
 
-
 builder.Services.AddMsalAuthentication(options =>
 {
     // Configure your authentication provider options here.
     // For more information, see https://aka.ms/blazor-standalone-auth
     builder.Configuration.Bind("AzureAdB2C", options.ProviderOptions.Authentication);
+    options.ProviderOptions.DefaultAccessTokenScopes.Add("openid");
+    options.ProviderOptions.DefaultAccessTokenScopes.Add("offline_access");
+    //options.ProviderOptions.DefaultAccessTokenScopes.Add("f3ab6695-8919-4f7e-a7c8-677780f85230");
     options.ProviderOptions.DefaultAccessTokenScopes.Add("https://nlMadWorld.onmicrosoft.com/7ea82c29-9d1c-4ecb-9641-5a9e9cf84bb6/Api.ReadWrite");
 });
 

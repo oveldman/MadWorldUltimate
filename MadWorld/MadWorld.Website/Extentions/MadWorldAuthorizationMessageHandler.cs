@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 
 namespace MadWorld.Website.Extentions
 {
-	public class MadWorldAuthorizationMessageHandler : AuthorizationMessageHandler
+    public class MadWorldAuthorizationMessageHandler : AuthorizationMessageHandler
     {
         public MadWorldAuthorizationMessageHandler(IAccessTokenProvider provider,
             NavigationManager navigationManager)
@@ -12,8 +13,8 @@ namespace MadWorld.Website.Extentions
         {
             ConfigureHandler(
                 authorizedUrls: new[] { "https://api.mad-world.nl" },
-                scopes: new[] { "https://nlMadWorld.onmicrosoft.com/7ea82c29-9d1c-4ecb-9641-5a9e9cf84bb6/Api.ReadWrite" });
+                scopes: new[] {  "https://nlMadWorld.onmicrosoft.com/7ea82c29-9d1c-4ecb-9641-5a9e9cf84bb6/Api.ReadWrite" });
         }
     }
-}
 
+}

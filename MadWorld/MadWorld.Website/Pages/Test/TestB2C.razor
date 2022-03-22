@@ -24,6 +24,10 @@
         {
             exception.Redirect();
         }
+        catch (Exception ex)
+        {
+            Message = ex.Message + ex.InnerException;
+        }
     }
 }
 
