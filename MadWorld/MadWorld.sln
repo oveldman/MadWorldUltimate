@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MadWorld.Shared", "MadWorld
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MadWorld.API.Anonymous", "MadWorld.API.Anonymous\MadWorld.API.Anonymous.csproj", "{FAACDF34-8868-4692-9812-2A43A5EBE11D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MadWorld.Business", "MadWorld.Business\MadWorld.Business.csproj", "{C2E63B49-AC81-41F7-8FB0-0CA23737E68B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MadWorld.Data", "MadWorld.Data\MadWorld.Data.csproj", "{855DA2FE-8F33-4686-88CB-1E7460B746F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{FAACDF34-8868-4692-9812-2A43A5EBE11D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAACDF34-8868-4692-9812-2A43A5EBE11D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FAACDF34-8868-4692-9812-2A43A5EBE11D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2E63B49-AC81-41F7-8FB0-0CA23737E68B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2E63B49-AC81-41F7-8FB0-0CA23737E68B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2E63B49-AC81-41F7-8FB0-0CA23737E68B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2E63B49-AC81-41F7-8FB0-0CA23737E68B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{855DA2FE-8F33-4686-88CB-1E7460B746F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{855DA2FE-8F33-4686-88CB-1E7460B746F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{855DA2FE-8F33-4686-88CB-1E7460B746F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{855DA2FE-8F33-4686-88CB-1E7460B746F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
