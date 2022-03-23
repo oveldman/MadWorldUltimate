@@ -5,6 +5,8 @@
     "FUNCTIONS_WORKER_RUNTIME": "dotnet"
   },
   "Host": {
-    "CORS": "*"
+    "LocalHttpPort": 7072,
+    "CORS": "*",
+    "CORSCredentials": false
   }
 }

@@ -10,22 +10,18 @@ builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Services.AddScoped<MadWorldAuthorizationMessageHandler>();
 
-string apiUrl = "https://api.mad-world.nl/api/";
-
-if (builder.HostEnvironment.IsDevelopment())
-{
-    apiUrl = "http://localhost:7071/api/";
-}
+string apiUrlAnonymous = builder.Configuration["ApiUrls:Anonymous"] ;
+string apiUrlAuthorized = builder.Configuration["ApiUrls:Authorized"];
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 builder.Services.AddHttpClient(ApiTypes.MadWorldApiAnonymous, client =>
 {
-    client.BaseAddress = new Uri(apiUrl);
+    client.BaseAddress = new Uri(apiUrlAnonymous);
 }).AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
 
 builder.Services.AddHttpClient(ApiTypes.MadWorldApiB2C, client =>
 {
-    client.BaseAddress = new Uri(apiUrl);
+    client.BaseAddress = new Uri(apiUrlAuthorized);
 }).AddHttpMessageHandler<MadWorldAuthorizationMessageHandler>();
 
 builder.Services.AddMsalAuthentication(options =>
