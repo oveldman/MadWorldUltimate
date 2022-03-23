@@ -8,17 +8,30 @@
 
 <h1>Counter</h1>
 
-<p>@Message</p>
+<p>@MessageB2C</p>
+
+<p>@MessageAnonymous</p>
 
 @code {
-    private string Message = string.Empty;
+    private string MessageB2C = string.Empty;
+    private string MessageAnonymous = string.Empty;
 
     protected override async Task OnInitializedAsync()
     {
         try
         {
             var Http = clientFactory.CreateClient(ApiTypes.MadWorldApiB2C);
-            Message = await Http.GetStringAsync("GetMessageB2C?name=Test");
+            MessageB2C = await Http.GetStringAsync("GetMessageB2C?name=B2C");
+        }
+        catch (AccessTokenNotAvailableException exception)
+        {
+            exception.Redirect();
+        }
+
+        try
+        {
+            var Http = clientFactory.CreateClient(ApiTypes.MadWorldApiAnonymous);
+            MessageAnonymous = await Http.GetStringAsync("GetHomeMessage?name=Anonymous");
         }
         catch (AccessTokenNotAvailableException exception)
         {
