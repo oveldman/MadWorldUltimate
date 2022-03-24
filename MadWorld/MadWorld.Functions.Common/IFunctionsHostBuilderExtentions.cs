@@ -3,7 +3,7 @@
 namespace MadWorld.Functions.Common;
 public static class IFunctionsHostBuilderExtentions
 {
-    public static void AddMadWorldConfig(this IFunctionsHostBuilder builder)
+    public static void AddMadWorldCommonClasses(this IFunctionsHostBuilder builder)
     {
 
     }

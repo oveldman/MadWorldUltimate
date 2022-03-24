@@ -9,7 +9,7 @@ namespace MadWorld.API
 	{
         public override void Configure(IFunctionsHostBuilder builder)
         {
-            builder.AddMadWorldConfig();
+            builder.AddMadWorldCommonClasses();
         }
     }
 }

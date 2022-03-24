@@ -1,7 +1,6 @@
 ﻿using System;
 using MadWorld.Functions.Common;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection;
 
 [assembly: FunctionsStartup(typeof(MadWorld.API.Anonymous.Startup))]
 namespace MadWorld.API.Anonymous
@@ -10,7 +9,7 @@ namespace MadWorld.API.Anonymous
     {
         public override void Configure(IFunctionsHostBuilder builder)
         {
-            builder.AddMadWorldConfig();
+            builder.AddMadWorldCommonClasses();
         }
     }
 }
