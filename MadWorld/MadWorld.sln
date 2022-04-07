@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MadWorld.Data", "MadWorld.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MadWorld.Functions.Common", "MadWorld.Functions.Common\MadWorld.Functions.Common.csproj", "{135125AF-C46B-4584-9658-F1E1F6EAC5AD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MadWorld.Console", "MadWorld.Console\MadWorld.Console.csproj", "{4FBF2328-5586-4105-8C79-214DC84AB9F6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MadWorld.Blazor.Componets", "MadWorld.Blazor.Componets", "{E1AA5916-5A52-4DD9-91E0-1C6374B9C834}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,11 +55,17 @@ Global
 		{135125AF-C46B-4584-9658-F1E1F6EAC5AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{135125AF-C46B-4584-9658-F1E1F6EAC5AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{135125AF-C46B-4584-9658-F1E1F6EAC5AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FBF2328-5586-4105-8C79-214DC84AB9F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FBF2328-5586-4105-8C79-214DC84AB9F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FBF2328-5586-4105-8C79-214DC84AB9F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FBF2328-5586-4105-8C79-214DC84AB9F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {451A5F6A-EF93-46B7-93C6-739BE812E1CE}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 EndGlobal
