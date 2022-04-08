@@ -34,6 +34,9 @@
     <ProjectReference Include="..\MadWorld.Shared\MadWorld.Shared.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
+    <ProjectReference Include="..\MadWorld.Blazor.Componets.Monaco\MadWorld.Blazor.Componets.Monaco.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Types\" />
