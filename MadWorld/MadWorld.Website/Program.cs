@@ -4,6 +4,7 @@ using MadWorld.Website;
 using MadWorld.Website.Types;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using MadWorld.Website.Extentions;
+using MadWorld.Blazor.Componets.Monaco.Extentions;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -33,6 +34,8 @@ builder.Services.AddMsalAuthentication(options =>
     options.ProviderOptions.DefaultAccessTokenScopes.Add("offline_access");
     options.ProviderOptions.DefaultAccessTokenScopes.Add("https://nlMadWorld.onmicrosoft.com/7ea82c29-9d1c-4ecb-9641-5a9e9cf84bb6/Api.ReadWrite");
 });
+
+builder.Services.AddMonacoEditor();
 
 await builder.Build().RunAsync();
 

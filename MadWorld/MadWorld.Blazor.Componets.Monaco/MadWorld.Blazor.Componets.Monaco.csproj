@@ -15,4 +15,14 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Pages\" />
+    <None Remove="Interop\" />
+    <None Remove="Extentions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pages\" />
+    <Folder Include="Interop\" />
+    <Folder Include="Extentions\" />
+  </ItemGroup>
 </Project>

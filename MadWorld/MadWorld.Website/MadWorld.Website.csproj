@@ -29,6 +29,7 @@
     <None Remove="Microsoft.Extensions.Http" />
     <None Remove="Pages\Test\" />
     <None Remove="Extentions\" />
+    <None Remove="Pages\Tools\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MadWorld.Shared\MadWorld.Shared.csproj">
@@ -42,5 +43,6 @@
     <Folder Include="Types\" />
     <Folder Include="Pages\Test\" />
     <Folder Include="Extentions\" />
+    <Folder Include="Pages\Tools\" />
   </ItemGroup>
 </Project>

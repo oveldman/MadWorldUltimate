@@ -13,6 +13,7 @@
     <link href="manifest.json" rel="manifest" />
     <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png" />
     <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png" />
+    <link href="_content/MadWorld.Blazor.Componets.Monaco/lib/monaco/min/vs/editor/editor.main.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -26,6 +27,10 @@
     <script type="text/javascript" src="_content/Microsoft.Authentication.WebAssembly.Msal/AuthenticationService.js"></script>
     <script src="_framework/blazor.webassembly.js"></script>
     <script>navigator.serviceWorker.register('service-worker.js');</script>
+
+    <script type="text/javascript" src="_content/MadWorld.Blazor.Componets.Monaco/lib/monaco/min/vs/loader.js"></script>
+    <script>require.config({ paths: { 'vs': '_content/MadWorld.Blazor.Componets.Monaco/lib/monaco/min/vs' } });</script>
+    <script src="_content/MadWorld.Blazor.Componets.Monaco/lib/monaco/min/vs/editor/editor.main.js"></script>
 </body>
 
 </html>
