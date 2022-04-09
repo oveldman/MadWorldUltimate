@@ -20,6 +20,13 @@ namespace MadWorld.Blazor.Componets.Monaco.Interop
             return await module.InvokeAsync<string>("init", divID);
         }
 
+        public async ValueTask<string> SetValue(string text)
+        {
+            var module = await moduleTask.Value;
+
+            return await module.InvokeAsync<string>("setValue", text);
+        }
+
         public async ValueTask DisposeAsync()
         {
             if (moduleTask.IsValueCreated)

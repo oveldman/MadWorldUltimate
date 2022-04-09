@@ -20,6 +20,11 @@ namespace MadWorld.Blazor.Componets.Monaco.Pages
             EditorID = "MonacoEditor" + Guid.NewGuid().ToString().Replace("-", "");
         }
 
+        public async Task SetValue(string text)
+        {
+            await _monacoJS.SetValue(text);
+        }
+
         protected override async void OnAfterRender(bool firstRender)
         {
             if (firstRender)
