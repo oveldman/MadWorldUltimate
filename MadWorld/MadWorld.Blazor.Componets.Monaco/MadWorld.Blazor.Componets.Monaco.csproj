@@ -13,16 +13,30 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.3" />
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.6.4">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="Pages\" />
     <None Remove="Interop\" />
     <None Remove="Extentions\" />
+    <None Remove="Microsoft.TypeScript.MSBuild" />
+    <None Remove="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pages\" />
     <Folder Include="Interop\" />
     <Folder Include="Extentions\" />
+    <Folder Include="wwwroot\typescript\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\typescript\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\typescript\MadWorldMonacoEditor.ts" />
   </ItemGroup>
 </Project>

@@ -1,4 +1,5 @@
 ﻿using System;
+using MadWorld.Blazor.Componets.Monaco.Models;
 using Microsoft.JSInterop;
 
 namespace MadWorld.Blazor.Componets.Monaco.Interop
@@ -10,21 +11,28 @@ namespace MadWorld.Blazor.Componets.Monaco.Interop
         public MonacoJs(IJSRuntime jsRuntime)
         {
             moduleTask = new(() => jsRuntime.InvokeAsync<IJSObjectReference>(
-               "import", "./_content/MadWorld.Blazor.Componets.Monaco/MadWorldMonacoEditor.js").AsTask());
+                "import", "./_content/MadWorld.Blazor.Componets.Monaco/js/MadWorldMonacoEditor.js").AsTask());
         }
 
-        public async ValueTask<string> Init(string divID)
+        public async ValueTask Init(string divID, MonacoSettings settings)
         {
             var module = await moduleTask.Value;
 
-            return await module.InvokeAsync<string>("init", divID);
+            await module.InvokeVoidAsync("init", divID, settings.Language);
         }
 
-        public async ValueTask<string> SetValue(string text)
+        public async ValueTask<string> GetValue()
         {
             var module = await moduleTask.Value;
 
-            return await module.InvokeAsync<string>("setValue", text);
+            return await module.InvokeAsync<string>("getValue");
+        }
+
+        public async ValueTask SetValue(string text)
+        {
+            var module = await moduleTask.Value;
+
+            await module.InvokeVoidAsync("setValue", text);
         }
 
         public async ValueTask DisposeAsync()

@@ -1,0 +1,30 @@
+﻿@page "/tools/jsonvalidator"
+
+@using MadWorld.Blazor.Componets.Monaco.Pages;
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Json Validator</h1>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <MonacoEditor @ref="_editor" Height="400" Settings="_settings" />
+        </div>
+    </div>
+</div>
+
+<br />
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <button type="button" class="btn btn-success" @onclick="async () => await FormatJson()">Format JSON</button>
+        </div>
+    </div>
+</div>
+
