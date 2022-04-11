@@ -23,6 +23,9 @@ namespace MadWorld.Website.Pages.Tools
         private async Task FormatJson()
         {
 			string jsonText = await _editor.GetValue();
+
+			if (string.IsNullOrEmpty(jsonText)) return;
+
 			JsonDocument jsonDoc = JsonDocument.Parse(jsonText);
 			string formattedJson = JsonSerializer.Serialize(jsonDoc, new JsonSerializerOptions { WriteIndented = true });
 			await _editor.SetValue(formattedJson);
