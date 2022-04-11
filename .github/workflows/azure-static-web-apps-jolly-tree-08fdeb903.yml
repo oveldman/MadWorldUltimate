@@ -16,7 +16,7 @@ jobs:
     name: Build and Deploy Job
     steps:
       - name: Install nodeJS
-        run: apt-get update && apt-get install -y nodejs
+        run: apt-get install -y nodejs
         
       - uses: actions/checkout@v2
         with:
