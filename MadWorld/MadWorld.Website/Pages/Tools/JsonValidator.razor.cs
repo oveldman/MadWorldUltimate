@@ -10,6 +10,10 @@ namespace MadWorld.Website.Pages.Tools
 		private MonacoEditor _editor;
 		private MonacoSettings _settings = new();
 
+		private bool showSuccess = false;
+		private bool showError = false;
+		private string errorMessage = string.Empty;
+
         protected override void OnInitialized()
         {
 			_settings = new()
@@ -22,6 +26,7 @@ namespace MadWorld.Website.Pages.Tools
 
         private async Task FormatJson()
         {
+			Reset();
 			string jsonText = await _editor.GetValue();
 
 			if (string.IsNullOrEmpty(jsonText)) return;
@@ -29,6 +34,34 @@ namespace MadWorld.Website.Pages.Tools
 			JsonDocument jsonDoc = JsonDocument.Parse(jsonText);
 			string formattedJson = JsonSerializer.Serialize(jsonDoc, new JsonSerializerOptions { WriteIndented = true });
 			await _editor.SetValue(formattedJson);
+		}
+
+		private async Task ValidateJson()
+        {
+			Reset();
+			string jsonText = await _editor.GetValue();
+
+			try
+			{
+				JsonDocument.Parse(jsonText);
+				showSuccess = true;
+			}
+			catch (JsonException jsonException)
+			{
+				ShowError(jsonException);
+			}
+		}
+
+		private void Reset()
+        {
+			showSuccess = false;
+			showError = false;
+        }
+
+		private void ShowError(Exception exception)
+        {
+			showError = true;
+			errorMessage = exception.Message;
 		}
 	}
 }
