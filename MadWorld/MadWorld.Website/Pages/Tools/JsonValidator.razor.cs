@@ -29,6 +29,11 @@ namespace MadWorld.Website.Pages.Tools
 			Reset();
 			string jsonText = await _editor.GetValue();
 
+			if (!IsJsonValid(jsonText))
+			{
+				return;
+            }
+
 			if (string.IsNullOrEmpty(jsonText)) return;
 
 			JsonDocument jsonDoc = JsonDocument.Parse(jsonText);
@@ -40,15 +45,21 @@ namespace MadWorld.Website.Pages.Tools
         {
 			Reset();
 			string jsonText = await _editor.GetValue();
+			IsJsonValid(jsonText);
+		}
 
+		private bool IsJsonValid(string jsonText)
+        {
 			try
 			{
 				JsonDocument.Parse(jsonText);
 				showSuccess = true;
+				return true;
 			}
 			catch (JsonException jsonException)
 			{
 				ShowError(jsonException);
+				return false;
 			}
 		}
 
