@@ -6,11 +6,9 @@
 @inject IHttpClientFactory clientFactory
 @attribute [Authorize]
 
-<h1>Counter</h1>
+<h1>Test Page for B2C</h1>
 
 <p>@MessageB2C</p>
-
-<p>@MessageAnonymous</p>
 
 @code {
     private string MessageB2C = string.Empty;
@@ -21,17 +19,7 @@
         try
         {
             var Http = clientFactory.CreateClient(ApiTypes.MadWorldApiB2C);
-            MessageB2C = await Http.GetStringAsync("GetMessageB2C?name=B2C");
-        }
-        catch (AccessTokenNotAvailableException exception)
-        {
-            exception.Redirect();
-        }
-
-        try
-        {
-            var Http = clientFactory.CreateClient(ApiTypes.MadWorldApiAnonymous);
-            MessageAnonymous = await Http.GetStringAsync("GetHomeMessage?name=Anonymous");
+            MessageB2C = await Http.GetStringAsync("GetUsers");
         }
         catch (AccessTokenNotAvailableException exception)
         {

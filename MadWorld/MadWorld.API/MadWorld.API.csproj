@@ -1,12 +1,23 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <AzureFunctionsVersion>v4</AzureFunctionsVersion>
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Features" Version="6.0.4" />
+  </ItemGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <WarningLevel>4</WarningLevel>
     <StartArguments>start -port 7072 --cors https://localhost:7119</StartArguments>
   </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Admin\" />
+    <None Remove="Attributes\" />
+    <None Remove="Admin\UserManagement\" />
+    <None Remove="Microsoft.AspNetCore.Http" />
+    <None Remove="Microsoft.Extensions.Features" />
+  </ItemGroup>
   <ItemGroup>
     <None Update="host.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -26,5 +37,12 @@
     <ProjectReference Include="..\MadWorld.Functions.Common\MadWorld.Functions.Common.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Admin\" />
+    <Folder Include="Attributes\" />
+    <Folder Include="Admin\" />
+    <Folder Include="Admin\" />
+    <Folder Include="Admin\UserManagement\" />
   </ItemGroup>
 </Project>
