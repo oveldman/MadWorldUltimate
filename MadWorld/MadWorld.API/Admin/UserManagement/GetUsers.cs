@@ -32,7 +32,7 @@ namespace MadWorld.API.Admin.UserManagement
 
             var identity = req?.HttpContext?.User?.Identity as ClaimsIdentity;
             string email = identity?.Claims?.FirstOrDefault(c => c.Type == "emails")?.Value ?? string.Empty;
-            string responseMessage = $"You got some users and you log in as: {email}";
+            string responseMessage = $"You got some users and you log in as: {identity?.Claims?.Count()}";
 
             return new OkObjectResult(responseMessage);
         }
