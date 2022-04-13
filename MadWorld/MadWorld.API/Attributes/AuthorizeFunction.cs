@@ -41,7 +41,7 @@ namespace MadWorld.API.Attributes
 
             // you can also use registered services
             (string azureID, string email) = GetClaims(identity);
-            var isAuthorized = false;
+            var isAuthorized = true;
             if (!isAuthorized)
             {
                 throw new Exception("Not authorized!");
