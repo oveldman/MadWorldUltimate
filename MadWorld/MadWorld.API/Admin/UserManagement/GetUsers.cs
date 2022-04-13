@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using MadWorld.API.Attributes;
 using MadWorld.Shared.Enums;
@@ -28,7 +30,9 @@ namespace MadWorld.API.Admin.UserManagement
             dynamic data = JsonConvert.DeserializeObject(requestBody);
             name = name ?? data?.name;
 
-            string responseMessage = $"You got some users and you log in as: {req?.HttpContext?.User?.Identity?.Name}";
+            var identity = req?.HttpContext?.User?.Identity as ClaimsIdentity;
+            string email = identity?.Claims?.FirstOrDefault(c => c.Type == "emails")?.Value ?? string.Empty;
+            string responseMessage = $"You got some users and you log in as: {email}";
 
             return new OkObjectResult(responseMessage);
         }
