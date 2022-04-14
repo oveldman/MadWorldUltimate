@@ -6,4 +6,22 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Azure.Data.Tables" />
+    <None Remove="TableStorage\" />
+    <None Remove="TableStorage\Tables\" />
+    <None Remove="TableStorage\Queries\" />
+    <None Remove="TableStorage\Queries\Interfaces\" />
+    <None Remove="TableStorage\TableNames\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Azure.Data.Tables" Version="12.5.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="TableStorage\" />
+    <Folder Include="TableStorage\Tables\" />
+    <Folder Include="TableStorage\Queries\" />
+    <Folder Include="TableStorage\Queries\Interfaces\" />
+    <Folder Include="TableStorage\Info\" />
+  </ItemGroup>
 </Project>

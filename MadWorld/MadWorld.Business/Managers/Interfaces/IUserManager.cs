@@ -1,9 +1,9 @@
 ﻿using System;
-namespace MadWorld.Functions.Common.Managers.Interfaces
+namespace MadWorld.Business.Managers.Interfaces
 {
 	public interface IUserManager
 	{
-		public bool CreateUser(string azureID, string email);
+		public bool CreateUser(Guid azureID, string email);
 		public bool CreateUserIfNotExists(string azureID, string email);
 	}
 }

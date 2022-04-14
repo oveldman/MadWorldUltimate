@@ -12,8 +12,6 @@
     <None Remove="Microsoft.Extensions.DependencyInjection" />
     <None Remove="Validators\" />
     <None Remove="Validators\Interfaces\" />
-    <None Remove="Managers\" />
-    <None Remove="Managers\Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.1.0" />
@@ -31,7 +29,5 @@
   <ItemGroup>
     <Folder Include="Validators\" />
     <Folder Include="Validators\Interfaces\" />
-    <Folder Include="Managers\" />
-    <Folder Include="Managers\Interfaces\" />
   </ItemGroup>
 </Project>

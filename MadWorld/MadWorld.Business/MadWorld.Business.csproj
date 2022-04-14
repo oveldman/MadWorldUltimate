@@ -9,4 +9,12 @@
   <ItemGroup>
     <ProjectReference Include="..\MadWorld.Data\MadWorld.Data.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="Managers\" />
+    <None Remove="Managers\Interfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Managers\" />
+    <Folder Include="Managers\Interfaces\" />
+  </ItemGroup>
 </Project>
