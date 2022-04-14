@@ -3,16 +3,22 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
+using MadWorld.Functions.Common.Managers.Interfaces;
+using MadWorld.Functions.Common.Validators.Interfaces;
 using MadWorld.Shared.Enums;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Azure.WebJobs.Host;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace MadWorld.API.Attributes
 {
     public class AuthorizeFunction : FunctionInvocationFilterAttribute
     {
+        private const string claimNameObjectIdentifier = "http://schemas.microsoft.com/identity/claims/objectidentifier";
+        private const string claimNameEmails = "emails";
+
         private readonly RoleTypes _role;
 
         public AuthorizeFunction(RoleTypes role)
@@ -34,24 +40,50 @@ namespace MadWorld.API.Attributes
             ClaimsIdentity identity = defaultHttpRequest.HttpContext.User.Identity as ClaimsIdentity;
             if (!identity?.IsAuthenticated ?? true)
             {
-                // it isn't needed to set unauthorized result 
-                // as the base class already requires the user to be authenticated
-                return;
+                if (IsLocalHost(defaultHttpRequest))
+                {
+                    identity = SetLocalHostLogin(defaultHttpRequest);
+                }
+                else
+                {
+                    // it isn't needed to set unauthorized result 
+                    // as the base class already requires the user to be authenticated
+                    return;
+                }
             }
 
             // you can also use registered services
             (string azureID, string email) = GetClaims(identity);
-            var isAuthorized = true;
-            if (!isAuthorized)
+            var userManager = defaultHttpRequest.HttpContext.RequestServices.GetService<IUserManager>();
+            userManager.CreateUserIfNotExists(azureID, email);
+
+            var userValidator = defaultHttpRequest.HttpContext.RequestServices.GetService<IUserValidator>();
+            if (!userValidator.HasRole(azureID, _role))
             {
-                throw new Exception("Not authorized!");
+                throw new Exception("Not Authorized");
             }
+        }
+
+        private static bool IsLocalHost(HttpRequest httpRequest)
+        {
+            return httpRequest.Host.Host.Equals("localhost");
+        }
+
+        private static ClaimsIdentity SetLocalHostLogin(HttpRequest httpRequest)
+        {
+            
+            ClaimsIdentity identity = new();
+            identity.AddClaim(new Claim(claimNameObjectIdentifier, "511f29ed-1fda-4fbc-9c59-5eb0a459c66f"));
+            identity.AddClaim(new Claim(claimNameEmails, "localhost@localhost.nl"));
+            ClaimsPrincipal user = new(identity);
+            httpRequest.HttpContext.User = user;
+            return identity;
         }
 
         private static (string azureID, string email) GetClaims(ClaimsIdentity identity)
         {
-            string azureID = identity.Claims.FirstOrDefault(c => c.Type == "http://schemas.microsoft.com/identity/claims/objectidentifier")?.Value ?? string.Empty;
-            string email = identity.Claims.FirstOrDefault(c => c.Type == "emails")?.Value ?? string.Empty;
+            string azureID = identity.Claims.FirstOrDefault(c => c.Type == claimNameObjectIdentifier)?.Value ?? string.Empty;
+            string email = identity.Claims.FirstOrDefault(c => c.Type == claimNameEmails)?.Value ?? string.Empty;
             return (azureID, email);
         }
     }

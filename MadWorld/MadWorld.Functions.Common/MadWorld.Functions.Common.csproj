@@ -10,6 +10,10 @@
     <None Remove="Microsoft.NET.Sdk.Functions" />
     <None Remove="Microsoft.Azure.Functions.Extensions" />
     <None Remove="Microsoft.Extensions.DependencyInjection" />
+    <None Remove="Validators\" />
+    <None Remove="Validators\Interfaces\" />
+    <None Remove="Managers\" />
+    <None Remove="Managers\Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.1.0" />
@@ -20,5 +24,14 @@
     <ProjectReference Include="..\MadWorld.Business\MadWorld.Business.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
+    <ProjectReference Include="..\MadWorld.Shared\MadWorld.Shared.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Validators\" />
+    <Folder Include="Validators\Interfaces\" />
+    <Folder Include="Managers\" />
+    <Folder Include="Managers\Interfaces\" />
   </ItemGroup>
 </Project>
