@@ -8,8 +8,16 @@
 
   <ItemGroup>
     <None Remove="Enums\" />
+    <None Remove="Models\" />
+    <None Remove="Models\API\" />
+    <None Remove="Models\API\Account\" />
+    <None Remove="Info\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Enums\" />
+    <Folder Include="Models\" />
+    <Folder Include="Models\API\" />
+    <Folder Include="Models\API\Account\" />
+    <Folder Include="Info\" />
   </ItemGroup>
 </Project>

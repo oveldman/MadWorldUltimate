@@ -4,8 +4,10 @@ using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 using MadWorld.Business.Managers.Interfaces;
+using MadWorld.Functions.Common.Extentions;
 using MadWorld.Functions.Common.Validators.Interfaces;
 using MadWorld.Shared.Enums;
+using MadWorld.Shared.Info;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -16,9 +18,6 @@ namespace MadWorld.API.Attributes
 {
     public class AuthorizeFunction : FunctionInvocationFilterAttribute
     {
-        private const string claimNameObjectIdentifier = "http://schemas.microsoft.com/identity/claims/objectidentifier";
-        private const string claimNameEmails = "emails";
-
         private readonly RoleTypes _role;
 
         public AuthorizeFunction(RoleTypes role)
@@ -73,8 +72,8 @@ namespace MadWorld.API.Attributes
         {
             
             ClaimsIdentity identity = new();
-            identity.AddClaim(new Claim(claimNameObjectIdentifier, "511f29ed-1fda-4fbc-9c59-5eb0a459c66f"));
-            identity.AddClaim(new Claim(claimNameEmails, "localhost@localhost.nl"));
+            identity.AddClaim(new Claim(ClaimNames.ObjectIdentifier, "511f29ed-1fda-4fbc-9c59-5eb0a459c66f"));
+            identity.AddClaim(new Claim(ClaimNames.Emails, "localhost@localhost.nl"));
             ClaimsPrincipal user = new(identity);
             httpRequest.HttpContext.User = user;
             return identity;
@@ -82,8 +81,8 @@ namespace MadWorld.API.Attributes
 
         private static (string azureID, string email) GetClaims(ClaimsIdentity identity)
         {
-            string azureID = identity.Claims.FirstOrDefault(c => c.Type == claimNameObjectIdentifier)?.Value ?? string.Empty;
-            string email = identity.Claims.FirstOrDefault(c => c.Type == claimNameEmails)?.Value ?? string.Empty;
+            string azureID = identity.GetAzureID();
+            string email = identity.Claims.FirstOrDefault(c => c.Type == ClaimNames.Emails)?.Value ?? string.Empty;
             return (azureID, email);
         }
     }

@@ -9,7 +9,7 @@ using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace MadWorld.Functions.Common;
+namespace MadWorld.Functions.Common.Extentions;
 public static class IFunctionsHostBuilderExtentions
 {
     public static void AddMadWorldCommonClasses(this IFunctionsHostBuilder builder)

@@ -1,25 +1,25 @@
 ﻿@page "/testB2C"
 
-@using Microsoft.AspNetCore.Authorization
-@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using Microsoft.AspNetCore.Authorization;
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
+@using MadWorld.Shared.Models.API.Account;
 @using MadWorld.Website.Types;
 @inject IHttpClientFactory clientFactory
 @attribute [Authorize]
 
 <h1>Test Page for B2C</h1>
 
-<p>@MessageB2C</p>
+<p>@string.Join(";", MessageB2C.Roles)</p>
 
 @code {
-    private string MessageB2C = string.Empty;
-    private string MessageAnonymous = string.Empty;
+    private ResponseRoles MessageB2C = new();
 
     protected override async Task OnInitializedAsync()
     {
         try
         {
             var Http = clientFactory.CreateClient(ApiTypes.MadWorldApiB2C);
-            MessageB2C = await Http.GetStringAsync("GetUsers");
+            MessageB2C = await Http.GetFromJsonAsync<ResponseRoles>("GetCurrentUserRoles");
         }
         catch (AccessTokenNotAvailableException exception)
         {

@@ -15,6 +15,17 @@ namespace MadWorld.Functions.Common.Validators
             _userQueries = userQueries;
         }
 
+        public List<string> GetAllRoles(string azureID)
+        {
+            if (!Guid.TryParse(azureID, out Guid id))
+            {
+                return new();
+            }
+
+            User user = _userQueries.FindUser(id);
+            return CreateRoleListForUser(user);
+        }
+
         public bool HasRole(string azureID, RoleTypes role)
         {
             if (!Guid.TryParse(azureID, out Guid id))
@@ -24,6 +35,27 @@ namespace MadWorld.Functions.Common.Validators
 
             User user = _userQueries.FindUser(id);
             return CheckRole(user, role);
+        }
+
+        private List<string> CreateRoleListForUser(User user)
+        {
+            if (user == null)
+            {
+                return new();
+            }
+
+            List<string> userRoles = new()
+            {
+                RoleTypes.Guest.ToString(),
+                RoleTypes.Viewer.ToString()
+            };
+
+            if (user.IsAdminstrator)
+            {
+                userRoles.Add(RoleTypes.Adminstrator.ToString());
+            }
+
+            return userRoles;
         }
 
         private bool CheckRole(User user, RoleTypes role)

@@ -17,6 +17,7 @@
     <None Remove="Admin\UserManagement\" />
     <None Remove="Microsoft.AspNetCore.Http" />
     <None Remove="Microsoft.Extensions.Features" />
+    <None Remove="Account\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">
@@ -44,5 +45,6 @@
     <Folder Include="Admin\" />
     <Folder Include="Admin\" />
     <Folder Include="Admin\UserManagement\" />
+    <Folder Include="Account\" />
   </ItemGroup>
 </Project>
