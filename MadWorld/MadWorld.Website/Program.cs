@@ -5,6 +5,8 @@ using MadWorld.Website.Types;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using MadWorld.Website.Extentions;
 using MadWorld.Blazor.Componets.Monaco.Extentions;
+using MadWorld.Website.Factory;
+using System.Security.Claims;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -20,12 +22,18 @@ builder.Services.AddHttpClient(ApiTypes.MadWorldApiAnonymous, client =>
     client.BaseAddress = new Uri(apiUrlAnonymous);
 }).AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
 
+builder.Services.AddScoped<DelegatingHandlerMW>();
+builder.Services.AddHttpClient(ApiTypes.MadWorldApiAuthorization, client =>
+{
+    client.BaseAddress = new Uri(apiUrlAuthorized);
+}).AddHttpMessageHandler<DelegatingHandlerMW>();
+
 builder.Services.AddHttpClient(ApiTypes.MadWorldApiB2C, client =>
 {
     client.BaseAddress = new Uri(apiUrlAuthorized);
 }).AddHttpMessageHandler<MadWorldAuthorizationMessageHandler>();
 
-builder.Services.AddMsalAuthentication(options =>
+builder.Services.AddMsalAuthentication<RemoteAuthenticationState, RemoteUserAccount>(options =>
 {
     // Configure your authentication provider options here.
     // For more information, see https://aka.ms/blazor-standalone-auth
@@ -33,9 +41,11 @@ builder.Services.AddMsalAuthentication(options =>
     options.ProviderOptions.DefaultAccessTokenScopes.Add("openid");
     options.ProviderOptions.DefaultAccessTokenScopes.Add("offline_access");
     options.ProviderOptions.DefaultAccessTokenScopes.Add("https://nlMadWorld.onmicrosoft.com/7ea82c29-9d1c-4ecb-9641-5a9e9cf84bb6/Api.ReadWrite");
-});
+    options.UserOptions.RoleClaim = ClaimTypes.Role;
+}).AddAccountClaimsPrincipalFactory<RemoteAuthenticationState, RemoteUserAccount, AccountClaimsPrincipalFactoryMW>();
 
 builder.Services.AddMonacoEditor();
+builder.Services.AddInternalClasses();
 
 await builder.Build().RunAsync();
 

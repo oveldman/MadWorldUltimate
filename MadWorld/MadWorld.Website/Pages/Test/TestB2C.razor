@@ -3,11 +3,15 @@
 @using Microsoft.AspNetCore.Authorization;
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 @using MadWorld.Shared.Models.API.Account;
+@using MadWorld.Shared.Enums;
 @using MadWorld.Website.Types;
 @inject IHttpClientFactory clientFactory
-@attribute [Authorize]
+@attribute [Authorize(Roles = nameof(RoleTypes.Adminstrator))]
 
 <h1>Test Page for B2C</h1>
+
+
+<p>@nameof(RoleTypes.Adminstrator)</p>
 
 <p>@string.Join(";", MessageB2C.Roles)</p>
 
@@ -19,7 +23,7 @@
         try
         {
             var Http = clientFactory.CreateClient(ApiTypes.MadWorldApiB2C);
-            MessageB2C = await Http.GetFromJsonAsync<ResponseRoles>("GetCurrentUserRoles");
+            MessageB2C = await Http.GetFromJsonAsync<ResponseRoles>("GetCurrentUserRoles") ?? new ResponseRoles();
         }
         catch (AccessTokenNotAvailableException exception)
         {
