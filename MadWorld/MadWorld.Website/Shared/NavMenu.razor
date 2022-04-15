@@ -1,4 +1,6 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿@using MadWorld.Shared.Enums;
+
+<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="">MadWorld</a>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
@@ -37,15 +39,32 @@
                 </NavLink>
             </div>
         }
+        <AuthorizeView Roles="@nameof(RoleTypes.Adminstrator)">
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" @onclick="ToggleAdminMenu">
+                    <span class="oi oi-pencil" aria-hidden="true"></span> Admin <span class="tool-space oi oi-chevron-@AdminMenuArror"></span>
+                </NavLink>
+            </div>
+            @if (!collapseAdminMenu)
+            {
+                <div class="nav-item nav-item-submenu px-3">
+                    <NavLink class="nav-link" href="admin/users">
+                        <span class="oi oi-people" aria-hidden="true"></span> Users
+                    </NavLink>
+                </div>
+            }
+        </AuthorizeView>
     </nav>
 </div>
 
 @code {
     private bool collapseNavMenu = true;
     private bool collapseToolMenu = true;
+    private bool collapseAdminMenu = true;
 
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
     private string? ToolMenuArror => collapseToolMenu ? "left" : "bottom";
+    private string? AdminMenuArror => collapseAdminMenu ? "left" : "bottom";
 
     private void ToggleNavMenu()
     {
@@ -55,6 +74,11 @@
     private void ToggleToolsMenu()
     {
         collapseToolMenu = !collapseToolMenu;
+    }
+
+    private void ToggleAdminMenu()
+    {
+        collapseAdminMenu = !collapseAdminMenu;
     }
 }
 

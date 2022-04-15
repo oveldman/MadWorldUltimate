@@ -33,6 +33,7 @@
     <None Remove="Factory\" />
     <None Remove="Services\" />
     <None Remove="Services\Interfaces\" />
+    <None Remove="Pages\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MadWorld.Shared\MadWorld.Shared.csproj">
@@ -50,5 +51,6 @@
     <Folder Include="Factory\" />
     <Folder Include="Services\" />
     <Folder Include="Services\Interfaces\" />
+    <Folder Include="Pages\Admin\" />
   </ItemGroup>
 </Project>

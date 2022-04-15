@@ -69,8 +69,7 @@ namespace MadWorld.API.Attributes
         }
 
         private static ClaimsIdentity SetLocalHostLogin(HttpRequest httpRequest)
-        {
-            
+        {   
             ClaimsIdentity identity = new();
             identity.AddClaim(new Claim(ClaimNames.ObjectIdentifier, "511f29ed-1fda-4fbc-9c59-5eb0a459c66f"));
             identity.AddClaim(new Claim(ClaimNames.Emails, "localhost@localhost.nl"));

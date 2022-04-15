@@ -1,0 +1,13 @@
+﻿@page "/Admin/Users"
+
+@using Microsoft.AspNetCore.Authorization;
+@using MadWorld.Shared.Enums;
+
+@attribute [Authorize(Roles = nameof(RoleTypes.Adminstrator))]
+
+<h3>Users</h3>
+
+@code {
+
+}
+
