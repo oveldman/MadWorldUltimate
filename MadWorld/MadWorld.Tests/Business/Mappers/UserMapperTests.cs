@@ -1,7 +1,4 @@
-﻿using System;
-using Xunit;
-
-namespace MadWorld.Tests.Business.Mappers
+﻿namespace MadWorld.Tests.Business.Mappers
 {
 	public class UserMapperTests
 	{
