@@ -44,8 +44,9 @@ builder.Services.AddMsalAuthentication<RemoteAuthenticationState, RemoteUserAcco
     options.UserOptions.RoleClaim = ClaimTypes.Role;
 }).AddAccountClaimsPrincipalFactory<RemoteAuthenticationState, RemoteUserAccount, AccountClaimsPrincipalFactoryMW>();
 
-builder.Services.AddMonacoEditor();
+builder.Services.AddComponets();
 builder.Services.AddInternalClasses();
+builder.Services.AddPackages();
 
 await builder.Build().RunAsync();
 

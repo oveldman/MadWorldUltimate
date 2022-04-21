@@ -1,16 +1,27 @@
 ﻿@page "/Admin/Users"
 
+@using BlazorTable;
 @using Microsoft.AspNetCore.Authorization;
 @using MadWorld.Shared.Enums;
+@using MadWorld.Shared.Models.API.Users;
 @using MadWorld.Website.Services.Admin.Interfaces;
+@inject NavigationManager _navigation;
 @inject IUserService _userService;
 
 @attribute [Authorize(Roles = nameof(RoleTypes.Adminstrator))]
 
 <h3>Users</h3>
 
-@foreach(var user in _users)
+@if (PageLoaded)
 {
-    <p>@user.ID + @user.Email</p>
+    <Table class="table table-striped table-dark table-bordered table-hover" TableHeadClass="thead-light" TableItem="UserModel" Items="_users" PageSize="15" ShowSearchBar="true" RowClickAction="OpenUser">
+        <Column TableItem="UserModel" Title="ID" Field="@(x => x.ID)" Sortable="true" Filterable="false" Width="50%" />
+        <Column TableItem="UserModel" Title="Email" Field="@(x => x.Email)" Sortable="true" Filterable="false" Width="50%" />
+        <Pager ShowPageNumber="true" ShowTotalCount="true" />
+    </Table>
+}
+else
+{
+    <div class="loader"></div>
 }
 
