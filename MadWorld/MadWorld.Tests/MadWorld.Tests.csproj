@@ -40,4 +40,9 @@
     <Folder Include="Business\Mappers\" />
     <Folder Include="General\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MadWorld.Shared\MadWorld.Shared.csproj" />
+    <ProjectReference Include="..\MadWorld.Business\MadWorld.Business.csproj" />
+    <ProjectReference Include="..\MadWorld.Data\MadWorld.Data.csproj" />
+  </ItemGroup>
 </Project>
