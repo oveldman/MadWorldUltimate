@@ -1,6 +1,8 @@
 ﻿using Azure.Data.Tables;
 using MadWorld.Business.Managers;
 using MadWorld.Business.Managers.Interfaces;
+using MadWorld.Business.Mappers;
+using MadWorld.Business.Mappers.Interfaces;
 using MadWorld.Data.TableStorage.Queries;
 using MadWorld.Data.TableStorage.Queries.Interfaces;
 using MadWorld.Functions.Common.Validators;
@@ -27,6 +29,7 @@ public static class IFunctionsHostBuilderExtentions
         builder.Services.AddScoped<IUserValidator, UserValidator>();
 
         //Business
+        builder.Services.AddScoped<IUserMapper, UserMapper>();
 
         //Data
         builder.Services.AddScoped<IUserQueries, UserQueries>();

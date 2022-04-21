@@ -2,12 +2,15 @@
 
 @using Microsoft.AspNetCore.Authorization;
 @using MadWorld.Shared.Enums;
+@using MadWorld.Website.Services.Admin.Interfaces;
+@inject IUserService _userService;
 
 @attribute [Authorize(Roles = nameof(RoleTypes.Adminstrator))]
 
 <h3>Users</h3>
 
-@code {
-
+@foreach(var user in _users)
+{
+    <p>@user.ID + @user.Email</p>
 }
 

@@ -30,6 +30,11 @@ namespace MadWorld.Data.TableStorage.Queries
             Pageable<User> users = _usersTable.Query<User>(u => u.PartitionKey == PartitionKeys.User && u.AzureID == azureId);
             return users.FirstOrDefault();
         }
+
+        public List<User> GetAllUsers()
+        {
+            return _usersTable.Query<User>(u => u.PartitionKey == PartitionKeys.User).ToList() ?? new();
+        }
     }
 }
 

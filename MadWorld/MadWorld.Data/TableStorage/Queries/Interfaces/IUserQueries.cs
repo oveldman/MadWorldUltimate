@@ -7,6 +7,7 @@ namespace MadWorld.Data.TableStorage.Queries.Interfaces
 	{
 		public bool CreateUser(User user);
 		public User FindUser(Guid azureId);
+		public List<User> GetAllUsers();
 	}
 }
 

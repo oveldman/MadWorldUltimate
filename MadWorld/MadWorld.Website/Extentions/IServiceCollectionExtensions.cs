@@ -1,5 +1,7 @@
 ﻿using System;
 using MadWorld.Website.Services;
+using MadWorld.Website.Services.Admin;
+using MadWorld.Website.Services.Admin.Interfaces;
 using MadWorld.Website.Services.Interfaces;
 
 namespace MadWorld.Website.Extentions
@@ -10,6 +12,7 @@ namespace MadWorld.Website.Extentions
 		{
 			//Services
 			services.AddScoped<IAccountService, AccountService>();
+			services.AddScoped<IUserService, UserService>();
 
 			return services;
 		}

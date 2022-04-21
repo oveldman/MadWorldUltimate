@@ -12,6 +12,7 @@
     <None Remove="Models\API\" />
     <None Remove="Models\API\Account\" />
     <None Remove="Info\" />
+    <None Remove="Models\API\Users\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Enums\" />
@@ -19,5 +20,6 @@
     <Folder Include="Models\API\" />
     <Folder Include="Models\API\Account\" />
     <Folder Include="Info\" />
+    <Folder Include="Models\API\Users\" />
   </ItemGroup>
 </Project>

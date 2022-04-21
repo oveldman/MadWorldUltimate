@@ -1,16 +1,20 @@
 ﻿using System;
 using MadWorld.Business.Managers.Interfaces;
+using MadWorld.Business.Mappers.Interfaces;
 using MadWorld.Data.TableStorage.Queries.Interfaces;
 using MadWorld.Data.TableStorage.Tables;
+using MadWorld.Shared.Models.API.Users;
 
 namespace MadWorld.Business.Managers
 {
 	public class UserManager : IUserManager
 	{
+        private IUserMapper _userMapper;
         private IUserQueries _userQueries;
 
-        public UserManager(IUserQueries userQueries)
+        public UserManager(IUserMapper userMapper, IUserQueries userQueries)
         {
+            _userMapper = userMapper;
             _userQueries = userQueries;
         }
 
@@ -42,6 +46,12 @@ namespace MadWorld.Business.Managers
             }
 
             return CreateUser(id, email);
+        }
+
+        public List<UserModel> GetUsers()
+        {
+            List<User> users = _userQueries.GetAllUsers();
+            return _userMapper.Translate<List<User>, List<UserModel>>(users);
         }
     }
 }

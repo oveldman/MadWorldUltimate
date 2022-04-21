@@ -8,13 +8,22 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MadWorld.Data\MadWorld.Data.csproj" />
+    <ProjectReference Include="..\MadWorld.Shared\MadWorld.Shared.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Managers\" />
     <None Remove="Managers\Interfaces\" />
+    <None Remove="Mappers\" />
+    <None Remove="AutoMapper" />
+    <None Remove="Mappers\Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Managers\" />
     <Folder Include="Managers\Interfaces\" />
+    <Folder Include="Mappers\" />
+    <Folder Include="Mappers\Interfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
   </ItemGroup>
 </Project>
