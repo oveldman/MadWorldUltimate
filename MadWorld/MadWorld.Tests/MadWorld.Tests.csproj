@@ -34,15 +34,30 @@
     <None Remove="AutoFixture.Xunit2" />
     <None Remove="FluentAssertions" />
     <None Remove="Moq" />
+    <None Remove="Functions.Common\" />
+    <None Remove="Functions.Common\Extentions\" />
+    <None Remove="Functions.Common\Extentions\Mocks\" />
+    <None Remove="Shared\" />
+    <None Remove="Shared\Common\" />
+    <None Remove="Shared\Common\Mockups\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Business\" />
     <Folder Include="Business\Mappers\" />
     <Folder Include="General\" />
+    <Folder Include="Functions.Common\" />
+    <Folder Include="Functions.Common\Extentions\" />
+    <Folder Include="Functions.Common\Extentions\Mocks\" />
+    <Folder Include="Shared\" />
+    <Folder Include="Shared\Common\" />
+    <Folder Include="Shared\Common\Mockups\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MadWorld.Shared\MadWorld.Shared.csproj" />
     <ProjectReference Include="..\MadWorld.Business\MadWorld.Business.csproj" />
     <ProjectReference Include="..\MadWorld.Data\MadWorld.Data.csproj" />
+    <ProjectReference Include="..\MadWorld.Functions.Common\MadWorld.Functions.Common.csproj" />
+    <ProjectReference Include="..\MadWorld.API.Anonymous\MadWorld.API.Anonymous.csproj" />
+    <ProjectReference Include="..\MadWorld.API\MadWorld.API.csproj" />
   </ItemGroup>
 </Project>

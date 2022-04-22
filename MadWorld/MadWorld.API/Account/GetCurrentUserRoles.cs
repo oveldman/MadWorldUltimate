@@ -23,8 +23,8 @@ namespace MadWorld.API.Account
         }
 
         [AuthorizeFunction(RoleTypes.Guest)]
-        [FunctionName("GetCurrentUserRoles")]
-        public async Task<ResponseRoles> Run(
+        [FunctionName(nameof(GetCurrentUserRoles))]
+        public ResponseRoles Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req,
             ILogger log)
         {

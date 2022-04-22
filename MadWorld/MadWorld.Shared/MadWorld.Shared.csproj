@@ -13,6 +13,8 @@
     <None Remove="Models\API\Account\" />
     <None Remove="Info\" />
     <None Remove="Models\API\Users\" />
+    <None Remove="Common\" />
+    <None Remove="Newtonsoft.Json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Enums\" />
@@ -21,5 +23,9 @@
     <Folder Include="Models\API\Account\" />
     <Folder Include="Info\" />
     <Folder Include="Models\API\Users\" />
+    <Folder Include="Common\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 </Project>

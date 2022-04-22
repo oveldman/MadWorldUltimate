@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
+using MadWorld.Functions.Common.Extentions;
+using MadWorld.Functions.Common.Info;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
@@ -12,17 +14,16 @@ namespace MadWorld.API
 {
     public static class GetMessageB2C
     {
-        [FunctionName("GetMessageB2C")]
+        [FunctionName(nameof(GetMessageB2C))]
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
             ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
 
-            string name = req.Query["name"];
+            string name = req.Query[QueryKeys.Name];
 
-            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            dynamic data = JsonConvert.DeserializeObject(requestBody);
+            dynamic data = await req.GetBodyAsync<dynamic>();
             name = name ?? data?.name;
 
             string responseMessage = string.IsNullOrEmpty(name)
