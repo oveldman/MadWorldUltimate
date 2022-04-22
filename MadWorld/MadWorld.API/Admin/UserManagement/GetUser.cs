@@ -22,7 +22,7 @@ namespace MadWorld.API.Admin.UserManagement
         [AuthorizeFunction(RoleTypes.Adminstrator)]
         [FunctionName(nameof(GetUser))]
         public ResponseUsers Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, RequestType.Get, Route = null)] HttpRequest req,
             ILogger log)
         {
             return new()

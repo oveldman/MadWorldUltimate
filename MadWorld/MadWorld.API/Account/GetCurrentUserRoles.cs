@@ -25,7 +25,7 @@ namespace MadWorld.API.Account
         [AuthorizeFunction(RoleTypes.Guest)]
         [FunctionName(nameof(GetCurrentUserRoles))]
         public ResponseRoles Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, RequestType.Get, Route = null)] HttpRequest req,
             ILogger log)
         {
             string azureID = req.HttpContext.User.Identity.GetAzureID();

@@ -16,7 +16,7 @@ namespace MadWorld.API
     {
         [FunctionName(nameof(GetMessageB2C))]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, RequestType.Get, RequestType.Post, Route = null)] HttpRequest req,
             ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
