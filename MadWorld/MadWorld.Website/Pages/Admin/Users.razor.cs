@@ -7,7 +7,7 @@ namespace MadWorld.Website.Pages.Admin
 	{
         private bool PageLoaded = false;
 
-        private List<UserModel> _users = new();
+        private List<UserDto> _users = new();
 
         protected override async Task OnInitializedAsync()
         {
@@ -15,7 +15,7 @@ namespace MadWorld.Website.Pages.Admin
             PageLoaded = true;
         }
 
-        private void OpenUser(UserModel user)
+        private void OpenUser(UserDto user)
         {
             _navigation.NavigateTo($"/Admin/EditUser/{user.ID}");
         }

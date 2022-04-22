@@ -1,9 +1,8 @@
 ﻿using System;
 namespace MadWorld.Shared.Models.API.Users
 {
-	public class ResponseUsers
+	public class UserDetailDto : UserDto
 	{
-		public List<UserDto> Users { get; set; }
 	}
 }
 

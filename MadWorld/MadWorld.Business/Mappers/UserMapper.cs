@@ -17,7 +17,7 @@ namespace MadWorld.Business.Mappers
 
         private static void CreateUserAndUserModel(ref IMapperConfigurationExpression config)
         {
-            config.CreateMap<User, UserModel>()
+            config.CreateMap<User, UserDto>()
                 .ForMember(d => d.ID, s => s.MapFrom(f => f.RowKey));
         }
     }

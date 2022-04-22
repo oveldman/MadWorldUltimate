@@ -16,7 +16,7 @@ namespace MadWorld.Website.Services.Admin
             _client = clientFactory.CreateClient(ApiTypes.MadWorldApiB2C);
         }
 
-        public async Task<List<UserModel>> GetAllUsers()
+        public async Task<List<UserDto>> GetAllUsers()
         {
             ResponseUsers response = await _client.GetFromJsonAsync<ResponseUsers>("GetUsers") ?? new ResponseUsers();
             return response.Users;

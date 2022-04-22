@@ -14,9 +14,9 @@
 
 @if (PageLoaded)
 {
-    <Table class="table table-striped table-dark table-bordered table-hover" TableHeadClass="thead-light" TableItem="UserModel" Items="_users" PageSize="15" ShowSearchBar="true" RowClickAction="OpenUser">
-        <Column TableItem="UserModel" Title="ID" Field="@(x => x.ID)" Sortable="true" Filterable="false" Width="50%" />
-        <Column TableItem="UserModel" Title="Email" Field="@(x => x.Email)" Sortable="true" Filterable="false" Width="50%" />
+    <Table class="table table-striped table-dark table-bordered table-hover" TableHeadClass="thead-light" TableItem="UserDto" Items="_users" PageSize="15" ShowSearchBar="true" RowClickAction="OpenUser">
+        <Column TableItem="UserDto" Title="ID" Field="@(x => x.ID)" Sortable="true" Filterable="false" Width="50%" />
+        <Column TableItem="UserDto" Title="Email" Field="@(x => x.Email)" Sortable="true" Filterable="false" Width="50%" />
         <Pager ShowPageNumber="true" ShowTotalCount="true" />
     </Table>
 }

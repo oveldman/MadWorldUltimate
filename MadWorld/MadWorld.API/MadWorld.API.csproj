@@ -18,6 +18,7 @@
     <None Remove="Microsoft.AspNetCore.Http" />
     <None Remove="Microsoft.Extensions.Features" />
     <None Remove="Account\" />
+    <None Remove="AzureFunctions.Extensions.Middleware" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">

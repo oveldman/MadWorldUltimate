@@ -48,10 +48,15 @@ namespace MadWorld.Business.Managers
             return CreateUser(id, email);
         }
 
-        public List<UserModel> GetUsers()
+        public UserDetailDto GetUser(Guid guid)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<UserDto> GetUsers()
         {
             List<User> users = _userQueries.GetAllUsers();
-            return _userMapper.Translate<List<User>, List<UserModel>>(users);
+            return _userMapper.Translate<List<User>, List<UserDto>>(users);
         }
     }
 }

@@ -17,10 +17,10 @@ namespace MadWorld.Tests.Business.Mappers
 				// No Setup
 
 				// Act
-				UserModel userModel = userMapper.Translate<User, UserModel>(user);
+				UserDto userModel = userMapper.Translate<User, UserDto>(user);
 
 				// Assert
-				UserModel expectedModel = new()
+				UserDto expectedModel = new()
 				{
 					ID = user.RowKey,
 					Email = user.Email

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Net;
 using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,17 +9,17 @@ using MadWorld.Functions.Common.Extentions;
 using MadWorld.Functions.Common.Validators.Interfaces;
 using MadWorld.Shared.Enums;
 using MadWorld.Shared.Info;
+using MadWorld.Shared.Models.API.Exception;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace MadWorld.API.Attributes
 {
-    public class AuthorizeFunction : FunctionInvocationFilterAttribute
+    public class AuthorizeFunction : FunctionInvocationFilterAttribute, IFunctionExceptionFilter
     {
         private readonly RoleTypes _role;
+        private HttpRequest httpRequest;
 
         public AuthorizeFunction(RoleTypes role)
 		{
@@ -35,6 +36,7 @@ namespace MadWorld.API.Attributes
         public void ValidateUserRole(FunctionExecutingContext executingContext)
         {
             var defaultHttpRequest = executingContext.Arguments.First().Value as HttpRequest;
+            httpRequest = defaultHttpRequest;
 
             ClaimsIdentity identity = defaultHttpRequest.HttpContext.User.Identity as ClaimsIdentity;
             if (!identity?.IsAuthenticated ?? true)
@@ -59,7 +61,7 @@ namespace MadWorld.API.Attributes
             var userValidator = defaultHttpRequest.HttpContext.RequestServices.GetService<IUserValidator>();
             if (!userValidator.HasRole(azureID, _role))
             {
-                throw new Exception("Not Authorized");
+                throw new UnauthorizedAccessException();
             }
         }
 
@@ -83,6 +85,24 @@ namespace MadWorld.API.Attributes
             string azureID = identity.GetAzureID();
             string email = identity.Claims.FirstOrDefault(c => c.Type == ClaimNames.Emails)?.Value ?? string.Empty;
             return (azureID, email);
+        }
+
+        public async Task OnExceptionAsync(FunctionExceptionContext exceptionContext, CancellationToken cancellationToken)
+        {
+            if (exceptionContext.Exception.InnerException is UnauthorizedAccessException)
+            {
+                ResponseException response = new()
+                {
+                    ErrorMessage = "Not Authorised"
+                };
+
+                httpRequest.HttpContext.Response.StatusCode = (int)HttpStatusCode.Forbidden;
+                httpRequest.HttpContext.Response.ContentType = "application/json";
+                await httpRequest.HttpContext.Response.WriteAsync(response.ToJson());
+                return;
+            }
+
+            throw exceptionContext.Exception.InnerException;
         }
     }
 }

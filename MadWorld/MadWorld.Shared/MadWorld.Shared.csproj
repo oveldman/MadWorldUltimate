@@ -15,6 +15,7 @@
     <None Remove="Models\API\Users\" />
     <None Remove="Common\" />
     <None Remove="Newtonsoft.Json" />
+    <None Remove="Models\API\Exception\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Enums\" />
@@ -24,6 +25,7 @@
     <Folder Include="Info\" />
     <Folder Include="Models\API\Users\" />
     <Folder Include="Common\" />
+    <Folder Include="Models\API\Exception\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
