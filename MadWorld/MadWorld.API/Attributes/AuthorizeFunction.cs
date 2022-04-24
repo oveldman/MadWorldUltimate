@@ -98,7 +98,7 @@ namespace MadWorld.API.Attributes
 
                 httpRequest.HttpContext.Response.StatusCode = (int)HttpStatusCode.Forbidden;
                 httpRequest.HttpContext.Response.ContentType = "application/json";
-                await httpRequest.HttpContext.Response.WriteAsync(response.ToJson());
+                await httpRequest.HttpContext.Response.WriteAsync(response.ToJson(), cancellationToken);
                 return;
             }
 
