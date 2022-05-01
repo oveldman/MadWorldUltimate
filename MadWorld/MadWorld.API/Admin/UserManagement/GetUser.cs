@@ -25,11 +25,11 @@ namespace MadWorld.API.Admin.UserManagement
             [HttpTrigger(AuthorizationLevel.Anonymous, RequestType.Get, Route = null)] HttpRequest req,
             ILogger log)
         {
-
+            string id = req.Query[QueryKeys.ID];
 
             return new()
             {
-                User = _userManager.GetUser(Guid.NewGuid())
+                User = _userManager.GetUser(id)
             };
         }
     }

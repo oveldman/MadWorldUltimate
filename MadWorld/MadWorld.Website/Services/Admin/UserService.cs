@@ -21,6 +21,12 @@ namespace MadWorld.Website.Services.Admin
             ResponseUsers response = await _client.GetFromJsonAsync<ResponseUsers>("GetUsers") ?? new ResponseUsers();
             return response.Users;
         }
+
+        public async Task<UserDetailDto> GetUser(string id)
+        {
+            ResponseUser response = await _client.GetFromJsonAsync<ResponseUser>($"GetUser?id={id}") ?? new ResponseUser();
+            return response.User;
+        }
     }
 }
 

@@ -30,8 +30,6 @@ namespace MadWorld.API.Account
         {
             string azureID = req.HttpContext.User.Identity.GetAzureID();
 
-            bool isKut = req.HttpContext.Response.StatusCode == 403;
-
             ResponseRoles response = new()
             {
                 Roles = _userValidator.GetAllRoles(azureID)

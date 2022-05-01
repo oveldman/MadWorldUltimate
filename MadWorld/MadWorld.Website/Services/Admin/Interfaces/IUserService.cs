@@ -6,6 +6,7 @@ namespace MadWorld.Website.Services.Admin.Interfaces
 	public interface IUserService
 	{
 		Task<List<UserDto>> GetAllUsers();
+		Task<UserDetailDto> GetUser(string id);
 	}
 }
 

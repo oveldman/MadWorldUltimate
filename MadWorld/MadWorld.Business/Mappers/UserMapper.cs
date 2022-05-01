@@ -11,13 +11,20 @@ namespace MadWorld.Business.Mappers
         public override MapperConfiguration LoadConfigMapper()
         {
             return new MapperConfiguration(config => {
-                CreateUserAndUserModel(ref config);
+                CreateUserAndUserDto(ref config);
+                CreateUserAndUserDetailDto(ref config);
             });
         }
 
-        private static void CreateUserAndUserModel(ref IMapperConfigurationExpression config)
+        private static void CreateUserAndUserDto(ref IMapperConfigurationExpression config)
         {
             config.CreateMap<User, UserDto>()
+                .ForMember(d => d.ID, s => s.MapFrom(f => f.RowKey));
+        }
+
+        private static void CreateUserAndUserDetailDto(ref IMapperConfigurationExpression config)
+        {
+            config.CreateMap<User, UserDetailDto>()
                 .ForMember(d => d.ID, s => s.MapFrom(f => f.RowKey));
         }
     }

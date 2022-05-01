@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using MadWorld.Shared.Models.API.Users;
+using Microsoft.AspNetCore.Components;
 
 namespace MadWorld.Website.Pages.Admin
 {
@@ -6,6 +7,18 @@ namespace MadWorld.Website.Pages.Admin
 	{
 		[Parameter]
 		public string ID { get; set; }
+
+		private UserDetailDto _user = new();
+
+		protected override async Task OnInitializedAsync()
+		{
+			_user = await _userService.GetUser(ID);
+		}
+
+		private async Task SaveUser()
+        {
+
+        }
 	}
 }
 

@@ -8,7 +8,7 @@ namespace MadWorld.Business.Managers.Interfaces
 		public bool CreateUser(Guid azureID, string email);
 		public bool CreateUserIfNotExists(string azureID, string email);
 		public List<UserDto> GetUsers();
-		public UserDetailDto GetUser(Guid id);
+		public UserDetailDto GetUser(string id);
 	}
 }
 

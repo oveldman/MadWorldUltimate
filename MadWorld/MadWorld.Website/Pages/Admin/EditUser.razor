@@ -1,8 +1,30 @@
 ﻿@page "/Admin/EditUser/{ID}"
 
+@using Microsoft.AspNetCore.Authorization;
+@using MadWorld.Shared.Enums;
+@using MadWorld.Website.Services.Admin.Interfaces;
+@inject NavigationManager _navigation;
+@inject IUserService _userService;
+
+@attribute [Authorize(Roles = nameof(RoleTypes.Adminstrator))]
+
 <h3>User: @ID</h3>
 
-@code {
-
-}
+<EditForm Model="@_user" OnValidSubmit="() => SaveUser()">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="mb-3">
+        <label for="Email" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="Email" placeholder="name@example.com" @bind-value="_user.Email">
+    </div>
+    <div class="mb-3 row">
+        <label for="Adminstrator" class="col-sm-2 col-form-label">Is Adminstrator?</label>
+        <div class="col-sm-10">
+            <InputCheckbox id="Adminstrator" @bind-Value="_user.IsAdminstrator" />
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <button type="submit" class="btn btn-primary">Update user</button>
+    </div>
+</EditForm>
 

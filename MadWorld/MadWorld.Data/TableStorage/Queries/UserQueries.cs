@@ -31,6 +31,12 @@ namespace MadWorld.Data.TableStorage.Queries
             return users.FirstOrDefault();
         }
 
+        public User FindUser(string id)
+        {
+            Pageable<User> users = _usersTable.Query<User>(u => u.PartitionKey == PartitionKeys.User && u.RowKey == id);
+            return users.FirstOrDefault();
+        }
+
         public List<User> GetAllUsers()
         {
             return _usersTable.Query<User>(u => u.PartitionKey == PartitionKeys.User).ToList() ?? new();
