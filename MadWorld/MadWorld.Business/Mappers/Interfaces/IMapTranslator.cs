@@ -7,7 +7,7 @@ namespace MadWorld.Business.Mappers.Interfaces
 	{
 		MapperConfiguration LoadConfigMapper();
 		Y Translate<T, Y>(T request);
-		Y Translate<T, Y>(T request, Y baseObject)
+		Y Translate<T, Y>(T request, Y baseObject);
 	}
 }
 
