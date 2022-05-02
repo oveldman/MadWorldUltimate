@@ -19,23 +19,29 @@
 
 @if (PageLoaded)
 {
-    <EditForm Model="@_user" OnValidSubmit="() => SaveUser()">
-        <DataAnnotationsValidator />
-        <ValidationSummary />
-        <div class="mb-3">
-            <label for="Email" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="Email" placeholder="name@example.com" @bind-value="_user.Email">
+<EditForm Model="@_user" OnValidSubmit="() => SaveUser()">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="mb-3">
+        <label for="Email" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="Email" placeholder="name@example.com" @bind-value="_user.Email">
+    </div>
+    <div class="mb-3 row">
+        <label for="Adminstrator" class="col-sm-2 col-form-label">Is Adminstrator?</label>
+        <div class="col-sm-10">
+            <InputCheckbox id="Adminstrator" @bind-Value="_user.IsAdminstrator" />
         </div>
-        <div class="mb-3 row">
-            <label for="Adminstrator" class="col-sm-2 col-form-label">Is Adminstrator?</label>
-            <div class="col-sm-10">
-                <InputCheckbox id="Adminstrator" @bind-Value="_user.IsAdminstrator" />
-            </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="Viewer" class="col-sm-2 col-form-label">Is Viewer?</label>
+        <div class="col-sm-10">
+            <InputCheckbox id="Viewer" @bind-Value="_user.IsViewer" />
         </div>
-        <div class="mb-3 row">
-            <button type="submit" class="btn btn-primary">Update user</button>
-        </div>
-    </EditForm>
+    </div>
+    <div class="mb-3 row">
+        <button type="submit" class="btn btn-primary">Update user</button>
+    </div>
+</EditForm>
 }
 else
 {
