@@ -9,6 +9,7 @@ namespace MadWorld.Website.Pages.Admin
 		[Parameter]
 		public string ID { get; set; }
 
+		private bool PageLoaded { get; set; }
 		private string ErrorMessage { get; set; } = string.Empty;
 
 		private UserDetailDto _user = new();
