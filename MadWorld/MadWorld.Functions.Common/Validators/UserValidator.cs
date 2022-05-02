@@ -46,9 +46,13 @@ namespace MadWorld.Functions.Common.Validators
 
             List<string> userRoles = new()
             {
-                RoleTypes.Guest.ToString(),
-                RoleTypes.Viewer.ToString()
+                RoleTypes.Guest.ToString()
             };
+
+            if (user.IsViewer)
+            {
+                userRoles.Add(RoleTypes.Viewer.ToString());
+            }
 
             if (user.IsAdminstrator)
             {
@@ -70,7 +74,12 @@ namespace MadWorld.Functions.Common.Validators
                 return true;
             }
 
-            if (role == RoleTypes.Guest || role == RoleTypes.Viewer)
+            if (role == RoleTypes.Viewer && user.IsViewer)
+            {
+                return true;
+            }
+
+            if (role == RoleTypes.Guest)
             {
                 return true;
             }
