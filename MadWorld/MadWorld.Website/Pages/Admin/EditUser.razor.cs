@@ -17,6 +17,7 @@ namespace MadWorld.Website.Pages.Admin
 		protected override async Task OnInitializedAsync()
 		{
 			_user = await _userService.GetUser(ID);
+			PageLoaded = true;
 		}
 
 		private async Task SaveUser()
