@@ -28,7 +28,7 @@ namespace MadWorld.API.Admin.UserManagement
             ILogger log)
         {
             RequestUser requestUser = await req.GetBodyAsync<RequestUser>();
-            return _userManager.UpdateUser(requestUser.User);
+            return await _userManager.UpdateUser(requestUser.User);
         }
     }
 }
