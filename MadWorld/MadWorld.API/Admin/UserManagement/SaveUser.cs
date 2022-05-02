@@ -23,12 +23,12 @@ namespace MadWorld.API.Admin.UserManagement
 
         [AuthorizeFunction(RoleTypes.Adminstrator)]
         [FunctionName(nameof(SaveUser))]
-        public async ValueTask<CommonResponse> Run(
+        public async Task<CommonResponse> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, RequestType.Put, Route = null)] HttpRequest req,
             ILogger log)
         {
             RequestUser requestUser = await req.GetBodyAsync<RequestUser>();
-            return await _userManager.UpdateUser(requestUser.User);
+            return  _userManager.UpdateUser(requestUser.User);
         }
     }
 }
