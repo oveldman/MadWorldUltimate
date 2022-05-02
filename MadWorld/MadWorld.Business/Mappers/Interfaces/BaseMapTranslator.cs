@@ -19,6 +19,11 @@ namespace MadWorld.Business.Mappers.Interfaces
         {
             return _mapper.Map<Y>(request);
         }
+
+        public Y Translate<T, Y>(T request, Y baseObject)
+        {
+            return _mapper.Map(request, baseObject);
+        }
     }
 }
 

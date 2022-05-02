@@ -8,6 +8,13 @@
 
 @attribute [Authorize(Roles = nameof(RoleTypes.Adminstrator))]
 
+@if (string.IsNullOrEmpty(ErrorMessage))
+{
+    <div class="alert alert-danger" role="alert">
+        @ErrorMessage
+    </div>
+}
+
 <h3>User: @ID</h3>
 
 <EditForm Model="@_user" OnValidSubmit="() => SaveUser()">

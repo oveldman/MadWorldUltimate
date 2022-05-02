@@ -1,4 +1,5 @@
 ﻿using System;
+using MadWorld.Shared.Models.API.Common;
 using MadWorld.Shared.Models.API.Users;
 
 namespace MadWorld.Business.Managers.Interfaces
@@ -9,6 +10,7 @@ namespace MadWorld.Business.Managers.Interfaces
 		public bool CreateUserIfNotExists(string azureID, string email);
 		public List<UserDto> GetUsers();
 		public UserDetailDto GetUser(string id);
+		public CommonResponse UpdateUser(UserDetailDto userDto);
 	}
 }
 

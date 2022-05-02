@@ -41,6 +41,12 @@ namespace MadWorld.Data.TableStorage.Queries
         {
             return _usersTable.Query<User>(u => u.PartitionKey == PartitionKeys.User).ToList() ?? new();
         }
+
+        public bool UpdateUser(User user)
+        {
+            _usersTable.UpdateEntity(user, ETag.All);
+            return true;
+        }
     }
 }
 

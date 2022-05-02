@@ -1,4 +1,5 @@
-﻿using MadWorld.Shared.Models.API.Users;
+﻿using MadWorld.Shared.Models.API.Common;
+using MadWorld.Shared.Models.API.Users;
 using Microsoft.AspNetCore.Components;
 
 namespace MadWorld.Website.Pages.Admin
@@ -7,6 +8,8 @@ namespace MadWorld.Website.Pages.Admin
 	{
 		[Parameter]
 		public string ID { get; set; }
+
+		private string ErrorMessage { get; set; } = string.Empty;
 
 		private UserDetailDto _user = new();
 
@@ -17,7 +20,19 @@ namespace MadWorld.Website.Pages.Admin
 
 		private async Task SaveUser()
         {
+			CommonResponse response = await _userService.UpdateUser(_user);
 
+			if (response.Succeed)
+            {
+				_navigation.NavigateTo($"/Admin/Users");
+			}
+
+			ErrorMessage = "There went something wrong with saving this user";
+		}
+
+		private void Reset()
+        {
+			ErrorMessage = string.Empty;
         }
 	}
 }

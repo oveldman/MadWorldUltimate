@@ -9,6 +9,7 @@ namespace MadWorld.Data.TableStorage.Queries.Interfaces
 		public User FindUser(Guid azureId);
 		public User FindUser(string id);
 		public List<User> GetAllUsers();
+		public bool UpdateUser(User user);
 	}
 }
 

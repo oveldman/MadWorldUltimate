@@ -5,6 +5,7 @@ namespace MadWorld.Functions.Common.Info
 	{
 		public const string Get = nameof(Get);
 		public const string Post = nameof(Post);
+		public const string Put = nameof(Put);
 	}
 }
 
