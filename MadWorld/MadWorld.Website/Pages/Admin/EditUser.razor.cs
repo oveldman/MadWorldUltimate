@@ -20,6 +20,7 @@ namespace MadWorld.Website.Pages.Admin
 
 		private async Task SaveUser()
         {
+			Reset();
 			CommonResponse response = await _userService.UpdateUser(_user);
 
 			if (response.Succeed)

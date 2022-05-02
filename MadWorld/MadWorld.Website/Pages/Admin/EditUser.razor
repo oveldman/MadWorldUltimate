@@ -8,7 +8,7 @@
 
 @attribute [Authorize(Roles = nameof(RoleTypes.Adminstrator))]
 
-@if (string.IsNullOrEmpty(ErrorMessage))
+@if (!string.IsNullOrEmpty(ErrorMessage))
 {
     <div class="alert alert-danger" role="alert">
         @ErrorMessage
