@@ -37,7 +37,7 @@ namespace MadWorld.Functions.Common.Validators
             return CheckRole(user, role);
         }
 
-        private List<string> CreateRoleListForUser(User user)
+        private static List<string> CreateRoleListForUser(User user)
         {
             if (user == null)
             {
@@ -62,29 +62,25 @@ namespace MadWorld.Functions.Common.Validators
             return userRoles;
         }
 
-        private bool CheckRole(User user, RoleTypes role)
+        private static bool CheckRole(User user, RoleTypes role)
         {
-            if (user == null)
+            if (user is null)
             {
                 return false;
-            }
+            } 
 
-            if (role == RoleTypes.Adminstrator && user.IsAdminstrator)
+            switch (role)
             {
-                return true;
+                case RoleTypes.Adminstrator:
+                    return user.IsAdminstrator;
+                case RoleTypes.Viewer :
+                    return user.IsViewer;
+                case RoleTypes.Guest:
+                    return true;
+                default:
+                    return false;
+                
             }
-
-            if (role == RoleTypes.Viewer && user.IsViewer)
-            {
-                return true;
-            }
-
-            if (role == RoleTypes.Guest)
-            {
-                return true;
-            }
-
-            return false;
         }
     }
 }
