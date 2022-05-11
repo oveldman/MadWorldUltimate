@@ -58,7 +58,6 @@
     <Folder Include="Pages\Admin\" />
     <Folder Include="Services\Admin\" />
     <Folder Include="Services\Admin\Interfaces\" />
-    <Folder Include="wwwroot\.well-known\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="wwwroot\.well-known\security.txt" />
