@@ -2,7 +2,7 @@
 Expires: 2022-12-31T23:00:00.000Z
 Encryption: N/A
 Acknowledgments: N/A
-Preferred-Languages: N/A
+Preferred-Languages: English, Dutch
 Canonical: N/A
 Policy: N/A
 Hiring: N/A
