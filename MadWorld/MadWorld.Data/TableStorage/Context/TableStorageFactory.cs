@@ -5,7 +5,7 @@ using MadWorld.Data.TableStorage.Info;
 
 namespace MadWorld.Data.TableStorage.Context
 {
-	public class TableStorageFactory
+	public class TableStorageFactory : ITableStorageFactory
 	{
 		private TableServiceClient _client;
 

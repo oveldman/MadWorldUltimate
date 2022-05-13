@@ -18,7 +18,7 @@ public static class IFunctionsHostBuilderExtentions
 {
     public static void AddMadWorldCommonClasses(this IFunctionsHostBuilder builder)
     {
-        var configuration = builder.Services.BuildServiceProvider().GetService<IConfiguration>();
+        var configuration = builder.Services.BuildServiceProvider().GetService<IConfiguration>() ?? throw new ArgumentNullException(nameof(IConfiguration), "Not Found");
 
         AddInternPackages(builder, configuration);
         AddExternPackages(builder, configuration);
@@ -34,7 +34,7 @@ public static class IFunctionsHostBuilderExtentions
         builder.Services.AddScoped<IUserMapper, UserMapper>();
 
         //Data
-        builder.Services.AddScoped<TableStorageFactory>();
+        builder.Services.AddScoped<ITableStorageFactory, TableStorageFactory>();
         builder.Services.AddScoped<IResumeQueries, ResumeQueries>();
         builder.Services.AddScoped<IUserQueries, UserQueries>();
 
@@ -45,13 +45,13 @@ public static class IFunctionsHostBuilderExtentions
     {
         builder.Services.AddScoped(provider =>
         {
-            TableStorageFactory factory = provider.GetRequiredService<TableStorageFactory>();
+            ITableStorageFactory factory = provider.GetRequiredService<ITableStorageFactory>();
             return factory.CreateResumeContext();
         });
 
         builder.Services.AddScoped(provider =>
         {
-            TableStorageFactory factory = provider.GetRequiredService<TableStorageFactory>();
+            ITableStorageFactory factory = provider.GetRequiredService<ITableStorageFactory>();
             return factory.CreateUserContext();
         });
     }
