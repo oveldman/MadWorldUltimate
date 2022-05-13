@@ -13,6 +13,8 @@
     <None Remove="TableStorage\Queries\" />
     <None Remove="TableStorage\Queries\Interfaces\" />
     <None Remove="TableStorage\TableNames\" />
+    <None Remove="TableStorage\Context\" />
+    <None Remove="TableStorage\Context\Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Azure.Data.Tables" Version="12.5.0" />
@@ -23,5 +25,7 @@
     <Folder Include="TableStorage\Queries\" />
     <Folder Include="TableStorage\Queries\Interfaces\" />
     <Folder Include="TableStorage\Info\" />
+    <Folder Include="TableStorage\Context\" />
+    <Folder Include="TableStorage\Context\Interfaces\" />
   </ItemGroup>
 </Project>

@@ -1,6 +1,7 @@
 ﻿using System;
 using Azure;
 using Azure.Data.Tables;
+using MadWorld.Data.TableStorage.Context.Interfaces;
 using MadWorld.Data.TableStorage.Info;
 using MadWorld.Data.TableStorage.Queries.Interfaces;
 using MadWorld.Data.TableStorage.Tables;
@@ -8,44 +9,41 @@ using MadWorld.Data.TableStorage.Tables;
 namespace MadWorld.Data.TableStorage.Queries
 {
 	public class UserQueries : IUserQueries
-	{
-        private TableServiceClient _client;
-        private TableClient _usersTable;
+    {
+        private IUserContext _context;
 
-        public UserQueries(TableServiceClient client)
+        public UserQueries(IUserContext context)
 		{
-            _client = client;
-            _client.CreateTableIfNotExists(TableNames.Users);
-            _usersTable = _client.GetTableClient(TableNames.Users);
+            _context = context;
         }
 
         public bool CreateUser(User user)
         {
-            _usersTable.AddEntity(user);
-            return true;
+            Response response = _context.AddEntity(user);
+            return response.IsError;
         }
 
         public User FindUser(Guid azureId)
         {
-            Pageable<User> users = _usersTable.Query<User>(u => u.PartitionKey == PartitionKeys.User && u.AzureID == azureId);
+            Pageable<User> users = _context.Query<User>(u => u.PartitionKey == PartitionKeys.User && u.AzureID == azureId);
             return users.FirstOrDefault();
         }
 
         public User FindUser(string id)
         {
-            Pageable<User> users = _usersTable.Query<User>(u => u.PartitionKey == PartitionKeys.User && u.RowKey == id);
+            Pageable<User> users = _context.Query<User>(u => u.PartitionKey == PartitionKeys.User && u.RowKey == id);
             return users.FirstOrDefault();
         }
 
         public List<User> GetAllUsers()
         {
-            return _usersTable.Query<User>(u => u.PartitionKey == PartitionKeys.User).ToList() ?? new();
+            return _context.Query<User>(u => u.PartitionKey == PartitionKeys.User).ToList() ?? new();
         }
 
         public bool UpdateUser(User user)
         {
-            _usersTable.UpdateEntity(user, ETag.All);
-            return true;
+            Response response = _context.UpdateEntity(user, ETag.All);
+            return response.IsError;
         }
     }
 }
