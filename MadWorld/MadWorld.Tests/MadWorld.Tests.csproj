@@ -22,7 +22,7 @@
     <PackageReference Include="AutoFixture.AutoMoq" Version="4.17.0" />
     <PackageReference Include="AutoFixture.Xunit2" Version="4.17.0" />
     <PackageReference Include="FluentAssertions" Version="6.6.0" />
-    <PackageReference Include="Moq" Version="4.17.2" />
+    <PackageReference Include="Moq" Version="4.18.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,6 +41,10 @@
     <None Remove="Shared\Common\" />
     <None Remove="Shared\Common\Mockups\" />
     <None Remove="Functions.Common\Validators\" />
+    <None Remove="Data\" />
+    <None Remove="Data\TableStorage\" />
+    <None Remove="Data\TableStorage\Queries\" />
+    <None Remove="Data\TableStorage\Mockups\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Business\" />
@@ -53,6 +57,10 @@
     <Folder Include="Shared\Common\" />
     <Folder Include="Shared\Common\Mockups\" />
     <Folder Include="Functions.Common\Validators\" />
+    <Folder Include="Data\" />
+    <Folder Include="Data\TableStorage\" />
+    <Folder Include="Data\TableStorage\Queries\" />
+    <Folder Include="Data\TableStorage\Mockups\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MadWorld.Shared\MadWorld.Shared.csproj" />
