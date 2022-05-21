@@ -38,6 +38,7 @@
     <None Remove="Services\Admin\" />
     <None Remove="Services\Admin\Interfaces\" />
     <None Remove="BlazorTable" />
+    <None Remove="Pages\Info\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MadWorld.Shared\MadWorld.Shared.csproj">
@@ -59,6 +60,7 @@
     <Folder Include="Services\Admin\" />
     <Folder Include="Services\Admin\Interfaces\" />
     <Folder Include="wwwroot\.well-known\" />
+    <Folder Include="Pages\Info\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="wwwroot\.well-known\security.txt" />
