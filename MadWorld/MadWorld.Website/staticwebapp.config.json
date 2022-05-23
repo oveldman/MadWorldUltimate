@@ -1,0 +1,7 @@
+﻿{
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/images/*", "/css/*", "/.well-known/*"]
+  }
+}
+
