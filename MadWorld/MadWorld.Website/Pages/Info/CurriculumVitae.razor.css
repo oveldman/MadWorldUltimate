@@ -7,6 +7,24 @@
     background: #F8F8F8;
 }
 
+.cv-title {
+    font-size: 1.25rem;
+    color: #434E5E;
+}
+
+.degree-type {
+    color: #434E5E;
+}
+
+.degree-school {
+    font-size: 0.875rem;
+}
+
+.degree-time {
+    color: #aab4c3;
+    font-size: 0.875rem;
+}
+
 .unstyled-list {
     list-style-type: none;
 }
