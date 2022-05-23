@@ -1,2 +1,12 @@
-﻿
+﻿.cv-header {
+    background: #434E5E;
+    color: white;
+}
 
+.cv-body {
+    background: #F8F8F8;
+}
+
+.unstyled-list {
+    list-style-type: none;
+}
