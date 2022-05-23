@@ -14,6 +14,7 @@
     <None Remove="Validators\Interfaces\" />
     <None Remove="Extentions\" />
     <None Remove="Info\" />
+    <None Remove="NetEscapades.AspNetCore.SecurityHeaders" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.1.0" />
