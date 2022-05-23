@@ -25,6 +25,38 @@
     font-size: 0.875rem;
 }
 
+.cv-timeline {
+    padding-left: 2rem;
+}
+
+.cv-timeline:before {
+    content: "";
+    display: inline-block;
+    width: 3px;
+    height: 100%;
+    background: #aab4c3;
+    left: 6px;
+    top: 10px;
+    position: absolute;
+}
+
+.cv-timeline-item:before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left: -20px;
+    top: 9px;
+    width: 15px;
+    height: 15px;
+    border: 4px solid #58677c;
+    background: white;
+    border-radius: 50%;
+}
+
+.position-relative {
+    position: relative !important;
+}
+
 .unstyled-list {
     list-style-type: none;
 }
