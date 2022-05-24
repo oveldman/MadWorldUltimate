@@ -111,3 +111,22 @@
 .unstyled-list {
     list-style-type: none;
 }
+
+@media only screen and (max-width: 720px) {
+    .cv-header-image {
+        margin: auto;
+        width: 50%;
+        padding-top: 20px;
+    }
+
+    .cv-header-main {
+        margin: auto;
+        width: 75%;
+        padding-bottom: 20px;
+    }
+
+    .mobile-row {
+        position: relative;
+        top: 20px;
+    }
+}
