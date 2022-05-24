@@ -1,4 +1,5 @@
 ﻿using System;
+using BlazorDownloadFile;
 using BlazorTable;
 using MadWorld.Blazor.Componets.Monaco.Extentions;
 using MadWorld.Website.Services;
@@ -31,6 +32,7 @@ namespace MadWorld.Website.Extentions
 		{
 			//Services
 			services.AddBlazorTable();
+			services.AddBlazorDownloadFile();
 
 			return services;
 		}
