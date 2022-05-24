@@ -1,0 +1,51 @@
+﻿@page "/tools/htmlvalidator"
+
+@using MadWorld.Blazor.Componets.Monaco.Pages;
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Html Validator</h1>
+        </div>
+    </div>
+    @if (showSuccess)
+    {
+        <div class="row">
+            <div class="alert alert-success" role="alert">
+                The html is valid
+            </div>
+        </div>
+    }
+    @if (showError)
+    {
+        <div class="row">
+            <div class="alert alert-danger" role="alert">
+                @errorMessage
+            </div>
+        </div>
+    }
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <MonacoEditor @ref="_editor" Height="400" Settings="_settings" />
+        </div>
+    </div>
+</div>
+
+<br />
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <button type="button" class="btn btn-success" @onclick="async () => await EncodeHtml()">Encode HTML</button>
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-success" @onclick="async () => await DecodeHtml()">Decode HTML</button>
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-success" @onclick="async () => await ValidateHtml()">Validate HTML</button>
+        </div>
+    </div>
+</div>
