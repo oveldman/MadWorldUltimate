@@ -3,6 +3,27 @@
     color: white;
 }
 
+.cv-header-subtitle {
+    position: relative;
+    top: -7px;
+    font-size: 0.875rem;
+}
+
+.cv-header a {
+    color: #aab4c3;
+    text-decoration: none;
+}
+
+.cv-header a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.cv-header-main {
+    position: relative;
+    top: 15px;
+}
+
 .cv-body {
     background: #F8F8F8;
 }
@@ -10,6 +31,18 @@
 .cv-title {
     font-size: 1.25rem;
     color: #434E5E;
+}
+
+.cv-subtitle {
+    font-size: 1.15rem;
+    color: #434E5E;
+}
+
+.cv-job-time {
+    position: relative;
+    top: -7px;
+    color: #aab4c3;
+    font-size: 0.875rem;
 }
 
 .degree-type {
@@ -21,6 +54,11 @@
 }
 
 .degree-time {
+    color: #aab4c3;
+    font-size: 0.875rem;
+}
+
+.language-level {
     color: #aab4c3;
     font-size: 0.875rem;
 }
@@ -45,7 +83,7 @@
     display: inline-block;
     position: absolute;
     left: -20px;
-    top: 9px;
+    top: 4px;
     width: 15px;
     height: 15px;
     border: 4px solid #58677c;
@@ -56,6 +94,19 @@
 .position-relative {
     position: relative !important;
 }
+
+.list-item-image {
+    vertical-align: middle;
+}
+
+.list-item {
+    line-height: 40px;
+}
+
+.unstyled-link {
+    color: #434E5E;
+    text-decoration: none;
+}  
 
 .unstyled-list {
     list-style-type: none;

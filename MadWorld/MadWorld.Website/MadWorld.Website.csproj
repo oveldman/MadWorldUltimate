@@ -20,6 +20,7 @@
     <PackageReference Include="BlazorTable" Version="1.17.0" />
     <PackageReference Include="BlazorDownloadFile" Version="2.4.0.2" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.42" />
+    <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.1.161" />
   </ItemGroup>
 
   <ItemGroup>
@@ -44,6 +45,7 @@
     <None Remove="BlazorDownloadFile" />
     <None Remove="Pages\Downloader\" />
     <None Remove="HtmlAgilityPack" />
+    <None Remove="Microsoft.Web.LibraryManager.Build" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MadWorld.Shared\MadWorld.Shared.csproj">
