@@ -1,2 +1,14 @@
-﻿@page "/Download"
+﻿@page "/Download/{ID}"
 
+@if (!_downloadFinished)
+{
+    <p>Download has been started with ID: @ID</p> <div class="loader"></div>
+}
+else if (_downloadFound)
+{
+    <p>Download with ID: @ID (@_fileName) is finished.</p>
+}
+else
+{
+    <p>Download with ID: @ID not found.</p>
+}
