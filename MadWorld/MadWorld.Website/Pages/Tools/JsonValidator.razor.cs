@@ -41,6 +41,23 @@ namespace MadWorld.Website.Pages.Tools
 			await _editor.SetValue(formattedJson);
 		}
 
+		private async Task EscapeJson()
+		{
+			Reset();
+			string jsonText = await _editor.GetValue();
+
+			try
+            {
+				string escapeJson = Newtonsoft.Json.JsonConvert.DeserializeObject<string>(jsonText) ?? string.Empty;
+				await _editor.SetValue(escapeJson);
+			}
+			catch(Exception)
+            {
+				showError = true;
+				errorMessage = "Json not valid";
+			}
+		}
+
 		private async Task ValidateJson()
         {
 			Reset();
