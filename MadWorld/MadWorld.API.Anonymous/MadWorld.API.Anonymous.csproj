@@ -6,6 +6,7 @@
   <ItemGroup>
     <None Remove="Microsoft.NET.Sdk.Functions" />
     <None Remove="Downloader\" />
+    <None Remove="Info\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">
@@ -32,5 +33,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Downloader\" />
+    <Folder Include="Info\" />
   </ItemGroup>
 </Project>
