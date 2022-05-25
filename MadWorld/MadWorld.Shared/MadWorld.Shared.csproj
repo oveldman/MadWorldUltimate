@@ -19,6 +19,7 @@
     <None Remove="Models\API\Common\" />
     <None Remove="Models\AnonymousAPI\" />
     <None Remove="Models\AnonymousAPI\Downloader\" />
+    <None Remove="Models\AnonymousAPI\Info\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Enums\" />
@@ -32,6 +33,7 @@
     <Folder Include="Models\API\Common\" />
     <Folder Include="Models\AnonymousAPI\" />
     <Folder Include="Models\AnonymousAPI\Downloader\" />
+    <Folder Include="Models\AnonymousAPI\Info\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
