@@ -46,6 +46,10 @@
     <None Remove="Pages\Downloader\" />
     <None Remove="HtmlAgilityPack" />
     <None Remove="Microsoft.Web.LibraryManager.Build" />
+    <None Remove="Services\Info\" />
+    <None Remove="Services\Info\Interfaces\" />
+    <None Remove="Parts\" />
+    <None Remove="Parts\Info\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MadWorld.Shared\MadWorld.Shared.csproj">
@@ -69,6 +73,10 @@
     <Folder Include="wwwroot\.well-known\" />
     <Folder Include="Pages\Info\" />
     <Folder Include="Pages\Downloader\" />
+    <Folder Include="Services\Info\" />
+    <Folder Include="Services\Info\Interface\" />
+    <Folder Include="Parts\" />
+    <Folder Include="Parts\Info\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="wwwroot\.well-known\security.txt" />

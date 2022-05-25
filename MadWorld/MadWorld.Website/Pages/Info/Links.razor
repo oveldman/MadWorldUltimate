@@ -1,35 +1,14 @@
-﻿@page "/Links" 
+﻿@page "/Links"
 
-<div class="row">
-    <div class="col">
-        <h3>Nuget Packages</h3>
-        <a href="https://github.com/arivera12/BlazorDownloadFile/">BlazorDownloadFile</a><br />
-        <a href="https://github.com/IvanJosipovic/BlazorTable/">BlazorTable</a><br />
-        <a href="https://html-agility-pack.net/">HTML Agility Pack</a>
+@using MadWorld.Website.Parts.Info;
+
+@for (int index = 0; index < _linkGroup.Count; index += 2)
+{
+    <div class="row">
+        <LinksColumn LinkGroup="_linkGroup[index]" />
+        @if (_linkGroup.Count > (index + 1))
+        {
+            <LinksColumn LinkGroup="_linkGroup[index + 1]" />
+        }
     </div>
-    <div class="col">
-        <h3>CdnJS</h3>
-        <a href="https://fontawesome.com/">Font-Awesome</a><br />
-        <a href="https://microsoft.github.io/monaco-editor/">Monaco Editor</a>
-    </div>
-</div>
-<div class="row">
-    <div class="col">
-        <h3>Sources</h3>
-        <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-proxies#modify-requests-responses">Azure Functions Proxies</a><br />
-        <a href="https://docs.microsoft.com/en-us/dotnet/core/compatibility/6.0/">Dotnet 6</a><br />
-        <a href="https://tomascrespo.com/convert-letsencrypt-pem-certificate-to-pfx/">Convert Cert pem to pfx</a>
-    </div>
-    <div class="col">
-        <h3>Security</h3>
-        <a href="https://letsencrypt.org/">Let's Encrypt</a><br />
-        <a href="https://www.ssllabs.com/">SSL Labs</a><br />
-        <a href="https://securityheaders.com/">Security Headers</a>
-    </div>
-</div>
-<div class="row">
-    <div class="col">
-        <h3>Tools</h3>
-        <a href="https://toolbox.googleapps.com/apps/dig/#TXT/_acme-challenge.api.mad-world.nl.">DNS Lookup</a>
-    </div>
-</div>
+}

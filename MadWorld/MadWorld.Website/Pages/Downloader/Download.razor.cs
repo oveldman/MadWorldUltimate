@@ -29,6 +29,8 @@ namespace MadWorld.Website.Pages.Downloader
             }
 
             _downloadFound = true;
+
+            await base.OnInitializedAsync();
         }
     }
 }
