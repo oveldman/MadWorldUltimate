@@ -23,7 +23,7 @@ jobs:
         id: sub
         with:
           files: 'MadWorld/MadWorld.Website/wwwroot/service-worker.published.js'
-          replacements: '#CACHE_VERSION#=${{ Build.BuildId }}'
+          replacements: '#CACHE_VERSION#=${{ github.run_id }}'
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
