@@ -54,6 +54,13 @@
     color: #434E5E;
 }
 
+.cv-job-description {
+}
+
+.cv-job-company {
+    color: #434E5E;
+}
+
 .cv-job-time {
     position: relative;
     top: -7px;
