@@ -1,4 +1,16 @@
-﻿.cv-header {
+﻿.cv-adress-label {
+    display: inline-block;
+    line-height: 18px;
+    position: relative;
+    top: 10px;
+}
+
+.cv-adress-second-row {
+    display: block;
+}
+
+
+.cv-header {
     background: #434E5E;
     color: white;
 }
@@ -28,6 +40,10 @@
     background: #F8F8F8;
 }
 
+.cv-profile {
+    max-width: 800px;
+}
+
 .cv-title {
     font-size: 1.25rem;
     color: #434E5E;
@@ -43,6 +59,10 @@
     top: -7px;
     color: #aab4c3;
     font-size: 0.875rem;
+}
+
+.cv-skills {
+    max-width: 380px;
 }
 
 .degree-type {
@@ -110,6 +130,10 @@
 
 .unstyled-list {
     list-style-type: none;
+}
+
+.white-icon {
+    color: white;
 }
 
 @media only screen and (max-width: 1200px) {
