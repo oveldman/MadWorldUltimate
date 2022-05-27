@@ -1,5 +1,7 @@
 ﻿<div class="col-lg">
-    <h3>Order: @ListColumnOrder (Items: @LinkGroups.Count)</h3><i class="fa-solid fa-circle-plus" @onclick="() => AddNewLinkGroup(ListColumnOrder)"></i>
+    <div class="header">
+        <h3>Order: @ListColumnOrder (Items: @LinkGroups.Count)</h3><i class="fa-solid fa-circle-plus add-icon" @onclick="() => AddNewLinkGroup(ListColumnOrder)"></i>
+    </div>
 
     <ul class="dropzone @dropClass"
         ondragover="event.preventDefault();"

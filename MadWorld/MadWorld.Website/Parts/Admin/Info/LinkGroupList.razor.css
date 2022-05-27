@@ -2,6 +2,17 @@
     flex: 1;
 }
 
+.add-icon {
+    color: green;
+    position: relative;
+    top: 10px;
+    left: 4px;
+}
+
+.header {
+    display: flex;
+}
+
 .dropzone {
     padding: 30px;
     border: 1px inset #75868a;
