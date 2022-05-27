@@ -1,5 +1,5 @@
 ﻿<div class="col-lg">
-    <h3>Order: @ListColumnOrder (Items: @LinkGroups.Count)</h3>
+    <h3>Order: @ListColumnOrder (Items: @LinkGroups.Count)</h3><i class="fa-solid fa-circle-plus" @onclick="() => AddNewLinkGroup(ListColumnOrder)"></i>
 
     <ul class="dropzone @dropClass"
         ondragover="event.preventDefault();"
@@ -10,8 +10,9 @@
 
         @foreach (var linkGroup in LinkGroups)
         {
-            <LinkGroupItem LinkGroup="linkGroup" />
+            <LinkGroupItem LinkGroup="linkGroup" OnLastRowTouchedChanged="LastRowChanged" />
         }
 
+        <LinkGroupEmpty OnLastRowTouchedChanged="LastRowChanged" />
     </ul>
 </div>

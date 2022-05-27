@@ -1,6 +1,7 @@
 ﻿using System;
 using MadWorld.Shared.Models.API.Links;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 
 namespace MadWorld.Website.Parts.Admin.Info
 {
@@ -13,10 +14,27 @@ namespace MadWorld.Website.Parts.Admin.Info
         List<LinkGroupAdminDto> LinkGroups = new();
         string dropClass = "";
 
+        public int LastTouchedRow = 0;
+
         protected override void OnParametersSet()
         {
             LinkGroups.Clear();
-            LinkGroups.AddRange(Container.LinkGroups.Where(x => x.ColumnOrder == ListColumnOrder));
+            LinkGroups.AddRange(Container.LinkGroups.Where(x => x.ColumnOrder == ListColumnOrder).OrderBy(x => x.RowOrder));
+        }
+
+        private void AddNewLinkGroup(int columnOrder)
+        {
+            LinkGroupAdminDto newLinkGroup = new()
+            {
+                Id = Guid.NewGuid(),
+                ColumnOrder = columnOrder,
+                Links = new(),
+                Name = string.Empty,
+                RowOrder = GetRowID(columnOrder, -1)
+            };
+
+            Container.LinkGroups.Add(newLinkGroup);
+            OnParametersSet();
         }
 
         private void HandleDragEnter()
@@ -38,13 +56,46 @@ namespace MadWorld.Website.Parts.Admin.Info
             dropClass = "";
         }
 
-        private async Task HandleDrop()
+        public void LastRowChanged(int indexRow)
+        {
+            LastTouchedRow = indexRow;
+        }
+
+        private async Task HandleDrop(DragEventArgs eventArgs)
         {
             dropClass = "";
 
             if (AllowedColumnOrders != null && !AllowedColumnOrders.Contains(Container.Payload.ColumnOrder)) return;
 
-            await Container.UpdateJobAsync(ListColumnOrder);
+            int newRowId = GetRowID(ListColumnOrder, LastTouchedRow);
+            UpdateRowOrderInColumn(ListColumnOrder, newRowId);
+            await Container.UpdateJobAsync(ListColumnOrder, newRowId);
+        }
+
+        private int GetRowID(int columnOrder, int currentRowID)
+        {
+            if (currentRowID != -1)
+            {
+                return currentRowID;
+            }
+
+            if (LinkGroups.Any(g => g.ColumnOrder == columnOrder))
+            {
+                return LinkGroups.Where(g => g.ColumnOrder == columnOrder).Max(g => g.RowOrder) + 1;
+            }
+
+            return 0;
+        }
+
+        private void UpdateRowOrderInColumn(int columnOrder, int rowOrder)
+        {
+            LinkGroups.Where(g => g.ColumnOrder == columnOrder && g.RowOrder >= rowOrder)
+                .ToList()
+                .ForEach(g => g.RowOrder++);
+
+            LinkGroups.Where(g => g.ColumnOrder != columnOrder && g.RowOrder >= rowOrder)
+                .ToList()
+                .ForEach(g => g.RowOrder--);
         }
     }
 }

@@ -4,7 +4,7 @@
 
 .dropzone {
     padding: 30px;
-    border: 1px dashed #75868a;
+    border: 1px inset #75868a;
     list-style: none;
 }
 

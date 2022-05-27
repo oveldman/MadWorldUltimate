@@ -12,13 +12,14 @@ namespace MadWorld.Website.Parts.Admin.Info
 
         public LinkGroupAdminDto Payload { get; set; }
 
-        public async Task UpdateJobAsync(int columnOrder)
+        public async Task UpdateJobAsync(int columnOrder, int rowOrder)
         {
             var linkGroup = LinkGroups.SingleOrDefault(x => x.Id == Payload.Id);
 
             if (linkGroup != null)
             {
                 linkGroup.ColumnOrder = columnOrder;
+                linkGroup.RowOrder = rowOrder;
                 await OnStatusUpdated.InvokeAsync(Payload);
             }
         }
