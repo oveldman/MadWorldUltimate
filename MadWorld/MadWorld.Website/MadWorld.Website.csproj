@@ -50,6 +50,9 @@
     <None Remove="Services\Info\Interfaces\" />
     <None Remove="Parts\" />
     <None Remove="Parts\Info\" />
+    <None Remove="Pages\Admin\Info\" />
+    <None Remove="Parts\Admin\" />
+    <None Remove="Parts\Admin\Info\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MadWorld.Shared\MadWorld.Shared.csproj">
@@ -77,6 +80,9 @@
     <Folder Include="Services\Info\Interface\" />
     <Folder Include="Parts\" />
     <Folder Include="Parts\Info\" />
+    <Folder Include="Pages\Admin\Info\" />
+    <Folder Include="Parts\Admin\" />
+    <Folder Include="Parts\Admin\Info\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="wwwroot\.well-known\security.txt" />

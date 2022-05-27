@@ -1,0 +1,11 @@
+﻿<li class="draggable" draggable="true" title="@LinkGroup.Name" @ondragstart="@(() => HandleDragStart(LinkGroup))">
+    <div class="mb-3 row">
+        <label for="title" class="col-sm-2 col-form-label">Title</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control-plaintext linkgroup-title" id="title" @bind-value="LinkGroup.Name">
+        </div>
+    </div>
+    <p class="item-id">@LinkGroup.Id</p>
+    <hr />
+</li>
+

@@ -1,0 +1,17 @@
+﻿<div class="col-lg">
+    <h3>Order: @ListColumnOrder (Items: @LinkGroups.Count)</h3>
+
+    <ul class="dropzone @dropClass"
+        ondragover="event.preventDefault();"
+        ondragstart="event.dataTransfer.setData('', event.target.id);"
+        @ondrop="HandleDrop"
+        @ondragenter="HandleDragEnter"
+        @ondragleave="HandleDragLeave">
+
+        @foreach (var linkGroup in LinkGroups)
+        {
+            <LinkGroupItem LinkGroup="linkGroup" />
+        }
+
+    </ul>
+</div>

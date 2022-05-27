@@ -1,0 +1,15 @@
+﻿@page "/Admin/Links"
+
+@using Microsoft.AspNetCore.Authorization;
+@using MadWorld.Shared.Enums;
+@using MadWorld.Website.Parts.Admin.Info;
+
+@attribute [Authorize(Roles = nameof(RoleTypes.Adminstrator))]
+
+<div class="row">
+    <LinkGroupContainer LinkGroups="LinkGroups" OnStatusUpdated="HandleStatusUpdated">
+        <LinkGroupList ListColumnOrder="0" AllowedColumnOrders="@(new int[] { 1 })" />
+        <LinkGroupList ListColumnOrder="1" AllowedColumnOrders="@(new int[] { 0 })" />
+    </LinkGroupContainer>
+</div>
+

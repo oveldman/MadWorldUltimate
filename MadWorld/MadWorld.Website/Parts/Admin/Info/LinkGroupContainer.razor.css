@@ -1,0 +1,8 @@
+﻿.link-group-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.dragging {
+    cursor: grabbing;
+}
