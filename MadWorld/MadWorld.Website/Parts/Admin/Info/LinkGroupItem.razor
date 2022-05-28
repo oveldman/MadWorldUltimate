@@ -1,13 +1,17 @@
-﻿<li class="draggable" draggable="true" title="@LinkGroup.Name" @ondragstart="@(() => HandleDragStart(LinkGroup))" @ondragenter="HandleDragEnter">
+﻿@using MadWorld.Shared.Models.API.Links;
+
+@inherits DragItem<LinkGroupAdminDto, LinkGroupContainer>
+
+<li class="draggable" draggable="true" title="@DragObject.Name" @ondragstart="@(() => HandleDragStart(DragObject))" @ondragenter="HandleDragEnter">
     <div class="mb-3 row">
         <label for="title" class="col-sm-2 col-form-label">Title</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control-plaintext linkgroup-title" id="title" @bind-value="LinkGroup.Name">
+            <input type="text" class="form-control-plaintext linkgroup-title" id="title" @bind-value="DragObject.Name">
         </div>
     </div>
     <div class="linkgroup-id">
-        <p class="item-id">@LinkGroup.Id &nbsp;</p>
-        @if (!LinkGroup.IsNew)
+        <p class="item-id">@DragObject.Id &nbsp;</p>
+        @if (!DragObject.IsNew)
         {
             <span><i class="fa-solid fa-pen-to-square pointer" @onclick="EditLinkGroup"></i>&nbsp;</span>
         }

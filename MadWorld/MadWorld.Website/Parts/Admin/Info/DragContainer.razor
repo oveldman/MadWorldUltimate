@@ -1,9 +1,8 @@
-﻿@using MadWorld.Shared.Models.API.Links;
-
-@inherits DragContainer<LinkGroupAdminDto>
+﻿@typeparam T
 
 <div class="drag-container">
     <CascadingValue Value="this">
         @ChildContent
     </CascadingValue>
 </div>
+

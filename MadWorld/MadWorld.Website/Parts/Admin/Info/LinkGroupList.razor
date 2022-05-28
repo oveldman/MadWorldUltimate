@@ -1,6 +1,10 @@
-﻿<div class="col-lg">
+﻿@using MadWorld.Shared.Models.API.Links;
+
+@inherits DragList<LinkGroupAdminDto, LinkGroupContainer>
+
+<div class="col-lg">
     <div class="header">
-        <h3>Order: @ListColumnOrder (Items: @LinkGroups.Count)</h3><i class="fa-solid fa-circle-plus add-icon" @onclick="() => AddNewLinkGroup(ListColumnOrder)"></i>
+        <h3>Order: @ListColumnOrder (Items: @DragItems.Count)</h3><i class="fa-solid fa-circle-plus add-icon" @onclick="() => AddNewDragItem(ListColumnOrder)"></i>
     </div>
 
     <ul class="dropzone @dropClass"
@@ -10,11 +14,11 @@
         @ondragenter="HandleDragEnter"
         @ondragleave="HandleDragLeave">
 
-        @foreach (var linkGroup in LinkGroups)
+        @foreach (var dragItem in DragItems)
         {
-            <LinkGroupItem LinkGroup="linkGroup" OnLastRowTouchedChanged="LastRowChanged" OnDeleteGroup="OnParametersSet" />
+            <LinkGroupItem DragObject="dragItem" OnLastRowTouchedChanged="LastRowChanged" OnDeleteGroup="OnParametersSet" />
         }
 
-        <LinkGroupEmpty OnLastRowTouchedChanged="LastRowChanged" />
+        <DragItemEmpty OnLastRowTouchedChanged="LastRowChanged" />
     </ul>
 </div>

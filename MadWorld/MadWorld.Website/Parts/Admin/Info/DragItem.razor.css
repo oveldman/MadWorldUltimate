@@ -1,0 +1,41 @@
+﻿.draggable {
+    margin-bottom: 10px;
+    padding: 10px 25px;
+    border: 1px solid #424d5c;
+    cursor: grab;
+    background: #5c6b7f;
+    color: #ffffff;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.dragitem-title {
+    background: white;
+}
+
+.dragitem-id {
+    display: flex;
+}
+
+.draggable:active {
+    cursor: grabbing;
+}
+
+.description {
+    font-size: 18px;
+}
+
+.item-id {
+    margin-bottom: 0;
+    font-size: 11px;
+    color: #e1e5ea;
+    font-weight: bold;
+}
+
+.trash-icon {
+    color: red;
+}
+
+.dragging {
+    cursor: grabbing;
+}

@@ -9,7 +9,7 @@
 <h2>Edit groups for links</h2>
 <button type="button" class="btn btn-success" @onclick="SaveLinkGroups">Save Groups</button>
 <div class="row">
-    <LinkGroupContainer LinkGroups="LinkGroups" OnStatusUpdated="HandleStatusUpdated">
+    <LinkGroupContainer DragItems="LinkGroups" OnStatusUpdated="HandleStatusUpdated">
         <LinkGroupList ListColumnOrder="0" AllowedColumnOrders="@(new int[] { 0, 1 })" />
         <LinkGroupList ListColumnOrder="1" AllowedColumnOrders="@(new int[] { 0, 1 })" />
     </LinkGroupContainer>
