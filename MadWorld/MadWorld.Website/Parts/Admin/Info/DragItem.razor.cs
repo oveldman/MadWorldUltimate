@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace MadWorld.Website.Parts.Admin.Info
 {
-	public partial class DragItem<T,Y> where Y : DragContainer<T>
+	public abstract partial class DragItem<T,Y> where Y : DragContainer<T>
 	{
         [CascadingParameter]
         protected Y Container { get; set; }
@@ -32,22 +32,15 @@ namespace MadWorld.Website.Parts.Admin.Info
         [Inject]
         protected NavigationManager _navigation { get; set; }
 
+        protected abstract void HandleDragEnter();
+
+        protected abstract void EditLinkGroup();
+
+        protected abstract void DeleteLinkGroup();
+
         protected void HandleDragStart(T selectedLinkGroup)
         {
             Container.Payload = selectedLinkGroup;
-        }
-
-        protected virtual void HandleDragEnter()
-        {
-        }
-
-        protected virtual void EditLinkGroup()
-        {
-        }
-
-        protected virtual void DeleteLinkGroup()
-        {
-            OnDeleteGroup.InvokeAsync();
         }
     }
 }

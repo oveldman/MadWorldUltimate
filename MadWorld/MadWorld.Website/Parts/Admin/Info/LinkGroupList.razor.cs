@@ -26,7 +26,7 @@ namespace MadWorld.Website.Parts.Admin.Info
             };
 
             Container.DragItems.Add(newLinkGroup);
-            base.AddNewDragItem(columnOrder);
+            OnParametersSet();
         }
 
         protected override int GetColumnOrderFromPayload()

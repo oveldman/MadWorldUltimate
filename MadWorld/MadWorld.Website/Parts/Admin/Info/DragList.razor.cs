@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components.Web;
 
 namespace MadWorld.Website.Parts.Admin.Info
 {
-	public partial class DragList<T, Y> : ComponentBase where Y : DragContainer<T> 
+	public abstract partial class DragList<T, Y> : ComponentBase where Y : DragContainer<T> 
     {
         [CascadingParameter] protected Y Container { get; set; }
         [Parameter] public int ListColumnOrder { get; set; }
@@ -15,19 +15,15 @@ namespace MadWorld.Website.Parts.Admin.Info
         protected List<T> DragItems = new();
         protected string dropClass = "";
 
-        protected override void OnParametersSet()
-        {
-        }
+        protected abstract void AddNewDragItem(int columnOrder);
 
-        protected virtual void AddNewDragItem(int columnOrder)
-        {
-            OnParametersSet();
-        }
+        protected abstract int GetColumnOrderFromPayload();
 
-        protected virtual int GetColumnOrderFromPayload()
-        {
-            return 0;
-        }
+        protected abstract int GetMaxRowNumber(int columnOrder);
+
+        protected abstract bool HasColumnAnyItem(int columnOrder);
+
+        protected abstract void UpdateRowOrderInColumn(int columnOrder, int rowOrder);
 
         protected void HandleDragEnter()
         {
@@ -82,20 +78,6 @@ namespace MadWorld.Website.Parts.Admin.Info
             }
 
             return 0;
-        }
-
-        protected virtual int GetMaxRowNumber(int columnOrder)
-        {
-            return 0;
-        }
-
-        protected virtual bool HasColumnAnyItem(int columnOrder)
-        {
-            return true;
-        }
-
-        protected virtual void UpdateRowOrderInColumn(int columnOrder, int rowOrder)
-        {
         }
     }
 }

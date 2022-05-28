@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace MadWorld.Website.Parts.Admin.Info
 {
-	public partial class DragContainer<T> : ComponentBase
+	public abstract partial class DragContainer<T> : ComponentBase
 	{
 		[Parameter] public List<T> DragItems { get; set; }
 		[Parameter] public RenderFragment ChildContent { get; set; }
@@ -19,10 +19,7 @@ namespace MadWorld.Website.Parts.Admin.Info
             }
         }
 
-        protected virtual bool TryToUpdateItem(int columnOrder, int rowOrder)
-        {
-            return true;
-        }
+        protected abstract bool TryToUpdateItem(int columnOrder, int rowOrder);
     }
 }
 

@@ -6,23 +6,17 @@ namespace MadWorld.Website.Parts.Admin.Info
 {
     public partial class LinkGroupItem : DragItem<LinkGroupAdminDto, LinkGroupContainer>
     {
-        private void HandleDragStart(LinkGroupAdminDto selectedLinkGroup)
+        protected override void HandleDragEnter()
         {
-            Container.Payload = selectedLinkGroup;
-        }
-
-        private void HandleDragEnter()
-        {
-
             LastRowTouched = DragObject.RowOrder;
         }
 
-        private void EditLinkGroup()
+        protected override void EditLinkGroup()
         {
             _navigation.NavigateTo($"/Admin/Links/{DragObject.Id}");
         }
 
-        private void DeleteLinkGroup()
+        protected override void DeleteLinkGroup()
         {
             DragObject.IsDeleted = true;
             OnDeleteGroup.InvokeAsync();
