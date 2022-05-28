@@ -29,17 +29,17 @@
         @if (!collapseToolMenu)
         {
             <div class="nav-item nav-item-submenu px-3">
-                <NavLink class="nav-link" href="tools/guidgenerator">
+                <NavLink class="nav-link" href="/Tools/GuidGenerator">
                     <span class="oi oi-wrench" aria-hidden="true"></span> Guid Generator
                 </NavLink>
             </div>
             <div class="nav-item nav-item-submenu px-3">
-                <NavLink class="nav-link" href="/tools/htmlvalidator">
+                <NavLink class="nav-link" href="/Tools/HtmlBalidator">
                     <span class="oi oi-wrench" aria-hidden="true"></span> HTML Validator
                 </NavLink>
             </div>
             <div class="nav-item nav-item-submenu px-3">
-                <NavLink class="nav-link" href="/tools/jsonvalidator">
+                <NavLink class="nav-link" href="/Tools/JsonValidator">
                     <span class="oi oi-wrench" aria-hidden="true"></span> Json Validator
                 </NavLink>
             </div>
@@ -53,8 +53,13 @@
             @if (!collapseAdminMenu)
             {
                 <div class="nav-item nav-item-submenu px-3">
-                    <NavLink class="nav-link" href="admin/users">
+                    <NavLink class="nav-link" href="Admin/Users">
                         <span class="oi oi-people" aria-hidden="true"></span> Users
+                    </NavLink>
+                </div>
+                <div class="nav-item nav-item-submenu px-3">
+                    <NavLink class="nav-link" href="Admin/LinkGroups">
+                        <span class="oi oi-link-intact" aria-hidden="true"></span> Links
                     </NavLink>
                 </div>
             }

@@ -5,7 +5,14 @@
             <input type="text" class="form-control-plaintext linkgroup-title" id="title" @bind-value="LinkGroup.Name">
         </div>
     </div>
-    <p class="item-id">@LinkGroup.Id</p>
+    <div class="linkgroup-id">
+        <p class="item-id">@LinkGroup.Id &nbsp;</p>
+        @if (!LinkGroup.IsNew)
+        {
+            <span><i class="fa-solid fa-pen-to-square pointer" @onclick="EditLinkGroup"></i>&nbsp;</span>
+        }
+        <span><i class="fa-solid fa-trash-can trash-icon pointer" @onclick="DeleteLinkGroup"></i></span>
+    </div>
     <hr />
 </li>
 

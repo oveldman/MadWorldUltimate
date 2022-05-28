@@ -12,7 +12,7 @@
 
         @foreach (var linkGroup in LinkGroups)
         {
-            <LinkGroupItem LinkGroup="linkGroup" OnLastRowTouchedChanged="LastRowChanged" />
+            <LinkGroupItem LinkGroup="linkGroup" OnLastRowTouchedChanged="LastRowChanged" OnDeleteGroup="OnParametersSet" />
         }
 
         <LinkGroupEmpty OnLastRowTouchedChanged="LastRowChanged" />

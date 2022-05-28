@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Components.Web;
 
 namespace MadWorld.Website.Parts.Admin.Info
 {
-	public partial class LinkGroupList : ComponentBase
-	{
+    public partial class LinkGroupList : ComponentBase
+    {
         [CascadingParameter] LinkGroupContainer Container { get; set; }
         [Parameter] public int ListColumnOrder { get; set; }
         [Parameter] public int[] AllowedColumnOrders { get; set; }
@@ -19,7 +19,7 @@ namespace MadWorld.Website.Parts.Admin.Info
         protected override void OnParametersSet()
         {
             LinkGroups.Clear();
-            LinkGroups.AddRange(Container.LinkGroups.Where(x => x.ColumnOrder == ListColumnOrder).OrderBy(x => x.RowOrder));
+            LinkGroups.AddRange(Container.LinkGroups.Where(x => x.ColumnOrder == ListColumnOrder && !x.IsDeleted).OrderBy(x => x.RowOrder));
         }
 
         private void AddNewLinkGroup(int columnOrder)
@@ -28,6 +28,7 @@ namespace MadWorld.Website.Parts.Admin.Info
             {
                 Id = Guid.NewGuid(),
                 ColumnOrder = columnOrder,
+                IsNew = true,
                 Links = new(),
                 Name = string.Empty,
                 RowOrder = GetRowID(columnOrder, -1)
@@ -72,6 +73,11 @@ namespace MadWorld.Website.Parts.Admin.Info
             await Container.UpdateJobAsync(ListColumnOrder, newRowId);
         }
 
+        private bool ColumnChanged()
+        {
+            return Container.Payload.ColumnOrder != ListColumnOrder;
+        }
+
         private int GetRowID(int columnOrder, int currentRowID)
         {
             if (currentRowID != -1)
@@ -93,9 +99,12 @@ namespace MadWorld.Website.Parts.Admin.Info
                 .ToList()
                 .ForEach(g => g.RowOrder++);
 
-            LinkGroups.Where(g => g.ColumnOrder != columnOrder && g.RowOrder >= rowOrder)
-                .ToList()
-                .ForEach(g => g.RowOrder--);
+            if (ColumnChanged())
+            {
+                LinkGroups.Where(g => g.ColumnOrder != columnOrder && g.RowOrder >= rowOrder)
+                    .ToList()
+                    .ForEach(g => g.RowOrder--);
+            }
         }
     }
 }

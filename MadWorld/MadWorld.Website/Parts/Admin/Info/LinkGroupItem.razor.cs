@@ -15,6 +15,9 @@ namespace MadWorld.Website.Parts.Admin.Info
         [Parameter]
         public EventCallback<int> OnLastRowTouchedChanged { get; set; }
 
+        [Parameter]
+        public EventCallback OnDeleteGroup { get; set; }
+
         private int lastRowTouched = 0;
         public int LastRowTouched
         {
@@ -27,6 +30,9 @@ namespace MadWorld.Website.Parts.Admin.Info
             }
         }
 
+        [Inject]
+        private NavigationManager _navigation { get; set; }
+
         private void HandleDragStart(LinkGroupAdminDto selectedLinkGroup)
         {
             Container.Payload = selectedLinkGroup;
@@ -36,6 +42,17 @@ namespace MadWorld.Website.Parts.Admin.Info
         {
 
             LastRowTouched = LinkGroup.RowOrder;
+        }
+
+        private void EditLinkGroup()
+        {
+            _navigation.NavigateTo($"/Admin/Links/{LinkGroup.Id}");
+        }
+
+        private void DeleteLinkGroup()
+        {
+            LinkGroup.IsDeleted = true;
+            OnDeleteGroup.InvokeAsync();
         }
     }
 }

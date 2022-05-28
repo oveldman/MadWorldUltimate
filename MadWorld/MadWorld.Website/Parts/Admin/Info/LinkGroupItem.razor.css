@@ -13,6 +13,10 @@
     background: white;
 }
 
+.linkgroup-id {
+    display: flex;   
+}
+
 .draggable:active {
     cursor: grabbing;
 }
@@ -26,6 +30,10 @@
     font-size: 11px;
     color: #e1e5ea;
     font-weight: bold;
+}
+
+.trash-icon {
+    color: red;
 }
 
 .dragging {

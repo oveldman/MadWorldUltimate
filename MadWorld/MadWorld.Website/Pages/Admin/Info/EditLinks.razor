@@ -1,4 +1,4 @@
-﻿@page "/Admin/Links"
+﻿@page "/admin/links/{Id}"
 
 @using Microsoft.AspNetCore.Authorization;
 @using MadWorld.Shared.Enums;
@@ -6,10 +6,4 @@
 
 @attribute [Authorize(Roles = nameof(RoleTypes.Adminstrator))]
 
-<div class="row">
-    <LinkGroupContainer LinkGroups="LinkGroups" OnStatusUpdated="HandleStatusUpdated">
-        <LinkGroupList ListColumnOrder="0" AllowedColumnOrders="@(new int[] { 1 })" />
-        <LinkGroupList ListColumnOrder="1" AllowedColumnOrders="@(new int[] { 0 })" />
-    </LinkGroupContainer>
-</div>
-
+<h3>ID: @Id</h3>

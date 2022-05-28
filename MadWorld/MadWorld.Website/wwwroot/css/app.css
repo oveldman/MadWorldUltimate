@@ -63,6 +63,10 @@ a, .btn-link {
     content: "An error has occurred."
 }
 
+.pointer {
+    cursor: pointer;
+}
+
 /* Loader */
 
 .loader {
