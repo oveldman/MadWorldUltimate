@@ -1,21 +1,28 @@
 ﻿using System;
 using MadWorld.Shared.Models.API.Links;
+using MadWorld.Website.Parts;
+using MadWorld.Website.Parts.Models;
+using MadWorld.Website.Services.Admin.Interfaces;
 using Microsoft.AspNetCore.Components;
 
 namespace MadWorld.Website.Pages.Admin.Info
 {
-	public partial class EditLinks
-	{
+    public partial class EditLinks
+    {
         [Parameter]
-		public string Id { get; set; }
+        public string Id { get; set; }
 
-        LinkGroupAdminDto Group = new();
+        private LinkGroupAdminDto Group = new();
 
-        protected override void OnInitialized()
+        private AlertStatus Status = new();
+        private BootstrapAlerts _bootstrapAlerts;
+
+        [Inject]
+        private ILinkAdminService _linkService { get; set; }
+
+        protected override async Task OnInitializedAsync()
         {
-            Group.Links.Add(new() { Id = Guid.NewGuid(), Name = "Test Website", Url = "https://www.google.nl", Order = 0 });
-            Group.Links.Add(new() { Id = Guid.NewGuid(), Name = "Test Website 2", Url = "https://www.google2.nl", Order = 1 });
-            Group.Links.Add(new() { Id = Guid.NewGuid(), Name = "Test Website 3", Url = "https://www.google3.nl", Order = 2 });
+            Group = await _linkService.GetLinkFromGroup(Id);
         }
 
         private void HandleStatusUpdated(LinkAdminDto updatedLink)
@@ -23,10 +30,22 @@ namespace MadWorld.Website.Pages.Admin.Info
             Console.WriteLine(updatedLink.Name);
         }
 
-        private void SaveLinks()
-		{
+        private async Task SaveLinks()
+        {
+            _bootstrapAlerts.Reset();
 
-		}
-	}
+            var response = await _linkService.SaveLinks(Group);
+            Status.ShowMessage = true;
+            if (response.Succeed)
+            {
+                Status.SucceedMessage = "The links are saved now.";
+            }
+            else
+            {
+                Status.ErrorMessage = "There went something wrong while saving the links.";
+            }
+        }
+    }
 }
+
 

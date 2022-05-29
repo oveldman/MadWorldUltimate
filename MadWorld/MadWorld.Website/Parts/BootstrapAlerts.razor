@@ -1,0 +1,16 @@
+﻿@if (Status.ShowMessage)
+{
+    if (!string.IsNullOrEmpty(Status.SucceedMessage))
+    {
+        <div class="alert alert-success" role="alert">
+            @Status.SucceedMessage
+        </div>
+    }
+    else if (!string.IsNullOrEmpty(Status.ErrorMessage))
+    {
+        <div class="alert alert-danger" role="alert">
+            @Status.ErrorMessage
+        </div>
+    }
+}
+

@@ -19,6 +19,7 @@ namespace MadWorld.Website.Extentions
 			services.AddScoped<IAccountService, AccountService>();
 			services.AddScoped<IDownloadService, DownloadService>();
 			services.AddScoped<ILinkService, LinkService>();
+			services.AddScoped<ILinkAdminService, LinkAdminService>();
 			services.AddScoped<IUserService, UserService>();
 
 			return services;

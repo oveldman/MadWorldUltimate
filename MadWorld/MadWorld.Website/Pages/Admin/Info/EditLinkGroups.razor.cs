@@ -1,18 +1,24 @@
 ﻿using System;
 using MadWorld.Shared.Models.API.Links;
+using MadWorld.Website.Parts;
+using MadWorld.Website.Parts.Models;
+using MadWorld.Website.Services.Admin.Interfaces;
+using Microsoft.AspNetCore.Components;
 
 namespace MadWorld.Website.Pages.Admin.Info
 {
 	public partial class EditLinkGroups
 	{
-        List<LinkGroupAdminDto> LinkGroups = new();
+        private List<LinkGroupAdminDto> LinkGroups = new();
+        private AlertStatus Status = new();
+        private BootstrapAlerts _bootstrapAlerts;
 
-        protected override void OnInitialized()
+        [Inject]
+        private ILinkAdminService _linkService { get; set; }
+
+        protected override async Task OnInitializedAsync()
         {
-            LinkGroups.Add(new() { Id = Guid.NewGuid(), Name = "Test" });
-            LinkGroups.Add(new() { Id = Guid.NewGuid(), Name = "Test 2", ColumnOrder = 1 });
-            LinkGroups.Add(new() { Id = Guid.NewGuid(), Name = "Test 3", RowOrder = 1 });
-            LinkGroups.Add(new() { Id = Guid.NewGuid(), Name = "Test 4", RowOrder = 1, ColumnOrder = 1 });
+            LinkGroups = await _linkService.GetLinkGroups();
         }
 
         private void HandleStatusUpdated(LinkGroupAdminDto  updatedLinkGroup)
@@ -20,9 +26,20 @@ namespace MadWorld.Website.Pages.Admin.Info
             Console.WriteLine(updatedLinkGroup.Name);
         }
 
-        private void SaveLinkGroups()
+        private async Task SaveLinkGroups()
         {
+            _bootstrapAlerts.Reset();
+            var response = await _linkService.SaveGroupLinks(LinkGroups);
 
+            Status.ShowMessage = true;
+            if (response.Succeed)
+            {
+                Status.SucceedMessage = "The link groups are saved now.";
+            }
+            else
+            {
+                Status.ErrorMessage = "There went something wrong while saving the groups.";
+            }
         }
     }
 }

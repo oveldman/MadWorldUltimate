@@ -3,8 +3,11 @@
 @using Microsoft.AspNetCore.Authorization;
 @using MadWorld.Shared.Enums;
 @using MadWorld.Website.Parts.Admin.Info;
+@using MadWorld.Website.Parts;
 
 @attribute [Authorize(Roles = nameof(RoleTypes.Adminstrator))]
+
+<BootstrapAlerts @ref="_bootstrapAlerts" @bind-Status="Status" />
 
 <h2>Edit groups for links</h2>
 <button type="button" class="btn btn-success" @onclick="SaveLinkGroups">Save Groups</button>
