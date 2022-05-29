@@ -4,6 +4,14 @@
 @using MadWorld.Shared.Enums;
 @using MadWorld.Website.Parts.Admin.Info;
 
+
 @attribute [Authorize(Roles = nameof(RoleTypes.Adminstrator))]
 
-<h3>ID: @Id</h3>
+<h2>Edit for links</h2>
+<button type="button" class="btn btn-success" @onclick="SaveLinks">Save Links</button>
+<div class="row">
+    <LinkContainer DragItems="Group.Links" OnStatusUpdated="HandleStatusUpdated">
+        <LinkList ListColumnOrder="0" AllowedColumnOrders="@(new int[] { 0 })" />
+    </LinkContainer>
+</div>
+

@@ -1,8 +1,6 @@
-﻿using System;
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
+﻿using Microsoft.AspNetCore.Components;
 
-namespace MadWorld.Website.Parts.Admin.Info
+namespace MadWorld.Website.Parts.DragParts
 {
 	public abstract partial class DragList<T, Y> : ComponentBase where Y : DragContainer<T> 
     {

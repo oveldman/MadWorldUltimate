@@ -1,6 +1,8 @@
 ﻿using System;
 using MadWorld.Shared.Models.API.Links;
+using MadWorld.Website.Parts.DragParts;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.AspNetCore.Components.Web;
 
 namespace MadWorld.Website.Parts.Admin.Info

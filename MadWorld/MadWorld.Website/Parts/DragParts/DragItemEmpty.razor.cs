@@ -1,10 +1,10 @@
 ﻿using System;
 using Microsoft.AspNetCore.Components;
 
-namespace MadWorld.Website.Parts.Admin.Info
+namespace MadWorld.Website.Parts.DragParts
 {
-	public partial class DragItemEmpty
-	{
+    public partial class DragItemEmpty
+    {
         [Parameter]
         public EventCallback<int> OnLastRowTouchedChanged { get; set; }
 

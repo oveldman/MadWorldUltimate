@@ -4,16 +4,15 @@ using MadWorld.Website.Parts.DragParts;
 
 namespace MadWorld.Website.Parts.Admin.Info
 {
-    public partial class LinkGroupItem : DragItem<LinkGroupAdminDto, LinkGroupContainer>
+    public partial class LinkItem : DragItem<LinkAdminDto, LinkContainer>
     {
         protected override void HandleDragEnter()
         {
-            LastRowTouched = DragObject.RowOrder;
+            LastRowTouched = DragObject.Order;
         }
 
         protected override void EditLinkGroup()
         {
-            _navigation.NavigateTo($"/Admin/Links/{DragObject.Id}");
         }
 
         protected override void DeleteLinkGroup()

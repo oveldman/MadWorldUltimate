@@ -1,0 +1,32 @@
+﻿.drag-status ul {
+    flex: 1;
+}
+
+.add-icon {
+    color: green;
+    position: relative;
+    top: 10px;
+    left: 4px;
+}
+
+.header {
+    display: flex;
+}
+
+.dropzone {
+    padding: 30px;
+    border: 1px inset #75868a;
+    list-style: none;
+}
+
+.no-drop {
+    border: 2px dashed red;
+}
+
+.can-drop {
+    border: 2px dashed green;
+}
+
+.dragging {
+    cursor: grabbing;
+}

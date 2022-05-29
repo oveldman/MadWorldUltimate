@@ -1,11 +1,10 @@
 ﻿using System;
 using MadWorld.Shared.Models.API.Links;
 using MadWorld.Website.Parts.DragParts;
-using Microsoft.AspNetCore.Components;
 
 namespace MadWorld.Website.Parts.Admin.Info
 {
-    public partial class LinkGroupContainer : DragContainer<LinkGroupAdminDto>
+    public partial class LinkContainer : DragContainer<LinkAdminDto>
     {
         protected override bool TryToUpdateItem(int columnOrder, int rowOrder)
         {
@@ -13,8 +12,7 @@ namespace MadWorld.Website.Parts.Admin.Info
 
             if (linkGroup != null)
             {
-                linkGroup.ColumnOrder = columnOrder;
-                linkGroup.RowOrder = rowOrder;
+                linkGroup.Order = rowOrder;
                 return true;
             }
 

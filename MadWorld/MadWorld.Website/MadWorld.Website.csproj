@@ -53,6 +53,7 @@
     <None Remove="Pages\Admin\Info\" />
     <None Remove="Parts\Admin\" />
     <None Remove="Parts\Admin\Info\" />
+    <None Remove="Parts\DragParts\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MadWorld.Shared\MadWorld.Shared.csproj">
@@ -83,6 +84,7 @@
     <Folder Include="Pages\Admin\Info\" />
     <Folder Include="Parts\Admin\" />
     <Folder Include="Parts\Admin\Info\" />
+    <Folder Include="Parts\DragParts\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="wwwroot\.well-known\security.txt" />

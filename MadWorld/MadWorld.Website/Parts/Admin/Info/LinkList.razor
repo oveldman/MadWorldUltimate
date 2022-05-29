@@ -1,7 +1,8 @@
 ﻿@using MadWorld.Shared.Models.API.Links;
+@using MadWorld.Website.Parts.Admin.Info;
 @using MadWorld.Website.Parts.DragParts;
 
-@inherits DragList<LinkGroupAdminDto, LinkGroupContainer>
+@inherits DragList<LinkAdminDto, LinkContainer>
 
 <div class="col-lg">
     <div class="header">
@@ -17,9 +18,10 @@
 
         @foreach (var dragItem in DragItems)
         {
-            <LinkGroupItem DragObject="dragItem" OnLastRowTouchedChanged="LastRowChanged" OnDeleteGroup="OnParametersSet" />
+            <LinkItem DragObject="dragItem" OnLastRowTouchedChanged="LastRowChanged" OnDeleteGroup="OnParametersSet" />
         }
 
         <DragItemEmpty OnLastRowTouchedChanged="LastRowChanged" />
     </ul>
 </div>
+
