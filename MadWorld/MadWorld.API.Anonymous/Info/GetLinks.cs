@@ -77,7 +77,12 @@ namespace MadWorld.API.Anonymous.Info
                             {
                                 Name = "Convert Cert pem to pfx",
                                 Url = "https://tomascrespo.com/convert-letsencrypt-pem-certificate-to-pfx/"
-                            }
+                            },
+                            new LinkDto
+                            {
+                                Name = "Chrissainty - Blazor drag and drop",
+                                Url = "https://chrissainty.com/investigating-drag-and-drop-with-blazor/"
+                            },
                         }
                     },
                     new LinkGroupDto
