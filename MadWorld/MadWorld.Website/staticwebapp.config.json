@@ -1,7 +1,7 @@
 ﻿{
   "navigationFallback": {
     "rewrite": "/index.html",
-    "exclude": [ "/images/*", "/css/*", "/.well-known/*" ]
+    "exclude": [ "/images/*", "/css/*", "/.well-known/*", "/robot.txt" ]
   },
   "globalHeaders": {
     "X-Frame-Options": "SAMEORIGIN",
