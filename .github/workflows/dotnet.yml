@@ -1,8 +1,7 @@
 ﻿name: .NET Build & Test
 
-variables:
-- name: slnFolder
-  value: MadWorld 
+env:
+  MainProject: MadWorld
 
 on:
   push:
@@ -22,11 +21,11 @@ jobs:
       with:
         dotnet-version: 5.0.x
     - name: Restore dependencies
+      workingDirectory: ${{ env.MainProject }}
       run: dotnet restore
-      workingDirectory: ${{ variables.slnFolder }}
     - name: Build
+      workingDirectory: ${{ variables.slnFolder }}
       run: dotnet build --no-restore
-      workingDirectory: ${{ variables.slnFolder }}
     - name: Test
-      run: dotnet test --no-build --verbosity normal
       workingDirectory: ${{ variables.slnFolder }}
+      run: dotnet test --no-build --verbosity normal
