@@ -20,12 +20,10 @@ jobs:
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 5.0.x
-    - name: Restore dependencies
       workingDirectory: ${{ env.MainProject }}
+    - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      workingDirectory: ${{ variables.slnFolder }}
       run: dotnet build --no-restore
     - name: Test
-      workingDirectory: ${{ variables.slnFolder }}
       run: dotnet test --no-build --verbosity normal
