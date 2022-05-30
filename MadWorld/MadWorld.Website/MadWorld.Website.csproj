@@ -91,14 +91,8 @@
   <ItemGroup>
     <None Include="wwwroot\.well-known\security.txt" />
   </ItemGroup>
-    <ItemGroup>
-    <None Include="wwwroot\robot.txt" />
-  </ItemGroup>
   <ItemGroup>
   <Content Include="wwwroot\.well-known\**">
-    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-  </Content>
-    <Content Include="wwwroot\robot.txt">
     <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
   </Content>
 </ItemGroup>
