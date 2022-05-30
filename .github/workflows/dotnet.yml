@@ -18,9 +18,9 @@ jobs:
     - uses: actions/checkout@v3
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
+      workingDirectory: ${{ env.MainProject }}
       with:
         dotnet-version: 5.0.x
-      workingDirectory: ${{ env.MainProject }}
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
