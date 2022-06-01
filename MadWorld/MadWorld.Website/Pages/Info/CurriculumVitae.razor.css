@@ -55,6 +55,7 @@
 }
 
 .cv-job-description {
+    max-width: 800px;
 }
 
 .cv-job-company {
