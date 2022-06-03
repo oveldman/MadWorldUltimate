@@ -14,12 +14,12 @@ namespace MadWorld.Data.TableStorage.Context
 			_client = tableServiceClient;
 		}
 
-		public IResumeContext CreateResumeContext()
+		public ITableContext CreateResumeContext()
         {
             return new TableContext(_client, TableNames.Resumes);
 		}
 
-		public IUserContext CreateUserContext()
+		public ITableContext CreateUserContext()
 		{
 			return new TableContext(_client, TableNames.Users);
 		}

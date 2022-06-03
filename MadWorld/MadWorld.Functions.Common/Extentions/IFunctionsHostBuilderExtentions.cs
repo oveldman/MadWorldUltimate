@@ -1,4 +1,5 @@
 ﻿using Azure.Data.Tables;
+using Azure.Storage.Blobs;
 using MadWorld.Business.Managers;
 using MadWorld.Business.Managers.Interfaces;
 using MadWorld.Business.Mappers;
@@ -37,28 +38,14 @@ public static class IFunctionsHostBuilderExtentions
         builder.Services.AddScoped<ITableStorageFactory, TableStorageFactory>();
         builder.Services.AddScoped<IResumeQueries, ResumeQueries>();
         builder.Services.AddScoped<IUserQueries, UserQueries>();
-
-        AddInternContexts(builder);
-    }
-
-    private static void AddInternContexts(IFunctionsHostBuilder builder)
-    {
-        builder.Services.AddScoped(provider =>
-        {
-            ITableStorageFactory factory = provider.GetRequiredService<ITableStorageFactory>();
-            return factory.CreateResumeContext();
-        });
-
-        builder.Services.AddScoped(provider =>
-        {
-            ITableStorageFactory factory = provider.GetRequiredService<ITableStorageFactory>();
-            return factory.CreateUserContext();
-        });
     }
 
     private static void AddExternPackages(IFunctionsHostBuilder builder, IConfiguration configuration)
     {
-        builder.Services.AddScoped(_ => new TableServiceClient(configuration["AzureWebJobsStorage"]));
+        string azureStorageConnectionString = configuration["AzureWebJobsStorage"];
+
+        builder.Services.AddScoped(_ => new BlobServiceClient(azureStorageConnectionString));
+        builder.Services.AddScoped(_ => new TableServiceClient(azureStorageConnectionString));
     }
 }
 

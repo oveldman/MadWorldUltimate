@@ -10,11 +10,11 @@ namespace MadWorld.Data.TableStorage.Queries
 {
 	public class UserQueries : IUserQueries
     {
-        private IUserContext _context;
+        private ITableContext _context;
 
-        public UserQueries(IUserContext context)
+        public UserQueries(ITableStorageFactory tableStorageFactory)
 		{
-            _context = context;
+            _context = tableStorageFactory.CreateUserContext();
         }
 
         public bool CreateUser(User user)

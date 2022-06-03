@@ -15,9 +15,14 @@
     <None Remove="TableStorage\TableNames\" />
     <None Remove="TableStorage\Context\" />
     <None Remove="TableStorage\Context\Interfaces\" />
+    <None Remove="BlobStorage\" />
+    <None Remove="Azure.Storage.Blobs" />
+    <None Remove="BlobStorage\Interfaces\" />
+    <None Remove="BlobStorage\BlobStorageContextcs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Azure.Data.Tables" Version="12.5.0" />
+    <PackageReference Include="Azure.Storage.Blobs" Version="12.12.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="TableStorage\" />
@@ -27,5 +32,10 @@
     <Folder Include="TableStorage\Info\" />
     <Folder Include="TableStorage\Context\" />
     <Folder Include="TableStorage\Context\Interfaces\" />
+    <Folder Include="BlobStorage\" />
+    <Folder Include="BlobStorage\Interfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BlobStorage\BlobStorageContainer.cs" />
   </ItemGroup>
 </Project>

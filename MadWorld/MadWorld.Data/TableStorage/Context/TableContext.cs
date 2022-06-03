@@ -7,7 +7,7 @@ using MadWorld.Data.TableStorage.Context.Interfaces;
 
 namespace MadWorld.Data.TableStorage.Context
 {
-	public class TableContext : ITableContext, IResumeContext, IUserContext
+	public class TableContext : ITableContext
 	{
 		private TableServiceClient _client;
 		private TableClient _table;

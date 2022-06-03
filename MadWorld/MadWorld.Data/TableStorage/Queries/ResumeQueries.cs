@@ -11,11 +11,11 @@ namespace MadWorld.Data.TableStorage.Queries
 {
 	public class ResumeQueries : IResumeQueries
 	{
-        private IResumeContext _context;
+        private ITableContext _context;
 
-        public ResumeQueries(IResumeContext context)
+        public ResumeQueries(ITableStorageFactory tableStorageFactory)
         {
-            _context = context;
+            _context = tableStorageFactory.CreateResumeContext();
         }
 
         public bool UpdateResume(Resume resume)
