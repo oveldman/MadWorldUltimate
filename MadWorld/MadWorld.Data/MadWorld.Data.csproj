@@ -35,7 +35,4 @@
     <Folder Include="BlobStorage\" />
     <Folder Include="BlobStorage\Interfaces\" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="BlobStorage\BlobStorageContainer.cs" />
-  </ItemGroup>
 </Project>

@@ -14,7 +14,7 @@ namespace MadWorld.Tests.Data.TableStorage.Queries
 		[Theory]
 		[AutoDomainData]
 		public void FindUser_AzureID_User(
-			[Frozen] Mock<IUserContext> userContext,
+			[Frozen] Mock<ITableContext> userContext,
 			UserQueries userQueries,
 			Guid azureID,
 			User user

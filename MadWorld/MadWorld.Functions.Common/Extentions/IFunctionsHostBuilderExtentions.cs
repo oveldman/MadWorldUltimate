@@ -4,6 +4,8 @@ using MadWorld.Business.Managers;
 using MadWorld.Business.Managers.Interfaces;
 using MadWorld.Business.Mappers;
 using MadWorld.Business.Mappers.Interfaces;
+using MadWorld.Data.BlobStorage;
+using MadWorld.Data.BlobStorage.Interfaces;
 using MadWorld.Data.TableStorage.Context;
 using MadWorld.Data.TableStorage.Context.Interfaces;
 using MadWorld.Data.TableStorage.Queries;
@@ -36,6 +38,7 @@ public static class IFunctionsHostBuilderExtentions
 
         //Data
         builder.Services.AddScoped<ITableStorageFactory, TableStorageFactory>();
+        builder.Services.AddScoped<IBlobStorageFactory, BlobStorageFactory>();
         builder.Services.AddScoped<IResumeQueries, ResumeQueries>();
         builder.Services.AddScoped<IUserQueries, UserQueries>();
     }
