@@ -15,6 +15,7 @@
 
         <h2>Edit for links</h2>
         <button type="button" class="btn btn-success" @onclick="SaveLinks">Save Links</button>
+        <button type="button" class="btn btn-success" @onclick="ReturnLinkGroups">Return to LinkGroups</button>
         <div class="row">
             <LinkContainer DragItems="Group.Links" OnStatusUpdated="HandleStatusUpdated">
                 <LinkList ListColumnOrder="0" AllowedColumnOrders="@(new int[] { 0 })" />

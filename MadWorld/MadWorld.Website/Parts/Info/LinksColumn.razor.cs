@@ -8,6 +8,11 @@ namespace MadWorld.Website.Parts.Info
 	{
 		[Parameter]
 		public LinkGroupDto LinkGroup { get; set; } = new();
-	}
+
+        protected override void OnAfterRender(bool firstRender)
+        {
+            LinkGroup.Links = LinkGroup.Links.OrderBy(l => l.Order).ToList();
+        }
+    }
 }
 

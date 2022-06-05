@@ -12,6 +12,9 @@ namespace MadWorld.Website.Pages.Admin.Info
         [Parameter]
         public string Id { get; set; }
 
+        [Inject]
+        private NavigationManager _navigation { get; set; }
+
         private bool PageLoaded = false;
         private bool GroupFound = false;
         private LinkGroupAdminDto Group = new();
@@ -60,6 +63,11 @@ namespace MadWorld.Website.Pages.Admin.Info
             {
                 Status.ErrorMessage = "There went something wrong while saving the links.";
             }
+        }
+
+        private void ReturnLinkGroups()
+        {
+            _navigation.NavigateTo($"/Admin/LinkGroups");
         }
     }
 }

@@ -1,14 +1,22 @@
 ﻿@page "/Links"
 
+@using MadWorld.Shared.Models.AnonymousAPI.Info;
 @using MadWorld.Website.Parts.Info;
 
-@for (int index = 0; index < _linkGroup.Count; index += 2)
+@for (int rowOrder = 0; rowOrder < MaxRows; rowOrder++)
 {
     <div class="row">
-        <LinksColumn LinkGroup="_linkGroup[index]" />
-        @if (_linkGroup.Count > (index + 1))
-        {
-            <LinksColumn LinkGroup="_linkGroup[index + 1]" />
-        }
+        <div class="col">
+            @if (TryFindGroup(rowOrder, 0, out LinkGroupDto linkGroupFirst))
+            {
+                <LinksColumn LinkGroup="linkGroupFirst" />
+            }
+        </div>
+        <div class="col">
+            @if (TryFindGroup(rowOrder, 1, out LinkGroupDto linkGroupSecond))
+            {
+                <LinksColumn LinkGroup="linkGroupSecond" />
+            }
+        </div>
     </div>
 }

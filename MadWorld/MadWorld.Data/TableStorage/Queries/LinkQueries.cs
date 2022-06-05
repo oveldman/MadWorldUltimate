@@ -44,15 +44,15 @@ namespace MadWorld.Data.TableStorage.Queries
 
         public List<LinkGroup> GetLinkGroups()
         {
-            return _context.Query<LinkGroup>(g => g.PartitionKey == PartitionKeys.LinkGroup
-                                                && !g.IsDeleted).ToList() ?? new();
+            var linkGroups = _context.Query<LinkGroup>(g => g.PartitionKey == PartitionKeys.LinkGroup).ToList() ?? new();
+            return linkGroups.Where(g => !g.IsDeleted).ToList();
         }
 
         public List<Link> GetLinks(string linkGroupId)
         {
-            return _context.Query<Link>(l => l.PartitionKey == PartitionKeys.Link
-                                            && l.LinkGroupId == linkGroupId
-                                            && !l.IsDeleted).ToList() ?? new();
+            var links = _context.Query<Link>(l => l.PartitionKey == PartitionKeys.Link
+                                            && l.LinkGroupId == linkGroupId).ToList() ?? new();
+            return links.Where(l => !l.IsDeleted).ToList();
         }
 
         public bool UpdateLink(Link link)
