@@ -34,6 +34,7 @@ public static class IFunctionsHostBuilderExtentions
 
         //Business
         builder.Services.AddScoped<ILinkAdminManager, LinkAdminManager>();
+        builder.Services.AddScoped<ILinkManager, LinkManager>();
         builder.Services.AddScoped<IUserManager, UserManager>();
         builder.Services.AddScoped<IUserMapper, UserMapper>();
         builder.Services.AddScoped<ILinkMapper, LinkMapper>();
