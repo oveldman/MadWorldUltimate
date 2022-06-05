@@ -22,18 +22,12 @@ namespace MadWorld.API.Account
             _userValidator = userValidator;
         }
 
-        [AuthorizeFunction(RoleTypes.Guest)]
         [FunctionName(nameof(GetCurrentUserRoles))]
         public ResponseRoles Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, RequestType.Get, Route = null)] HttpRequest req,
             ILogger log)
         {
             string azureID = req.HttpContext.User.Identity.GetAzureID();
-
-            return new()
-            {
-                Roles = new()
-            };
 
             ResponseRoles response = new()
             {
