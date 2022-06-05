@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using MadWorld.API.Attributes;
+using MadWorld.Business.Managers.Interfaces;
 using MadWorld.Shared.Enums;
 using MadWorld.Shared.Models.API.Common;
 using MadWorld.Shared.Models.API.Links;
@@ -13,6 +14,13 @@ namespace MadWorld.API.Admin.LinkManagement
 {
 	public class SaveLinks
 	{
+        private ILinkAdminManager _linkManager;
+
+        public SaveLinks(ILinkAdminManager linkManager)
+        {
+            _linkManager = linkManager;
+        }
+
         [AuthorizeFunction(RoleTypes.Adminstrator)]
         [FunctionName(nameof(SaveLinks))]
         public async Task<CommonResponse> Run(
@@ -20,11 +28,7 @@ namespace MadWorld.API.Admin.LinkManagement
             ILogger log)
         {
             LinkGroupAdminDto linkGroup = await req.GetBodyAsync<LinkGroupAdminDto>();
-
-            return new()
-            {
-                Succeed = true
-            };
+            return _linkManager.SaveLinks(linkGroup);
         }
     }
 }

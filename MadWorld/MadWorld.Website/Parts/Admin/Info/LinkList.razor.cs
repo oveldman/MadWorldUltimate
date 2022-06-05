@@ -39,6 +39,12 @@ namespace MadWorld.Website.Parts.Admin.Info
 
         protected override int GetMaxRowNumber(int columnOrder)
         {
+            if (!DragItems.Any())
+            {
+                return 0;
+            }
+
+
             return DragItems.Max(g => g.Order) + 1;
         }
 

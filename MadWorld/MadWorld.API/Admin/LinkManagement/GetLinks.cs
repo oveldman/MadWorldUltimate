@@ -1,5 +1,6 @@
 ﻿using System;
 using MadWorld.API.Attributes;
+using MadWorld.Business.Managers.Interfaces;
 using MadWorld.Shared.Enums;
 using MadWorld.Shared.Models.API.Links;
 using Microsoft.AspNetCore.Http;
@@ -11,6 +12,13 @@ namespace MadWorld.API.Admin.LinkManagement
 {
 	public class GetLinks
 	{
+        private ILinkAdminManager _linkManager;
+
+        public GetLinks(ILinkAdminManager linkManager)
+        {
+            _linkManager = linkManager;
+        }
+
         [AuthorizeFunction(RoleTypes.Adminstrator)]
         [FunctionName(nameof(GetLinks))]
         public ResponseLinks Run(
@@ -19,18 +27,7 @@ namespace MadWorld.API.Admin.LinkManagement
         {
             string id = req.Query[QueryKeys.ID];
 
-            return new()
-            {
-                LinkGroup = new()
-                {
-                    Links = new()
-                    {
-                        new() { Id = Guid.NewGuid(), Name = "Test Website", Url = "https://www.google.nl", Order = 0 },
-                        new() { Id = Guid.NewGuid(), Name = "Test Website 2", Url = "https://www.google2.nl", Order = 1 },
-                        new() { Id = Guid.NewGuid(), Name = "Test Website 3", Url = "https://www.google3.nl", Order = 2 }
-                    }
-                }
-            };
+            return _linkManager.TryGetLinks(id);
         }
     }
 }

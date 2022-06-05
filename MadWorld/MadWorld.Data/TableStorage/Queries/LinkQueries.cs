@@ -28,6 +28,13 @@ namespace MadWorld.Data.TableStorage.Queries
             return response.IsError;
         }
 
+        public Link GetLink(string linkId)
+        {
+            var link = _context.Query<Link>(g => g.PartitionKey == PartitionKeys.LinkGroup
+                                            && g.RowKey == linkId).ToList() ?? new();
+            return link.FirstOrDefault();
+        }
+
         public LinkGroup GetLinkGroup(string linkGroupId)
         {
             var linkGroups = _context.Query<LinkGroup>(g => g.PartitionKey == PartitionKeys.LinkGroup

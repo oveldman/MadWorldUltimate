@@ -6,7 +6,7 @@ namespace MadWorld.Website.Services.Admin.Interfaces
 {
 	public interface ILinkAdminService
 	{
-		Task<LinkGroupAdminDto> GetLinkFromGroup(string id);
+		Task<ResponseLinks> GetLinkFromGroup(string id);
 		Task<List<LinkGroupAdminDto>> GetLinkGroups();
 		Task<CommonResponse> SaveGroupLinks(List<LinkGroupAdminDto> linkGroups);
 		Task<CommonResponse> SaveLinks(LinkGroupAdminDto linkGroup);

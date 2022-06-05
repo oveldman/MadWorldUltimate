@@ -12,6 +12,8 @@ namespace MadWorld.Website.Pages.Admin.Info
         [Parameter]
         public string Id { get; set; }
 
+        private bool PageLoaded = false;
+        private bool GroupFound = false;
         private LinkGroupAdminDto Group = new();
 
         private AlertStatus Status = new();
@@ -22,7 +24,21 @@ namespace MadWorld.Website.Pages.Admin.Info
 
         protected override async Task OnInitializedAsync()
         {
-            Group = await _linkService.GetLinkFromGroup(Id);
+            var response = await _linkService.GetLinkFromGroup(Id);
+            Group = response.LinkGroup;
+            GroupFound = response.LinkGroupFound;
+            PageLoaded = true;
+
+            if (!GroupFound)
+            {
+                SetGroupNotFoundMessage();
+            }
+        }
+
+        private void SetGroupNotFoundMessage()
+        {
+            Status.ShowMessage = true;
+            Status.ErrorMessage = $"This group with id {Id} is not found";
         }
 
         private void HandleStatusUpdated(LinkAdminDto updatedLink)

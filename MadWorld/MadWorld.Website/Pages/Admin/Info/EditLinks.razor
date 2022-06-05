@@ -7,13 +7,26 @@
 
 @attribute [Authorize(Roles = nameof(RoleTypes.Adminstrator))]
 
-<BootstrapAlerts @ref="_bootstrapAlerts" @bind-Status="Status" />
+@if (PageLoaded)
+{
+    @if (GroupFound)
+    {
+        <BootstrapAlerts @ref="_bootstrapAlerts" @bind-Status="Status" />
 
-<h2>Edit for links</h2>
-<button type="button" class="btn btn-success" @onclick="SaveLinks">Save Links</button>
-<div class="row">
-    <LinkContainer DragItems="Group.Links" OnStatusUpdated="HandleStatusUpdated">
-        <LinkList ListColumnOrder="0" AllowedColumnOrders="@(new int[] { 0 })" />
-    </LinkContainer>
-</div>
-
+        <h2>Edit for links</h2>
+        <button type="button" class="btn btn-success" @onclick="SaveLinks">Save Links</button>
+        <div class="row">
+            <LinkContainer DragItems="Group.Links" OnStatusUpdated="HandleStatusUpdated">
+                <LinkList ListColumnOrder="0" AllowedColumnOrders="@(new int[] { 0 })" />
+            </LinkContainer>
+        </div>
+    }
+    else
+    {
+        <BootstrapAlerts @ref="_bootstrapAlerts" @bind-Status="Status" />
+    }
+}
+else
+{
+    <div class="loader"></div>
+}

@@ -1,5 +1,6 @@
 ﻿using System;
 using MadWorld.API.Attributes;
+using MadWorld.Business.Managers.Interfaces;
 using MadWorld.Shared.Enums;
 using MadWorld.Shared.Models.API.Links;
 using Microsoft.AspNetCore.Http;
@@ -11,8 +12,11 @@ namespace MadWorld.API.Admin.LinkManagement
 {
 	public class GetLinkGroups
 	{
-        public GetLinkGroups()
+        private ILinkAdminManager _linkManager;
+
+        public GetLinkGroups(ILinkAdminManager linkManager)
         {
+            _linkManager = linkManager;
         }
 
         [AuthorizeFunction(RoleTypes.Adminstrator)]
@@ -21,16 +25,7 @@ namespace MadWorld.API.Admin.LinkManagement
             [HttpTrigger(AuthorizationLevel.Anonymous, RequestType.Get, Route = null)] HttpRequest req,
             ILogger log)
         {
-            return new()
-            {
-                LinkGroups = new()
-                {
-                    new() { Id = Guid.NewGuid(), Name = "Test" },
-                    new() { Id = Guid.NewGuid(), Name = "Test 2", ColumnOrder = 1 },
-                    new() { Id = Guid.NewGuid(), Name = "Test 3", RowOrder = 1 },
-                    new() { Id = Guid.NewGuid(), Name = "Test 4", RowOrder = 1, ColumnOrder = 1 }
-                }
-            };
+            return _linkManager.GetLinkGroups();
         }
     }
 }

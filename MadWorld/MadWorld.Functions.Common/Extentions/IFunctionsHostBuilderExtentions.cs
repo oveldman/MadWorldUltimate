@@ -30,11 +30,13 @@ public static class IFunctionsHostBuilderExtentions
     private static void AddInternPackages(IFunctionsHostBuilder builder, IConfiguration configuration)
     {
         //Common function
-        builder.Services.AddScoped<IUserManager, UserManager>();
         builder.Services.AddScoped<IUserValidator, UserValidator>();
 
         //Business
+        builder.Services.AddScoped<ILinkAdminManager, LinkAdminManager>();
+        builder.Services.AddScoped<IUserManager, UserManager>();
         builder.Services.AddScoped<IUserMapper, UserMapper>();
+        builder.Services.AddScoped<ILinkMapper, LinkMapper>();
 
         //Data
         builder.Services.AddScoped<ITableStorageFactory, TableStorageFactory>();

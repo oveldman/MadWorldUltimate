@@ -16,10 +16,9 @@ namespace MadWorld.Website.Services.Admin
             _client = clientFactory.CreateClient(ApiTypes.MadWorldApiB2C);
         }
 
-        public async Task<LinkGroupAdminDto> GetLinkFromGroup(string id)
+        public async Task<ResponseLinks> GetLinkFromGroup(string id)
         {
-            ResponseLinks response = await _client.GetFromJsonAsync<ResponseLinks>("GetLinks") ?? new();
-            return response.LinkGroup;
+            return await _client.GetFromJsonAsync<ResponseLinks>($"GetLinks?id={id}") ?? new();
         }
 
         public async Task<List<LinkGroupAdminDto>> GetLinkGroups()
