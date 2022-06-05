@@ -14,9 +14,11 @@ namespace MadWorld.Data.BlobStorage
 			_containerClient = blobServiceClient.CreateBlobContainer(name);
         }
 
-		public Stream Download(string fileName)
+		public Stream Download(string fileName, string path = "")
         {
-			BlobClient client = _containerClient.GetBlobClient(fileName);
+			string filePath = Path.Combine(path, fileName);
+
+			BlobClient client = _containerClient.GetBlobClient(filePath);
 
 			var result = client.DownloadContent();
 			var response = result.GetRawResponse();
@@ -29,39 +31,41 @@ namespace MadWorld.Data.BlobStorage
 			return response.ContentStream ?? new MemoryStream();
 		}
 
-		public byte[] DownloadBytes(string fileName)
+		public byte[] DownloadBytes(string fileName, string path = "")
 		{
-			Stream body = Download(fileName);
+			Stream body = Download(fileName, path);
 
             using var memoryStream = new MemoryStream();
             body.CopyTo(memoryStream);
             return memoryStream.ToArray();
         }
 
-		public string DownloadString(string fileName)
+		public string DownloadString(string fileName, string path = "")
         {
-			byte[] body = DownloadBytes(fileName);
+			byte[] body = DownloadBytes(fileName, path);
 			return Encoding.Default.GetString(body);
 		}
 
-		public bool Upload(string fileName, Stream body)
+		public bool Upload(string fileName, Stream body, string path = "")
         {
-			BlobClient client = _containerClient.GetBlobClient(fileName);
+			string filePath = Path.Combine(path, fileName);
+
+			BlobClient client = _containerClient.GetBlobClient(filePath);
 
 			var result = client.Upload(body);
 			var response = result.GetRawResponse();
 			return !response.IsError;
 		}
 
-		public bool Upload(string fileName, byte[] body)
+		public bool Upload(string fileName, byte[] body, string path = "")
         {
-			return Upload(fileName, new MemoryStream(body));
+			return Upload(fileName, new MemoryStream(body), path);
         }
 
-		public bool Upload(string fileName, string body)
+		public bool Upload(string fileName, string body, string path = "")
 		{
 			byte[] bodyBytes = Encoding.ASCII.GetBytes(body);
-			return Upload(fileName, bodyBytes);
+			return Upload(fileName, bodyBytes, path);
 		}
 	}
 }

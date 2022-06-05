@@ -41,10 +41,19 @@ public static class IFunctionsHostBuilderExtentions
 
         //Data
         builder.Services.AddScoped<ITableStorageFactory, TableStorageFactory>();
-        builder.Services.AddScoped<IBlobStorageFactory, BlobStorageFactory>();
         builder.Services.AddScoped<ILinkQueries, LinkQueries>();
         builder.Services.AddScoped<IResumeQueries, ResumeQueries>();
         builder.Services.AddScoped<IUserQueries, UserQueries>();
+
+        AddBlobStorage(builder);
+    }
+
+    private static void AddBlobStorage(IFunctionsHostBuilder builder)
+    {
+        builder.Services.AddScoped<IBlobStorageContainer>(service => {
+            var blobClient = service.GetRequiredService<BlobServiceClient>();
+            return new BlobStorageContainer(blobClient, BlobContainerNames.MadWorldBlob);
+        });
     }
 
     private static void AddExternPackages(IFunctionsHostBuilder builder, IConfiguration configuration)
