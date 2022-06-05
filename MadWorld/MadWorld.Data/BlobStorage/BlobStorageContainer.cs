@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using Azure.Storage.Blobs;
+using MadWorld.Data.BlobStorage.Extentions;
 using MadWorld.Data.BlobStorage.Interfaces;
 
 namespace MadWorld.Data.BlobStorage
@@ -18,7 +19,7 @@ namespace MadWorld.Data.BlobStorage
         {
 			string filePath = Path.Combine(path, fileName);
 
-			BlobClient client = _containerClient.GetBlobClient(filePath);
+			IBlobClient client = _containerClient.GetIBlobClient(filePath);
 
 			var result = client.DownloadContent();
 			var response = result.GetRawResponse();
@@ -50,7 +51,7 @@ namespace MadWorld.Data.BlobStorage
         {
 			string filePath = Path.Combine(path, fileName);
 
-			BlobClient client = _containerClient.GetBlobClient(filePath);
+			IBlobClient client = _containerClient.GetIBlobClient(filePath);
 
 			var result = client.Upload(body);
 			var response = result.GetRawResponse();

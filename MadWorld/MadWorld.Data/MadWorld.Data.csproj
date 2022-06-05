@@ -20,6 +20,7 @@
     <None Remove="BlobStorage\Interfaces\" />
     <None Remove="BlobStorage\BlobStorageContextcs" />
     <None Remove="TableStorage\Extentions\" />
+    <None Remove="BlobStorage\Extentions\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Azure.Data.Tables" Version="12.5.0" />
@@ -36,5 +37,6 @@
     <Folder Include="BlobStorage\" />
     <Folder Include="BlobStorage\Interfaces\" />
     <Folder Include="TableStorage\Extentions\" />
+    <Folder Include="BlobStorage\Extentions\" />
   </ItemGroup>
 </Project>
