@@ -30,6 +30,11 @@ namespace MadWorld.API.Account
         {
             string azureID = req.HttpContext.User.Identity.GetAzureID();
 
+            return new()
+            {
+                Roles = new()
+            };
+
             ResponseRoles response = new()
             {
                 Roles = _userValidator.GetAllRoles(azureID)
