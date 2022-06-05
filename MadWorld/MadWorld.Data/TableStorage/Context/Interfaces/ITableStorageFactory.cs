@@ -3,6 +3,7 @@ namespace MadWorld.Data.TableStorage.Context.Interfaces
 {
 	public interface ITableStorageFactory
 	{
+		ITableContext CreateLinkContext();
 		ITableContext CreateResumeContext();
 		ITableContext CreateUserContext();
 	}

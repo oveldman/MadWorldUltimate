@@ -14,7 +14,12 @@ namespace MadWorld.Data.TableStorage.Context
 			_client = tableServiceClient;
 		}
 
-		public ITableContext CreateResumeContext()
+        public ITableContext CreateLinkContext()
+        {
+			return new TableContext(_client, TableNames.Links);
+		}
+
+        public ITableContext CreateResumeContext()
         {
             return new TableContext(_client, TableNames.Resumes);
 		}

@@ -39,6 +39,7 @@ public static class IFunctionsHostBuilderExtentions
         //Data
         builder.Services.AddScoped<ITableStorageFactory, TableStorageFactory>();
         builder.Services.AddScoped<IBlobStorageFactory, BlobStorageFactory>();
+        builder.Services.AddScoped<ILinkQueries, LinkQueries>();
         builder.Services.AddScoped<IResumeQueries, ResumeQueries>();
         builder.Services.AddScoped<IUserQueries, UserQueries>();
     }
