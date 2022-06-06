@@ -15,6 +15,11 @@ namespace MadWorld.Data.BlobStorage
 			_blobClient = client;
 		}
 
+		public Response<bool> DeleteIfExists()
+		{
+			return _blobClient.DeleteIfExists();
+		}
+
 		public Response<BlobDownloadResult> DownloadContent()
         {
 			return _blobClient.DownloadContent();

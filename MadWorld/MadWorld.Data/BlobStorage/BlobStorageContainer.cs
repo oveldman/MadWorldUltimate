@@ -15,6 +15,13 @@ namespace MadWorld.Data.BlobStorage
 			_containerClient = blobServiceClient.CreateBlobContainer(name);
         }
 
+		public bool Delete(string fileName, string path = "")
+        {
+			string filePath = Path.Combine(path, fileName);
+			IBlobClient client = _containerClient.GetIBlobClient(filePath);
+			return client.DeleteIfExists().Value;
+		}
+
 		public Stream Download(string fileName, string path = "")
         {
 			string filePath = Path.Combine(path, fileName);
@@ -41,6 +48,12 @@ namespace MadWorld.Data.BlobStorage
             return memoryStream.ToArray();
         }
 
+		public string DownloadBase64(string fileName, string path = "")
+		{
+			byte[] body = DownloadBytes(fileName, path);
+			return Convert.ToBase64String(body);
+		}
+
 		public string DownloadString(string fileName, string path = "")
         {
 			byte[] body = DownloadBytes(fileName, path);
@@ -66,6 +79,12 @@ namespace MadWorld.Data.BlobStorage
 		public bool Upload(string fileName, string body, string path = "")
 		{
 			byte[] bodyBytes = Encoding.ASCII.GetBytes(body);
+			return Upload(fileName, bodyBytes, path);
+		}
+
+		public bool UploadBase64(string fileName, string body, string path = "")
+		{
+			byte[] bodyBytes = Convert.FromBase64String(body);
 			return Upload(fileName, bodyBytes, path);
 		}
 	}
