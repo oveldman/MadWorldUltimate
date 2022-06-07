@@ -44,7 +44,7 @@ namespace MadWorld.Website.Pages.Admin.Info
             Status.ErrorMessage = $"This group with id {Id} is not found";
         }
 
-        private void HandleStatusUpdated(LinkAdminDto updatedLink)
+        private static void HandleStatusUpdated(LinkAdminDto updatedLink)
         {
             Console.WriteLine(updatedLink.Name);
         }

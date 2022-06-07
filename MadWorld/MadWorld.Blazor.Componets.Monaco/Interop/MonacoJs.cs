@@ -41,6 +41,8 @@ namespace MadWorld.Blazor.Componets.Monaco.Interop
             {
                 var module = await moduleTask.Value;
                 await module.DisposeAsync();
+
+                GC.SuppressFinalize(this);
             }
         }
     }
