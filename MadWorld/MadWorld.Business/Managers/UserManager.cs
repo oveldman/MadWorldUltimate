@@ -10,8 +10,8 @@ namespace MadWorld.Business.Managers
 {
 	public class UserManager : IUserManager
 	{
-        private IUserMapper _userMapper;
-        private IUserQueries _userQueries;
+        private readonly IUserMapper _userMapper;
+        private readonly IUserQueries _userQueries;
 
         public UserManager(IUserMapper userMapper, IUserQueries userQueries)
         {

@@ -12,7 +12,7 @@ namespace MadWorld.API.Admin.UserManagement
 {
     public class GetUser
     {
-        private IUserManager _userManager;
+        private readonly IUserManager _userManager;
 
         public GetUser(IUserManager userManager)
         {

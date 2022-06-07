@@ -11,8 +11,8 @@ namespace MadWorld.Business.Managers
 {
 	public class LinkAdminManager : ILinkAdminManager
 	{
-		private ILinkQueries _linkQueries;
-        private ILinkMapper _mapper;
+		private readonly ILinkQueries _linkQueries;
+        private readonly ILinkMapper _mapper;
 
 		public LinkAdminManager(ILinkMapper mapper, ILinkQueries linkQueries)
 		{

@@ -5,7 +5,7 @@ namespace MadWorld.Business.Mappers.Interfaces
 {
 	public abstract class BaseMapTranslator
 	{
-        private IMapper _mapper;
+        private readonly IMapper _mapper;
 
         public BaseMapTranslator()
         {

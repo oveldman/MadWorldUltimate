@@ -18,7 +18,7 @@ namespace MadWorld.API.Admin.UserManagement
 {
     public class GetUsers
     {
-        private IUserManager _userManager;
+        private readonly IUserManager _userManager;
 
         public GetUsers(IUserManager userManager)
         {

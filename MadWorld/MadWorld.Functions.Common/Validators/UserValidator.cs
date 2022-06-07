@@ -8,7 +8,7 @@ namespace MadWorld.Functions.Common.Validators
 {
     public class UserValidator : IUserValidator
     {
-        private IUserQueries _userQueries;
+        private readonly IUserQueries _userQueries;
 
         public UserValidator(IUserQueries userQueries)
         {

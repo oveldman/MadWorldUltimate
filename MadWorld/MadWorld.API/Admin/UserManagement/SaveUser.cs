@@ -14,7 +14,7 @@ namespace MadWorld.API.Admin.UserManagement
 {
 	public class SaveUser
 	{
-        private IUserManager _userManager;
+        private readonly IUserManager _userManager;
 
         public SaveUser(IUserManager userManager)
         {

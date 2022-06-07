@@ -12,7 +12,7 @@ namespace MadWorld.API.Admin.LinkManagement
 {
 	public class GetLinkGroups
 	{
-        private ILinkAdminManager _linkManager;
+        private readonly ILinkAdminManager _linkManager;
 
         public GetLinkGroups(ILinkAdminManager linkManager)
         {

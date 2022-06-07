@@ -15,7 +15,7 @@ namespace MadWorld.API.Account
 {
     public class GetCurrentUserRoles
     {
-        private IUserValidator _userValidator;
+        private readonly IUserValidator _userValidator;
 
         public GetCurrentUserRoles(IUserValidator userValidator)
         {

@@ -14,7 +14,7 @@ namespace MadWorld.API.Admin.LinkManagement
 {
 	public class SaveLinks
 	{
-        private ILinkAdminManager _linkManager;
+        private readonly ILinkAdminManager _linkManager;
 
         public SaveLinks(ILinkAdminManager linkManager)
         {
