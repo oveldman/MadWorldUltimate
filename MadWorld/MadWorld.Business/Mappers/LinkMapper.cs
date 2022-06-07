@@ -9,6 +9,15 @@ namespace MadWorld.Business.Mappers
 {
 	public class LinkMapper : BaseMapTranslator, ILinkMapper
 	{
+        private LinkMapper() { }
+
+        public static LinkMapper Create()
+        {
+            LinkMapper mapper = new();
+            mapper.CreateMapper();
+            return mapper;
+        }
+
         public override MapperConfiguration LoadConfigMapper()
         {
             return new MapperConfiguration(config => {

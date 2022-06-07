@@ -8,6 +8,15 @@ namespace MadWorld.Business.Mappers
 {
     public class UserMapper : BaseMapTranslator, IUserMapper
     {
+        private UserMapper() { }
+
+        public static UserMapper Create()
+        {
+            UserMapper mapper = new();
+            mapper.CreateMapper();
+            return mapper;
+        }
+
         public override MapperConfiguration LoadConfigMapper()
         {
             return new MapperConfiguration(config => {

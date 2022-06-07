@@ -36,8 +36,8 @@ public static class IFunctionsHostBuilderExtentions
         builder.Services.AddScoped<ILinkAdminManager, LinkAdminManager>();
         builder.Services.AddScoped<ILinkManager, LinkManager>();
         builder.Services.AddScoped<IUserManager, UserManager>();
-        builder.Services.AddScoped<IUserMapper, UserMapper>();
-        builder.Services.AddScoped<ILinkMapper, LinkMapper>();
+        builder.Services.AddScoped<IUserMapper>(_ => UserMapper.Create());
+        builder.Services.AddScoped<ILinkMapper>(_ => LinkMapper.Create());
 
         //Data
         builder.Services.AddScoped<ITableStorageFactory, TableStorageFactory>();

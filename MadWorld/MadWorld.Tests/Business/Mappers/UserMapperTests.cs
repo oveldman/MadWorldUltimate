@@ -4,32 +4,32 @@ using MadWorld.Shared.Models.API.Users;
 
 namespace MadWorld.Tests.Business.Mappers
 {
-	public class UserMapperTests
-	{
-		[Theory]
-		[AutoDomainData]
-		public void Translate_User_UserModel(
-			UserMapper userMapper,
-			User user)
-			{
-				// No Test data
+    public class UserMapperTests
+    {
+        [Theory]
+        [AutoDomainData]
+        public void Translate_User_UserModel(
+            User user)
+        {
+            // No Test data
 
-				// No Setup
+            // Setup
+            UserMapper userMapper = UserMapper.Create();
 
-				// Act
-				UserDto userModel = userMapper.Translate<User, UserDto>(user);
+            // Act
+            UserDto userModel = userMapper.Translate<User, UserDto>(user);
 
-				// Assert
-				UserDto expectedModel = new()
-				{
-					ID = user.RowKey,
-					Email = user.Email
-				};
+            // Assert
+            UserDto expectedModel = new()
+            {
+                ID = user.RowKey,
+                Email = user.Email
+            };
 
-				expectedModel.Should().BeEquivalentTo(userModel);
+            expectedModel.Should().BeEquivalentTo(userModel);
 
-				// No Teardown
-			}
-	}
+            // No Teardown
+        }
+    }
 }
 

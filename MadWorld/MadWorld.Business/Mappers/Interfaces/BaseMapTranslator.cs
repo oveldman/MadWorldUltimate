@@ -3,20 +3,22 @@ using AutoMapper;
 
 namespace MadWorld.Business.Mappers.Interfaces
 {
-	public class BaseMapTranslator
+	public abstract class BaseMapTranslator
 	{
-        private readonly IMapper _mapper;
+        private IMapper _mapper;
 
-        public BaseMapTranslator()
+        protected BaseMapTranslator()
+        {
+            _mapper = new MapperConfiguration(config => { }).CreateMapper();
+        }
+
+        public void CreateMapper()
         {
             MapperConfiguration config = LoadConfigMapper();
             _mapper = config.CreateMapper();
         }
 
-        public virtual MapperConfiguration LoadConfigMapper()
-        {
-            return new MapperConfiguration(config => { });
-        }
+        public abstract MapperConfiguration LoadConfigMapper();
 
         public Y Translate<T, Y>(T request)
         {
