@@ -9,14 +9,12 @@ namespace MadWorld.Data.TableStorage.Context
 {
 	public class TableContext : ITableContext
 	{
-		private TableServiceClient _client;
-		private TableClient _table;
+		private readonly TableClient _table;
 
 		public TableContext(TableServiceClient client, string name)
 		{
-			_client = client;
-			_client.CreateTableIfNotExists(name);
-			_table = _client.GetTableClient(name);
+            client.CreateTableIfNotExists(name);
+			_table = client.GetTableClient(name);
 		}
 
         public Response AddEntity<T>(T entity, CancellationToken cancellationToken = default) where T : ITableEntity

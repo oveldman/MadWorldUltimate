@@ -9,7 +9,7 @@ namespace MadWorld.Data.TableStorage.Queries
 {
 	public class LinkQueries : ILinkQueries
 	{
-        private ITableContext _context;
+        private readonly ITableContext _context;
 
         public LinkQueries(ITableStorageFactory tableStorageFactory)
         {

@@ -21,7 +21,7 @@ namespace MadWorld.Website.Pages.Admin.Info
             LinkGroups = await _linkService.GetLinkGroups();
         }
 
-        private void HandleStatusUpdated(LinkGroupAdminDto  updatedLinkGroup)
+        private static void HandleStatusUpdated(LinkGroupAdminDto  updatedLinkGroup)
         {
             Console.WriteLine(updatedLinkGroup.Name);
         }

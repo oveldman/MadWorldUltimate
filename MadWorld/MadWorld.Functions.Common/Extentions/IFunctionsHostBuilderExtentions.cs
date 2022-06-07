@@ -23,11 +23,11 @@ public static class IFunctionsHostBuilderExtentions
     {
         var configuration = builder.Services.BuildServiceProvider().GetService<IConfiguration>() ?? throw new ArgumentNullException(nameof(IConfiguration), "Not Found");
 
-        AddInternPackages(builder, configuration);
+        AddInternPackages(builder);
         AddExternPackages(builder, configuration);
     }
 
-    private static void AddInternPackages(IFunctionsHostBuilder builder, IConfiguration configuration)
+    private static void AddInternPackages(IFunctionsHostBuilder builder)
     {
         //Common function
         builder.Services.AddScoped<IUserValidator, UserValidator>();

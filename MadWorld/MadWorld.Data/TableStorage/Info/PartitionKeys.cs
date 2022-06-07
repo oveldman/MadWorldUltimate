@@ -1,7 +1,7 @@
 ﻿using System;
 namespace MadWorld.Data.TableStorage.Info
 {
-	public class PartitionKeys
+	public static class PartitionKeys
 	{
 		public const string Link = nameof(Link);
 		public const string LinkGroup = nameof(LinkGroup);

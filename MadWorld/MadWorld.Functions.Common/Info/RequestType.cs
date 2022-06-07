@@ -1,7 +1,7 @@
 ﻿using System;
 namespace MadWorld.Functions.Common.Info
 {
-	public class RequestType
+	public static class RequestType
 	{
 		public const string Delete = nameof(Delete);
 		public const string Get = nameof(Get);

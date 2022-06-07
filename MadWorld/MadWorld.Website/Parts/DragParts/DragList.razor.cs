@@ -8,7 +8,7 @@ namespace MadWorld.Website.Parts.DragParts
         [Parameter] public int ListColumnOrder { get; set; }
         [Parameter] public int[] AllowedColumnOrders { get; set; }
 
-        public int LastTouchedRow = 0;
+        private int LastTouchedRow = 0;
 
         protected List<T> DragItems = new();
         protected string dropClass = "";

@@ -27,7 +27,7 @@ export function init(divID: string, language: string): void {
     return monacoEditor.init(divID, language);
 }
 
-export function getValue(text: string): string {
+export function getValue(): string {
     CreateNewEditorIfEmpty();
     return monacoEditor.getValue();
 }

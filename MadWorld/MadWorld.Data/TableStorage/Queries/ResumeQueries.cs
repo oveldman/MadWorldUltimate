@@ -11,7 +11,7 @@ namespace MadWorld.Data.TableStorage.Queries
 {
 	public class ResumeQueries : IResumeQueries
 	{
-        private ITableContext _context;
+        private readonly ITableContext _context;
 
         public ResumeQueries(ITableStorageFactory tableStorageFactory)
         {

@@ -38,7 +38,7 @@ namespace MadWorld.Website.Pages.Tools
             }
         }
 
-		private string AddNewGuidToString(string value, bool isFirstGuid)
+		private static string AddNewGuidToString(string value, bool isFirstGuid)
         {
 			if (!isFirstGuid)
 			{

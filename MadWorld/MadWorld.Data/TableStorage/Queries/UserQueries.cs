@@ -10,7 +10,7 @@ namespace MadWorld.Data.TableStorage.Queries
 {
 	public class UserQueries : IUserQueries
     {
-        private ITableContext _context;
+        private readonly ITableContext _context;
 
         public UserQueries(ITableStorageFactory tableStorageFactory)
 		{

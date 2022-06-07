@@ -8,7 +8,7 @@ namespace MadWorld.Data.BlobStorage
 {
 	public class BlobFileClient : IBlobClient
 	{
-		private BlobClient _blobClient;
+		private readonly BlobClient _blobClient;
 
 		public BlobFileClient(BlobClient client)
 		{

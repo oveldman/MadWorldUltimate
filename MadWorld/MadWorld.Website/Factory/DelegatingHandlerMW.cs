@@ -6,7 +6,7 @@ namespace MadWorld.Website.Factory
 {
 	public class DelegatingHandlerMW : DelegatingHandler
     {
-        IServiceProvider _provider;
+        private readonly IServiceProvider _provider;
 
         public DelegatingHandlerMW(IServiceProvider provider)
         {

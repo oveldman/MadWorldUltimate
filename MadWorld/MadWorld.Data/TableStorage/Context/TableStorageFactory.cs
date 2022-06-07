@@ -7,7 +7,7 @@ namespace MadWorld.Data.TableStorage.Context
 {
 	public class TableStorageFactory : ITableStorageFactory
 	{
-		private TableServiceClient _client;
+		private readonly TableServiceClient _client;
 
 		public TableStorageFactory(TableServiceClient tableServiceClient)
 		{
