@@ -7,3 +7,6 @@
 # MadWorldUltimate
 
 Welcome to my hobby project. I try to build new stuff like Blazor and Azure components. You can find my website here: [Mad-World.nl](https://www.mad-world.nl/)
+
+For every pull request, SonarQube will generate another rapport:
+[SonarQube Rapport](https://sonarcloud.io/project/overview?id=oveldman_MadWorldUltimate)
