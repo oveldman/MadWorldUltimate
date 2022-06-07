@@ -3,7 +3,7 @@ using AutoMapper;
 
 namespace MadWorld.Business.Mappers.Interfaces
 {
-	public abstract class BaseMapTranslator
+	public class BaseMapTranslator
 	{
         private readonly IMapper _mapper;
 
@@ -13,7 +13,10 @@ namespace MadWorld.Business.Mappers.Interfaces
             _mapper = config.CreateMapper();
         }
 
-        public abstract MapperConfiguration LoadConfigMapper();
+        public virtual MapperConfiguration LoadConfigMapper()
+        {
+            return new MapperConfiguration(config => { });
+        }
 
         public Y Translate<T, Y>(T request)
         {

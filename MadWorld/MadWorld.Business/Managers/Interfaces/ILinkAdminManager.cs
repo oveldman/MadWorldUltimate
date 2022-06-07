@@ -8,7 +8,7 @@ namespace MadWorld.Business.Managers.Interfaces
 	{
 		ResponseLinkGroups GetLinkGroups();
 		ResponseLinks TryGetLinks(string linkGroupId);
-		CommonResponse SaveLinks(LinkGroupAdminDto linkGroup);
+		CommonResponse SaveLinks(LinkGroupAdminDto linkGroupDto);
 		CommonResponse SaveLinkGroups(List<LinkGroupAdminDto> linkGroups);
 	}
 }

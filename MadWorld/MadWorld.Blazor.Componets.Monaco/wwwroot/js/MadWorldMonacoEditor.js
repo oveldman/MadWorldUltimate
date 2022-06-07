@@ -1,7 +1,8 @@
-var MadWorldMonaco;
+let MadWorldMonaco;
 (function (MadWorldMonaco) {
-    var MonacoEditor = /** @class */ (function () {
+    let MonacoEditor = /** @class */ (function () {
         function MonacoEditor() {
+            return undefined; 
         }
         MonacoEditor.prototype.init = function (divID, language) {
             this.editor = window.monaco.editor.create(document.getElementById(divID), {
@@ -20,7 +21,7 @@ var MadWorldMonaco;
     }());
     MadWorldMonaco.MonacoEditor = MonacoEditor;
 })(MadWorldMonaco || (MadWorldMonaco = {}));
-var monacoEditor;
+let monacoEditor;
 export function init(divID, language) {
     CreateNewEditorIfEmpty();
     return monacoEditor.init(divID, language);

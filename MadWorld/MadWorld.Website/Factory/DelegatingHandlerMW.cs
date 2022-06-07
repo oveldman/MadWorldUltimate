@@ -13,7 +13,7 @@ namespace MadWorld.Website.Factory
             _provider = provider;
         }
 
-        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage message, CancellationToken cancellationToken)
+        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             // AccessTokenProvider crashes when object is intinized.
             // Work around is get accessTokenProvider when needed.
@@ -22,9 +22,9 @@ namespace MadWorld.Website.Factory
             var accessTokenResult = await tokenProvider.RequestAccessToken();
             if (accessTokenResult.TryGetToken(out var token))
             {
-                message.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token.Value);
+                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token.Value);
             }
-            return await base.SendAsync(message, cancellationToken);
+            return await base.SendAsync(request, cancellationToken);
         }
     }
 }
