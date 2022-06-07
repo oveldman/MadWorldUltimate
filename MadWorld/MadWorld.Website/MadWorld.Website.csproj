@@ -31,7 +31,6 @@
     <None Remove="Microsoft.Authentication.WebAssembly.Msal" />
     <None Remove="Types\" />
     <None Remove="Microsoft.Extensions.Http" />
-    <None Remove="Pages\Test\" />
     <None Remove="Extentions\" />
     <None Remove="Pages\Tools\" />
     <None Remove="Factory\" />
@@ -66,7 +65,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Types\" />
-    <Folder Include="Pages\Test\" />
     <Folder Include="Extentions\" />
     <Folder Include="Pages\Tools\" />
     <Folder Include="Factory\" />
