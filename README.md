@@ -1,6 +1,7 @@
 [![.NET Build & Test](https://github.com/oveldman/MadWorldUltimate/actions/workflows/dotnet.yml/badge.svg)](https://github.com/oveldman/MadWorldUltimate/actions/workflows/dotnet.yml)
 [![CodeQL](https://github.com/oveldman/MadWorldUltimate/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/oveldman/MadWorldUltimate/actions/workflows/codeql-analysis.yml)
 [![SonarQube Scan](https://github.com/oveldman/MadWorldUltimate/actions/workflows/sonarqube.yml/badge.svg)](https://github.com/oveldman/MadWorldUltimate/actions/workflows/sonarqube.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=oveldman_MadWorldUltimate&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=oveldman_MadWorldUltimate)
 [![Azure Static Web App published](https://github.com/oveldman/MadWorldUltimate/actions/workflows/azure-static-web-apps-jolly-tree-08fdeb903.yml/badge.svg?branch=main)](https://github.com/oveldman/MadWorldUltimate/actions/workflows/azure-static-web-apps-jolly-tree-08fdeb903.yml)
 [![Build and deply to Mad-World.nl/Api](https://github.com/oveldman/MadWorldUltimate/actions/workflows/main_madworld-api.yml/badge.svg?branch=main)](https://github.com/oveldman/MadWorldUltimate/actions/workflows/main_madworld-api.yml)
 [![Build and deply to Mad-World.nl/ApiAnonymous](https://github.com/oveldman/MadWorldUltimate/actions/workflows/main_madworld-api-anonymous.yml/badge.svg)](https://github.com/oveldman/MadWorldUltimate/actions/workflows/main_madworld-api-anonymous.yml)
