@@ -36,15 +36,14 @@ jobs:
         run: |
           New-Item -Path .\.sonar\scanner -ItemType Directory
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
-          dotnet tool install --global dotnet-coverage
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"oveldman_MadWorldUltimate" /o:"oveldman" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"oveldman_MadWorldUltimate" /o:"oveldman" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.cs.opencover.reportsPaths=TestResults/*/coverage.opencover.xml ` /d:sonar.coverage.exclusions="**Test*.cs" ` 
           dotnet restore MadWorld/MadWorld.sln; 
-          dotnet build MadWorld/MadWorld.sln --configuration Release;
-          dotnet-coverage collect 'dotnet test MadWorld/MadWorld.sln --no-build --no-restore --collect:"XPlat Code Coverage"' -f xml -o 'coverage.xml'
+          dotnet build MadWorld/MadWorld.sln;
+          dotnet test MadWorld/MadWorld.sln --no-build --no-restore --collect:"XPlat Code Coverage" --results-directory TestResults/ --configuration release --DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover;
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}" 
