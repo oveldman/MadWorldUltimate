@@ -42,8 +42,8 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"oveldman_MadWorldUltimate" /o:"oveldman" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"oveldman_MadWorldUltimate" /o:"oveldman" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="**/coverage.opencover.xml"
           dotnet restore MadWorld/MadWorld.sln; 
           dotnet build MadWorld/MadWorld.sln;
-          dotnet test MadWorld/MadWorld.sln --no-build --collect:"XPlat Code Coverage";
-          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+          dotnet test MadWorld/MadWorld.sln --no-build  --no-restore --collect:"XPlat Code Coverage";
+          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}" 
