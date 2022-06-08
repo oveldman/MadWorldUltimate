@@ -12,3 +12,12 @@ Welcome to my hobby project. I try to build new stuff like Blazor and Azure comp
 
 For every pull request, SonarQube will generate another rapport:
 [SonarQube Rapport](https://sonarcloud.io/project/overview?id=oveldman_MadWorldUltimate)
+
+I deployed the following resources on azure:
+- Application Insight
+- Azure Functions (2x)
+- Azure Static Website
+- Blob Storage
+- Azure Active Directory B2C
+- Resource Group
+- Subscription
