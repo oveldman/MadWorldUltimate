@@ -5,11 +5,11 @@ namespace MadWorld.Data.TableStorage.Queries.Interfaces
 {
 	public interface IUserQueries
 	{
-		public bool CreateUser(User user);
-		public User FindUser(Guid azureId);
-		public User FindUser(string id);
-		public List<User> GetAllUsers();
-		public bool UpdateUser(User user);
+		bool CreateUser(User user);
+		Option<User> FindUser(Guid azureId);
+		Option<User> FindUser(string id);
+		List<User> GetAllUsers();
+		bool UpdateUser(User user);
 	}
 }
 

@@ -39,9 +39,9 @@ namespace MadWorld.Business.Managers
                 return false;
             }
 
-            User user = _userQueries.FindUser(id);
+            Option<User> user = _userQueries.FindUser(id);
 
-            if (user != null)
+            if (user.HasValue)
             {
                 return true;
             }
@@ -51,8 +51,8 @@ namespace MadWorld.Business.Managers
 
         public UserDetailDto GetUser(string id)
         {
-            User users = _userQueries.FindUser(id);
-            return _userMapper.Translate<User, UserDetailDto>(users);
+            Option<User> user = _userQueries.FindUser(id);
+            return _userMapper.Translate<User, UserDetailDto>(user.ValueOr(new User()));
         }
 
         public List<UserDto> GetUsers()
@@ -63,13 +63,14 @@ namespace MadWorld.Business.Managers
 
         public CommonResponse UpdateUser(UserDetailDto userDto)
         {
-            User user = _userQueries.FindUser(userDto.ID);
+            Option<User> userOption = _userQueries.FindUser(userDto.ID);
 
-            if (user is null)
+            if (!userOption.HasValue)
             {
                 return CreateUserNotFoundResponse();
             }
 
+            User user = userOption.ValueOr(new User());
             user = _userMapper.Translate(userDto, user);
             _userQueries.UpdateUser(user);
 

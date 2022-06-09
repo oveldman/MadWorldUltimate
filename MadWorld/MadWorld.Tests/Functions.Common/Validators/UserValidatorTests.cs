@@ -22,7 +22,7 @@ namespace MadWorld.Tests.Functions.Common.Validators
 			user.IsViewer = true;
 
 			// Setup
-			userQueries.Setup(aq => aq.FindUser(It.IsAny<Guid>())).Returns(user);
+			userQueries.Setup(aq => aq.FindUser(It.IsAny<Guid>())).Returns(Option.Some(user));
 
 			// Act
 			List<string> roles = userValidator.GetAllRoles(azureID.ToString());
@@ -51,7 +51,7 @@ namespace MadWorld.Tests.Functions.Common.Validators
 			user.IsViewer = true;
 
 			// Setup
-			userQueries.Setup(aq => aq.FindUser(It.IsAny<Guid>())).Returns(user);
+			userQueries.Setup(aq => aq.FindUser(It.IsAny<Guid>())).Returns(Option.Some(user));
 
 			// Act
 			List<string> roles = userValidator.GetAllRoles(azureID.ToString());
@@ -79,7 +79,7 @@ namespace MadWorld.Tests.Functions.Common.Validators
 			user.IsViewer = false;
 
 			// Setup
-			userQueries.Setup(aq => aq.FindUser(It.IsAny<Guid>())).Returns(user);
+			userQueries.Setup(aq => aq.FindUser(It.IsAny<Guid>())).Returns(Option.Some(user));
 
 			// Act
 			List<string> roles = userValidator.GetAllRoles(azureID.ToString());
@@ -114,7 +114,7 @@ namespace MadWorld.Tests.Functions.Common.Validators
 			user.IsViewer = isViewer;
 
 			// Setup
-			userQueries.Setup(aq => aq.FindUser(It.IsAny<Guid>())).Returns(user);
+			userQueries.Setup(aq => aq.FindUser(It.IsAny<Guid>())).Returns(Option.Some(user));
 
 			// Act
 			bool hasAccess = userValidator.HasRole(azureID.ToString(), role);

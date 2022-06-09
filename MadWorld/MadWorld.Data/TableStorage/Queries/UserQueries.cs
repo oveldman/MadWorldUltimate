@@ -23,21 +23,19 @@ namespace MadWorld.Data.TableStorage.Queries
             return response.IsError;
         }
 
-        public User FindUser(Guid azureId)
+        public Option<User> FindUser(Guid azureId)
         {
             Pageable<User> users = _context.Query<User>(u => u.PartitionKey == PartitionKeys.User && u.AzureID == azureId);
-            return users.FirstOrDefault();
+            return users.FirstOrNone();
         }
 
-        public User FindUser(string id)
-        {
-            Pageable<User> users = _context.Query<User>(u => u.PartitionKey == PartitionKeys.User && u.RowKey == id);
-            return users.FirstOrDefault();
-        }
+        public Option<User> FindUser(string id)
+                => _context.Query<User>(u => u.PartitionKey == PartitionKeys.User && u.RowKey == id)
+                           .FirstOrNone();
 
         public List<User> GetAllUsers()
         {
-            return _context.Query<User>(u => u.PartitionKey == PartitionKeys.User).ToList() ?? new();
+            return _context.Query<User>(u => u.PartitionKey == PartitionKeys.User).ToList();
         }
 
         public bool UpdateUser(User user)

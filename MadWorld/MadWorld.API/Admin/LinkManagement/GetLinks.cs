@@ -8,27 +8,25 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;
 
-namespace MadWorld.API.Admin.LinkManagement
+namespace MadWorld.API.Admin.LinkManagement;
+public class GetLinks
 {
-	public class GetLinks
-	{
-        private readonly ILinkAdminManager _linkManager;
+    private readonly ILinkAdminManager _linkManager;
 
-        public GetLinks(ILinkAdminManager linkManager)
-        {
-            _linkManager = linkManager;
-        }
+    public GetLinks(ILinkAdminManager linkManager)
+    {
+        _linkManager = linkManager;
+    }
 
-        [AuthorizeFunction(RoleTypes.Adminstrator)]
-        [FunctionName(nameof(GetLinks))]
-        public ResponseLinks Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, RequestType.Get, Route = null)] HttpRequest req,
-            ILogger log)
-        {
-            string id = req.Query[QueryKeys.ID];
+    [AuthorizeFunction(RoleTypes.Adminstrator)]
+    [FunctionName(nameof(GetLinks))]
+    public ResponseLinks Run(
+        [HttpTrigger(AuthorizationLevel.Anonymous, RequestType.Get, Route = null)] HttpRequest req,
+        ILogger log)
+    {
+        string id = req.Query[QueryKeys.ID];
 
-            return _linkManager.TryGetLinks(id);
-        }
+        return _linkManager.TryGetLinks(id);
     }
 }
 

@@ -21,10 +21,12 @@
     <None Remove="BlobStorage\BlobStorageContextcs" />
     <None Remove="TableStorage\Extentions\" />
     <None Remove="BlobStorage\Extentions\" />
+    <None Remove="Optional" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Azure.Data.Tables" Version="12.5.0" />
+    <PackageReference Include="Azure.Data.Tables" Version="12.6.0" />
     <PackageReference Include="Azure.Storage.Blobs" Version="12.12.0" />
+    <PackageReference Include="Optional" Version="4.0.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="TableStorage\" />

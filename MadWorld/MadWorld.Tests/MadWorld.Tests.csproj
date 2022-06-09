@@ -23,6 +23,7 @@
     <PackageReference Include="AutoFixture.Xunit2" Version="4.17.0" />
     <PackageReference Include="FluentAssertions" Version="6.7.0" />
     <PackageReference Include="Moq" Version="4.18.1" />
+    <PackageReference Include="MoqExpression" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -45,6 +46,7 @@
     <None Remove="Data\TableStorage\" />
     <None Remove="Data\TableStorage\Queries\" />
     <None Remove="Data\TableStorage\Mockups\" />
+    <None Remove="MoqExpression" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Business\" />

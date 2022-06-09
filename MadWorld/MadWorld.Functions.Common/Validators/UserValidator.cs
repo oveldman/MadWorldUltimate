@@ -22,7 +22,7 @@ namespace MadWorld.Functions.Common.Validators
                 return new();
             }
 
-            User user = _userQueries.FindUser(id);
+            Option<User> user = _userQueries.FindUser(id);
             return CreateRoleListForUser(user);
         }
 
@@ -33,16 +33,18 @@ namespace MadWorld.Functions.Common.Validators
                 return false;
             }
 
-            User user = _userQueries.FindUser(id);
+            Option<User> user = _userQueries.FindUser(id);
             return CheckRole(user, role);
         }
 
-        private static List<string> CreateRoleListForUser(User user)
+        private static List<string> CreateRoleListForUser(Option<User> userOption)
         {
-            if (user == null)
+            if (!userOption.HasValue)
             {
                 return new();
             }
+
+            User user = userOption.ValueOr(new User());
 
             List<string> userRoles = new()
             {
@@ -62,24 +64,28 @@ namespace MadWorld.Functions.Common.Validators
             return userRoles;
         }
 
-        private static bool CheckRole(User user, RoleTypes role)
+        private static bool CheckRole(Option<User> userOption, RoleTypes role)
         {
-            if (user is null)
+            if (!userOption.HasValue)
             {
                 return false;
-            } 
+            }
+
+            User user = userOption.ValueOr(new User());
 
             switch (role)
             {
                 case RoleTypes.Adminstrator:
                     return user.IsAdminstrator;
-                case RoleTypes.Viewer :
+                case RoleTypes.Viewer:
                     return user.IsViewer;
                 case RoleTypes.Guest:
                     return true;
+                case RoleTypes.None:
+                    return true;
                 default:
                     return false;
-                
+
             }
         }
     }

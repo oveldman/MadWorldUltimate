@@ -31,20 +31,20 @@ namespace MadWorld.Data.TableStorage.Queries
         public Link GetLink(string linkId)
         {
             var link = _context.Query<Link>(g => g.PartitionKey == PartitionKeys.LinkGroup
-                                            && g.RowKey == linkId).ToList() ?? new();
+                                            && g.RowKey == linkId).ToList();
             return link.FirstOrDefault();
         }
 
         public LinkGroup GetLinkGroup(string linkGroupId)
         {
             var linkGroups = _context.Query<LinkGroup>(g => g.PartitionKey == PartitionKeys.LinkGroup
-                                                        && g.RowKey == linkGroupId).ToList() ?? new();
+                                                        && g.RowKey == linkGroupId).ToList();
             return linkGroups.FirstOrDefault();
         }
 
         public List<LinkGroup> GetLinkGroups()
         {
-            var linkGroups = _context.Query<LinkGroup>(g => g.PartitionKey == PartitionKeys.LinkGroup).ToList() ?? new();
+            var linkGroups = _context.Query<LinkGroup>(g => g.PartitionKey == PartitionKeys.LinkGroup).ToList();
             return linkGroups.Where(g => !g.IsDeleted).ToList();
         }
 

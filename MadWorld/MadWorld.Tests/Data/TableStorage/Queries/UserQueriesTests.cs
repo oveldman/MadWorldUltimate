@@ -14,8 +14,8 @@ namespace MadWorld.Tests.Data.TableStorage.Queries
 		[Theory]
 		[AutoDomainData]
 		public void FindUser_AzureID_User(
+			[Frozen] Mock<ITableStorageFactory> factory,
 			[Frozen] Mock<ITableContext> userContext,
-			UserQueries userQueries,
 			Guid azureID,
 			User user
 			)
@@ -23,20 +23,25 @@ namespace MadWorld.Tests.Data.TableStorage.Queries
 			// Test data
 			user.PartitionKey = PartitionKeys.User;
 			user.AzureID = azureID;
-
 			Pageable<User> users = Pageable<User>.FromPages(new MockPage<User>[] { new(new List<User>() { user }) });
 
 			// Setup
-			userContext.Setup(aq => aq.Query(It.IsAny<Expression<Func<User, bool>>>(),
+			userContext.Setup(tc => tc.Query(It.IsAny<Expression<Func<User, bool>>>(),
 				It.IsAny<int?>(),
 				It.IsAny<IEnumerable<string>>(),
 				It.IsAny<CancellationToken>()))
-					.Returns(users);
+				.Returns(users);
+
+			factory.Setup(f => f.CreateUserContext()).Returns(userContext.Object);
+
+			UserQueries userQueries = new(factory.Object);
+
 			// Act
-			User resultUser = userQueries.FindUser(azureID);
+			Option<User> resultUserOption = userQueries.FindUser(azureID);
+			User resultUser = resultUserOption.ValueOr(new User());
 
 			// Assert
-			Assert.Equal(azureID, user.AzureID);
+			Assert.Equal(azureID, resultUser.AzureID);
 
 			// No Teardown
 		}
