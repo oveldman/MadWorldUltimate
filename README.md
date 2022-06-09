@@ -15,6 +15,7 @@ For every pull request, SonarQube will generate another rapport:
 
 I deployed the following resources on azure:
 - Application Insight
+- API Management Service
 - Azure Functions (2x)
 - Azure Static Website
 - Blob Storage
