@@ -8,6 +8,8 @@
 
 @attribute [Authorize(Roles = nameof(RoleTypes.Adminstrator))]
 
+<PageTitle>Edit User</PageTitle>
+
 @if (!string.IsNullOrEmpty(ErrorMessage))
 {
     <div class="alert alert-danger" role="alert">
