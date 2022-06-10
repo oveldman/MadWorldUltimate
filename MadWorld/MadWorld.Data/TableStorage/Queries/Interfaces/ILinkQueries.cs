@@ -6,10 +6,10 @@ namespace MadWorld.Data.TableStorage.Queries.Interfaces
 	{
 		bool AddLink(Link link);
 		bool AddLinkGroup(LinkGroup linkGroup);
-		Link GetLink(string linkId);
+		Option<Link> GetLink(string linkId);
 		List<Link> GetLinks(string linkGroupId);
 		List<LinkGroup> GetLinkGroups();
-		LinkGroup GetLinkGroup(string linkGroupId);
+		Option<LinkGroup> GetLinkGroup(string linkGroupId);
 		bool UpdateLink(Link link);
 		bool UpdateLinkGroup(LinkGroup linkGroup);
 	}

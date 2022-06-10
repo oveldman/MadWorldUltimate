@@ -28,18 +28,18 @@ namespace MadWorld.Data.TableStorage.Queries
             return response.IsError;
         }
 
-        public Link GetLink(string linkId)
+        public Option<Link> GetLink(string linkId)
         {
             var link = _context.Query<Link>(g => g.PartitionKey == PartitionKeys.LinkGroup
                                             && g.RowKey == linkId).ToList();
-            return link.FirstOrDefault();
+            return link.FirstOrNone();
         }
 
-        public LinkGroup GetLinkGroup(string linkGroupId)
+        public Option<LinkGroup> GetLinkGroup(string linkGroupId)
         {
             var linkGroups = _context.Query<LinkGroup>(g => g.PartitionKey == PartitionKeys.LinkGroup
                                                         && g.RowKey == linkGroupId).ToList();
-            return linkGroups.FirstOrDefault();
+            return linkGroups.FirstOrNone();
         }
 
         public List<LinkGroup> GetLinkGroups()

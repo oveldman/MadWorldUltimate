@@ -9,7 +9,7 @@ namespace MadWorld.Functions.Common.Extentions
 	{
 		public static string GetAzureID(this IIdentity identity)
 		{
-			ClaimsIdentity claimsIdentity = identity as ClaimsIdentity;
+			ClaimsIdentity claimsIdentity = identity as ClaimsIdentity ?? new ClaimsIdentity();
 			return GetAzureID(claimsIdentity);
 		}
 

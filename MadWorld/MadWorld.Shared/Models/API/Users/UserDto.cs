@@ -6,9 +6,9 @@ namespace MadWorld.Shared.Models.API.Users
 	public class UserDto
 	{
 		[Required]
-		public string ID { get; set; }
+		public string ID { get; set; } = string.Empty;
 		[EmailAddress]
-		public string Email { get; set; }
+		public string Email { get; set; } = string.Empty;
 	}
 }
 

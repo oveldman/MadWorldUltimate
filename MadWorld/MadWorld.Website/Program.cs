@@ -8,7 +8,7 @@ using MadWorld.Blazor.Componets.Monaco.Extentions;
 using MadWorld.Website.Factory;
 using System.Security.Claims;
 
-var builder = WebAssemblyHostBuilder.CreateDefault(args);
+WebAssemblyHostBuilder builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Services.AddScoped<MadWorldAuthorizationMessageHandler>();

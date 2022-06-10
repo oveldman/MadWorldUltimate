@@ -24,10 +24,10 @@ namespace MadWorld.Data.TableStorage.Queries
             return response.IsError;
         }
 
-        public Resume GetLast()
+        public Option<Resume> GetLast()
         {
             Pageable<Resume> resumes = _context.Query<Resume>(r => r.PartitionKey == PartitionKeys.Resume);
-            return resumes.OrderByDescending(r => r.Timestamp).FirstOrDefault() ?? new Resume();
+            return resumes.OrderByDescending(r => r.Timestamp).FirstOrNone();
         }
     }
 }

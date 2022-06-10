@@ -32,11 +32,11 @@ namespace MadWorld.Business.Managers
 
         public ResponseLinks TryGetLinks(string linkGroupId)
         {
-            LinkGroup linkGroup = _linkQueries.GetLinkGroup(linkGroupId);
+            Option<LinkGroup> linkGroup = _linkQueries.GetLinkGroup(linkGroupId);
 
-            if (!linkGroup.IsEmpty())
+            if (linkGroup.HasValue)
             {
-                return GetLinks(linkGroup);
+                return GetLinks(linkGroup.ValueOr(new LinkGroup()));
             }
 
             return new();
@@ -99,11 +99,11 @@ namespace MadWorld.Business.Managers
 
         private bool EditLinkGroup(LinkGroupAdminDto linkGroupDto)
         {
-            LinkGroup linkGroup = _linkQueries.GetLinkGroup(linkGroupDto.Id.ToString());
+            Option<LinkGroup> linkGroupOption = _linkQueries.GetLinkGroup(linkGroupDto.Id.ToString());
 
-            if (!linkGroup.IsEmpty())
+            if (linkGroupOption.HasValue)
             {
-                linkGroup = _mapper.Translate(linkGroupDto, linkGroup);
+                LinkGroup linkGroup = _mapper.Translate(linkGroupDto, linkGroupOption.ValueOr(new LinkGroup()));
                 return !_linkQueries.UpdateLinkGroup(linkGroup);
             }
 
@@ -113,9 +113,9 @@ namespace MadWorld.Business.Managers
         public CommonResponse SaveLinks(LinkGroupAdminDto linkGroupDto)
         {
             var succeed = false;
-            LinkGroup linkGroup = _linkQueries.GetLinkGroup(linkGroupDto.Id.ToString());
+            Option<LinkGroup> linkGroup = _linkQueries.GetLinkGroup(linkGroupDto.Id.ToString());
 
-            if (!linkGroup.IsEmpty() && (linkGroupDto.Links?.Any() ?? false))
+            if (linkGroup.HasValue && (linkGroupDto.Links?.Any() ?? false))
             {
                 succeed = true;
 
@@ -160,11 +160,11 @@ namespace MadWorld.Business.Managers
 
         private bool EditLink(LinkAdminDto linkDto)
         {
-            Link link = _linkQueries.GetLink(linkDto.Id.ToString());
+            Option<Link> linkOption = _linkQueries.GetLink(linkDto.Id.ToString());
 
-            if (!link.IsEmpty())
+            if (linkOption.HasValue)
             {
-                link = _mapper.Translate(linkDto, link);
+                Link link = _mapper.Translate(linkDto, linkOption.ValueOr(new Link()));
                 return !_linkQueries.UpdateLink(link);
             }
 

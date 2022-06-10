@@ -1,4 +1,5 @@
-﻿using Azure.Data.Tables;
+﻿using Ardalis.GuardClauses;
+using Azure.Data.Tables;
 using Azure.Storage.Blobs;
 using MadWorld.Business.Managers;
 using MadWorld.Business.Managers.Interfaces;
@@ -21,7 +22,8 @@ public static class IFunctionsHostBuilderExtentions
 {
     public static void AddMadWorldCommonClasses(this IFunctionsHostBuilder builder)
     {
-        var configuration = builder.Services.BuildServiceProvider().GetService<IConfiguration>() ?? throw new ArgumentNullException(nameof(IConfiguration), "Not Found");
+        IConfiguration? configuration = builder.Services.BuildServiceProvider().GetService<IConfiguration>();
+        configuration = Guard.Against.Null(configuration, nameof(configuration));
 
         AddInternPackages(builder);
         AddExternPackages(builder, configuration);
