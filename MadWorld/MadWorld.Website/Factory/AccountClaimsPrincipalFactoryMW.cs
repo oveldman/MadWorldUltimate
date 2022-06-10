@@ -31,7 +31,7 @@ namespace MadWorld.Website.Factory
                 }
             }
 
-            return user;
+            return user ?? new ClaimsPrincipal();
         }
     }
 }

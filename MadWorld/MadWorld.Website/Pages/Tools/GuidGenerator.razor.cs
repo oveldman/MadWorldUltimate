@@ -5,7 +5,7 @@ namespace MadWorld.Website.Pages.Tools
 {
 	public partial class GuidGenerator
 	{
-		private MonacoEditor _editor;
+		private MonacoEditor _editor = new();
 
 		private int amountOfGuids = 0;
 

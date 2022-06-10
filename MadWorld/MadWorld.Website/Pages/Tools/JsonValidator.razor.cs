@@ -7,7 +7,7 @@ namespace MadWorld.Website.Pages.Tools
 {
 	public partial class JsonValidator
 	{
-		private MonacoEditor _editor;
+		private MonacoEditor _editor = new();
 		private MonacoSettings _settings = new();
 
 		private bool showSuccess = false;

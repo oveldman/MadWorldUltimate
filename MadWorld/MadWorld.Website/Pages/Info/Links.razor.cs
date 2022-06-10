@@ -1,6 +1,8 @@
 ﻿using MadWorld.Shared.Models.AnonymousAPI.Info;
 using MadWorld.Website.Services.Info.Interface;
 using Microsoft.AspNetCore.Components;
+using Optional;
+using Optional.Collections;
 
 namespace MadWorld.Website.Pages.Info
 {
@@ -29,8 +31,9 @@ namespace MadWorld.Website.Pages.Info
 
 		private bool TryFindGroup(int rowNumber, int columnNumber, out LinkGroupDto linkGroup)
         {
-			linkGroup = _linkGroup.FirstOrDefault(g => g.RowOrder == rowNumber && g.ColumnOrder == columnNumber);
-			return linkGroup is not null;
+			Option<LinkGroupDto> linkGroupOption = _linkGroup.FirstOrNone(g => g.RowOrder == rowNumber && g.ColumnOrder == columnNumber);
+			linkGroup = linkGroupOption.ValueOr(new LinkGroupDto());
+			return linkGroupOption.HasValue;
         }
 	}
 }

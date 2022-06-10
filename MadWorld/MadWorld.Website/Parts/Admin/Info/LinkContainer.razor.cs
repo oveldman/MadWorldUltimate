@@ -1,6 +1,8 @@
 ﻿using System;
 using MadWorld.Shared.Models.API.Links;
 using MadWorld.Website.Parts.DragParts;
+using Optional;
+using Optional.Collections;
 
 namespace MadWorld.Website.Parts.Admin.Info
 {
@@ -8,11 +10,12 @@ namespace MadWorld.Website.Parts.Admin.Info
     {
         protected override bool TryToUpdateItem(int columnOrder, int rowOrder)
         {
-            var linkGroup = DragItems.SingleOrDefault(x => x.Id == Payload.Id);
+            Option<LinkAdminDto> linkOption = DragItems.SingleOrNone(x => x.Id == Payload.Id);
 
-            if (linkGroup != null)
+            if (linkOption.HasValue)
             {
-                linkGroup.Order = rowOrder;
+                LinkAdminDto link = linkOption.ValueOr(new LinkAdminDto());
+                link.Order = rowOrder;
                 return true;
             }
 

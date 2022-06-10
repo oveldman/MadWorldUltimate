@@ -6,7 +6,7 @@ namespace MadWorld.Website.Parts.DragParts
     {
         [CascadingParameter] protected Y Container { get; set; }
         [Parameter] public int ListColumnOrder { get; set; }
-        [Parameter] public int[] AllowedColumnOrders { get; set; }
+        [Parameter] public int[] AllowedColumnOrders { get; set; } = Array.Empty<int>();
 
         private int LastTouchedRow = 0;
 

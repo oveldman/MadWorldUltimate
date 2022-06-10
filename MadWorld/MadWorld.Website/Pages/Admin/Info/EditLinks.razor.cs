@@ -20,7 +20,7 @@ namespace MadWorld.Website.Pages.Admin.Info
         private LinkGroupAdminDto Group = new();
 
         private AlertStatus Status = new();
-        private BootstrapAlerts _bootstrapAlerts;
+        private BootstrapAlerts _bootstrapAlerts = new();
 
         [Inject]
         private ILinkAdminService _linkService { get; set; }

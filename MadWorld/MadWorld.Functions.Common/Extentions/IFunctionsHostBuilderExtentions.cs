@@ -11,6 +11,7 @@ using MadWorld.Data.TableStorage.Context;
 using MadWorld.Data.TableStorage.Context.Interfaces;
 using MadWorld.Data.TableStorage.Queries;
 using MadWorld.Data.TableStorage.Queries.Interfaces;
+using MadWorld.Functions.Common.AzureFunctions;
 using MadWorld.Functions.Common.Validators;
 using MadWorld.Functions.Common.Validators.Interfaces;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
@@ -23,7 +24,7 @@ public static class IFunctionsHostBuilderExtentions
     public static void AddMadWorldCommonClasses(this IFunctionsHostBuilder builder)
     {
         IConfiguration? configuration = builder.Services.BuildServiceProvider().GetService<IConfiguration>();
-        configuration = Guard.Against.Null(configuration, nameof(configuration));
+        configuration = Guard.Against.Null(configuration, nameof(configuration)) ?? new EmptyConfiguration();
 
         AddInternPackages(builder);
         AddExternPackages(builder, configuration);

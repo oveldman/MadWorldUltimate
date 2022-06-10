@@ -21,6 +21,8 @@
     <PackageReference Include="BlazorDownloadFile" Version="2.4.0.2" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.43" />
     <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.1.161" />
+    <PackageReference Include="Optional" Version="4.0.0" />
+    <PackageReference Include="Ardalis.GuardClauses" Version="4.0.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -54,6 +56,8 @@
     <None Remove="Parts\Admin\Info\" />
     <None Remove="Parts\DragParts\" />
     <None Remove="Parts\Models\" />
+    <None Remove="Optional" />
+    <None Remove="Ardalis.GuardClauses" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MadWorld.Shared\MadWorld.Shared.csproj">

@@ -15,6 +15,7 @@
     <None Remove="Extentions\" />
     <None Remove="Info\" />
     <None Remove="Ardalis.GuardClauses" />
+    <None Remove="AzureFunctions\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.1.1" />
@@ -35,5 +36,6 @@
     <Folder Include="Validators\Interfaces\" />
     <Folder Include="Extentions\" />
     <Folder Include="Info\" />
+    <Folder Include="AzureFunctions\" />
   </ItemGroup>
 </Project>

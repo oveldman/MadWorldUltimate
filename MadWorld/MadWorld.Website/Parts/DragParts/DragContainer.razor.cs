@@ -5,7 +5,7 @@ namespace MadWorld.Website.Parts.DragParts
 {
     public abstract partial class DragContainer<T> : ComponentBase
     {
-        [Parameter] public List<T> DragItems { get; set; }
+        [Parameter] public List<T> DragItems { get; set; } = new();
         [Parameter] public RenderFragment ChildContent { get; set; }
         [Parameter] public EventCallback<T> OnStatusUpdated { get; set; }
 
