@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;
+using Optional;
 
 namespace MadWorld.API.Admin.UserManagement
 {
@@ -27,8 +28,19 @@ namespace MadWorld.API.Admin.UserManagement
             [HttpTrigger(AuthorizationLevel.Anonymous, RequestType.Put, Route = null)] HttpRequest req,
             ILogger log)
         {
-            RequestUser requestUser = await req.GetBodyAsync<RequestUser>();
-            return  _userManager.UpdateUser(requestUser.User);
+            Option<RequestUser> requestUserOption = await req.GetBodyAsync<RequestUser>();
+
+            if (requestUserOption.HasValue)
+            {
+                RequestUser requestUser = requestUserOption.ValueOr(new RequestUser());
+                return _userManager.UpdateUser(requestUser.User);
+            }
+
+            return new()
+            {
+                Succeed = false,
+                ErrorMessage = "User is required"
+            };
         }
     }
 }

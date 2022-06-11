@@ -19,28 +19,12 @@ namespace MadWorld.Tests.Shared.Common
 			// No Setup
 
 			// Act
-			Stream? result = StreamConverter.Convert(testObject);
+			Stream result = StreamConverter.Convert(testObject) ?? new MemoryStream();
 
 			// Assert
 			string stringResult = new StreamReader(result).ReadToEnd();
 
 			Assert.Equal("{\"Test\":\"test\"}", stringResult);
-
-			// No Teardown
-		}
-
-		[Fact]
-		public void Convert_Null_Null()
-		{
-			// No Test data
-
-			// No Setup
-
-			// Act
-			Stream? result = StreamConverter.Convert<TestObject>(null);
-
-			// Assert
-			Assert.Null(result);
 
 			// No Teardown
 		}
@@ -54,7 +38,7 @@ namespace MadWorld.Tests.Shared.Common
 			// No Setup
 
 			// Act
-			Stream? result = StreamConverter.Convert(testData);
+			Stream result = StreamConverter.Convert(testData) ?? new MemoryStream();
 
 			// Assert
 			string stringResult = new StreamReader(result).ReadToEnd();
@@ -73,7 +57,7 @@ namespace MadWorld.Tests.Shared.Common
 			// No Setup
 
 			// Act
-			Stream? result = StreamConverter.Convert(testData);
+			Stream result = StreamConverter.Convert(testData) ?? new MemoryStream();
 
 			// Assert
 			string stringResult = new StreamReader(result).ReadToEnd();

@@ -16,19 +16,21 @@ namespace MadWorld.Tests.Functions.Common.Extentions
 			RequestMockup request)
 		{
 			// Test data
-			Stream bodyStream = StreamConverter.Convert(request);
+			Stream bodyStream = StreamConverter.Convert(request) ?? new MemoryStream();
 
 			// Setup
 			HttpRequest httpRequest = new HttpRequestMockup(bodyStream);
 
 			// Act
-			RequestMockup requestResult = await httpRequest.GetBodyAsync<RequestMockup>();
+			Option<RequestMockup?> requestResult = await httpRequest.GetBodyAsync<RequestMockup>();
 
-			// Assert
-			Assert.Equal(request.Test, requestResult.Test);
+            // Assert
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+            Assert.Equal(request.Test, requestResult.ValueOr(new RequestMockup()).Test);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
 
-			// No Teardown
-		}
+            // No Teardown
+        }
 
 		[Theory]
 		[AutoDomainData]
@@ -36,16 +38,16 @@ namespace MadWorld.Tests.Functions.Common.Extentions
 			RequestWrongMockup request)
 		{
 			// Test data
-			Stream bodyStream = StreamConverter.Convert(request);
+			Stream bodyStream = StreamConverter.Convert(request) ?? new MemoryStream();
 
 			// Setup
 			HttpRequest httpRequest = new HttpRequestMockup(bodyStream);
 
 			// Act
-			RequestMockup requestResult = await httpRequest.GetBodyAsync<RequestMockup>();
+			Option<RequestMockup?> requestResult = await httpRequest.GetBodyAsync<RequestMockup>();
 
 			// Assert
-			Assert.Null(requestResult);
+			Assert.False(requestResult.HasValue);
 
 			// No Teardown
 		}

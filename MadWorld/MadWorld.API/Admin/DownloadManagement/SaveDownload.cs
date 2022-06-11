@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;
+using Optional;
 
 namespace MadWorld.API.Admin.DownloadManagement
 {
@@ -19,11 +20,20 @@ namespace MadWorld.API.Admin.DownloadManagement
             [HttpTrigger(AuthorizationLevel.Anonymous, RequestType.Post, Route = null)] HttpRequest req,
             ILogger log)
         {
-            DownloadDto download = await req.GetBodyAsync<DownloadDto>();
+            Option<DownloadDto> downloadOption = await req.GetBodyAsync<DownloadDto>();
+
+            if (downloadOption.HasValue)
+            {
+                return new()
+                {
+                    Succeed = true
+                };
+            }
 
             return new()
             {
-                Succeed = true
+                Succeed = false,
+                ErrorMessage = "Download is required"
             };
         }
     }

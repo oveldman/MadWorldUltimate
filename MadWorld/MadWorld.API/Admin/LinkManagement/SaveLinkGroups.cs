@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;
+using Optional;
 
 namespace MadWorld.API.Admin.LinkManagement
 {
@@ -28,8 +29,18 @@ namespace MadWorld.API.Admin.LinkManagement
             [HttpTrigger(AuthorizationLevel.Anonymous, RequestType.Put, Route = null)] HttpRequest req,
             ILogger log)
         {
-            List<LinkGroupAdminDto> linkGroups = await req.GetBodyAsync<List<LinkGroupAdminDto>>();
-            return _linkManager.SaveLinkGroups(linkGroups);
+            Option<List<LinkGroupAdminDto>> linkGroupsOptions = await req.GetBodyAsync<List<LinkGroupAdminDto>>();
+
+            if (linkGroupsOptions.HasValue)
+            {
+                return _linkManager.SaveLinkGroups(linkGroupsOptions.ValueOr(new List<LinkGroupAdminDto>()));
+            }
+
+            return new()
+            {
+                Succeed = false,
+                ErrorMessage = "List of link groups required"
+            };
         }
     }
 }

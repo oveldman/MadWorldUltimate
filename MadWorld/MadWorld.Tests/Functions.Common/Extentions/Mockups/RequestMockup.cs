@@ -3,7 +3,7 @@ namespace MadWorld.Tests.Functions.Common.Extentions.Mockups
 {
 	public class RequestMockup
 	{
-		public string Test { get; set; }
+		public string Test { get; set; } = string.Empty;
 	}
 }
 

@@ -11,7 +11,7 @@ namespace MadWorld.API.Anonymous.Info
 {
     public class GetLinks
     {
-        private ILinkManager _linkManager;
+        private readonly ILinkManager _linkManager;
 
         public GetLinks(ILinkManager linkManager)
         {

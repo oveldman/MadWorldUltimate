@@ -16,12 +16,12 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace MadWorld.API.Attributes
 {
-    public class AuthorizeFunction : FunctionInvocationFilterAttribute, IFunctionExceptionFilter
+    public class AuthorizeFunctionAttribute : FunctionInvocationFilterAttribute, IFunctionExceptionFilter
     {
         private readonly RoleTypes _role;
         private HttpRequest httpRequest;
 
-        public AuthorizeFunction(RoleTypes role)
+        public AuthorizeFunctionAttribute(RoleTypes role)
 		{
             _role = role;
 		}
