@@ -42,7 +42,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"oveldman_MadWorldUltimate" /o:"oveldman" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths=TestResults/*/coverage.opencover.xml /d:sonar.coverage.exclusions="**Test*.cs" /d:sonar.exclusions="**/MadWorld/MadWorld.Blazor.Componets.Monaco/wwwroot/js/ ** , **/MadWorld/MadWorld.Blazor.Componets.Monaco/wwwroot/lib/ ** , **/MadWorld/MadWorld.Website/wwwroot/lib/ **"
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"oveldman_MadWorldUltimate" /o:"oveldman" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths=TestResults/*/coverage.opencover.xml /d:sonar.coverage.exclusions="**Test*.cs" /d:sonar.exclusions="**/MadWorld.Blazor.Componets.Monaco/wwwroot/js/ ** , **/MadWorld.Blazor.Componets.Monaco/wwwroot/lib/ ** , **/MadWorld.Website/wwwroot/lib/ **"
           dotnet restore MadWorld/MadWorld.sln; 
           dotnet build MadWorld/MadWorld.sln;
           dotnet test MadWorld/MadWorld.sln --no-build --no-restore --collect:"XPlat Code Coverage" --results-directory TestResults/ -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover;
