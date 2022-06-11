@@ -1,4 +1,9 @@
-﻿<AuthorizeView>
+﻿@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+
+@inject NavigationManager Navigation
+@inject	SignOutSessionStateManager SignOutManager
+
+<AuthorizeView>
     <Authorized>
         <div class="text-white">
             Hello, @context.User.Identity?.Name!

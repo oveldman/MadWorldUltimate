@@ -1,4 +1,5 @@
 ﻿using MadWorld.Shared.Models.AnonymousAPI.Info;
+using MadWorld.Website.Services;
 using MadWorld.Website.Services.Info.Interface;
 using Microsoft.AspNetCore.Components;
 using Optional;
@@ -8,7 +9,7 @@ namespace MadWorld.Website.Pages.Info
 {
 	public partial class Links
 	{
-		[Inject] public ILinkService _linkService { get; set; }
+		[Inject] public ILinkService _linkService { get; set; } = new EmptyService();
 
 		private int MaxRows => _linkGroup.Any() ? GetMaxRows() : 0;
 		private List<LinkGroupDto> _linkGroup { get; set; } = new();

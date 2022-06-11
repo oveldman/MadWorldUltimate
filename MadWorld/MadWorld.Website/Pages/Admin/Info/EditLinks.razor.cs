@@ -2,6 +2,7 @@
 using MadWorld.Shared.Models.API.Links;
 using MadWorld.Website.Parts;
 using MadWorld.Website.Parts.Models;
+using MadWorld.Website.Services;
 using MadWorld.Website.Services.Admin.Interfaces;
 using Microsoft.AspNetCore.Components;
 
@@ -10,10 +11,7 @@ namespace MadWorld.Website.Pages.Admin.Info
     public partial class EditLinks
     {
         [Parameter]
-        public string Id { get; set; }
-
-        [Inject]
-        private NavigationManager _navigation { get; set; }
+        public string Id { get; set; } = string.Empty;
 
         private bool PageLoaded = false;
         private bool GroupFound = false;
@@ -23,7 +21,7 @@ namespace MadWorld.Website.Pages.Admin.Info
         private BootstrapAlerts _bootstrapAlerts = new();
 
         [Inject]
-        private ILinkAdminService _linkService { get; set; }
+        private ILinkAdminService _linkService { get; set; } = new EmptyService();
 
         protected override async Task OnInitializedAsync()
         {

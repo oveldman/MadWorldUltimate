@@ -5,6 +5,8 @@
 @using MadWorld.Website.Parts.Admin.Info;
 @using MadWorld.Website.Parts;
 
+@inject NavigationManager _navigation;
+
 @attribute [Authorize(Roles = nameof(RoleTypes.Adminstrator))]
 
 <PageTitle>Edit Links</PageTitle>

@@ -19,7 +19,6 @@
     <None Remove="Azure.Storage.Blobs" />
     <None Remove="BlobStorage\Interfaces\" />
     <None Remove="BlobStorage\BlobStorageContextcs" />
-    <None Remove="TableStorage\Extentions\" />
     <None Remove="BlobStorage\Extentions\" />
     <None Remove="Optional" />
   </ItemGroup>
@@ -38,7 +37,6 @@
     <Folder Include="TableStorage\Context\Interfaces\" />
     <Folder Include="BlobStorage\" />
     <Folder Include="BlobStorage\Interfaces\" />
-    <Folder Include="TableStorage\Extentions\" />
     <Folder Include="BlobStorage\Extentions\" />
   </ItemGroup>
 </Project>

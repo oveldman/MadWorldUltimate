@@ -137,32 +137,32 @@ namespace MadWorld.Data.TableStorage.Context
             return _table.UpsertEntityAsync(entity, mode, cancellationToken);
         }
 
-        Response<T> ITableContext.GetEntity<T>(string partitionKey, string rowKey, IEnumerable<string> select, CancellationToken cancellationToken)
+        Response<T> ITableContext.GetEntity<T>(string partitionKey, string rowKey, IEnumerable<string>? select, CancellationToken cancellationToken)
         {
             return _table.GetEntity<T>(partitionKey, rowKey, select, cancellationToken);
         }
 
-        Task<Response<T>> ITableContext.GetEntityAsync<T>(string partitionKey, string rowKey, IEnumerable<string> select, CancellationToken cancellationToken)
+        Task<Response<T>> ITableContext.GetEntityAsync<T>(string partitionKey, string rowKey, IEnumerable<string>? select, CancellationToken cancellationToken)
         {
             return _table.GetEntityAsync<T>(partitionKey, rowKey, select, cancellationToken);
         }
 
-        Pageable<T> ITableContext.Query<T>(Expression<Func<T, bool>> filter, int? maxPerPage, IEnumerable<string> select, CancellationToken cancellationToken)
+        Pageable<T> ITableContext.Query<T>(Expression<Func<T, bool>> filter, int? maxPerPage, IEnumerable<string>? select, CancellationToken cancellationToken)
         {
             return _table.Query(filter, maxPerPage, select, cancellationToken);
         }
 
-        Pageable<T> ITableContext.Query<T>(string filter, int? maxPerPage, IEnumerable<string> select, CancellationToken cancellationToken)
+        Pageable<T> ITableContext.Query<T>(string? filter, int? maxPerPage, IEnumerable<string>? select, CancellationToken cancellationToken)
         {
             return _table.Query<T>(filter, maxPerPage, select, cancellationToken);
         }
 
-        AsyncPageable<T> ITableContext.QueryAsync<T>(Expression<Func<T, bool>> filter, int? maxPerPage, IEnumerable<string> select, CancellationToken cancellationToken)
+        AsyncPageable<T> ITableContext.QueryAsync<T>(Expression<Func<T, bool>> filter, int? maxPerPage, IEnumerable<string>? select, CancellationToken cancellationToken)
         {
             return _table.QueryAsync(filter, maxPerPage, select, cancellationToken);
         }
 
-        AsyncPageable<T> ITableContext.QueryAsync<T>(string filter, int? maxPerPage, IEnumerable<string> select, CancellationToken cancellationToken)
+        AsyncPageable<T> ITableContext.QueryAsync<T>(string? filter, int? maxPerPage, IEnumerable<string>? select, CancellationToken cancellationToken)
         {
             return _table.QueryAsync<T>(filter, maxPerPage, select, cancellationToken);
         }

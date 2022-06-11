@@ -1,5 +1,9 @@
 ﻿@page "/Download/{ID}"
 
+@using BlazorDownloadFile;
+
+@inject IBlazorDownloadFileService _blazorDownloadFileService;
+
 <PageTitle>Download</PageTitle>
 
 @if (!_downloadFinished)

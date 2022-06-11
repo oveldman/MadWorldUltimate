@@ -1,5 +1,8 @@
 ﻿using System;
 using MadWorld.Shared.Models.API.Users;
+using MadWorld.Website.Services;
+using MadWorld.Website.Services.Admin.Interfaces;
+using Microsoft.AspNetCore.Components;
 
 namespace MadWorld.Website.Pages.Admin
 {
@@ -8,6 +11,9 @@ namespace MadWorld.Website.Pages.Admin
         private bool PageLoaded = false;
 
         private List<UserDto> _users = new();
+
+        [Inject]
+        private IUserService _userService { get; set; } = new EmptyService();
 
         protected override async Task OnInitializedAsync()
         {

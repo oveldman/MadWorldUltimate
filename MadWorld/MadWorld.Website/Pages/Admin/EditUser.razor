@@ -2,9 +2,7 @@
 
 @using Microsoft.AspNetCore.Authorization;
 @using MadWorld.Shared.Enums;
-@using MadWorld.Website.Services.Admin.Interfaces;
 @inject NavigationManager _navigation;
-@inject IUserService _userService;
 
 @attribute [Authorize(Roles = nameof(RoleTypes.Adminstrator))]
 

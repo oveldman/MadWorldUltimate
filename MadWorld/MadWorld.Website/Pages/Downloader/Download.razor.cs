@@ -1,5 +1,6 @@
 ﻿using BlazorDownloadFile;
 using MadWorld.Shared.Models.AnonymousAPI.Downloader;
+using MadWorld.Website.Services;
 using MadWorld.Website.Services.Interfaces;
 using Microsoft.AspNetCore.Components;
 
@@ -10,8 +11,7 @@ namespace MadWorld.Website.Pages.Downloader
         [Parameter]
         public string ID { get; set; } = string.Empty;
 
-        [Inject] public IBlazorDownloadFileService _blazorDownloadFileService { get; set; }
-        [Inject] public IDownloadService _downloadService { get; set; }
+        [Inject] public IDownloadService _downloadService { get; set; } = new EmptyService();
 
         private bool _downloadFinished;
         private bool _downloadFound;

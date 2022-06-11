@@ -1,7 +1,6 @@
 ﻿using System;
 using MadWorld.Business.Managers.Interfaces;
 using MadWorld.Business.Mappers.Interfaces;
-using MadWorld.Data.TableStorage.Extentions;
 using MadWorld.Data.TableStorage.Queries.Interfaces;
 using MadWorld.Data.TableStorage.Tables;
 using MadWorld.Shared.Models.API.Common;

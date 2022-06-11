@@ -7,11 +7,6 @@ namespace MadWorld.Website.Shared
 {
 	public partial class LoginDisplay
 	{
-		[Inject]
-		private NavigationManager Navigation { get; set; }
-		[Inject]
-		SignOutSessionStateManager SignOutManager { get; set; }
-
 		private async Task BeginSignOut(MouseEventArgs args)
 		{
 			await SignOutManager.SetSignOutState();

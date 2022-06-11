@@ -2,6 +2,7 @@
 using MadWorld.Shared.Models.API.Links;
 using MadWorld.Website.Parts;
 using MadWorld.Website.Parts.Models;
+using MadWorld.Website.Services;
 using MadWorld.Website.Services.Admin.Interfaces;
 using Microsoft.AspNetCore.Components;
 
@@ -14,7 +15,7 @@ namespace MadWorld.Website.Pages.Admin.Info
         private BootstrapAlerts _bootstrapAlerts = new();
 
         [Inject]
-        private ILinkAdminService _linkService { get; set; }
+        private ILinkAdminService _linkService { get; set; } = new EmptyService();
 
         protected override async Task OnInitializedAsync()
         {
