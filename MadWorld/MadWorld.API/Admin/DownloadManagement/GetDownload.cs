@@ -21,6 +21,7 @@ namespace MadWorld.API.Admin.DownloadManagement
 
             return new()
             {
+                Found = true,
                 Download = new DownloadDto
                 {
                     Name = "Test",

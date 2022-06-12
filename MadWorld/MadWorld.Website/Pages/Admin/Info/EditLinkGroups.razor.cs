@@ -11,7 +11,7 @@ namespace MadWorld.Website.Pages.Admin.Info
 	public partial class EditLinkGroups
 	{
         private List<LinkGroupAdminDto> LinkGroups = new();
-        private AlertStatus Status = new();
+        private AlertStatus Status { get; set; } = new();
         private BootstrapAlerts _bootstrapAlerts = new();
 
         [Inject]

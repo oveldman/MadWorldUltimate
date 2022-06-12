@@ -12,6 +12,11 @@ namespace MadWorld.Website.Services
 {
     public class EmptyService : IAccountService, IDownloadService, IDownloadAdminService, ILinkService, ILinkAdminService, IUserService
     {
+        public Task<CommonResponse> DeleteDownload(string id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<List<LinkGroupDto>> GetAll()
         {
             throw new NotImplementedException();
@@ -52,6 +57,11 @@ namespace MadWorld.Website.Services
             throw new NotImplementedException();
         }
 
+        public Task<CommonResponse> SaveDownload(MadWorld.Shared.Models.API.Downloads.DownloadDto download)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<CommonResponse> SaveGroupLinks(List<LinkGroupAdminDto> linkGroups)
         {
             throw new NotImplementedException();
@@ -63,6 +73,11 @@ namespace MadWorld.Website.Services
         }
 
         public Task<CommonResponse> UpdateUser(UserDetailDto user)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<MadWorld.Shared.Models.API.Downloads.ResponseDownload> IDownloadAdminService.GetDownload(string id)
         {
             throw new NotImplementedException();
         }

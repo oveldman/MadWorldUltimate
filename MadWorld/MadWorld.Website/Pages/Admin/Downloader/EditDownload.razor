@@ -1,7 +1,67 @@
 ﻿@page "/Admin/EditDownload/{ID}"
 @page "/Admin/NewDownload"
 
+@using MadWorld.Website.Parts;
+
+@inject NavigationManager _navigation;
+
 <PageTitle>@PageTitle</PageTitle>
 
-@ID
+@if (PageLoaded)
+{
+    <BootstrapAlerts @ref="_bootstrapAlerts" @bind-Status="Status" />
 
+    @if (IsNew)
+    {
+        <h2>New File</h2>
+    }
+    else
+    {
+        <h2>Edit file: @ID</h2>
+    }
+
+    <EditForm Model="@_downloadDto" OnValidSubmit="() => SaveDownload()">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        @if (!IsNew)
+        {
+            <div class="mb-3">
+                <label for="ID" class="form-label">ID</label>
+                <input type="text" class="form-control" id="ID" @bind-value="_downloadDto.Id" disabled>
+            </div>
+            <div class="mb-3">
+                <label for="Created" class="form-label">Created</label>
+                <input type="text" class="form-control" id="Created" @bind-value="_downloadDto.Created" disabled>
+            </div>
+        }
+        <div class="mb-3">
+            <label for="Name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="Name" @bind-value="_downloadDto.Name">
+        </div>
+        <div class="mb-3">
+            <label for="Extension" class="form-label">Extension</label>
+            <input type="text" class="form-control" id="Extension" @bind-value="_downloadDto.Extention">
+        </div>
+        <div class="mb-3">
+            <label for="ContentType" class="form-label">Content Type</label>
+            <input type="text" class="form-control" id="ContentType" @bind-value="_downloadDto.Content">
+        </div>
+        <div class="mb-3">
+            <label for="Upload" class="form-label">File Upload</label>
+            <InputFile class="form-control" OnChange="UploadFileToMemory" />
+        </div>
+        <div class="mb-3 row">
+            <button type="submit" class="btn btn-primary">@SaveButtonText</button>
+        </div>
+        @if (!IsNew)
+        {
+            <div class="mb-3 row">
+                <button type="button" class="btn btn-primary" @onclick="DeleteDownload">Delete Download</button>
+            </div>
+        }
+    </EditForm>
+}
+else
+{
+    <PageLoader />
+}

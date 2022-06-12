@@ -2,6 +2,7 @@
 
 @using Microsoft.AspNetCore.Authorization;
 @using MadWorld.Shared.Enums;
+@using MadWorld.Website.Parts;
 @inject NavigationManager _navigation;
 
 @attribute [Authorize(Roles = nameof(RoleTypes.Adminstrator))]
@@ -45,6 +46,6 @@
 }
 else
 {
-    <div class="loader"></div>
+    <PageLoader />
 }
 
