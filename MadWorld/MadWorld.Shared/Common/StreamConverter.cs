@@ -6,11 +6,11 @@ namespace MadWorld.Shared.Common
 {
 	public static class StreamConverter
 	{
-		public static Stream? Convert<T>(T item)
+		public static Stream Convert<T>(T item)
         {
 			if (item is null)
             {
-				return null;
+				return new MemoryStream();
             }
 
 			string body = GetStringFromObject(item);

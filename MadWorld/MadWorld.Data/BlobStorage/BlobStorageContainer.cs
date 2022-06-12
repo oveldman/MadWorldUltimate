@@ -8,17 +8,17 @@ namespace MadWorld.Data.BlobStorage
 {
 	public class BlobStorageContainer : IBlobStorageContainer
 	{
-		private readonly BlobContainerClient _containerClient;
+		private readonly IBlobContainerClient _containerClient;
 
 		public BlobStorageContainer(BlobServiceClient blobServiceClient, string name)
         {
-			_containerClient = blobServiceClient.CreateBlobContainer(name);
+			_containerClient = blobServiceClient.CreateIBlobContainer(name);
         }
 
 		public bool Delete(string fileName, string path = "")
         {
 			string filePath = Path.Combine(path, fileName);
-			IBlobClient client = _containerClient.GetIBlobClient(filePath);
+			IBlobClient client = _containerClient.GetBlobClient(filePath);
 			return client.DeleteIfExists().Value;
 		}
 
@@ -26,7 +26,7 @@ namespace MadWorld.Data.BlobStorage
         {
 			string filePath = Path.Combine(path, fileName);
 
-			IBlobClient client = _containerClient.GetIBlobClient(filePath);
+			IBlobClient client = _containerClient.GetBlobClient(filePath);
 
 			var result = client.DownloadContent();
 			var response = result.GetRawResponse();
@@ -64,7 +64,7 @@ namespace MadWorld.Data.BlobStorage
         {
 			string filePath = Path.Combine(path, fileName);
 
-			IBlobClient client = _containerClient.GetIBlobClient(filePath);
+			IBlobClient client = _containerClient.GetBlobClient(filePath);
 
 			var result = client.Upload(body);
 			var response = result.GetRawResponse();

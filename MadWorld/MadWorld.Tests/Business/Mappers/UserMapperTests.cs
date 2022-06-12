@@ -30,6 +30,35 @@ namespace MadWorld.Tests.Business.Mappers
 
             // No Teardown
         }
+
+        [Theory]
+        [AutoDomainData]
+        public void Translate_UserAndUserModel_UserModel(
+            User user)
+        {
+            // No Test data
+            UserDto testDto = new()
+            {
+                ID = "Test"
+            };
+
+            // Setup
+            UserMapper userMapper = UserMapper.Create();
+
+            // Act
+            UserDto userModel = userMapper.Translate(user, testDto);
+
+            // Assert
+            UserDto expectedModel = new()
+            {
+                ID = user.RowKey,
+                Email = user.Email
+            };
+
+            expectedModel.Should().BeEquivalentTo(userModel);
+
+            // No Teardown
+        }
     }
 }
 
