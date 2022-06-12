@@ -58,6 +58,7 @@
     <None Remove="Parts\Models\" />
     <None Remove="Optional" />
     <None Remove="Ardalis.GuardClauses" />
+    <None Remove="Pages\Admin\Downloader\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MadWorld.Shared\MadWorld.Shared.csproj">
@@ -89,6 +90,7 @@
     <Folder Include="Parts\Admin\Info\" />
     <Folder Include="Parts\DragParts\" />
     <Folder Include="Parts\Models\" />
+    <Folder Include="Pages\Admin\Downloader\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="wwwroot\.well-known\security.txt" />

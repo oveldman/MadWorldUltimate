@@ -26,7 +26,6 @@ namespace MadWorld.API.Admin.DownloadManagement
                         Name = "Test",
                         Content = "text/plain",
                         Created = DateTime.Now,
-                        Extention = "txt",
                         Id = Guid.NewGuid().ToString()
                     },
                     new DownloadDto
@@ -34,7 +33,6 @@ namespace MadWorld.API.Admin.DownloadManagement
                         Name = "Test 2",
                         Content = "text/plain",
                         Created = DateTime.Now,
-                        Extention = "txt",
                         Id = Guid.NewGuid().ToString()
                     }
                 }

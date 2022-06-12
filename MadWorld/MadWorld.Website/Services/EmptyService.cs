@@ -10,7 +10,7 @@ using MadWorld.Website.Services.Interfaces;
 
 namespace MadWorld.Website.Services
 {
-    public class EmptyService : IAccountService, IDownloadService, ILinkService, ILinkAdminService, IUserService
+    public class EmptyService : IAccountService, IDownloadService, IDownloadAdminService, ILinkService, ILinkAdminService, IUserService
     {
         public Task<List<LinkGroupDto>> GetAll()
         {
@@ -28,6 +28,11 @@ namespace MadWorld.Website.Services
         }
 
         public Task<ResponseDownload> GetDownload(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<MadWorld.Shared.Models.API.Downloads.DownloadDto>> GetDownloads()
         {
             throw new NotImplementedException();
         }
