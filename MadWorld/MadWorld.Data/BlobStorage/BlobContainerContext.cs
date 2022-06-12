@@ -14,7 +14,7 @@ namespace MadWorld.Data.BlobStorage
 			_client = containerClient;
 		}
 
-		public IBlobClient GetIBlobClient(string blobName)
+		public IBlobClient GetBlobClient(string blobName)
 		{
 			var blobClient = _client.GetBlobClient(blobName);
 			return new BlobFileClient(blobClient);
