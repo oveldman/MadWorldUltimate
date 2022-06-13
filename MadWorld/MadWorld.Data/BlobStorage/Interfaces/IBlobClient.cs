@@ -8,7 +8,7 @@ namespace MadWorld.Data.BlobStorage.Interfaces
 	{
 		Response<bool> DeleteIfExists();
 		Response<BlobDownloadResult> DownloadContent();
-		Response<BlobContentInfo> Upload(Stream content);
+		Response<BlobContentInfo> Upload(Stream content, string contentType);
 	}
 }
 

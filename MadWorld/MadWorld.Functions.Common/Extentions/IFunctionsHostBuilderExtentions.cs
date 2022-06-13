@@ -32,23 +32,33 @@ public static class IFunctionsHostBuilderExtentions
 
     private static void AddInternPackages(IFunctionsHostBuilder builder)
     {
-        //Common function
-        builder.Services.AddScoped<IUserValidator, UserValidator>();
+        AddCommonFunctions(builder);
+        AddBusinessLayer(builder);
+        AddTableStorage(builder);
+        AddBlobStorage(builder);
+    }
 
-        //Business
+    private static void AddCommonFunctions(IFunctionsHostBuilder builder)
+    {
+        builder.Services.AddScoped<IUserValidator, UserValidator>();
+    }
+
+    private static void AddBusinessLayer(IFunctionsHostBuilder builder)
+    {
         builder.Services.AddScoped<ILinkAdminManager, LinkAdminManager>();
         builder.Services.AddScoped<ILinkManager, LinkManager>();
         builder.Services.AddScoped<IUserManager, UserManager>();
         builder.Services.AddSingleton<IUserMapper>(_ => UserMapper.Create());
         builder.Services.AddSingleton<ILinkMapper>(_ => LinkMapper.Create());
+    }
 
-        //Data
+    private static void AddTableStorage(IFunctionsHostBuilder builder)
+    {
         builder.Services.AddScoped<ITableStorageFactory, TableStorageFactory>();
+        builder.Services.AddScoped<IDownloadQueries, DownloadQueries>();
         builder.Services.AddScoped<ILinkQueries, LinkQueries>();
         builder.Services.AddScoped<IResumeQueries, ResumeQueries>();
         builder.Services.AddScoped<IUserQueries, UserQueries>();
-
-        AddBlobStorage(builder);
     }
 
     private static void AddBlobStorage(IFunctionsHostBuilder builder)

@@ -25,9 +25,9 @@ namespace MadWorld.Data.BlobStorage
 			return _blobClient.DownloadContent();
         }
 
-		public Response<BlobContentInfo> Upload(Stream content)
+		public Response<BlobContentInfo> Upload(Stream content, BlobHttpHeaders httpHeaders)
         {
-			return _blobClient.Upload(content);
+			return _blobClient.Upload(content, httpHeaders);
 		}
 	}
 }

@@ -60,32 +60,32 @@ namespace MadWorld.Data.BlobStorage
 			return Encoding.Default.GetString(body);
 		}
 
-		public bool Upload(string fileName, Stream body, string path = "")
+		public bool Upload(string fileName, Stream body, string contentType, string path = "")
         {
 			string filePath = Path.Combine(path, fileName);
 
 			IBlobClient client = _containerClient.GetBlobClient(filePath);
 
-			var result = client.Upload(body);
+			var result = client.Upload(body, contentType);
 			var response = result.GetRawResponse();
 			return !response.IsError;
 		}
 
-		public bool Upload(string fileName, byte[] body, string path = "")
+		public bool Upload(string fileName, byte[] body, string contentType, string path = "")
         {
-			return Upload(fileName, new MemoryStream(body), path);
+			return Upload(fileName, new MemoryStream(body), contentType, path);
         }
 
-		public bool Upload(string fileName, string body, string path = "")
+		public bool Upload(string fileName, string body, string contentType, string path = "")
 		{
 			byte[] bodyBytes = Encoding.ASCII.GetBytes(body);
-			return Upload(fileName, bodyBytes, path);
+			return Upload(fileName, bodyBytes, contentType, path);
 		}
 
-		public bool UploadBase64(string fileName, string body, string path = "")
+		public bool UploadBase64(string fileName, string body, string contentType, string path = "")
 		{
 			byte[] bodyBytes = Convert.FromBase64String(body);
-			return Upload(fileName, bodyBytes, path);
+			return Upload(fileName, bodyBytes, contentType, path);
 		}
 	}
 }

@@ -8,10 +8,10 @@ namespace MadWorld.Data.BlobStorage.Interfaces
 		byte[] DownloadBytes(string fileName, string path = "");
 		string DownloadBase64(string fileName, string path = "");
 		string DownloadString(string fileName, string path = "");
-		bool Upload(string fileName, Stream body, string path = "");
-		bool Upload(string fileName, byte[] body, string path = "");
-		bool Upload(string fileName, string body, string path = "");
-		bool UploadBase64(string fileName, string body, string path = "");
+		bool Upload(string fileName, Stream body, string contentType, string path = "");
+		bool Upload(string fileName, byte[] body, string contentType, string path = "");
+		bool Upload(string fileName, string body, string contentType, string path = "");
+		bool UploadBase64(string fileName, string body, string contentType, string path = "");
 	}
 }
 
