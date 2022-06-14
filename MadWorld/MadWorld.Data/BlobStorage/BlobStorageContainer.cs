@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
 using MadWorld.Data.BlobStorage.Extentions;
 using MadWorld.Data.BlobStorage.Interfaces;
 
@@ -66,7 +67,12 @@ namespace MadWorld.Data.BlobStorage
 
 			IBlobClient client = _containerClient.GetBlobClient(filePath);
 
-			var result = client.Upload(body, contentType);
+			BlobHttpHeaders blobHttpHeader = new()
+			{
+				ContentType = contentType
+			};
+
+			var result = client.Upload(body, blobHttpHeader);
 			var response = result.GetRawResponse();
 			return !response.IsError;
 		}
