@@ -1,5 +1,6 @@
 ﻿using System;
 using MadWorld.API.Attributes;
+using MadWorld.Business.Managers.Interfaces;
 using MadWorld.Shared.Enums;
 using MadWorld.Shared.Models.API.Common;
 using Microsoft.AspNetCore.Http;
@@ -11,6 +12,13 @@ namespace MadWorld.API.Admin.DownloadManagement
 {
 	public class DeleteDownload
 	{
+        private readonly IDownloadManager _downloadManager;
+
+        public DeleteDownload(IDownloadManager downloadManager)
+        {
+            _downloadManager = downloadManager;
+        }
+
         [AuthorizeFunction(RoleTypes.Adminstrator)]
         [FunctionName(nameof(DeleteDownload))]
         public CommonResponse Run(

@@ -47,9 +47,11 @@ public static class IFunctionsHostBuilderExtentions
     {
         builder.Services.AddScoped<ILinkAdminManager, LinkAdminManager>();
         builder.Services.AddScoped<ILinkManager, LinkManager>();
+        builder.Services.AddScoped<IDownloadManager, DownloadManager>();
         builder.Services.AddScoped<IUserManager, UserManager>();
-        builder.Services.AddSingleton<IUserMapper>(_ => UserMapper.Create());
+        builder.Services.AddSingleton<IDownloadMapper>(_ => DownloadMapper.Create());
         builder.Services.AddSingleton<ILinkMapper>(_ => LinkMapper.Create());
+        builder.Services.AddSingleton<IUserMapper>(_ => UserMapper.Create());
     }
 
     private static void AddTableStorage(IFunctionsHostBuilder builder)

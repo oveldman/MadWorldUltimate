@@ -1,5 +1,6 @@
 ﻿using System;
 using MadWorld.API.Attributes;
+using MadWorld.Business.Managers.Interfaces;
 using MadWorld.Shared.Enums;
 using MadWorld.Shared.Models.API.Downloads;
 using Microsoft.AspNetCore.Http;
@@ -11,6 +12,13 @@ namespace MadWorld.API.Admin.DownloadManagement
 {
     public class GetDownload
     {
+        private readonly IDownloadManager _downloadManager;
+
+        public GetDownload(IDownloadManager downloadManager)
+        {
+            _downloadManager = downloadManager;
+        }
+
         [AuthorizeFunction(RoleTypes.Adminstrator)]
         [FunctionName(nameof(GetDownload))]
         public ResponseDownload Run(

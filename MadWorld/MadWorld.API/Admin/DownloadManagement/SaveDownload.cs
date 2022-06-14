@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using MadWorld.API.Attributes;
+using MadWorld.Business.Managers.Interfaces;
 using MadWorld.Shared.Enums;
 using MadWorld.Shared.Models.API.Common;
 using MadWorld.Shared.Models.API.Downloads;
@@ -14,6 +15,13 @@ namespace MadWorld.API.Admin.DownloadManagement
 {
 	public class SaveDownload
 	{
+        private readonly IDownloadManager _downloadManager;
+
+        public SaveDownload(IDownloadManager downloadManager)
+        {
+            _downloadManager = downloadManager;
+        }
+
         [AuthorizeFunction(RoleTypes.Adminstrator)]
         [FunctionName(nameof(SaveDownload))]
         public async Task<CommonResponse> Run(
