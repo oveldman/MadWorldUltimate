@@ -14,7 +14,8 @@ namespace MadWorld.Shared.Models.API.Downloads
 		public string Extention { get; set; } = string.Empty;
 		[Required]
 		public string BodyBase64 { get; set; } = string.Empty;
-		public DateTime Created { get; set; }
+		public DateTimeOffset? Created { get; set; }
+		public bool IsNew { get; set; }
 	}
 }
 

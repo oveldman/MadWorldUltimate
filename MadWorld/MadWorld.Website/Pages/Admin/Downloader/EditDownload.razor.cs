@@ -10,10 +10,10 @@ using Microsoft.AspNetCore.Components.Forms;
 
 namespace MadWorld.Website.Pages.Admin.Downloader
 {
-	public partial class EditDownload
-	{
+    public partial class EditDownload
+    {
         [Parameter]
-		public string ID { get; set; } = string.Empty;
+        public string ID { get; set; } = string.Empty;
         private int MaxSize = 10240000;
 
         private DownloadDto _downloadDto = new();
@@ -40,13 +40,14 @@ namespace MadWorld.Website.Pages.Admin.Downloader
                 await GetDownload();
             }
 
+            _downloadDto.IsNew = IsNew;
             PageLoaded = true;
             StateHasChanged();
         }
 
         private async Task GetDownload()
         {
-            ResponseDownload response = await _downloadService.GetDownload(ID);
+            ResponseDownload response = await _downloadService.GetDownload(ID, false);
             _downloadDto = response.Download;
 
             if (!response.Found)
@@ -84,6 +85,12 @@ namespace MadWorld.Website.Pages.Admin.Downloader
             {
                 SetError($"Something went wrong while saving this file.");
             }
+        }
+
+        private async Task GetDownloadBody()
+        {
+            ResponseDownload response = await _downloadService.GetDownload(ID, true);
+            await _blazorDownloadFileService.DownloadFile(response.Download.Name, response.Download.BodyBase64, response.Download.Content);
         }
 
         private async Task DeleteDownload()

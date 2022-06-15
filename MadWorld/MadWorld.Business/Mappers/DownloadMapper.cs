@@ -28,6 +28,7 @@ namespace MadWorld.Business.Mappers
         {
             config.CreateMap<Download, DownloadDto>()
                 .ForMember(d => d.Id, s => s.MapFrom(f => f.RowKey))
+                .ForMember(d => d.Created, s => s.MapFrom(f => f.Timestamp))
                 .ReverseMap();
         }
     }

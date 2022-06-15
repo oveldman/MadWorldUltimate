@@ -25,26 +25,7 @@ namespace MadWorld.API.Admin.DownloadManagement
             [HttpTrigger(AuthorizationLevel.Anonymous, RequestType.Get, Route = null)] HttpRequest req,
             ILogger log)
         {
-            return new()
-            {
-                Downloads = new()
-                {
-                    new DownloadDto
-                    {
-                        Name = "Test",
-                        Content = "text/plain",
-                        Created = DateTime.Now,
-                        Id = Guid.NewGuid().ToString()
-                    },
-                    new DownloadDto
-                    {
-                        Name = "Test 2",
-                        Content = "text/plain",
-                        Created = DateTime.Now,
-                        Id = Guid.NewGuid().ToString()
-                    }
-                }
-            };
+            return _downloadManager.GetAllDownloads();
         }
     }
 }

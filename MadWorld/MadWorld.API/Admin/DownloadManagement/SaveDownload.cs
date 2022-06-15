@@ -32,10 +32,7 @@ namespace MadWorld.API.Admin.DownloadManagement
 
             if (downloadOption.HasValue)
             {
-                return new()
-                {
-                    Succeed = true
-                };
+                return _downloadManager.SaveDownload(downloadOption.ValueOr(new DownloadDto()));
             }
 
             return new()

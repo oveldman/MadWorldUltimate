@@ -22,9 +22,9 @@ namespace MadWorld.Website.Services.Admin
             return response.Downloads;
         }
 
-        public async Task<ResponseDownload> GetDownload(string id)
+        public async Task<ResponseDownload> GetDownload(string id, bool getBody)
         {
-            return await _client.GetFromJsonAsync<ResponseDownload>($"GetDownload?id={id}") ?? new();
+            return await _client.GetFromJsonAsync<ResponseDownload>($"GetDownload?id={id}&getBody={getBody}") ?? new();
         }
 
         public async Task<CommonResponse> SaveDownload(DownloadDto download)

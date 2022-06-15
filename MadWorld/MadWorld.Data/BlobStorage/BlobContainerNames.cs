@@ -3,7 +3,7 @@ namespace MadWorld.Data.BlobStorage
 {
 	public static class BlobContainerNames
 	{
-		public const string MadWorldBlob = nameof(MadWorldBlob);
+		public const string MadWorldBlob = "madworldblob";
 	}
 }
 

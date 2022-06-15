@@ -27,21 +27,9 @@ namespace MadWorld.API.Admin.DownloadManagement
         {
             string id = req.Query[QueryKeys.ID];
             string getBodyQuery = req.Query[QueryKeys.GetBody];
-            bool getBody = bool.TryParse(getBodyQuery, out bool getBodyParsed) ? getBodyParsed : false;
+            bool getBody = bool.TryParse(getBodyQuery, out bool getBodyParsed) && getBodyParsed;
 
-            return new()
-            {
-                Found = true,
-                Download = new DownloadDto
-                {
-                    Name = "Test",
-                    Content = "text/plain",
-                    Created = DateTime.Now,
-                    Extention = "txt",
-                    Id = Guid.NewGuid().ToString(),
-                    BodyBase64 = "RGl0IGlzIGVlbiB0ZXh0IGZpbGUh"
-                }
-            };
+            return _downloadManager.GetDownload(id, getBody);
         }
     }
 }

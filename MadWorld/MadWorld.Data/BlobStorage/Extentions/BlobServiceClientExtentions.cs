@@ -8,8 +8,19 @@ namespace MadWorld.Data.BlobStorage.Extentions
 	{
 		public static IBlobContainerClient CreateIBlobContainer(this BlobServiceClient client, string name)
         {
-			BlobContainerClient container = client.CreateBlobContainer(name);
+			BlobContainerClient container = CreateContainerIfNotExists(client, name);
 			return new BlobContainerContext(container);
+		}
+
+		private static BlobContainerClient CreateContainerIfNotExists(BlobServiceClient client, string name)
+        {
+			var containers = client.GetBlobContainers();
+			if (containers.Any(c => c.Name.Equals(name)))
+            {
+				return client.GetBlobContainerClient(name);
+            }
+
+			return client.CreateBlobContainer(name);
 		}
 	}
 }

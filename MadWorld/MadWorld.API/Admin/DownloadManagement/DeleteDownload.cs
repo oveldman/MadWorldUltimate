@@ -26,11 +26,7 @@ namespace MadWorld.API.Admin.DownloadManagement
             ILogger log)
         {
             string id = req.Query[QueryKeys.ID];
-
-            return new()
-            {
-                Succeed = true
-            };
+            return _downloadManager.DeleteDownload(id);
         }
     }
 }

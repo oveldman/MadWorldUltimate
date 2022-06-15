@@ -1,8 +1,10 @@
 ﻿@page "/Admin/EditDownload/{ID}"
 @page "/Admin/NewDownload"
 
+@using BlazorDownloadFile;
 @using MadWorld.Website.Parts;
 
+@inject IBlazorDownloadFileService _blazorDownloadFileService;
 @inject NavigationManager _navigation;
 
 <PageTitle>@PageTitle</PageTitle>
@@ -46,15 +48,21 @@
             <label for="ContentType" class="form-label">Content Type</label>
             <input type="text" class="form-control" id="ContentType" @bind-value="_downloadDto.Content">
         </div>
-        <div class="mb-3">
-            <label for="Upload" class="form-label">File Upload</label>
-            <InputFile class="form-control" OnChange="UploadFileToMemory" />
-        </div>
+        @if (IsNew)
+        {
+            <div class="mb-3">
+                <label for="Upload" class="form-label">File Upload</label>
+                <InputFile class="form-control" OnChange="UploadFileToMemory" />
+            </div>
+        }
         <div class="mb-3 row">
             <button type="submit" class="btn btn-primary">@SaveButtonText</button>
         </div>
         @if (!IsNew)
         {
+            <div class="mb-3 row">
+                <button type="button" class="btn btn-primary" @onclick="GetDownloadBody">Download file</button>
+            </div>
             <div class="mb-3 row">
                 <button type="button" class="btn btn-primary" @onclick="DeleteDownload">Delete Download</button>
             </div>

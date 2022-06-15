@@ -11,6 +11,11 @@ namespace MadWorld.Data.TableStorage.Tables
 		public string RowKey { get; set; } = string.Empty;
 		public DateTimeOffset? Timestamp { get; set; }
 		public ETag ETag { get; set; }
+
+		public string Name { get; set; } = string.Empty;
+		public string Content { get; set; } = string.Empty;
+		public string Extention { get; set; } = string.Empty;
+		public bool IsDeleted { get; set; }
 	}
 }
 

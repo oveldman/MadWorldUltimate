@@ -37,6 +37,11 @@ namespace MadWorld.Website.Services
             throw new NotImplementedException();
         }
 
+        public Task<MadWorld.Shared.Models.API.Downloads.ResponseDownload> GetDownload(string id, bool getBody)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<List<MadWorld.Shared.Models.API.Downloads.DownloadDto>> GetDownloads()
         {
             throw new NotImplementedException();
@@ -73,11 +78,6 @@ namespace MadWorld.Website.Services
         }
 
         public Task<CommonResponse> UpdateUser(UserDetailDto user)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task<MadWorld.Shared.Models.API.Downloads.ResponseDownload> IDownloadAdminService.GetDownload(string id)
         {
             throw new NotImplementedException();
         }

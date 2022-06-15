@@ -29,7 +29,7 @@ namespace MadWorld.Data.BlobStorage
 
 			IBlobClient client = _containerClient.GetBlobClient(filePath);
 
-			var result = client.DownloadContent();
+			var result = client.DownloadStreaming();
 			var response = result.GetRawResponse();
 
 			if (response.IsError)
@@ -37,7 +37,7 @@ namespace MadWorld.Data.BlobStorage
 				return new MemoryStream();
             }
 
-			return response.ContentStream ?? new MemoryStream();
+			return result.Value.Content ?? new MemoryStream();
 		}
 
 		public byte[] DownloadBytes(string fileName, string path = "")

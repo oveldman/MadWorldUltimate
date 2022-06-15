@@ -17,12 +17,13 @@ namespace MadWorld.Data.BlobStorage
 
 		public Response<bool> DeleteIfExists()
 		{
+
 			return _blobClient.DeleteIfExists();
 		}
 
-		public Response<BlobDownloadResult> DownloadContent()
+		public Response<BlobDownloadStreamingResult> DownloadStreaming()
         {
-			return _blobClient.DownloadContent();
+			return _blobClient.DownloadStreaming();
         }
 
 		public Response<BlobContentInfo> Upload(Stream content, BlobHttpHeaders httpHeaders)
