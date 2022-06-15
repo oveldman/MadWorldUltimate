@@ -68,7 +68,7 @@ public static class IFunctionsHostBuilderExtentions
     {
         builder.Services.AddScoped<IBlobStorageContainer>(service => {
             var blobClient = service.GetRequiredService<BlobServiceClient>();
-            return new BlobStorageContainer(blobClient, BlobContainerNames.MadWorldBlob);
+            return new BlobStorageContainer(blobClient, BlobContainerNames.MadWorldWebsite);
         });
     }
 
