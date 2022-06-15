@@ -15,9 +15,9 @@ namespace MadWorld.Website.Services
             _client = clientFactory.CreateClient(ApiTypes.MadWorldApiAnonymous);
         }
 
-        public async Task<ResponseDownload> GetDownload(string id)
+        public async Task<ResponseDownloadAnonymous> GetDownload(string id)
         {
-            return await _client.GetFromJsonAsync<ResponseDownload>($"Download?id={id}") ?? new ResponseDownload();
+            return await _client.GetFromJsonAsync<ResponseDownloadAnonymous>($"Download?id={id}") ?? new ResponseDownloadAnonymous();
         }
     }
 }

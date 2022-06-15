@@ -12,9 +12,9 @@ namespace MadWorld.API.Admin.DownloadManagement
 {
     public class GetDownload
     {
-        private readonly IDownloadManager _downloadManager;
+        private readonly IDownloadAdminManager _downloadManager;
 
-        public GetDownload(IDownloadManager downloadManager)
+        public GetDownload(IDownloadAdminManager downloadManager)
         {
             _downloadManager = downloadManager;
         }

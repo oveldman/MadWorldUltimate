@@ -1,4 +1,5 @@
 ﻿using System;
+using MadWorld.Business.Managers.Interfaces;
 using MadWorld.Functions.Common.Info;
 using MadWorld.Shared.Models.AnonymousAPI.Downloader;
 using Microsoft.AspNetCore.Http;
@@ -10,20 +11,20 @@ namespace MadWorld.API.Anonymous.Downloader
 {
 	public class Download
 	{
+        private readonly IDownloadManager _downloadManager;
+
+        public Download(IDownloadManager downloadManager)
+        {
+            _downloadManager = downloadManager;
+        }
+
         [FunctionName(nameof(Download))]
-        public static ResponseDownload Run(
+        public ResponseDownloadAnonymous Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, RequestType.Get, Route = null)] HttpRequest req,
             ILogger log)
         {
             string id = req.Query[QueryKeys.ID];
-
-            return new ResponseDownload
-            {
-                Found = true,
-                Name = "Test.txt",
-                Base64 = "RGl0IGlzIGVlbiB0ZXh0IGZpbGUh",
-                ContentType = "text/plain"
-            };
+            return _downloadManager.Get(id);
         }
     }
 }

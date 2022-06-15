@@ -47,6 +47,7 @@ public static class IFunctionsHostBuilderExtentions
     {
         builder.Services.AddScoped<ILinkAdminManager, LinkAdminManager>();
         builder.Services.AddScoped<ILinkManager, LinkManager>();
+        builder.Services.AddScoped<IDownloadAdminManager, DownloadAdminManager>();
         builder.Services.AddScoped<IDownloadManager, DownloadManager>();
         builder.Services.AddScoped<IUserManager, UserManager>();
         builder.Services.AddSingleton<IDownloadMapper>(_ => DownloadMapper.Create());

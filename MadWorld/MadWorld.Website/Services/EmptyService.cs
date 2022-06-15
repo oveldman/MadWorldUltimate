@@ -32,7 +32,7 @@ namespace MadWorld.Website.Services
             throw new NotImplementedException();
         }
 
-        public Task<ResponseDownload> GetDownload(string id)
+        public Task<ResponseDownloadAnonymous> GetDownload(string id)
         {
             throw new NotImplementedException();
         }

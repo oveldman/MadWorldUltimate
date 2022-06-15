@@ -19,13 +19,13 @@ namespace MadWorld.Website.Pages.Downloader
 
         protected override async Task OnInitializedAsync()
         {
-            ResponseDownload response = await _downloadService.GetDownload(ID);
+            ResponseDownloadAnonymous response = await _downloadService.GetDownload(ID);
             _downloadFinished = response.Found;
 
             if (response.Found)
             {
                 _fileName = response.Name;
-                await _blazorDownloadFileService.DownloadFile(response.Name, response.Base64, response.ContentType);
+                await _blazorDownloadFileService.DownloadFile(response.Name, response.BodyBase64, response.Content);
             }
 
             _downloadFound = true;

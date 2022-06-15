@@ -15,9 +15,9 @@ namespace MadWorld.API.Admin.DownloadManagement
 {
 	public class SaveDownload
 	{
-        private readonly IDownloadManager _downloadManager;
+        private readonly IDownloadAdminManager _downloadManager;
 
-        public SaveDownload(IDownloadManager downloadManager)
+        public SaveDownload(IDownloadAdminManager downloadManager)
         {
             _downloadManager = downloadManager;
         }

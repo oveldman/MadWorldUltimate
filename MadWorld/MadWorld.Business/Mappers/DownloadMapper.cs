@@ -2,6 +2,7 @@
 using AutoMapper;
 using MadWorld.Business.Mappers.Interfaces;
 using MadWorld.Data.TableStorage.Tables;
+using MadWorld.Shared.Models.AnonymousAPI.Downloader;
 using MadWorld.Shared.Models.API.Downloads;
 
 namespace MadWorld.Business.Mappers
@@ -21,6 +22,7 @@ namespace MadWorld.Business.Mappers
         {
             return new MapperConfiguration(config => {
                 CreateDownloadAndDownloadDto(ref config);
+                CreateDownloadAndResponseDownload(ref config);
             });
         }
 
@@ -29,6 +31,12 @@ namespace MadWorld.Business.Mappers
             config.CreateMap<Download, DownloadDto>()
                 .ForMember(d => d.Id, s => s.MapFrom(f => f.RowKey))
                 .ForMember(d => d.Created, s => s.MapFrom(f => f.Timestamp))
+                .ReverseMap();
+        }
+
+        private static void CreateDownloadAndResponseDownload(ref IMapperConfigurationExpression config)
+        {
+            config.CreateMap<Download, ResponseDownloadAnonymous>()
                 .ReverseMap();
         }
     }

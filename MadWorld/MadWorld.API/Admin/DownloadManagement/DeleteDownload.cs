@@ -12,9 +12,9 @@ namespace MadWorld.API.Admin.DownloadManagement
 {
 	public class DeleteDownload
 	{
-        private readonly IDownloadManager _downloadManager;
+        private readonly IDownloadAdminManager _downloadManager;
 
-        public DeleteDownload(IDownloadManager downloadManager)
+        public DeleteDownload(IDownloadAdminManager downloadManager)
         {
             _downloadManager = downloadManager;
         }

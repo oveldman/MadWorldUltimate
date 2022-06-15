@@ -5,7 +5,7 @@ namespace MadWorld.Website.Services.Interfaces
 {
 	public interface IDownloadService
 	{
-		Task<ResponseDownload> GetDownload(string id);
+		Task<ResponseDownloadAnonymous> GetDownload(string id);
 	}
 }
 
