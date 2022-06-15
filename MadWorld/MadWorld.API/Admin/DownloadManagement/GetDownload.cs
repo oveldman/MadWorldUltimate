@@ -26,6 +26,8 @@ namespace MadWorld.API.Admin.DownloadManagement
             ILogger log)
         {
             string id = req.Query[QueryKeys.ID];
+            string getBodyQuery = req.Query[QueryKeys.GetBody];
+            bool getBody = bool.TryParse(getBodyQuery, out bool getBodyParsed) ? getBodyParsed : false;
 
             return new()
             {

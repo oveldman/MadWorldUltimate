@@ -27,6 +27,12 @@ namespace MadWorld.Website.Pages.Admin.Downloader
             _navigation.NavigateTo($"/Admin/EditDownload/{download.Id}");
         }
 
+        private async Task DeleteDownload(DownloadDto download)
+        {
+            _downloadDtos.Remove(download);
+            await _downloadService.DeleteDownload(download.Id);
+        }
+
         private void NewDownload()
         {
             _navigation.NavigateTo($"/Admin/NewDownload");
