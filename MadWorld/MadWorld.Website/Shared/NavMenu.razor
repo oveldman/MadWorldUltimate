@@ -44,31 +44,36 @@
                 </NavLink>
             </div>
         }
-    <AuthorizeView Roles="@nameof(RoleTypes.Adminstrator)">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" @onclick="ToggleAdminMenu">
-                <span class="oi oi-pencil" aria-hidden="true"></span> Admin <span class="tool-space oi oi-chevron-@AdminMenuArror"></span>
+        <AuthorizeView Roles="@nameof(RoleTypes.Adminstrator)">
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" @onclick="ToggleAdminMenu">
+                    <span class="oi oi-pencil" aria-hidden="true"></span> Admin <span class="tool-space oi oi-chevron-@AdminMenuArror"></span>
+                </NavLink>
+            </div>
+            @if (!collapseAdminMenu)
+            {
+                <div class="nav-item nav-item-submenu px-3">
+                    <NavLink class="nav-link" href="Admin/Users">
+                        <span class="oi oi-people" aria-hidden="true"></span> Users
+                    </NavLink>
+                </div>
+                <div class="nav-item nav-item-submenu px-3">
+                    <NavLink class="nav-link" href="Admin/Downloads">
+                        <span class="oi oi-cloud-download" aria-hidden="true"></span> Downloads
+                    </NavLink>
+                </div>
+                <div class="nav-item nav-item-submenu px-3">
+                    <NavLink class="nav-link" href="Admin/LinkGroups">
+                        <span class="oi oi-link-intact" aria-hidden="true"></span> Links
+                    </NavLink>
+                </div>
+            }
+        </AuthorizeView>
+        <div class="nav-item nav-item-submenu px-3">
+            <NavLink class="nav-link" href="Downloads">
+                <span class="oi oi-cloud-download" aria-hidden="true"></span> Downloads
             </NavLink>
         </div>
-        @if (!collapseAdminMenu)
-        {
-            <div class="nav-item nav-item-submenu px-3">
-                <NavLink class="nav-link" href="Admin/Users">
-                    <span class="oi oi-people" aria-hidden="true"></span> Users
-                </NavLink>
-            </div>
-            <div class="nav-item nav-item-submenu px-3">
-                <NavLink class="nav-link" href="Admin/Downloads">
-                    <span class="oi oi-cloud-download" aria-hidden="true"></span> Downloads
-                </NavLink>
-            </div>
-            <div class="nav-item nav-item-submenu px-3">
-                <NavLink class="nav-link" href="Admin/LinkGroups">
-                    <span class="oi oi-link-intact" aria-hidden="true"></span> Links
-                </NavLink>
-            </div>
-        }
-    </AuthorizeView>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="Links">
                 <span class="oi oi-link-intact" aria-hidden="true"></span> Links
