@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
-using MadWorld.Functions.Common.Extentions;
+using MadWorld.Functions.Common.Extensions;
 using MadWorld.Shared.Common;
 using MadWorld.Tests.Functions.Common.Extentions.Mockups;
 using Microsoft.AspNetCore.Http;

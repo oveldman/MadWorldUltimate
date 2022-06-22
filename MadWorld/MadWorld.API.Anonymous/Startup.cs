@@ -1,4 +1,4 @@
-﻿using MadWorld.Functions.Common.Extentions;
+﻿using MadWorld.Functions.Common.Extensions;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 
 [assembly: FunctionsStartup(typeof(MadWorld.API.Anonymous.Startup))]

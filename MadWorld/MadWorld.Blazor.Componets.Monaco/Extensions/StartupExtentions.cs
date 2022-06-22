@@ -2,9 +2,9 @@
 using MadWorld.Blazor.Componets.Monaco.Interop;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace MadWorld.Blazor.Componets.Monaco.Extentions
+namespace MadWorld.Blazor.Componets.Monaco.Extensions
 {
-	public static class StartupExtentions
+	public static class StartupExtensions
 	{
         public static IServiceCollection AddMonacoEditor(this IServiceCollection services)
         {

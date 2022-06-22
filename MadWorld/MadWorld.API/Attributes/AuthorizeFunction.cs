@@ -5,7 +5,7 @@ using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
 using MadWorld.Business.Managers.Interfaces;
-using MadWorld.Functions.Common.Extentions;
+using MadWorld.Functions.Common.Extensions;
 using MadWorld.Functions.Common.Validators.Interfaces;
 using MadWorld.Shared.Enums;
 using MadWorld.Shared.Info;

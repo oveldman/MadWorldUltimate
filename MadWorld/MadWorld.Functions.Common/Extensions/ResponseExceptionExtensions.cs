@@ -2,9 +2,9 @@
 using MadWorld.Shared.Models.API.Exception;
 using Newtonsoft.Json;
 
-namespace MadWorld.Functions.Common.Extentions
+namespace MadWorld.Functions.Common.Extensions
 {
-	public static class ResponseExceptionExtentions
+	public static class ResponseExceptionExtensions
 	{
 		public static string ToJson(this ResponseException response)
         {

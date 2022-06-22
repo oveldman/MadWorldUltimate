@@ -20,7 +20,7 @@
     <PackageReference Include="BlazorTable" Version="1.17.0" />
     <PackageReference Include="BlazorDownloadFile" Version="2.4.0.2" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.43" />
-    <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.1.161" />
+    <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.1.174" />
     <PackageReference Include="Optional" Version="4.0.0" />
     <PackageReference Include="Ardalis.GuardClauses" Version="4.0.1" />
   </ItemGroup>
@@ -33,7 +33,6 @@
     <None Remove="Microsoft.Authentication.WebAssembly.Msal" />
     <None Remove="Types\" />
     <None Remove="Microsoft.Extensions.Http" />
-    <None Remove="Extentions\" />
     <None Remove="Pages\Tools\" />
     <None Remove="Factory\" />
     <None Remove="Services\" />
@@ -70,7 +69,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Types\" />
-    <Folder Include="Extentions\" />
     <Folder Include="Pages\Tools\" />
     <Folder Include="Factory\" />
     <Folder Include="Services\" />

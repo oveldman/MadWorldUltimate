@@ -1,7 +1,7 @@
 ﻿using System;
 using BlazorDownloadFile;
 using BlazorTable;
-using MadWorld.Blazor.Componets.Monaco.Extentions;
+using MadWorld.Blazor.Componets.Monaco.Extensions;
 using MadWorld.Website.Services;
 using MadWorld.Website.Services.Admin;
 using MadWorld.Website.Services.Admin.Interfaces;

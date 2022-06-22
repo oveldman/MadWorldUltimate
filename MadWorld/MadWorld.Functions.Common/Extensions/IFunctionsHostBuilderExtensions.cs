@@ -18,8 +18,8 @@ using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace MadWorld.Functions.Common.Extentions;
-public static class IFunctionsHostBuilderExtentions
+namespace MadWorld.Functions.Common.Extensions;
+public static class IFunctionsHostBuilderExtensions
 {
     public static void AddMadWorldCommonClasses(this IFunctionsHostBuilder builder)
     {

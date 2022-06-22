@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using MadWorld.API.Attributes;
-using MadWorld.Functions.Common.Extentions;
+using MadWorld.Functions.Common.Extensions;
 using MadWorld.Functions.Common.Validators.Interfaces;
 using MadWorld.Shared.Enums;
 using MadWorld.Shared.Models.API.Account;

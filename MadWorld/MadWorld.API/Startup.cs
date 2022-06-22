@@ -1,4 +1,4 @@
-﻿using MadWorld.Functions.Common.Extentions;
+﻿using MadWorld.Functions.Common.Extensions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;

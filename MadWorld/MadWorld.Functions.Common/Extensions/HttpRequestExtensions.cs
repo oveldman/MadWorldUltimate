@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 
-namespace MadWorld.Functions.Common.Extentions
+namespace MadWorld.Functions.Common.Extensions
 {
-	public static class HttpRequestExtentions
+	public static class HttpRequestExtensions
 	{
 		public static async ValueTask<Option<T?>> GetBodyAsync<T>(this HttpRequest httpRequest)
         {

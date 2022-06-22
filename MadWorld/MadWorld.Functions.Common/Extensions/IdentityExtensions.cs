@@ -3,9 +3,9 @@ using System.Security.Claims;
 using System.Security.Principal;
 using MadWorld.Shared.Info;
 
-namespace MadWorld.Functions.Common.Extentions
+namespace MadWorld.Functions.Common.Extensions
 {
-	public static class IdentityExtentions
+	public static class IdentityExtensions
 	{
 		public static string GetAzureID(this IIdentity identity)
 		{
