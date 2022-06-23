@@ -13,7 +13,7 @@ namespace MadWorld.Website.Pages.Admin.Downloader
 		private bool PageLoaded = false;
 
         [Inject]
-		private IDownloadAdminService _downloadService { get; set; } = new EmptyService();
+		private IDownloadAdminService _downloadService { get; set; } = null!;
 
         protected override async Task OnInitializedAsync()
         {

@@ -28,7 +28,7 @@ namespace MadWorld.Website.Pages.Admin.Downloader
         private string SaveButtonText = string.Empty;
 
         [Inject]
-        private IDownloadAdminService _downloadService { get; set; } = new EmptyService();
+        private IDownloadAdminService _downloadService { get; set; } = null!;
 
         protected override async Task OnInitializedAsync()
         {

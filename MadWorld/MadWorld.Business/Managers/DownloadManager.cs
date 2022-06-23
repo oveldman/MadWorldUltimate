@@ -10,39 +10,49 @@ using MadWorld.Shared.Models.AnonymousAPI.Downloader;
 
 namespace MadWorld.Business.Managers
 {
-	public class DownloadManager : IDownloadManager
-	{
-		private readonly IBlobStorageContainer _blobContainer;
-		private readonly IDownloadQueries _downloadQueries;
-		private readonly IDownloadMapper _mapper;
+    public class DownloadManager : IDownloadManager
+    {
+        private readonly IBlobStorageContainer _blobContainer;
+        private readonly IDownloadQueries _downloadQueries;
+        private readonly IDownloadMapper _mapper;
 
-		public DownloadManager(IBlobStorageContainer blobContainer, IDownloadMapper mapper, IDownloadQueries downloadQueries)
-		{
-			_blobContainer = blobContainer;
-			_downloadQueries = downloadQueries;
-			_mapper = mapper;
-		}
-
-		public ResponseDownloadAnonymous Get(string id)
+        public DownloadManager(IBlobStorageContainer blobContainer, IDownloadMapper mapper, IDownloadQueries downloadQueries)
         {
-			Option<Download> download = _downloadQueries.GetDownload(id);
+            _blobContainer = blobContainer;
+            _downloadQueries = downloadQueries;
+            _mapper = mapper;
+        }
 
-			if (download.HasValue)
+        public ResponseDownloadAnonymous Get(string id)
+        {
+            Option<Download> download = _downloadQueries.GetDownload(id);
+
+            if (download.HasValue)
             {
-				return TranslateDownload(download.ValueOr(new Download()));
+                return TranslateDownload(download.ValueOr(new Download()));
 
-			}
+            }
 
-			return new();
+            return new();
         }
 
-		public ResponseDownloadAnonymous TranslateDownload(Download download)
+        public ResponseDownloadsAnonymous GetAll()
         {
-			ResponseDownloadAnonymous response = _mapper.Translate<Download, ResponseDownloadAnonymous>(download);
-			response.BodyBase64 = _blobContainer.DownloadBase64(download.GetBlobFileName(), BlobPathNames.Downloads);
-			response.Found = true;
-			return response;
+            List<Download> downloads = _downloadQueries.GetDownloads();
+
+            return new()
+            {
+                Downloads = _mapper.Translate<List<Download>, List<DownloadAnonymousDto>>(downloads)
+            };
         }
-	}
+
+        private ResponseDownloadAnonymous TranslateDownload(Download download)
+        {
+            ResponseDownloadAnonymous response = _mapper.Translate<Download, ResponseDownloadAnonymous>(download);
+            response.BodyBase64 = _blobContainer.DownloadBase64(download.GetBlobFileName(), BlobPathNames.Downloads);
+            response.Found = true;
+            return response;
+        }
+    }
 }
 

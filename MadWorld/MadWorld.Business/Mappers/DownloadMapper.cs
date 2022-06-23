@@ -23,6 +23,7 @@ namespace MadWorld.Business.Mappers
             return new MapperConfiguration(config => {
                 CreateDownloadAndDownloadDto(ref config);
                 CreateDownloadAndResponseDownload(ref config);
+                CreateDownloadAndDownloadAnonymousDto(ref config);
             });
         }
 
@@ -37,6 +38,13 @@ namespace MadWorld.Business.Mappers
         private static void CreateDownloadAndResponseDownload(ref IMapperConfigurationExpression config)
         {
             config.CreateMap<Download, ResponseDownloadAnonymous>()
+                .ReverseMap();
+        }
+
+        private static void CreateDownloadAndDownloadAnonymousDto(ref IMapperConfigurationExpression config)
+        {
+            config.CreateMap<Download, DownloadAnonymousDto>()
+                .ForMember(d => d.Id, s => s.MapFrom(f => f.RowKey))
                 .ReverseMap();
         }
     }

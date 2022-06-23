@@ -11,7 +11,7 @@ namespace MadWorld.Website.Pages.Downloader
         [Parameter]
         public string ID { get; set; } = string.Empty;
 
-        [Inject] public IDownloadService _downloadService { get; set; } = new EmptyService();
+        [Inject] public IDownloadService _downloadService { get; set; } = null!;
 
         private bool _downloadFinished;
         private bool _downloadFound;

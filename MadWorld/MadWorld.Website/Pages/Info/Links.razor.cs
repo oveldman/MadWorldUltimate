@@ -9,7 +9,7 @@ namespace MadWorld.Website.Pages.Info
 {
 	public partial class Links
 	{
-		[Inject] public ILinkService _linkService { get; set; } = new EmptyService();
+		[Inject] public ILinkService _linkService { get; set; } = null!;
 
 		private int MaxRows => _linkGroup.Any() ? GetMaxRows() : 0;
 		private List<LinkGroupDto> _linkGroup { get; set; } = new();

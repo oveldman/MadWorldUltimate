@@ -1,2 +1,14 @@
 ﻿@page "/Downloads"
 
+@using Radzen
+@using MadWorld.Shared.Models.AnonymousAPI.Downloader
+
+<RadzenDataGrid Data="@_downloadDtos" TItem="DownloadAnonymousDto" AllowVirtualization="true"
+                AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" LogicalFilterOperator="LogicalFilterOperator.Or"
+                AllowSorting="true" RowClick="downloadDto => GetDownload(downloadDto)">
+    <Columns>
+        <RadzenDataGridColumn TItem="DownloadAnonymousDto" Property="Id" Title="Id" />
+        <RadzenDataGridColumn TItem="DownloadAnonymousDto" Property="Name" Title="Name" />
+        <RadzenDataGridColumn TItem="DownloadAnonymousDto" Property="Content" Title="Content" />
+    </Columns>
+</RadzenDataGrid>

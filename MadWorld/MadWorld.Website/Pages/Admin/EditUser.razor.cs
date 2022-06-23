@@ -17,7 +17,7 @@ namespace MadWorld.Website.Pages.Admin
 		private UserDetailDto _user = new();
 
         [Inject]
-		private IUserService _userService { get; set; } = new EmptyService();
+		private IUserService _userService { get; set; } = null!;
 
 		protected override async Task OnInitializedAsync()
 		{

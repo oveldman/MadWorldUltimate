@@ -23,6 +23,7 @@
     <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.1.174" />
     <PackageReference Include="Optional" Version="4.0.0" />
     <PackageReference Include="Ardalis.GuardClauses" Version="4.0.1" />
+    <PackageReference Include="Radzen.Blazor" Version="3.19.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -58,6 +59,7 @@
     <None Remove="Optional" />
     <None Remove="Ardalis.GuardClauses" />
     <None Remove="Pages\Admin\Downloader\" />
+    <None Remove="Radzen.Blazor" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MadWorld.Shared\MadWorld.Shared.csproj">

@@ -15,7 +15,7 @@ namespace MadWorld.Website.Pages.Admin.Info
         private BootstrapAlerts _bootstrapAlerts = new();
 
         [Inject]
-        private ILinkAdminService _linkService { get; set; } = new EmptyService();
+        private ILinkAdminService _linkService { get; set; } = null!;
 
         protected override async Task OnInitializedAsync()
         {
