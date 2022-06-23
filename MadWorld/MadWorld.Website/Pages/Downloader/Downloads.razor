@@ -3,12 +3,21 @@
 @using Radzen
 @using MadWorld.Shared.Models.AnonymousAPI.Downloader
 
-<RadzenDataGrid Data="@_downloadDtos" TItem="DownloadAnonymousDto" AllowVirtualization="true"
+<PageTitle>Downloads</PageTitle>
+
+<h3>Downloads</h3>
+
+<RadzenDataGrid Data="@_downloadDtos" TItem="DownloadAnonymousDto" AllowVirtualization="true" AllowPaging="true"
                 AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" LogicalFilterOperator="LogicalFilterOperator.Or"
                 AllowSorting="true" RowClick="downloadDto => GetDownload(downloadDto)">
     <Columns>
-        <RadzenDataGridColumn TItem="DownloadAnonymousDto" Property="Id" Title="Id" />
-        <RadzenDataGridColumn TItem="DownloadAnonymousDto" Property="Name" Title="Name" />
-        <RadzenDataGridColumn TItem="DownloadAnonymousDto" Property="Content" Title="Content" />
+        <RadzenDataGridColumn CssClass="@ColumnStyleClass" TItem="DownloadAnonymousDto" Property="Id" Title="Id" />
+        <RadzenDataGridColumn CssClass="@ColumnStyleClass" TItem="DownloadAnonymousDto" Property="Name" Title="Name" />
+        <RadzenDataGridColumn CssClass="@ColumnStyleClass" TItem="DownloadAnonymousDto" Property="Content" Title="Content" />
+        <RadzenDataGridColumn CssClass="@ColumnStyleClass" TItem="DownloadAnonymousDto" Width="5%" Filterable="false" Sortable="false" >
+            <Template>
+                <i class="fa-solid fa-download"></i>
+            </Template>
+        </RadzenDataGridColumn>
     </Columns>
 </RadzenDataGrid>

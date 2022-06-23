@@ -8,6 +8,8 @@ namespace MadWorld.Website.Pages.Downloader;
 
 public partial class Downloads
 {
+    private string ColumnStyleClass = "pointer";
+
     private IEnumerable<DownloadAnonymousDto> _downloadDtos = new List<DownloadAnonymousDto>();
 
     [Inject]
