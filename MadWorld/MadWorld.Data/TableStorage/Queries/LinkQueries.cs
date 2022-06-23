@@ -30,7 +30,7 @@ namespace MadWorld.Data.TableStorage.Queries
 
         public Option<Link> GetLink(string linkId)
         {
-            var link = _context.Query<Link>(g => g.PartitionKey == PartitionKeys.LinkGroup
+            var link = _context.Query<Link>(g => g.PartitionKey == PartitionKeys.Link
                                             && g.RowKey == linkId).ToList();
             return link.FirstOrNone();
         }
