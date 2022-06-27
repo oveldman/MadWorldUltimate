@@ -1,5 +1,6 @@
 ﻿using System;
 using MadWorld.Blazor.Componets.Monaco.Models;
+using MadWorld.Blazor.Componets.Monaco.Models.Decoration;
 
 namespace MadWorld.Blazor.Componets.Monaco.Interop
 {
@@ -7,7 +8,8 @@ namespace MadWorld.Blazor.Componets.Monaco.Interop
 	{
 		ValueTask Init(string divID, MonacoSettings settings);
 		ValueTask<string> GetValue();
-		ValueTask SetValue(string text);
+		ValueTask SetDecorations(MonacoDecoration[] newDecorations);
+        ValueTask SetValue(string text);
 		ValueTask DisposeAsync();
 	}
 }

@@ -1,43 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <Project Sdk="Microsoft.NET.Sdk.Razor">
-
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
-  </PropertyGroup>
-
-
-  <ItemGroup>
-    <SupportedPlatform Include="browser" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.6" />
-    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.7.4">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.1.174" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="Pages\" />
-    <None Remove="Interop\" />
-    <None Remove="Microsoft.TypeScript.MSBuild" />
-    <None Remove="Models\" />
-    <None Remove="Microsoft.Web.LibraryManager.Build" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Pages\" />
-    <Folder Include="Interop\" />
-    <Folder Include="wwwroot\typescript\" />
-    <Folder Include="Models\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Remove="wwwroot\typescript\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="wwwroot\typescript\MadWorldMonacoEditor.ts" />
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+	<ItemGroup>
+		<SupportedPlatform Include="browser" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.6" />
+		<PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.7.4">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.1.174" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Remove="Pages\" />
+		<None Remove="Interop\" />
+		<None Remove="Microsoft.TypeScript.MSBuild" />
+		<None Remove="Models\" />
+		<None Remove="Microsoft.Web.LibraryManager.Build" />
+	</ItemGroup>
+	<ItemGroup>
+		<Folder Include="Pages\" />
+		<Folder Include="Interop\" />
+		<Folder Include="wwwroot\typescript\" />
+		<Folder Include="Models\" />
+	</ItemGroup>
+	<ItemGroup>
+		<Content Remove="wwwroot\typescript\" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="wwwroot\typescript\MadWorldMonacoEditor.ts" />
+	</ItemGroup>
 </Project>

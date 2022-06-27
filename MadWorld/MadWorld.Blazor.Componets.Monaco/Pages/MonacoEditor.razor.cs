@@ -1,4 +1,5 @@
 ﻿using MadWorld.Blazor.Componets.Monaco.Models;
+using MadWorld.Blazor.Componets.Monaco.Models.Decoration;
 using Microsoft.AspNetCore.Components;
 
 namespace MadWorld.Blazor.Componets.Monaco.Pages
@@ -24,6 +25,32 @@ namespace MadWorld.Blazor.Componets.Monaco.Pages
             EditorID = "MonacoEditor" + Guid.NewGuid().ToString().Replace("-", "");
 
             base.OnInitialized();
+        }
+
+        public async ValueTask SetDecorations()
+        {
+            MonacoDecoration[] decorations = {
+                new MonacoDecoration
+                {
+                    test = "Test",
+                    range = new(1, 1, 1, 1),
+                    options = new() {
+                        isWholeLine = true,
+                        linesDecorationsClassName = "myLineDecoration"
+                    }
+                },
+                new MonacoDecoration
+                {
+                    test = "Test",
+                    range = new(1, 1, 1, 1),
+                    options = new() {
+                        isWholeLine = true,
+                        linesDecorationsClassName = "myLineDecoration"
+                    }
+                }
+            };
+
+            await _monacoJS.SetDecorations(decorations);
         }
 
         public async Task<string> GetValue()

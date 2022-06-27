@@ -1,5 +1,6 @@
 ﻿using System;
 using MadWorld.Blazor.Componets.Monaco.Models;
+using MadWorld.Blazor.Componets.Monaco.Models.Decoration;
 using Microsoft.JSInterop;
 
 namespace MadWorld.Blazor.Componets.Monaco.Interop
@@ -7,6 +8,8 @@ namespace MadWorld.Blazor.Componets.Monaco.Interop
     public class MonacoJs : IAsyncDisposable, IMonacoJs
     {
         private readonly Lazy<Task<IJSObjectReference>> moduleTask;
+
+        private string[] _oldDecorations = Array.Empty<string>();
 
         public MonacoJs(IJSRuntime jsRuntime)
         {
@@ -26,6 +29,13 @@ namespace MadWorld.Blazor.Componets.Monaco.Interop
             var module = await moduleTask.Value;
 
             return await module.InvokeAsync<string>("getValue");
+        }
+
+        public async ValueTask SetDecorations(MonacoDecoration[] newDecorations)
+        {
+            var module = await moduleTask.Value;
+
+            _oldDecorations = await module.InvokeAsync<string[]>("setDecorations", _oldDecorations, newDecorations);
         }
 
         public async ValueTask SetValue(string text)

@@ -73,20 +73,13 @@ namespace MadWorld.Functions.Common.Validators
 
             User user = userOption.ValueOr(new User());
 
-            switch (role)
+            return role switch
             {
-                case RoleTypes.Adminstrator:
-                    return user.IsAdminstrator;
-                case RoleTypes.Viewer:
-                    return user.IsViewer;
-                case RoleTypes.Guest:
-                    return true;
-                case RoleTypes.None:
-                    return true;
-                default:
-                    return false;
-
-            }
+                RoleTypes.Adminstrator => user.IsAdminstrator,
+                RoleTypes.Viewer => user.IsViewer,
+                RoleTypes.Guest or RoleTypes.None => true,
+                _ => false,
+            };
         }
     }
 }

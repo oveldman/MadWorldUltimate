@@ -91,6 +91,11 @@ namespace MadWorld.Website.Pages.Tools
 			showError = true;
 			errorMessage = exception.Message;
 		}
-	}
+
+        public async Task Test()
+        {
+			await _editor.SetDecorations();
+        }
+    }
 }
 
