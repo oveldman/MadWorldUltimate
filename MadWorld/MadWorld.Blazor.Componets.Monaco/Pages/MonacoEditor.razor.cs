@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Components;
 
 namespace MadWorld.Blazor.Componets.Monaco.Pages
 {
-	public partial class MonacoEditor
-	{
+    public partial class MonacoEditor
+    {
         [Parameter]
         public string Height { get; set; } = "400";
 
@@ -13,7 +13,8 @@ namespace MadWorld.Blazor.Componets.Monaco.Pages
         public MonacoSettings Settings { get; set; } = new();
 
         private string EditorID = string.Empty;
-        private string HeightPixels {
+        private string HeightPixels
+        {
             get
             {
                 return Height + "px";
@@ -33,20 +34,24 @@ namespace MadWorld.Blazor.Componets.Monaco.Pages
                 new MonacoDecoration
                 {
                     test = "Test",
-                    range = new(1, 1, 1, 1),
-                    options = new() {
-                        isWholeLine = true,
-                        linesDecorationsClassName = "myLineDecoration"
-                    }
+                    startColumnNumber = 1,
+                    startLineNumber = 1,
+                    endColumnNumber = 2,
+                    endLineNumber = 2,
+                    isWholeLine = true,
+                    linesDecorationsClassName = "myLineDecoration",
+                    glyphMarginClassName = "decorationGlyphMarginClass"
                 },
                 new MonacoDecoration
                 {
                     test = "Test",
-                    range = new(1, 1, 1, 1),
-                    options = new() {
-                        isWholeLine = true,
-                        linesDecorationsClassName = "myLineDecoration"
-                    }
+                    startColumnNumber = 1,
+                    startLineNumber = 1,
+                    endColumnNumber = 1,
+                    endLineNumber = 1,
+                    isWholeLine = true,
+                    linesDecorationsClassName = "myLineDecoration",
+                    glyphMarginClassName = "decorationGlyphMarginClass"
                 }
             };
 
@@ -72,6 +77,6 @@ namespace MadWorld.Blazor.Componets.Monaco.Pages
 
             await base.OnAfterRenderAsync(firstRender);
         }
-	}
+    }
 }
 

@@ -1,28 +1,15 @@
 var MadWorldMonaco;
 (function (MadWorldMonaco) {
-    var MonacoDecorationOptions = /** @class */ (function () {
-        function MonacoDecorationOptions() {
-            this.isWholeLine = false;
-            this.linesDecorationsClassName = "";
-        }
-        return MonacoDecorationOptions;
-    }());
-    MadWorldMonaco.MonacoDecorationOptions = MonacoDecorationOptions;
-    var MonacoRange = /** @class */ (function () {
-        function MonacoRange() {
+    var MonacoDecoration = /** @class */ (function () {
+        function MonacoDecoration() {
+            this.test = "";
             this.startLineNumber = 0;
             this.startColumnNumber = 0;
             this.endLineNumber = 0;
             this.endColumnNumber = 0;
-        }
-        return MonacoRange;
-    }());
-    MadWorldMonaco.MonacoRange = MonacoRange;
-    var MonacoDecoration = /** @class */ (function () {
-        function MonacoDecoration() {
-            this.test = "";
-            this.range = new MonacoRange();
-            this.options = new MonacoDecorationOptions();
+            this.isWholeLine = false;
+            this.glyphMarginClassName = "";
+            this.linesDecorationsClassName = "";
         }
         return MonacoDecoration;
     }());
@@ -41,10 +28,16 @@ var MadWorldMonaco;
             return this.editor.getModel().getValue();
         };
         MonacoEditor.prototype.setDecorations = function (oldDecorationIds, newDecorations) {
-            alert(newDecorations.length + ' lol');
-            alert(newDecorations[0].options);
-            alert(newDecorations[0].test);
-            return this.editor.deltaDecorations(oldDecorationIds, newDecorations);
+            return this.editor.deltaDecorations(oldDecorationIds, [
+                {
+                    range: new window.monaco.Range(newDecorations[0].startLineNumber, newDecorations[0].startColumnNumber, newDecorations[0].endLineNumber, newDecorations[0].endColumnNumber),
+                    options: {
+                        isWholeLine: newDecorations[0].isWholeLine,
+                        linesDecorationsClassName: newDecorations[0].linesDecorationsClassName,
+                        glyphMarginClassName: newDecorations[0].glyphMarginClassName
+                    }
+                }
+            ]);
         };
         MonacoEditor.prototype.setValue = function (text) {
             this.editor.getModel().setValue(text);

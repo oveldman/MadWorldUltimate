@@ -1,20 +1,13 @@
 ﻿namespace MadWorldMonaco {
-    export class MonacoDecorationOptions {
-        public isWholeLine: boolean = false;
-        public linesDecorationsClassName: string = "";
-    }
-
-    export class MonacoRange {
+    export class MonacoDecoration {
+        public test: string = "";
         public startLineNumber: number = 0;
         public startColumnNumber: number = 0;
         public endLineNumber: number = 0;
         public endColumnNumber: number = 0;
-    }
-
-    export class MonacoDecoration {
-        public test: string = "";
-        public range: MonacoRange = new MonacoRange();
-        public options: MonacoDecorationOptions = new MonacoDecorationOptions();
+        public isWholeLine: boolean = false;
+        public glyphMarginClassName: string = "";
+        public linesDecorationsClassName: string = "";
     }
 
     export class MonacoEditor {
@@ -33,13 +26,18 @@
         }
 
         public setDecorations(oldDecorationIds: string[], newDecorations: MonacoDecoration[]): string[] {
-            alert(newDecorations.length + ' lol');
-            alert(newDecorations[0].options);
-            alert(newDecorations[0].test);
-
             return this.editor.deltaDecorations(
                 oldDecorationIds,
-                newDecorations
+                [
+                    {
+                        range: new (window as any).monaco.Range(newDecorations[0].startLineNumber, newDecorations[0].startColumnNumber, newDecorations[0].endLineNumber, newDecorations[0].endColumnNumber),
+                        options: {
+                            isWholeLine: newDecorations[0].isWholeLine,
+                            linesDecorationsClassName: newDecorations[0].linesDecorationsClassName,
+                            glyphMarginClassName: newDecorations[0].glyphMarginClassName
+                        }
+                    }
+                ]
             );
         }
 
@@ -61,7 +59,7 @@ export function getValue(): string {
     return monacoEditor.getValue();
 }
 
-export function setDecorations(oldDecorationIds: string[], newDecorations : MadWorldMonaco.MonacoDecoration[]): string[] {
+export function setDecorations(oldDecorationIds: string[], newDecorations: MadWorldMonaco.MonacoDecoration[]): string[] {
     CreateNewEditorIfEmpty();
     return monacoEditor.setDecorations(oldDecorationIds, newDecorations);
 }
