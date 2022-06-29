@@ -8,6 +8,7 @@ using MadWorld.Website.Services.Admin.Interfaces;
 using MadWorld.Website.Services.Info;
 using MadWorld.Website.Services.Info.Interface;
 using MadWorld.Website.Services.Interfaces;
+using Radzen;
 
 namespace MadWorld.Website.Extentions
 {
@@ -40,7 +41,12 @@ namespace MadWorld.Website.Extentions
 			services.AddBlazorTable();
 			services.AddBlazorDownloadFile();
 
-			return services;
+            services.AddScoped<DialogService>();
+            services.AddScoped<NotificationService>();
+            services.AddScoped<TooltipService>();
+            services.AddScoped<ContextMenuService>();
+
+            return services;
 		}
 	}
 }

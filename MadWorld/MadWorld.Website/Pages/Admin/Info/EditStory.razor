@@ -1,0 +1,10 @@
+﻿@page "/Admin/StoryEditor"
+
+@using Microsoft.AspNetCore.Authorization;
+@using MadWorld.Shared.Enums;
+@using Radzen;
+
+@attribute [Authorize(Roles = nameof(RoleTypes.Adminstrator))]
+
+<RadzenHtmlEditor @bind-Value=@_body style="height: 500px; margin-bottom: 1rem;" UploadUrl="upload/image" Change=@OnChange Paste=@OnPaste Execute=@OnExecute />
+
