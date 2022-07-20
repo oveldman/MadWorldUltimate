@@ -1,0 +1,10 @@
+﻿@page "/DnD/Puzzles/OniMother"
+
+@foreach(var totem in _totems)
+{
+    <div @onclick="() => Press(totem)"
+         style="background-color: @GetColorName(totem); height: 100px; width: 100px"></div>
+}
+
+
+

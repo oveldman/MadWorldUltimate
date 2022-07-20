@@ -21,6 +21,7 @@
     <None Remove="AzureFunctions.Extensions.Middleware" />
     <None Remove="Admin\LinkManagement\" />
     <None Remove="Admin\DownloadManagement\" />
+    <None Remove="Admin\StoryManagement\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">
@@ -51,5 +52,6 @@
     <Folder Include="Account\" />
     <Folder Include="Admin\LinkManagement\" />
     <Folder Include="Admin\DownloadManagement\" />
+    <Folder Include="Admin\StoryManagement\" />
   </ItemGroup>
 </Project>
