@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Immutable;
+using System.Timers;
 using MadWorld.Website.Models.DnD.OniMother;
 using Microsoft.AspNetCore.Components;
 
@@ -10,21 +11,35 @@ namespace MadWorld.Website.Pages.DnD.Puzzles
 		private readonly ImmutableList<string> _colors
 			= ImmutableList.CreateRange(new List<string>() { "Blue", "Red" , "Green", "Yellow" });
 
-        private List<Totem> _totems { get; set; } = new();
+        private List<Totem> Totems { get; set; } = new();
+
+        private int WaitSeconde { get; set; } = 0;
+        private bool Blocked { get; set; } = false;
+
+        private System.Timers.Timer _timer { get; set; } = new();
+
+        private bool DoorOpen { get; set; } = false;
 
         protected override void OnInitialized()
         {
-            _totems.Add(new() { IndexColor = 0, Name = "A" });
-            _totems.Add(new() { IndexColor = 2, Name = "B" });
-            _totems.Add(new() { IndexColor = 0, Name = "C" });
-            _totems.Add(new() { IndexColor = 3, Name = "D" });
-            _totems.Add(new() { IndexColor = 1, Name = "E" });
+            Totems.Add(new() { IndexColor = 0, Name = "A" });
+            Totems.Add(new() { IndexColor = 2, Name = "B" });
+            Totems.Add(new() { IndexColor = 0, Name = "C" });
+            Totems.Add(new() { IndexColor = 3, Name = "D" });
+            Totems.Add(new() { IndexColor = 1, Name = "E" });
 
             base.OnInitialized();
         }
 
         public void Press(Totem totem)
         {
+            if (Blocked)
+            {
+                return;
+            }
+
+            Blocked = true;
+
             switch(totem.Name)
             {
                 case "A":
@@ -45,6 +60,9 @@ namespace MadWorld.Website.Pages.DnD.Puzzles
                 default:
                     break;
             }
+
+            SetBlockTimer();
+            CheckIfDoorOpen();
         }
 
         public static void PressA()
@@ -91,7 +109,7 @@ namespace MadWorld.Website.Pages.DnD.Puzzles
 
         private void ChangeColorTotem(string name)
         {
-            Totem totem = _totems.FirstOrDefault(t => t.Name == name, new Totem());
+            Totem totem = Totems.FirstOrDefault(t => t.Name == name, new Totem());
             totem.IndexColor = FindNewColorIndex(totem.IndexColor);
         }
 
@@ -105,6 +123,39 @@ namespace MadWorld.Website.Pages.DnD.Puzzles
             }
 
             return ++currentIndex;
+        }
+
+        private void SetBlockTimer()
+        {
+            _timer = new();
+            _timer.Elapsed += new ElapsedEventHandler(OnTimedEvent!);
+            _timer.Interval = 1000;
+            _timer.Enabled = true;
+            WaitSeconde = 0;
+        }
+
+        private void OnTimedEvent(object sender, ElapsedEventArgs e)
+        {
+            WaitSeconde--;
+
+            if (WaitSeconde < 0)
+            {
+                StopTimerAndUnblock();
+            }
+
+            StateHasChanged();
+        }
+
+        private void StopTimerAndUnblock()
+        {
+            WaitSeconde = 0;
+            Blocked = false;
+            _timer.Stop();
+        }
+
+        private void CheckIfDoorOpen()
+        {
+            DoorOpen = Totems.All(t => t.IndexColor == 0);
         }
     }
 }

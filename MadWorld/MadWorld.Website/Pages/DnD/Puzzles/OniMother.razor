@@ -1,10 +1,45 @@
-﻿@page "/DnD/Puzzles/OniMother"
+﻿@layout EmptyLayout
+@page "/DnD/Puzzles/OniMother"
 
-@foreach(var totem in _totems)
-{
-    <div @onclick="() => Press(totem)"
-         style="background-color: @GetColorName(totem); height: 100px; width: 100px"></div>
-}
-
+<div class="row">
+    <div class="col-3">
+        @if (Blocked)
+        {
+            <div class="totem-styling d-flex align-items-center justify-content-center bg-danger">
+                <p>Wait</p>
+            </div>
+        }
+        else
+        {
+            <div class="totem-styling d-flex align-items-center justify-content-center bg-success">
+                <p>Go</p>
+            </div>
+        }
+    </div>
+    <div class="col-3">
+        <div class="totem-styling border text-center">
+            <p>The door is: </p>
+            @if (DoorOpen)
+            {
+                <p>Open</p>
+            }
+            else
+            {
+                <p>Closed</p>
+            }
+        </div>
+    </div>
+</div>
+<div class="row mt-3">
+    @foreach (var totem in Totems)
+     {
+        <div class="col">
+            <div class="totem-styling d-flex align-items-center justify-content-center" @onclick="() => Press(totem)"
+                    style="background-color: @GetColorName(totem);">
+                <h2>@totem.Name</h2>
+            </div>
+        </div>
+    }
+</div>
 
 
