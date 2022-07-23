@@ -33,7 +33,7 @@ namespace MadWorld.Website.Pages.DnD.Puzzles
 
         public void Press(Totem totem)
         {
-            if (Blocked)
+            if (Blocked || DoorOpen)
             {
                 return;
             }
