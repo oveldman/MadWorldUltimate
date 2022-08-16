@@ -9,6 +9,61 @@ namespace MadWorld.Tests.Shared.Managers
 {
 	public class MeasurementConverterTests
 	{
+
+        [Theory]
+        [AutoDomainData]
+        public void ConvertLength_DoubleUnknownToFeet(MeasurementConverter converter)
+        {
+            // No Test data
+            double startValue = 1.0;
+            MeasurementType measureFrom = MeasurementType.Unknown;
+            MeasurementType measureTo = MeasurementType.Feet;
+
+            // No Setup
+
+            // Act & Assert
+            Assert.Throws<NotImplementedException>(() => converter.ConvertLength(startValue, measureFrom, measureTo));
+
+            // No Teardown
+        }
+
+        [Theory]
+        [AutoDomainInlineData(MeasurementType.Feet)]
+        [AutoDomainInlineData(MeasurementType.Meter)]
+        public void ConvertLength_DoubleMeasureToUnknown(MeasurementType measureFrom, MeasurementConverter converter)
+        {
+            // No Test data
+            double startValue = 1.0;
+            MeasurementType measureTo = MeasurementType.Unknown;
+
+            // No Setup
+
+            // Act & Assert
+            Assert.Throws<NotImplementedException>(() => converter.ConvertLength(startValue, measureFrom, measureTo));
+
+            // No Teardown
+        }
+
+        [Theory]
+        [AutoDomainInlineData(1.0)]
+        [AutoDomainInlineData(10.0)]
+        public void ConvertLength_DoubleFeetToFeet_double(double startValue, MeasurementConverter converter)
+        {
+            // No Test data
+            MeasurementType measureFrom = MeasurementType.Feet;
+            MeasurementType measureTo = MeasurementType.Feet;
+
+            // No Setup
+
+            // Act
+            double result = converter.ConvertLength(startValue, measureFrom, measureTo);
+
+            // Assert
+            Assert.Equal(startValue, result);
+
+            // No Teardown
+        }
+
         [Theory]
         [AutoDomainInlineData(1.0, 0.30480370641307)]
         [AutoDomainInlineData(3.2808, 1.0)]

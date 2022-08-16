@@ -26,7 +26,7 @@ namespace MadWorld.Shared.Managers
             }
         }
 
-        private double ConvertFeet(double startValue, MeasurementType lengthTypeTo)
+        private static double ConvertFeet(double startValue, MeasurementType lengthTypeTo)
         {
             switch (lengthTypeTo)
             {
@@ -39,7 +39,7 @@ namespace MadWorld.Shared.Managers
             }
         }
 
-        private double ConvertMeter(double startValue, MeasurementType lengthTypeTo)
+        private static double ConvertMeter(double startValue, MeasurementType lengthTypeTo)
         {
             switch (lengthTypeTo)
             {
@@ -52,12 +52,12 @@ namespace MadWorld.Shared.Managers
             }
         }
 
-        private double ConvertFeetToMeter(double startValue)
+        private static double ConvertFeetToMeter(double startValue)
         {
             return startValue / _meterToFeetConversion;
         }
 
-        private double ConvertMeterToFeet(double startValue)
+        private static double ConvertMeterToFeet(double startValue)
         {
             return startValue * _meterToFeetConversion;
         }
