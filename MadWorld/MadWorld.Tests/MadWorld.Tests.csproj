@@ -47,6 +47,7 @@
     <None Remove="Data\TableStorage\Queries\" />
     <None Remove="Data\TableStorage\Mockups\" />
     <None Remove="MoqExpression" />
+    <None Remove="Shared\Managers\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Business\" />
@@ -63,6 +64,7 @@
     <Folder Include="Data\TableStorage\" />
     <Folder Include="Data\TableStorage\Queries\" />
     <Folder Include="Data\TableStorage\Mockups\" />
+    <Folder Include="Shared\Managers\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MadWorld.Shared\MadWorld.Shared.csproj" />

@@ -2,6 +2,8 @@
 using BlazorDownloadFile;
 using BlazorTable;
 using MadWorld.Blazor.Componets.Monaco.Extensions;
+using MadWorld.Shared.Managers;
+using MadWorld.Shared.Managers.Interfaces;
 using MadWorld.Website.Services;
 using MadWorld.Website.Services.Admin;
 using MadWorld.Website.Services.Admin.Interfaces;
@@ -16,6 +18,9 @@ namespace MadWorld.Website.Extentions
 	{
 		public static IServiceCollection AddInternalClasses(this IServiceCollection services)
 		{
+			//Shared
+			services.AddScoped<IMeasurementConverter, MeasurementConverter>();
+
 			//Services
 			services.AddScoped<IAccountService, AccountService>();
 			services.AddScoped<IDownloadService, DownloadService>();

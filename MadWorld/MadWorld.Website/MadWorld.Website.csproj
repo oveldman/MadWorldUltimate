@@ -65,6 +65,7 @@
     <None Remove="Models\" />
     <None Remove="Models\DnD\" />
     <None Remove="Models\DnD\OniMother\" />
+    <None Remove="Pages\DnD\Tools\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MadWorld.Shared\MadWorld.Shared.csproj">
@@ -101,6 +102,7 @@
     <Folder Include="Models\" />
     <Folder Include="Models\DnD\" />
     <Folder Include="Models\DnD\OniMother\" />
+    <Folder Include="Pages\DnD\Tools\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="wwwroot\.well-known\security.txt" />

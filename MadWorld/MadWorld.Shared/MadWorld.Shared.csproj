@@ -22,6 +22,8 @@
     <None Remove="Models\AnonymousAPI\Info\" />
     <None Remove="Models\API\Links\" />
     <None Remove="Models\API\Downloads\" />
+    <None Remove="Managers\" />
+    <None Remove="Managers\Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Enums\" />
@@ -38,6 +40,8 @@
     <Folder Include="Models\AnonymousAPI\Info\" />
     <Folder Include="Models\API\Links\" />
     <Folder Include="Models\API\Downloads\" />
+    <Folder Include="Managers\" />
+    <Folder Include="Managers\Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />

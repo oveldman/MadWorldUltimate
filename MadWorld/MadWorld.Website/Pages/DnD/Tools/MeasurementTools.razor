@@ -1,0 +1,39 @@
+﻿@page "/DnD/Tools/Measurement"
+
+@using MadWorld.Shared.Enums;
+
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Convert length from:</label>
+    <select @bind="_lengthTypeFrom" class="form-control">
+        @foreach (var length in Enum.GetValues(typeof(MeasurementType)))
+        {
+
+            <option value="@length">@length</option>
+        }
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Convert length to:</label>
+    <select @bind="_lengthTypeTo" class="form-control">
+        @foreach (var length in Enum.GetValues(typeof(MeasurementType)))
+        {
+
+            <option value="@length">@length</option>
+        }
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="lengthFrom" class="form-label">Length From Value</label>
+    <input @bind="_startLengthValue" class="form-control" id="lengthFrom" />
+</div>
+
+<div class="mb-3">
+    <label for="lengthTo" class="form-label">Length To Value</label>
+    <input @bind="_endLengthValue" class="form-control" id="lengthTo" />
+</div>
+
+<div class="mb-3">
+    <button type="button" class="btn btn-primary" @onclick="ConvertLength">Convert Length</button>
+</div>
