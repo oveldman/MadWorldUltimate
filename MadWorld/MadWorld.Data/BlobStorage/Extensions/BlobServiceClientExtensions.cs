@@ -2,9 +2,9 @@
 using Azure.Storage.Blobs;
 using MadWorld.Data.BlobStorage.Interfaces;
 
-namespace MadWorld.Data.BlobStorage.Extentions
+namespace MadWorld.Data.BlobStorage.Extensions
 {
-	public static class BlobServiceClientExtentions
+	public static class BlobServiceClientExtensions
 	{
 		public static IBlobContainerClient CreateIBlobContainer(this BlobServiceClient client, string name)
         {

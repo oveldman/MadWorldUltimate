@@ -37,6 +37,6 @@
     <Folder Include="TableStorage\Context\Interfaces\" />
     <Folder Include="BlobStorage\" />
     <Folder Include="BlobStorage\Interfaces\" />
-    <Folder Include="BlobStorage\Extentions\" />
+    <Folder Include="BlobStorage\Extensions\" />
   </ItemGroup>
 </Project>

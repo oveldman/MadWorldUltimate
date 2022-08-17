@@ -1,6 +1,6 @@
 ﻿using System;
 using Azure.Storage.Blobs;
-using MadWorld.Data.BlobStorage.Extentions;
+using MadWorld.Data.BlobStorage.Extensions;
 using MadWorld.Data.BlobStorage.Interfaces;
 
 namespace MadWorld.Data.BlobStorage

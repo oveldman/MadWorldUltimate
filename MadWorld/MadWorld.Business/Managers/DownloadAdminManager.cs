@@ -2,7 +2,7 @@
 using MadWorld.Business.Managers.Interfaces;
 using MadWorld.Business.Mappers.Interfaces;
 using MadWorld.Data.BlobStorage;
-using MadWorld.Data.BlobStorage.Extentions;
+using MadWorld.Data.BlobStorage.Extensions;
 using MadWorld.Data.BlobStorage.Interfaces;
 using MadWorld.Data.TableStorage.Queries.Interfaces;
 using MadWorld.Data.TableStorage.Tables;
