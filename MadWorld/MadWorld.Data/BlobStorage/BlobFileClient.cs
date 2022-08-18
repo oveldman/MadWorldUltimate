@@ -17,7 +17,6 @@ namespace MadWorld.Data.BlobStorage
 
 		public Response<bool> DeleteIfExists()
 		{
-
 			return _blobClient.DeleteIfExists();
 		}
 

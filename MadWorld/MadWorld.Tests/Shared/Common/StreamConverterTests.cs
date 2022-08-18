@@ -71,7 +71,7 @@ namespace MadWorld.Tests.Shared.Common
 		public void Convert_Int_Stream()
 		{
 			// No Test data
-			int testData = 10;
+			const int testData = 10;
 
 			// No Setup
 
@@ -90,7 +90,7 @@ namespace MadWorld.Tests.Shared.Common
 		public void Convert_Decimal_Stream()
 		{
 			// No Test data
-			decimal testData = 10;
+			const decimal testData = 10;
 
 			// No Setup
 

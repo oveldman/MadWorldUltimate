@@ -15,9 +15,9 @@ namespace MadWorld.Tests.Shared.Managers
         public void ConvertLength_DoubleUnknownToFeet(MeasurementConverter converter)
         {
             // No Test data
-            double startValue = 1.0;
-            MeasurementType measureFrom = MeasurementType.Unknown;
-            MeasurementType measureTo = MeasurementType.Feet;
+            const double startValue = 1.0;
+            const MeasurementType measureFrom = MeasurementType.Unknown;
+            const MeasurementType measureTo = MeasurementType.Feet;
 
             // No Setup
 
@@ -33,8 +33,8 @@ namespace MadWorld.Tests.Shared.Managers
         public void ConvertLength_DoubleMeasureToUnknown(MeasurementType measureFrom, MeasurementConverter converter)
         {
             // No Test data
-            double startValue = 1.0;
-            MeasurementType measureTo = MeasurementType.Unknown;
+            const double startValue = 1.0;
+            const MeasurementType measureTo = MeasurementType.Unknown;
 
             // No Setup
 
@@ -50,8 +50,8 @@ namespace MadWorld.Tests.Shared.Managers
         public void ConvertLength_DoubleFeetToFeet_double(double startValue, MeasurementConverter converter)
         {
             // No Test data
-            MeasurementType measureFrom = MeasurementType.Feet;
-            MeasurementType measureTo = MeasurementType.Feet;
+            const MeasurementType measureFrom = MeasurementType.Feet;
+            const MeasurementType measureTo = MeasurementType.Feet;
 
             // No Setup
 
@@ -70,8 +70,8 @@ namespace MadWorld.Tests.Shared.Managers
         public void ConvertLength_DoubleFeetToMeter_double(double startValue, double expectedResult, MeasurementConverter converter)
         {
             // No Test data
-            MeasurementType measureFrom = MeasurementType.Feet;
-            MeasurementType measureTo = MeasurementType.Meter;
+            const MeasurementType measureFrom = MeasurementType.Feet;
+            const MeasurementType measureTo = MeasurementType.Meter;
 
             // No Setup
 
@@ -90,8 +90,8 @@ namespace MadWorld.Tests.Shared.Managers
         public void ConvertLength_DoubleMeterToFeet_double(double startValue, double expectedResult, MeasurementConverter converter)
         {
             // No Test data
-            MeasurementType measureFrom = MeasurementType.Meter;
-            MeasurementType measureTo = MeasurementType.Feet;
+            const MeasurementType measureFrom = MeasurementType.Meter;
+            const MeasurementType measureTo = MeasurementType.Feet;
 
             // No Setup
 

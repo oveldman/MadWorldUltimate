@@ -22,7 +22,7 @@ namespace MadWorld.Shared.Common
         {
 			Type itemType = typeof(T);
 
-			if (itemType is not null && itemType.IsPrimitiveType())
+			if (itemType.IsPrimitiveType())
             {
 				return item?.ToString() ?? string.Empty;
             }
