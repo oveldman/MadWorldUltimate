@@ -4,10 +4,12 @@ using System.Net;
 using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
+using Ardalis.GuardClauses;
 using MadWorld.Business.Managers.Interfaces;
 using MadWorld.Functions.Common.Extensions;
 using MadWorld.Functions.Common.Validators.Interfaces;
 using MadWorld.Shared.Enums;
+using MadWorld.Shared.Exceptions;
 using MadWorld.Shared.Info;
 using MadWorld.Shared.Models.API.Exception;
 using Microsoft.AspNetCore.Http;
@@ -19,7 +21,7 @@ namespace MadWorld.API.Attributes
     public class AuthorizeFunctionAttribute : FunctionInvocationFilterAttribute, IFunctionExceptionFilter
     {
         private readonly RoleTypes _role;
-        private HttpRequest httpRequest;
+        private HttpRequest _httpRequest;
 
         public AuthorizeFunctionAttribute(RoleTypes role)
 		{
@@ -33,12 +35,12 @@ namespace MadWorld.API.Attributes
             return base.OnExecutingAsync(executingContext, cancellationToken);
         }
 
-        public void ValidateUserRole(FunctionExecutingContext executingContext)
+        private void ValidateUserRole(FunctionExecutingContext executingContext)
         {
             var defaultHttpRequest = executingContext.Arguments.First().Value as HttpRequest;
-            httpRequest = defaultHttpRequest;
+            _httpRequest = defaultHttpRequest;
 
-            ClaimsIdentity identity = defaultHttpRequest.HttpContext.User.Identity as ClaimsIdentity;
+            var identity = defaultHttpRequest?.HttpContext.User.Identity as ClaimsIdentity;
             if (!identity?.IsAuthenticated ?? true)
             {
                 if (IsLocalHost(defaultHttpRequest))
@@ -54,12 +56,14 @@ namespace MadWorld.API.Attributes
             }
 
             // you can also use registered services
-            (string azureID, string email) = GetClaims(identity);
-            var userManager = defaultHttpRequest.HttpContext.RequestServices.GetService<IUserManager>();
-            userManager.CreateUserIfNotExists(azureID, email);
+            var (azureId, email) = GetClaims(identity);
+            var userManager = defaultHttpRequest?.HttpContext.RequestServices.GetService<IUserManager>();
+            Guard.Against.Null(userManager, nameof(userManager));
+            userManager.CreateUserIfNotExists(azureId, email);
 
-            var userValidator = defaultHttpRequest.HttpContext.RequestServices.GetService<IUserValidator>();
-            if (!userValidator.HasRole(azureID, _role))
+            var userValidator = defaultHttpRequest?.HttpContext.RequestServices.GetService<IUserValidator>();
+            Guard.Against.Null(userValidator, nameof(userValidator));
+            if (!userValidator.HasRole(azureId, _role))
             {
                 throw new UnauthorizedAccessException();
             }
@@ -82,27 +86,26 @@ namespace MadWorld.API.Attributes
 
         private static (string azureID, string email) GetClaims(ClaimsIdentity identity)
         {
-            string azureID = identity.GetAzureID();
-            string email = identity.Claims.FirstOrDefault(c => c.Type == ClaimNames.Emails)?.Value ?? string.Empty;
-            return (azureID, email);
+            var azureId = identity.GetAzureID();
+            var email = identity.Claims.FirstOrDefault(c => c.Type == ClaimNames.Emails)?.Value ?? string.Empty;
+            return (azureId, email);
         }
 
         public async Task OnExceptionAsync(FunctionExceptionContext exceptionContext, CancellationToken cancellationToken)
         {
-            if (exceptionContext.Exception.InnerException is UnauthorizedAccessException)
+            if (exceptionContext.Exception.InnerException is not UnauthorizedAccessException)
             {
-                ResponseException response = new()
-                {
-                    ErrorMessage = "Not Authorised"
-                };
-
-                httpRequest.HttpContext.Response.StatusCode = (int)HttpStatusCode.Forbidden;
-                httpRequest.HttpContext.Response.ContentType = "application/json";
-                await httpRequest.HttpContext.Response.WriteAsync(response.ToJson(), cancellationToken);
-                return;
+                throw exceptionContext.Exception.InnerException ?? new ExceptionNotFoundException();
             }
 
-            throw exceptionContext.Exception.InnerException;
+            ResponseException response = new()
+            {
+                ErrorMessage = "Not Authorised"
+            };
+
+            _httpRequest.HttpContext.Response.StatusCode = (int)HttpStatusCode.Forbidden;
+            _httpRequest.HttpContext.Response.ContentType = "application/json";
+            await _httpRequest.HttpContext.Response.WriteAsync(response.ToJson(), cancellationToken);
         }
     }
 }
