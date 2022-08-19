@@ -2,38 +2,44 @@
 
 @using MadWorld.Shared.Enums;
 
-<div class="mb-3">
-    <label for="exampleFormControlInput1" class="form-label">Convert length from:</label>
-    <select @bind="_lengthTypeFrom" class="form-control">
-        @foreach (var length in Enum.GetValues(typeof(MeasurementType)))
-        {
-
-            <option value="@length">@length</option>
-        }
-    </select>
+<div class="row">
+    <div class="col mb-3">
+        <label for="lengthTypeFrom" class="form-label">Convert length from:</label>
+        <select id="lengthTypeFrom" @bind="LengthTypeFrom" class="form-control">
+            @foreach (var length in Enum.GetValues(typeof(MeasurementType)))
+            {
+                <option value="@length">@length</option>
+            }
+        </select>
+    </div>
+    <div class="col col-sm-1">
+        <button type="button" class="btn btn-primary swap-button" @onclick="SwapLength">
+            <i class="fa-solid fa-arrow-right-arrow-left"></i>
+        </button>
+    </div>
+    <div class="col mb-3">
+        <label for="lengthTypeTo" class="form-label">Convert length to:</label>
+        <select id="lengthTypeTo" @bind="LengthTypeTo" class="form-control">
+            @foreach (var length in Enum.GetValues(typeof(MeasurementType)))
+            {
+                <option value="@length">@length</option>
+            }
+        </select>
+    </div>
 </div>
+<div class="row">
+    <div class="col mb-3">
+        <label for="lengthFrom" class="form-label">Length From Value</label>
+        <input @bind="StartLengthValue" class="form-control" id="lengthFrom"/>
+    </div>
 
-<div class="mb-3">
-    <label for="exampleFormControlInput1" class="form-label">Convert length to:</label>
-    <select @bind="_lengthTypeTo" class="form-control">
-        @foreach (var length in Enum.GetValues(typeof(MeasurementType)))
-        {
-
-            <option value="@length">@length</option>
-        }
-    </select>
+    <div class="col mb-3">
+        <label for="lengthTo" class="form-label">Length To Value</label>
+        <input @bind="EndLengthValue" class="form-control" id="lengthTo"/>
+    </div>
 </div>
-
-<div class="mb-3">
-    <label for="lengthFrom" class="form-label">Length From Value</label>
-    <input @bind="_startLengthValue" class="form-control" id="lengthFrom" />
-</div>
-
-<div class="mb-3">
-    <label for="lengthTo" class="form-label">Length To Value</label>
-    <input @bind="_endLengthValue" class="form-control" id="lengthTo" />
-</div>
-
-<div class="mb-3">
-    <button type="button" class="btn btn-primary" @onclick="ConvertLength">Convert Length</button>
+<div class="row">
+    <div class="col col-lg-2 mb-3">
+        <button type="button" class="btn btn-primary" @onclick="ConvertLength">Convert Length</button>
+    </div>
 </div>

@@ -8,13 +8,13 @@ namespace MadWorld.Website.Pages.DnD.Tools
 	public partial class MeasurementTools
 	{
 		[Inject]
-		private IMeasurementConverter _converter { get; set; } = null!;
+		private IMeasurementConverter Converter { get; set; } = null!;
 
-        public double _startLengthValue { get; set; } = 1.0;
-		public double _endLengthValue { get; set; } = 0.0;
+        private double StartLengthValue { get; set; } = 1.0;
+		private double EndLengthValue { get; set; } = 0.0;
 
-		public MeasurementType _lengthTypeFrom { get; set; } = MeasurementType.Feet;
-        public MeasurementType _lengthTypeTo { get; set; } = MeasurementType.Meter;
+		private MeasurementType LengthTypeFrom { get; set; } = MeasurementType.Feet;
+        private MeasurementType LengthTypeTo { get; set; } = MeasurementType.Meter;
 
         protected override void OnInitialized()
         {
@@ -23,9 +23,15 @@ namespace MadWorld.Website.Pages.DnD.Tools
             base.OnInitialized();
         }
 
-        public void ConvertLength()
+        private void SwapLength()
+        {
+	        (LengthTypeFrom, LengthTypeTo) = (LengthTypeTo, LengthTypeFrom);
+	        ConvertLength();
+        } 
+
+        private void ConvertLength()
 		{
-			_endLengthValue = _converter.ConvertLength(_startLengthValue, _lengthTypeFrom, _lengthTypeTo);
+			EndLengthValue = Converter.ConvertLength(StartLengthValue, LengthTypeFrom, LengthTypeTo);
         }
 	}
 }
