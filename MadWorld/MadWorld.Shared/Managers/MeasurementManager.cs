@@ -8,7 +8,7 @@ namespace MadWorld.Shared.Managers
 {
     public class MeasurementManager : IMeasurementManager
     {
-        private IMeasurementFactory _measurementFactory;
+        private readonly IMeasurementFactory _measurementFactory;
         public MeasurementManager(IMeasurementFactory measurementFactory)
         {
             _measurementFactory = measurementFactory;

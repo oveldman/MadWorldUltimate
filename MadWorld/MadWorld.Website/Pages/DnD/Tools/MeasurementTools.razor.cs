@@ -44,7 +44,7 @@ namespace MadWorld.Website.Pages.DnD.Tools
 			EndLengthValue = Manager.ConvertLength(StartLengthValue, LengthTypeFrom, LengthTypeTo);
         }
 
-        private List<MeasurementType> GetMeasureTypeValues()
+        private static List<MeasurementType> GetMeasureTypeValues()
         {
 	        return Enum.GetValues<MeasurementType>()
 						.Where(mt => mt != MeasurementType.Unknown)

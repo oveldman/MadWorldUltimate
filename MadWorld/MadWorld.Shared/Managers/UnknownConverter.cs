@@ -5,7 +5,7 @@ namespace MadWorld.Shared.Managers;
 
 public class UnknownConverter : IMeasurementConverter
 {
-    public double Convert(double startValue, MeasurementType measurementType)
+    public double Convert(double startValue, MeasurementType measurementTypeTo)
     {
         return startValue;
     }
