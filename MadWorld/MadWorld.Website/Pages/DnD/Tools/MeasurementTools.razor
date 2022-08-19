@@ -6,7 +6,7 @@
     <div class="col mb-3">
         <label for="lengthTypeFrom" class="form-label">Convert length from:</label>
         <select id="lengthTypeFrom" @bind="LengthTypeFrom" class="form-control">
-            @foreach (var length in Enum.GetValues(typeof(MeasurementType)))
+            @foreach (var length in GetMeasureTypeValues())
             {
                 <option value="@length">@length</option>
             }
@@ -20,7 +20,7 @@
     <div class="col mb-3">
         <label for="lengthTypeTo" class="form-label">Convert length to:</label>
         <select id="lengthTypeTo" @bind="LengthTypeTo" class="form-control">
-            @foreach (var length in Enum.GetValues(typeof(MeasurementType)))
+            @foreach (var length in GetMeasureTypeValues())
             {
                 <option value="@length">@length</option>
             }

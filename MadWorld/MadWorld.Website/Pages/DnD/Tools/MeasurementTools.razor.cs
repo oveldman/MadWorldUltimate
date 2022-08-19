@@ -8,7 +8,7 @@ namespace MadWorld.Website.Pages.DnD.Tools
 	public partial class MeasurementTools
 	{
 		[Inject]
-		private IMeasurementConverter Converter { get; set; } = null!;
+		private IMeasurementManager Manager { get; set; } = null!;
 
 		private double StartLengthValue
 		{
@@ -41,7 +41,14 @@ namespace MadWorld.Website.Pages.DnD.Tools
 
         private void ConvertLength()
 		{
-			EndLengthValue = Converter.ConvertLength(StartLengthValue, LengthTypeFrom, LengthTypeTo);
+			EndLengthValue = Manager.ConvertLength(StartLengthValue, LengthTypeFrom, LengthTypeTo);
+        }
+
+        private List<MeasurementType> GetMeasureTypeValues()
+        {
+	        return Enum.GetValues<MeasurementType>()
+						.Where(mt => mt != MeasurementType.Unknown)
+						.ToList();
         }
 	}
 }
