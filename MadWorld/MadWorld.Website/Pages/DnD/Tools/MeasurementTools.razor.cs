@@ -10,8 +10,18 @@ namespace MadWorld.Website.Pages.DnD.Tools
 		[Inject]
 		private IMeasurementConverter Converter { get; set; } = null!;
 
-        private double StartLengthValue { get; set; } = 1.0;
-		private double EndLengthValue { get; set; } = 0.0;
+		private double StartLengthValue
+		{
+			get => StartLengthValueLazy;
+			set
+			{
+				StartLengthValueLazy = value;
+				ConvertLength();
+			}
+		}
+
+        private double StartLengthValueLazy { get; set; } = 1.0;
+        private double EndLengthValue { get; set; }
 
 		private MeasurementType LengthTypeFrom { get; set; } = MeasurementType.Feet;
         private MeasurementType LengthTypeTo { get; set; } = MeasurementType.Meter;
