@@ -74,19 +74,12 @@ namespace MadWorld.Business.Managers
 
         private bool SaveLinkGroup(LinkGroupAdminDto linkGroup)
         {
-            if (linkGroup.IsNew && linkGroup.IsDeleted)
+            return linkGroup.IsNew switch
             {
-                return true;
-            }
-
-            if (linkGroup.IsNew)
-            {
-                return AddLinkGroup(linkGroup);
-            }
-            else
-            {
-                return EditLinkGroup(linkGroup);
-            }
+                true when linkGroup.IsDeleted => true,
+                true => AddLinkGroup(linkGroup),
+                _ => EditLinkGroup(linkGroup)
+            };
         }
 
         private bool AddLinkGroup(LinkGroupAdminDto linkGroupDto)

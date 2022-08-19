@@ -19,12 +19,12 @@ namespace MadWorld.Business.Managers
             _userQueries = userQueries;
         }
 
-        public bool CreateUser(Guid azureID, string email)
+        public bool CreateUser(Guid azureId, string email)
         {
-            User user = new User
+            User user = new()
             {
                 RowKey = Guid.NewGuid().ToString(),
-                AzureID = azureID,
+                AzureID = azureId,
                 Email = email,
                 IsAdminstrator = false
             };
@@ -32,21 +32,15 @@ namespace MadWorld.Business.Managers
             return _userQueries.CreateUser(user);
         }
 
-        public bool CreateUserIfNotExists(string azureID, string email)
+        public bool CreateUserIfNotExists(string azureId, string email)
         {
-            if (!Guid.TryParse(azureID, out Guid id))
+            if (!Guid.TryParse(azureId, out var id))
             {
                 return false;
             }
 
             Option<User> user = _userQueries.FindUser(id);
-
-            if (user.HasValue)
-            {
-                return true;
-            }
-
-            return CreateUser(id, email);
+            return user.HasValue || CreateUser(id, email);
         }
 
         public UserDetailDto GetUser(string id)
@@ -63,14 +57,14 @@ namespace MadWorld.Business.Managers
 
         public CommonResponse UpdateUser(UserDetailDto userDto)
         {
-            Option<User> userOption = _userQueries.FindUser(userDto.ID);
+            var userOption = _userQueries.FindUser(userDto.ID);
 
             if (!userOption.HasValue)
             {
                 return CreateUserNotFoundResponse();
             }
 
-            User user = userOption.ValueOr(new User());
+            var user = userOption.ValueOr(new User());
             user = _userMapper.Translate(userDto, user);
             _userQueries.UpdateUser(user);
 

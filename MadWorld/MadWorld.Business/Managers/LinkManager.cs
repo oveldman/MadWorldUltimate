@@ -20,16 +20,8 @@ namespace MadWorld.Business.Managers
 
         public List<LinkGroupDto> GetLinks()
         {
-			var linkGroupsDto = new List<LinkGroupDto>();
-
-			List<LinkGroup> linkGroups = _linkQueries.GetLinkGroups();
-
-			foreach (var linkGroup in linkGroups)
-            {
-				linkGroupsDto.Add(BuildGroupAndLinks(linkGroup));
-			}
-
-			return linkGroupsDto;
+	        List<LinkGroup> linkGroups = _linkQueries.GetLinkGroups();
+	        return linkGroups.Select(linkGroup => BuildGroupAndLinks(linkGroup)).ToList();
         }
 
 		private LinkGroupDto BuildGroupAndLinks(LinkGroup linkGroup)

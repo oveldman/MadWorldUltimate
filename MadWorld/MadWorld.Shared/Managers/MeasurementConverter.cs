@@ -6,7 +6,7 @@ namespace MadWorld.Shared.Managers
 {
     public class MeasurementConverter : IMeasurementConverter
     {
-        private const double _meterToFeetConversion = 3.2808;
+        private const double MeterToFeetConversion = 3.2808;
 
         public double ConvertLength(double startValue, MeasurementType lengthTypeFrom, MeasurementType lengthTypeTo)
         {
@@ -15,51 +15,45 @@ namespace MadWorld.Shared.Managers
                 return startValue;
             }
 
-            switch (lengthTypeFrom)
+            return lengthTypeFrom switch
             {
-                case MeasurementType.Feet:
-                    return ConvertFeet(startValue, lengthTypeTo);
-                case MeasurementType.Meter:
-                    return ConvertMeter(startValue, lengthTypeTo);
-                default:
-                    throw new NotImplementedException();
-            }
+                MeasurementType.Feet => ConvertFeet(startValue, lengthTypeTo),
+                MeasurementType.Meter => ConvertMeter(startValue, lengthTypeTo),
+                MeasurementType.Unknown => throw new NotImplementedException(),
+                _ => throw new NotImplementedException()
+            };
         }
 
         private static double ConvertFeet(double startValue, MeasurementType lengthTypeTo)
         {
-            switch (lengthTypeTo)
+            return lengthTypeTo switch
             {
-                case MeasurementType.Feet:
-                    return startValue;
-                case MeasurementType.Meter:
-                    return ConvertFeetToMeter(startValue);
-                default:
-                    throw new NotImplementedException();
-            }
+                MeasurementType.Feet => startValue,
+                MeasurementType.Meter => ConvertFeetToMeter(startValue),
+                MeasurementType.Unknown => throw new NotImplementedException(),
+                _ => throw new NotImplementedException()
+            };
         }
 
         private static double ConvertMeter(double startValue, MeasurementType lengthTypeTo)
         {
-            switch (lengthTypeTo)
+            return lengthTypeTo switch
             {
-                case MeasurementType.Feet:
-                    return ConvertMeterToFeet(startValue);
-                case MeasurementType.Meter:
-                    return startValue;
-                default:
-                    throw new NotImplementedException();
-            }
+                MeasurementType.Feet => ConvertMeterToFeet(startValue),
+                MeasurementType.Meter => startValue,
+                MeasurementType.Unknown => throw new NotImplementedException(),
+                _ => throw new NotImplementedException()
+            };
         }
 
         private static double ConvertFeetToMeter(double startValue)
         {
-            return startValue / _meterToFeetConversion;
+            return startValue / MeterToFeetConversion;
         }
 
         private static double ConvertMeterToFeet(double startValue)
         {
-            return startValue * _meterToFeetConversion;
+            return startValue * MeterToFeetConversion;
         }
     }
 }

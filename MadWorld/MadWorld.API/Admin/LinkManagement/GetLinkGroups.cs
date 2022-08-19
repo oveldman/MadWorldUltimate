@@ -19,7 +19,7 @@ namespace MadWorld.API.Admin.LinkManagement
             _linkManager = linkManager;
         }
 
-        [AuthorizeFunction(RoleTypes.Adminstrator)]
+        [AuthorizeFunction(RoleTypes.Administrator)]
         [FunctionName(nameof(GetLinkGroups))]
         public ResponseLinkGroups Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, RequestType.Get, Route = null)] HttpRequest req,

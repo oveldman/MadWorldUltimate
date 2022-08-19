@@ -18,13 +18,13 @@ public class GetLinks
         _linkManager = linkManager;
     }
 
-    [AuthorizeFunction(RoleTypes.Adminstrator)]
+    [AuthorizeFunction(RoleTypes.Administrator)]
     [FunctionName(nameof(GetLinks))]
     public ResponseLinks Run(
         [HttpTrigger(AuthorizationLevel.Anonymous, RequestType.Get, Route = null)] HttpRequest req,
         ILogger log)
     {
-        string id = req.Query[QueryKeys.ID];
+        string id = req.Query[QueryKeys.Id];
 
         return _linkManager.TryGetLinks(id);
     }

@@ -23,7 +23,7 @@ namespace MadWorld.API.Admin.LinkManagement
             _linkManager = linkManager;
         }
 
-        [AuthorizeFunction(RoleTypes.Adminstrator)]
+        [AuthorizeFunction(RoleTypes.Administrator)]
         [FunctionName(nameof(SaveLinkGroups))]
         public async Task<CommonResponse> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, RequestType.Put, Route = null)] HttpRequest req,

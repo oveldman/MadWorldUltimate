@@ -13,14 +13,14 @@ namespace MadWorld.Shared.Common
 				return new MemoryStream();
             }
 
-			string body = GetStringFromObject(item);
-			byte[] byteArray = Encoding.ASCII.GetBytes(body);
+			var body = GetStringFromObject(item);
+			var byteArray = Encoding.ASCII.GetBytes(body);
 			return new MemoryStream(byteArray);
 		}
 
 		private static string GetStringFromObject<T>(T item)
         {
-			Type itemType = typeof(T);
+			var itemType = typeof(T);
 
 			if (itemType.IsPrimitiveType())
             {

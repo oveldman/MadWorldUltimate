@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using MadWorld.Website;
 using MadWorld.Website.Types;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
-using MadWorld.Website.Extentions;
+using MadWorld.Website.Extensions;
 using MadWorld.Website.Factory;
 using System.Security.Claims;
 using Ardalis.GuardClauses;
@@ -47,7 +47,7 @@ builder.Services.AddMsalAuthentication<RemoteAuthenticationState, RemoteUserAcco
     options.UserOptions.RoleClaim = ClaimTypes.Role;
 }).AddAccountClaimsPrincipalFactory<RemoteAuthenticationState, RemoteUserAccount, AccountClaimsPrincipalFactoryMW>();
 
-builder.Services.AddComponets();
+builder.Services.AddComponents();
 builder.Services.AddInternalClasses();
 builder.Services.AddPackages();
 

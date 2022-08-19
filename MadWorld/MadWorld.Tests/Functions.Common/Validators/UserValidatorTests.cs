@@ -31,7 +31,7 @@ namespace MadWorld.Tests.Functions.Common.Validators
 			Assert.True(roles.Count == 3, "Expected a list of 3 role");
 			Assert.Equal(RoleTypes.Guest.ToString(), roles[0]);
 			Assert.Equal(RoleTypes.Viewer.ToString(), roles[1]);
-			Assert.Equal(RoleTypes.Adminstrator.ToString(), roles[2]);
+			Assert.Equal(RoleTypes.Administrator.ToString(), roles[2]);
 
 			// No Teardown
 		}
@@ -92,8 +92,8 @@ namespace MadWorld.Tests.Functions.Common.Validators
 		}
 
 		[Theory]
-		[AutoDomainInlineData(RoleTypes.Adminstrator, true, true, true)]
-		[AutoDomainInlineData(RoleTypes.Adminstrator, false, true, false)]
+		[AutoDomainInlineData(RoleTypes.Administrator, true, true, true)]
+		[AutoDomainInlineData(RoleTypes.Administrator, false, true, false)]
 		[AutoDomainInlineData(RoleTypes.Viewer, false, true, true)]
 		[AutoDomainInlineData(RoleTypes.Viewer, false, false, false)]
 		[AutoDomainInlineData(RoleTypes.Guest, false, false, true)]

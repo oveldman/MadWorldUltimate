@@ -25,7 +25,7 @@ namespace MadWorld.API.Admin.UserManagement
             _userManager = userManager;
         }
 
-        [AuthorizeFunction(RoleTypes.Adminstrator)]
+        [AuthorizeFunction(RoleTypes.Administrator)]
         [FunctionName(nameof(GetUsers))]
         public ResponseUsers Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, RequestType.Get, Route = null)] HttpRequest req,

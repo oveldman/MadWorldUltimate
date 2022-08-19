@@ -19,13 +19,13 @@ namespace MadWorld.API.Admin.DownloadManagement
             _downloadManager = downloadManager;
         }
 
-        [AuthorizeFunction(RoleTypes.Adminstrator)]
+        [AuthorizeFunction(RoleTypes.Administrator)]
         [FunctionName(nameof(GetDownload))]
         public ResponseDownload Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, RequestType.Get, Route = null)] HttpRequest req,
             ILogger log)
         {
-            string id = req.Query[QueryKeys.ID];
+            string id = req.Query[QueryKeys.Id];
             string getBodyQuery = req.Query[QueryKeys.GetBody];
             bool getBody = bool.TryParse(getBodyQuery, out bool getBodyParsed) && getBodyParsed;
 

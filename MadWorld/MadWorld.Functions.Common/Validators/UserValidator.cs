@@ -58,7 +58,7 @@ namespace MadWorld.Functions.Common.Validators
 
             if (user.IsAdminstrator)
             {
-                userRoles.Add(RoleTypes.Adminstrator.ToString());
+                userRoles.Add(RoleTypes.Administrator.ToString());
             }
 
             return userRoles;
@@ -75,7 +75,7 @@ namespace MadWorld.Functions.Common.Validators
 
             return role switch
             {
-                RoleTypes.Adminstrator => user.IsAdminstrator,
+                RoleTypes.Administrator => user.IsAdminstrator,
                 RoleTypes.Viewer => user.IsViewer,
                 RoleTypes.Guest or RoleTypes.None => true,
                 _ => false,

@@ -6,8 +6,8 @@ namespace MadWorld.Business.Managers.Interfaces
 {
 	public interface IUserManager
 	{
-		public bool CreateUser(Guid azureID, string email);
-		public bool CreateUserIfNotExists(string azureID, string email);
+		public bool CreateUser(Guid azureId, string email);
+		public bool CreateUserIfNotExists(string azureId, string email);
 		public List<UserDto> GetUsers();
 		public UserDetailDto GetUser(string id);
 		public CommonResponse UpdateUser(UserDetailDto userDto);

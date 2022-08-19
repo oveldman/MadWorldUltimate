@@ -22,7 +22,7 @@ namespace MadWorld.API.Admin.DownloadManagement
             _downloadManager = downloadManager;
         }
 
-        [AuthorizeFunction(RoleTypes.Adminstrator)]
+        [AuthorizeFunction(RoleTypes.Administrator)]
         [FunctionName(nameof(SaveDownload))]
         public async Task<CommonResponse> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, RequestType.Post, Route = null)] HttpRequest req,

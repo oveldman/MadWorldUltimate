@@ -19,7 +19,7 @@ namespace MadWorld.API.Admin.DownloadManagement
             _downloadManager = downloadManager;
         }
 
-        [AuthorizeFunction(RoleTypes.Adminstrator)]
+        [AuthorizeFunction(RoleTypes.Administrator)]
         [FunctionName(nameof(GetDownloads))]
         public ResponseDownloads Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, RequestType.Get, Route = null)] HttpRequest req,

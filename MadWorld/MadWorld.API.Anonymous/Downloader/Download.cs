@@ -23,7 +23,7 @@ namespace MadWorld.API.Anonymous.Downloader
             [HttpTrigger(AuthorizationLevel.Anonymous, RequestType.Get, Route = null)] HttpRequest req,
             ILogger log)
         {
-            string id = req.Query[QueryKeys.ID];
+            string id = req.Query[QueryKeys.Id];
             return _downloadManager.Get(id);
         }
     }

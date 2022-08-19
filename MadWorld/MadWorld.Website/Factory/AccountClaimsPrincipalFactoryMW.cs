@@ -16,7 +16,7 @@ namespace MadWorld.Website.Factory
             _service = service;
         }
 
-        public async override ValueTask<ClaimsPrincipal> CreateUserAsync(RemoteUserAccount account,
+        public override async ValueTask<ClaimsPrincipal> CreateUserAsync(RemoteUserAccount account,
             RemoteAuthenticationUserOptions options)
         {
             ClaimsPrincipal user = await base.CreateUserAsync(account, options);

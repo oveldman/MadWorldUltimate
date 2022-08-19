@@ -3,7 +3,7 @@ using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 
-namespace MadWorld.Website.Extentions
+namespace MadWorld.Website.Extensions
 {
     public class MadWorldAuthorizationMessageHandler : AuthorizationMessageHandler
     {

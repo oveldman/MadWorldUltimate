@@ -22,7 +22,7 @@ namespace MadWorld.API.Admin.UserManagement
             _userManager = userManager;
         }
 
-        [AuthorizeFunction(RoleTypes.Adminstrator)]
+        [AuthorizeFunction(RoleTypes.Administrator)]
         [FunctionName(nameof(SaveUser))]
         public async Task<CommonResponse> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, RequestType.Put, Route = null)] HttpRequest req,

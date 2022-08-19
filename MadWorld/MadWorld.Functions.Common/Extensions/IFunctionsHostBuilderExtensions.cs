@@ -11,7 +11,6 @@ using MadWorld.Data.TableStorage.Context;
 using MadWorld.Data.TableStorage.Context.Interfaces;
 using MadWorld.Data.TableStorage.Queries;
 using MadWorld.Data.TableStorage.Queries.Interfaces;
-using MadWorld.Functions.Common.AzureFunctions;
 using MadWorld.Functions.Common.Validators;
 using MadWorld.Functions.Common.Validators.Interfaces;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
@@ -24,7 +23,7 @@ public static class IFunctionsHostBuilderExtensions
     public static void AddMadWorldCommonClasses(this IFunctionsHostBuilder builder)
     {
         IConfiguration? configuration = builder.Services.BuildServiceProvider().GetService<IConfiguration>();
-        configuration = Guard.Against.Null(configuration, nameof(configuration)) ?? new EmptyConfiguration();
+        configuration = Guard.Against.Null(configuration, nameof(configuration))!;
 
         AddInternPackages(builder);
         AddExternPackages(builder, configuration);
@@ -74,7 +73,7 @@ public static class IFunctionsHostBuilderExtensions
 
     private static void AddExternPackages(IFunctionsHostBuilder builder, IConfiguration configuration)
     {
-        string azureStorageConnectionString = configuration["AzureWebJobsStorage"];
+        var azureStorageConnectionString = configuration["AzureWebJobsStorage"];
 
         builder.Services.AddScoped(_ => new BlobServiceClient(azureStorageConnectionString));
         builder.Services.AddScoped(_ => new TableServiceClient(azureStorageConnectionString));

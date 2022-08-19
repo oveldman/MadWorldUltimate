@@ -12,7 +12,7 @@ using MadWorld.Website.Services.Info.Interface;
 using MadWorld.Website.Services.Interfaces;
 using Radzen;
 
-namespace MadWorld.Website.Extentions
+namespace MadWorld.Website.Extensions
 {
 	public static class IServiceCollectionExtensions
 	{
@@ -33,7 +33,7 @@ namespace MadWorld.Website.Extentions
 			return services;
 		}
 
-		public static IServiceCollection AddComponets(this IServiceCollection services)
+		public static IServiceCollection AddComponents(this IServiceCollection services)
 		{
 			//Services
 			services.AddMonacoEditor();

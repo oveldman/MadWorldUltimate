@@ -33,7 +33,7 @@ namespace MadWorld.Business.Managers
 
             }
 
-            return new();
+            return new ResponseDownloadAnonymous();
         }
 
         public ResponseDownloadsAnonymous GetAll()
