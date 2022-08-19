@@ -19,9 +19,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MadWorld.Functions.Common",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MadWorld.Console", "MadWorld.Console\MadWorld.Console.csproj", "{4FBF2328-5586-4105-8C79-214DC84AB9F6}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MadWorld.Blazor.Componets", "MadWorld.Blazor.Componets", "{E1AA5916-5A52-4DD9-91E0-1C6374B9C834}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MadWorld.Blazor.Components", "MadWorld.Blazor.Components", "{E1AA5916-5A52-4DD9-91E0-1C6374B9C834}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MadWorld.Blazor.Componets.Monaco", "MadWorld.Blazor.Componets.Monaco\MadWorld.Blazor.Componets.Monaco.csproj", "{52F75551-368B-4053-810C-C4EBEF719C23}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MadWorld.Blazor.Components.Monaco", "MadWorld.Blazor.Components.Monaco\MadWorld.Blazor.Components.Monaco.csproj", "{52F75551-368B-4053-810C-C4EBEF719C23}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MadWorld.Tests", "MadWorld.Tests\MadWorld.Tests.csproj", "{FEDFDE18-9429-4456-8AF0-2024E420E03B}"
 EndProject

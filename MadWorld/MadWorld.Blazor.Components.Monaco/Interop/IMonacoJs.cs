@@ -1,8 +1,8 @@
 ﻿using System;
-using MadWorld.Blazor.Componets.Monaco.Models;
-using MadWorld.Blazor.Componets.Monaco.Models.Decoration;
+using MadWorld.Blazor.Components.Monaco.Models;
+using MadWorld.Blazor.Components.Monaco.Models.Decoration;
 
-namespace MadWorld.Blazor.Componets.Monaco.Interop
+namespace MadWorld.Blazor.Components.Monaco.Interop
 {
 	public interface IMonacoJs
 	{

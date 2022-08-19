@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using HtmlAgilityPack;
-using MadWorld.Blazor.Componets.Monaco.Models;
-using MadWorld.Blazor.Componets.Monaco.Pages;
+using MadWorld.Blazor.Components.Monaco.Models;
+using MadWorld.Blazor.Components.Monaco.Pages;
 
 namespace MadWorld.Website.Pages.Tools
 {

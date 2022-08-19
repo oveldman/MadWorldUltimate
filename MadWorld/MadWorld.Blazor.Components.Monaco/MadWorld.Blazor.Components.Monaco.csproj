@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <RootNamespace>MadWorld.Blazor.Components.Monaco</RootNamespace>
   </PropertyGroup>
 
 

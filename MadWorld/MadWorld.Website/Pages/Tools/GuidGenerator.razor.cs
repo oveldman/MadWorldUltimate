@@ -1,5 +1,5 @@
 ﻿using System;
-using MadWorld.Blazor.Componets.Monaco.Pages;
+using MadWorld.Blazor.Components.Monaco.Pages;
 
 namespace MadWorld.Website.Pages.Tools
 {

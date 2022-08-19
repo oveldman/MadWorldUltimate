@@ -1,8 +1,8 @@
-﻿using MadWorld.Blazor.Componets.Monaco.Models;
-using MadWorld.Blazor.Componets.Monaco.Models.Decoration;
+﻿using MadWorld.Blazor.Components.Monaco.Models;
+using MadWorld.Blazor.Components.Monaco.Models.Decoration;
 using Microsoft.AspNetCore.Components;
 
-namespace MadWorld.Blazor.Componets.Monaco.Pages
+namespace MadWorld.Blazor.Components.Monaco.Pages
 {
     public partial class MonacoEditor
     {

@@ -1,9 +1,9 @@
 ﻿using System;
-using MadWorld.Blazor.Componets.Monaco.Models;
-using MadWorld.Blazor.Componets.Monaco.Models.Decoration;
+using MadWorld.Blazor.Components.Monaco.Models;
+using MadWorld.Blazor.Components.Monaco.Models.Decoration;
 using Microsoft.JSInterop;
 
-namespace MadWorld.Blazor.Componets.Monaco.Interop
+namespace MadWorld.Blazor.Components.Monaco.Interop
 {
     public class MonacoJs : IAsyncDisposable, IMonacoJs
     {
@@ -14,7 +14,7 @@ namespace MadWorld.Blazor.Componets.Monaco.Interop
         public MonacoJs(IJSRuntime jsRuntime)
         {
             moduleTask = new(() => jsRuntime.InvokeAsync<IJSObjectReference>(
-                "import", "./_content/MadWorld.Blazor.Componets.Monaco/js/MadWorldMonacoEditor.js").AsTask());
+                "import", "./_content/MadWorld.Blazor.Components.Monaco/js/MadWorldMonacoEditor.js").AsTask());
         }
 
         public async ValueTask Init(string divID, MonacoSettings settings)

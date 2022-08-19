@@ -71,7 +71,7 @@
     <ProjectReference Include="..\MadWorld.Shared\MadWorld.Shared.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
-    <ProjectReference Include="..\MadWorld.Blazor.Componets.Monaco\MadWorld.Blazor.Componets.Monaco.csproj">
+    <ProjectReference Include="..\MadWorld.Blazor.Components.Monaco\MadWorld.Blazor.Components.Monaco.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
   </ItemGroup>

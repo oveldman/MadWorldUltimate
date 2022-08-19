@@ -1,8 +1,8 @@
 ﻿using System;
-using MadWorld.Blazor.Componets.Monaco.Interop;
+using MadWorld.Blazor.Components.Monaco.Interop;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace MadWorld.Blazor.Componets.Monaco.Extensions
+namespace MadWorld.Blazor.Components.Monaco.Extensions
 {
 	public static class StartupExtensions
 	{

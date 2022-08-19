@@ -1,5 +1,5 @@
 ﻿using System;
-namespace MadWorld.Blazor.Componets.Monaco.Models.Decoration
+namespace MadWorld.Blazor.Components.Monaco.Models.Decoration
 {
 	public class MonacoDecoration
 	{
