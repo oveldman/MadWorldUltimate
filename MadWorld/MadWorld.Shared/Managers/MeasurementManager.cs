@@ -22,7 +22,15 @@ namespace MadWorld.Shared.Managers
             }
 
             var converter = _measurementFactory.GetMeasurementConverter(lengthTypeFrom);
-            return converter.Convert(startValue, lengthTypeTo);
+            return lengthTypeTo switch
+            {
+                MeasurementType.Feet => converter.ConvertToFeet(startValue),
+                MeasurementType.Kilometers => converter.ConvertToKilometers(startValue),
+                MeasurementType.Meter => converter.ConvertToMeter(startValue),
+                MeasurementType.Mile => converter.ConvertToMile(startValue),
+                MeasurementType.Unknown => throw new NotImplementedException(),
+                _ => throw new NotImplementedException()
+            };
         }
     }
 }

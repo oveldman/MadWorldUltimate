@@ -5,7 +5,27 @@ namespace MadWorld.Shared.Managers;
 
 public class UnknownConverter : IMeasurementConverter
 {
-    public double Convert(double startValue, MeasurementType measurementTypeTo)
+    public double ConvertToMeter(double startValue)
+    {
+        return ReturnStartValue(startValue);
+    }
+
+    public double ConvertToFeet(double startValue)
+    {
+        return ReturnStartValue(startValue);
+    }
+
+    public double ConvertToMile(double startValue)
+    {
+        return ReturnStartValue(startValue);
+    }
+
+    public double ConvertToKilometers(double startValue)
+    {
+        return ReturnStartValue(startValue);
+    }
+
+    private double ReturnStartValue(double startValue)
     {
         return startValue;
     }

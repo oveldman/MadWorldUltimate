@@ -16,7 +16,7 @@ namespace MadWorld.Tests.Functions.Common.Extentions
 			RequestMockup request)
 		{
 			// Test data
-			Stream bodyStream = StreamConverter.Convert(request) ?? new MemoryStream();
+			Stream bodyStream = StreamConverter.Convert(request);
 
 			// Setup
 			HttpRequest httpRequest = new HttpRequestMockup(bodyStream);

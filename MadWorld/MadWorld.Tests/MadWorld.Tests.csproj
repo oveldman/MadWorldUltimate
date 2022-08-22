@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="bunit" Version="1.9.8" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.0" />
     <PackageReference Include="xunit" Version="2.4.2" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
@@ -67,11 +68,13 @@
     <Folder Include="Shared\Managers\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MadWorld.Blazor.Components.Monaco\MadWorld.Blazor.Components.Monaco.csproj" />
     <ProjectReference Include="..\MadWorld.Shared\MadWorld.Shared.csproj" />
     <ProjectReference Include="..\MadWorld.Business\MadWorld.Business.csproj" />
     <ProjectReference Include="..\MadWorld.Data\MadWorld.Data.csproj" />
     <ProjectReference Include="..\MadWorld.Functions.Common\MadWorld.Functions.Common.csproj" />
     <ProjectReference Include="..\MadWorld.API.Anonymous\MadWorld.API.Anonymous.csproj" />
     <ProjectReference Include="..\MadWorld.API\MadWorld.API.csproj" />
+    <ProjectReference Include="..\MadWorld.Website\MadWorld.Website.csproj" />
   </ItemGroup>
 </Project>

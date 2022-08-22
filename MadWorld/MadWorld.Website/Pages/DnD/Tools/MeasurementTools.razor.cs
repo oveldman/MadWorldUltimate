@@ -23,8 +23,8 @@ namespace MadWorld.Website.Pages.DnD.Tools
         private double StartLengthValueLazy { get; set; } = 1.0;
         private double EndLengthValue { get; set; }
 
-		private MeasurementType LengthTypeFrom { get; set; } = MeasurementType.Feet;
-        private MeasurementType LengthTypeTo { get; set; } = MeasurementType.Meter;
+		public MeasurementType LengthTypeFrom { get; set; } = MeasurementType.Feet;
+        public MeasurementType LengthTypeTo { get; set; } = MeasurementType.Meter;
 
         protected override void OnInitialized()
         {

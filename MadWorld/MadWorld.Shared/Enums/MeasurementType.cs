@@ -5,7 +5,9 @@ namespace MadWorld.Shared.Enums
     {
         Unknown = -1,
         Meter = 0,
-        Feet = 1
+        Feet,
+        Mile,
+        Kilometers,
     }
 }
 

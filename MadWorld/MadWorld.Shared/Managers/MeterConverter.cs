@@ -6,19 +6,23 @@ namespace MadWorld.Shared.Managers;
 
 public class MeterConverter : IMeasurementConverter
 {
-    public double Convert(double startValue, MeasurementType measurementTypeTo)
+    public double ConvertToMeter(double startValue)
     {
-        return measurementTypeTo switch
-        {
-            MeasurementType.Feet => ConvertToFeet(startValue),
-            MeasurementType.Meter => startValue,
-            MeasurementType.Unknown => throw new NotImplementedException(),
-            _ => throw new NotImplementedException()
-        };
+        return startValue;
     }
-    
-    private static double ConvertToFeet(double startValue)
+
+    public double ConvertToFeet(double startValue)
     {
         return startValue * MeasurementConstants.MeterToFeetConversion;
+    }
+
+    public double ConvertToMile(double startValue)
+    {
+        throw new NotImplementedException();
+    }
+
+    public double ConvertToKilometers(double startValue)
+    {
+        throw new NotImplementedException();
     }
 }

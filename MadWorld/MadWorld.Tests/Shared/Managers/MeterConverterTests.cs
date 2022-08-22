@@ -16,7 +16,7 @@ public class MeterConverterTests
         // No Setup
 
         // Act
-        var result = converter.Convert(startValue, measureTo);
+        var result = converter.ConvertToFeet(startValue);
 
         // Assert
         Assert.Equal(expectedResult, result);
@@ -25,17 +25,20 @@ public class MeterConverterTests
     }
     
     [Theory]
-    [AutoDomainData]
-    public void Convert_DoubleMeterToUnknown(MeterConverter converter)
+    [AutoDomainInlineData(1.0, 1.0)]
+    [AutoDomainInlineData(0.30480370641307, 0.30480370641307)]
+    public void ConvertLength_DoubleMeterToMeter_double(double startValue, double expectedResult, MeterConverter converter)
     {
         // Test data
-        const double startValue = 1.0;
-        const MeasurementType measureTo = MeasurementType.Unknown;
+        const MeasurementType measureTo = MeasurementType.Feet;
 
         // No Setup
 
-        // Act & Assert
-        Assert.Throws<NotImplementedException>(() => converter.Convert(startValue, measureTo));
+        // Act
+        var result = converter.ConvertToMeter(startValue);
+
+        // Assert
+        Assert.Equal(expectedResult, result);
 
         // No Teardown
     }
