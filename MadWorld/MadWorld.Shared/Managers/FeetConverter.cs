@@ -18,11 +18,11 @@ public class FeetConverter : IMeasurementConverter
 
     public double ConvertToMile(double startValue)
     {
-        throw new NotImplementedException();
+        return ConvertToKilometers(startValue) / MeasurementConstants.KilometersToMileConversion;
     }
 
     public double ConvertToKilometers(double startValue)
     {
-        throw new NotImplementedException();
+        return ConvertToMeter(startValue) / MeasurementConstants.KilometersToMeterConversion;
     }
 }

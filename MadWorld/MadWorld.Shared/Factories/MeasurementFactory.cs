@@ -12,7 +12,9 @@ public class MeasurementFactory : IMeasurementFactory
         return measurementType switch
         {
             MeasurementType.Feet => new FeetConverter(),
+            MeasurementType.Kilometers => new KilometersConverter(),
             MeasurementType.Meter => new MeterConverter(),
+            MeasurementType.Mile => new MileConverter(),
             MeasurementType.Unknown => new UnknownConverter(),
             _ => throw new ArgumentOutOfRangeException(nameof(measurementType), measurementType, "Measure")
         };

@@ -25,7 +25,7 @@ public class UnknownConverter : IMeasurementConverter
         return ReturnStartValue(startValue);
     }
 
-    private double ReturnStartValue(double startValue)
+    private static double ReturnStartValue(double startValue)
     {
         return startValue;
     }
