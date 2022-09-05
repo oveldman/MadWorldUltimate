@@ -13,6 +13,7 @@ using MadWorld.Website.Services.Info;
 using MadWorld.Website.Services.Info.Interface;
 using MadWorld.Website.Services.Interfaces;
 using Radzen;
+using Toolbelt.Blazor.Extensions.DependencyInjection;
 
 namespace MadWorld.Website.Extensions
 {
@@ -49,6 +50,7 @@ namespace MadWorld.Website.Extensions
 			//Services
 			services.AddBlazorTable();
 			services.AddBlazorDownloadFile();
+			services.AddHttpClientInterceptor(); 
 
             services.AddScoped<DialogService>();
             services.AddScoped<NotificationService>();

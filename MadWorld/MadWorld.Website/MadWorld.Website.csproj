@@ -24,6 +24,7 @@
     <PackageReference Include="Optional" Version="4.0.0" />
     <PackageReference Include="Ardalis.GuardClauses" Version="4.0.1" />
     <PackageReference Include="Radzen.Blazor" Version="3.20.4" />
+    <PackageReference Include="Toolbelt.Blazor.HttpClientInterceptor" Version="10.1.0" />
   </ItemGroup>
 
   <ItemGroup>

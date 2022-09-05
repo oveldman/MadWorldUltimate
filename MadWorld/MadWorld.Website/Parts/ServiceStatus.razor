@@ -1,5 +1,42 @@
-<h3>ServiceStatus</h3>
+@using Toolbelt.Blazor;
+@using System.Net
+@inject IHttpClientInterceptor Interceptor;
+
+<div class="status-service text-start d-flex align-items-center justify-content-center">
+    @if (IsOnline)
+    {
+        <div class="text-start">Service Online <span class="logged-in">●</span></div>
+    }
+    else
+    {
+        <div>Service Offline <span class="logged-out">●</span></div>
+    }
+</div>
 
 @code {
-    
+    private bool IsOnline { get; set; } = true;
+
+    protected override void OnInitialized()
+    {
+        this.Interceptor.AfterSend += InterceptResponse!;
+        
+        base.OnInitialized();
+    }
+
+    private void InterceptResponse(object sender, HttpClientInterceptorEventArgs e)
+    {
+        if (!e.Response.IsSuccessStatusCode)
+        {
+            var statusCode = e.Response.StatusCode;
+            IsOnline = statusCode switch
+            {
+                HttpStatusCode.ServiceUnavailable => false,
+                _ => IsOnline
+                };
+
+            return;
+        }
+
+        IsOnline = true;
+    }
 }

@@ -7,6 +7,7 @@ using MadWorld.Website.Extensions;
 using MadWorld.Website.Factory;
 using System.Security.Claims;
 using Ardalis.GuardClauses;
+using Toolbelt.Blazor.Extensions.DependencyInjection;
 
 WebAssemblyHostBuilder builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -20,20 +21,23 @@ apiUrlAuthorized = Guard.Against.Null(apiUrlAuthorized, nameof(apiUrlAuthorized)
 
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-builder.Services.AddHttpClient(ApiTypes.MadWorldApiAnonymous, client =>
+builder.Services.AddHttpClient(ApiTypes.MadWorldApiAnonymous, (serviceProvider, client) =>
 {
     client.BaseAddress = new Uri(apiUrlAnonymous);
+    client.EnableIntercept(serviceProvider);
 }).AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
 
 builder.Services.AddScoped<DelegatingHandlerMW>();
-builder.Services.AddHttpClient(ApiTypes.MadWorldApiAuthorization, client =>
+builder.Services.AddHttpClient(ApiTypes.MadWorldApiAuthorization, (serviceProvider, client) =>
 {
     client.BaseAddress = new Uri(apiUrlAuthorized);
+    client.EnableIntercept(serviceProvider);
 }).AddHttpMessageHandler<DelegatingHandlerMW>();
 
-builder.Services.AddHttpClient(ApiTypes.MadWorldApiB2C, client =>
+builder.Services.AddHttpClient(ApiTypes.MadWorldApiB2C, (serviceProvider, client) =>
 {
     client.BaseAddress = new Uri(apiUrlAuthorized);
+    client.EnableIntercept(serviceProvider);
 }).AddHttpMessageHandler<MadWorldAuthorizationMessageHandler>();
 
 builder.Services.AddMsalAuthentication<RemoteAuthenticationState, RemoteUserAccount>(options =>

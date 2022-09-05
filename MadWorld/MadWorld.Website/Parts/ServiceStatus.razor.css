@@ -1,0 +1,12 @@
+.status-service {
+    color: white;
+    align-items: center;
+}
+
+.logged-in {
+    color: green;
+}
+
+.logged-out {
+    color: red;
+}

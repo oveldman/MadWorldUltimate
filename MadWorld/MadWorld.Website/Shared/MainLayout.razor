@@ -1,4 +1,5 @@
-﻿@inherits LayoutComponentBase
+﻿@using MadWorld.Website.Parts;
+@inherits LayoutComponentBase
 
 <div class="page">
     <div class="sidebar d-print-none">
@@ -6,8 +7,9 @@
     </div>
 
     <main>
-        <div class="top-row px-4 auth d-print-none">
-            <LoginDisplay />
+        <div class="top-row auth px-4 d-print-none">
+            <ServiceStatus/>
+            <LoginDisplay/>
         </div>
 
         <article class="content px-4">
