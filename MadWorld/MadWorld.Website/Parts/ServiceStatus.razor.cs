@@ -27,8 +27,6 @@ public partial class ServiceStatus
                     IsOnline = false;
                     _navigation.NavigateTo("/ServiceUnavailable");
                     break;
-                default:
-                    break;
             }
         }
         else
