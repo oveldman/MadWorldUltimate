@@ -25,6 +25,6 @@ public class GetRebound
             request = req.Query[QueryKeys.Request];
         }
 
-        return request;
+        return request ?? "No data";
     }
 }
