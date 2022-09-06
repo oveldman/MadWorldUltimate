@@ -12,6 +12,8 @@ using MadWorld.Website.Services.Admin.Interfaces;
 using MadWorld.Website.Services.Info;
 using MadWorld.Website.Services.Info.Interface;
 using MadWorld.Website.Services.Interfaces;
+using MadWorld.Website.Services.Tester;
+using MadWorld.Website.Services.Tester.Interfaces;
 using Radzen;
 using Toolbelt.Blazor.Extensions.DependencyInjection;
 
@@ -31,6 +33,7 @@ namespace MadWorld.Website.Extensions
 			services.AddScoped<IDownloadAdminService, DownloadAdminService>();
 			services.AddScoped<ILinkService, LinkService>();
 			services.AddScoped<ILinkAdminService, LinkAdminService>();
+			services.AddScoped<ITesterService, TesterService>();
 			services.AddScoped<IStoryService, StoryService>();
 			services.AddScoped<IUserService, UserService>();
 
