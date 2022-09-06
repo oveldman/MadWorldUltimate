@@ -17,8 +17,12 @@ namespace MadWorld.Website.Services
 
         public async Task<List<string>> GetCurrentAccountRoles()
         {
-            ResponseRoles response = await _client.GetFromJsonAsync<ResponseRoles>("GetCurrentUserRoles") ?? new ResponseRoles();
-            return response.Roles;
+            var response = await _client.GetAsync("GetCurrentUserRoles");
+
+            if (!response.IsSuccessStatusCode) return new List<string>();
+            var responseRoles = await response.Content.ReadFromJsonAsync<ResponseRoles>();
+            return responseRoles?.Roles ?? new List<string>();
+
         }
     }
 }

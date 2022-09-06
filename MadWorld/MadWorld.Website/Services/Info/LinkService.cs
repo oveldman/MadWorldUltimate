@@ -17,8 +17,10 @@ namespace MadWorld.Website.Services.Info
 
         public async Task<List<LinkGroupDto>> GetAll()
         {
-            var response = await _client.GetFromJsonAsync<ResponseLinks>($"GetLinks") ?? new ResponseLinks();
-            return response.Groups;
+            var response = await _client.GetAsync($"GetLinks");
+            if (!response.IsSuccessStatusCode) return new List<LinkGroupDto>();
+            var responseLinks = await response.Content.ReadFromJsonAsync<ResponseLinks>();
+            return responseLinks?.Groups ?? new List<LinkGroupDto>();
         }
     }
 }

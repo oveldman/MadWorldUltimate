@@ -17,12 +17,18 @@ namespace MadWorld.Website.Services
 
         public async Task<ResponseDownloadAnonymous> GetDownload(string id)
         {
-            return await _client.GetFromJsonAsync<ResponseDownloadAnonymous>($"Download?id={id}") ?? new();
+            var response = await _client.GetAsync($"Download?id={id}");
+            
+            if (!response.IsSuccessStatusCode) return new ResponseDownloadAnonymous();
+            return await response.Content.ReadFromJsonAsync<ResponseDownloadAnonymous>() ?? new ResponseDownloadAnonymous();
         }
 
         public async Task<ResponseDownloadsAnonymous> GetDownloads()
         {
-            return await _client.GetFromJsonAsync<ResponseDownloadsAnonymous>($"GetDownloads") ?? new();
+            var response = await _client.GetAsync($"GetDownloads");
+            
+            if (!response.IsSuccessStatusCode) return new ResponseDownloadsAnonymous();
+            return await response.Content.ReadFromJsonAsync<ResponseDownloadsAnonymous>() ?? new ResponseDownloadsAnonymous();
         }
     }
 }

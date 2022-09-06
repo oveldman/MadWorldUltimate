@@ -17,7 +17,10 @@ namespace MadWorld.Website.Services.Info
 
         public async Task<ResponseStory> Get()
         {
-            return await _client.GetFromJsonAsync<ResponseStory>($"GetStory") ?? new();
+            var response = await _client.GetAsync($"GetStory");
+            
+            if (!response.IsSuccessStatusCode) return new ResponseStory();
+            return await response.Content.ReadFromJsonAsync<ResponseStory>() ?? new ResponseStory();
         }
     }
 }

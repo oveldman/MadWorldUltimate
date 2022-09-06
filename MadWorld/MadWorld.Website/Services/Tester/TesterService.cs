@@ -16,7 +16,7 @@ public class TesterService : ITesterService
     public async Task<string> GetServiceUnavailable()
     {
         const int statusCode = (int)HttpStatusCode.ServiceUnavailable;
-        var response = await _client.GetAsync($"GetStatusCode?StatusCode={statusCode}") ?? new();
+        var response = await _client.GetAsync($"GetStatusCode?StatusCode={statusCode}");
         return response.IsSuccessStatusCode ? await response.Content.ReadAsStringAsync() : string.Empty;
     }
 }
