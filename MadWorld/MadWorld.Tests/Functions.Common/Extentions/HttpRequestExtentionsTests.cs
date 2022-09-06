@@ -22,12 +22,10 @@ namespace MadWorld.Tests.Functions.Common.Extentions
 			HttpRequest httpRequest = new HttpRequestMockup(bodyStream);
 
 			// Act
-			Option<RequestMockup?> requestResult = await httpRequest.GetBodyAsync<RequestMockup>();
+			var requestResult = await httpRequest.GetBodyAsync<RequestMockup>();
 
             // Assert
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
-            Assert.Equal(request.Test, requestResult.ValueOr(new RequestMockup()).Test);
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
+            Assert.Equal(request.Test, requestResult.ValueOr(new RequestMockup())?.Test);
 
             // No Teardown
         }
