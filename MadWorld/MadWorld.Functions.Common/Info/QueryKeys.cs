@@ -5,7 +5,7 @@ namespace MadWorld.Functions.Common.Info
 	{
 		public const string GetBody = nameof(GetBody);
 		public const string Id = nameof(Id);
-		public const string Name = nameof(Name);
+		public const string StatusCode = nameof(StatusCode);
 	}
 }
 
