@@ -1,4 +1,5 @@
 using System.Net;
+using MadWorld.Shared.Exceptions;
 using Microsoft.AspNetCore.Components;
 using Toolbelt.Blazor;
 
@@ -27,6 +28,8 @@ public partial class ServiceStatus
                     IsOnline = false;
                     _navigation.NavigateTo("/ServiceUnavailable");
                     break;
+                case HttpStatusCode.InternalServerError:
+                    throw new InternalServerErrorException($"Url: {e.Request.RequestUri}");
             }
         }
         else
