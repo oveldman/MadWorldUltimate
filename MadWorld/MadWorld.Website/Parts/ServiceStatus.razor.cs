@@ -18,9 +18,9 @@ public partial class ServiceStatus
 
     private void InterceptResponse(object sender, HttpClientInterceptorEventArgs e)
     {
-        if (!e.Response.IsSuccessStatusCode)
+        if (!e.Response?.IsSuccessStatusCode ?? true)
         {
-            var statusCode = e.Response.StatusCode;
+            var statusCode = e.Response?.StatusCode ?? HttpStatusCode.ServiceUnavailable;
             switch (statusCode)
             {
                 case HttpStatusCode.ServiceUnavailable:

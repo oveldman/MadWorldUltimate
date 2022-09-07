@@ -1,4 +1,5 @@
 using System.Net;
+using MadWorld.Website.Extensions;
 using MadWorld.Website.Services.Tester.Interfaces;
 using MadWorld.Website.Types;
 
@@ -16,7 +17,7 @@ public class TesterService : ITesterService
     public async Task<string> GetServiceUnavailable()
     {
         const int statusCode = (int)HttpStatusCode.ServiceUnavailable;
-        var response = await _client.GetAsync($"GetStatusCode?StatusCode={statusCode}");
-        return response.IsSuccessStatusCode ? await response.Content.ReadAsStringAsync() : string.Empty;
+        var response = await _client.GetWithoutHttpRequestExceptionAsync($"GetStatusCode?StatusCode={statusCode}");
+        return response?.IsSuccessStatusCode ?? false ? await response.Content.ReadAsStringAsync() : string.Empty;
     }
 }

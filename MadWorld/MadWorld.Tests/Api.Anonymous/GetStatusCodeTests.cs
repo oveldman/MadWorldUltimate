@@ -15,7 +15,12 @@ public class GetStatusCodeTests
     [AutoDomainInlineData("200", 200)]
     [AutoDomainInlineData("403", 403)]
     [AutoDomainInlineData("503", 503)]
-    public async Task Run_StatusCode_ThrowError(string statusCode, int expectedStatusCode)
+    public async Task Run_StatusCode_ThrowError(
+        string statusCode, 
+        int expectedStatusCode,
+        GetStatusCode getStatusCode,
+        Mock<ILogger> logger,
+        Mock<HttpRequest> request)
     {
         // Test data
         var store = new Dictionary<string, StringValues>()
@@ -25,12 +30,9 @@ public class GetStatusCodeTests
         var query = new QueryCollection(store);
 
         // Setup
-        var request = new Mock<HttpRequest>();
         request.Setup(r => r.Body).Returns(new MemoryStream());
         request.Setup(r => r.Query).Returns(query);
-        var logger = new Mock<ILogger>();
-        var getStatusCode = new GetStatusCode();
-        
+
         // Act
         var result = await getStatusCode.Run(request.Object, logger.Object);
         var statusCodeResult = result as StatusCodeResult;
