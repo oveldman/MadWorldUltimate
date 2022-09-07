@@ -8,7 +8,6 @@ public static class HttpClientExtensions
     {
         try
         {
-            Console.WriteLine("Test Get 1");
             return await client.GetAsync(requestUri);
         }
         catch (HttpRequestException exception)
