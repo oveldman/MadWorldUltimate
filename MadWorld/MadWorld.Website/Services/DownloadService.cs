@@ -19,15 +19,15 @@ namespace MadWorld.Website.Services
         public async Task<ResponseDownloadAnonymous> GetDownload(string id)
         {
             var response = await _client.GetWithoutHttpRequestExceptionAsync($"Download?id={id}");
-            
+
             if (!response?.IsSuccessStatusCode ?? true) return new ResponseDownloadAnonymous();
             return await response.Content.ReadFromJsonAsync<ResponseDownloadAnonymous>() ?? new ResponseDownloadAnonymous();
         }
 
         public async Task<ResponseDownloadsAnonymous> GetDownloads()
         {
-            var response = await _client.GetAsync($"GetDownloads");
-            
+            var response = await _client.GetWithoutHttpRequestExceptionAsync($"GetDownloads");
+
             if (!response?.IsSuccessStatusCode ?? true) return new ResponseDownloadsAnonymous();
             return await response.Content.ReadFromJsonAsync<ResponseDownloadsAnonymous>() ?? new ResponseDownloadsAnonymous();
         }
