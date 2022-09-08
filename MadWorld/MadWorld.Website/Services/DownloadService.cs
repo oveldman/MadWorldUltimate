@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net.Http.Json;
+﻿using System.Net.Http.Json;
 using MadWorld.Shared.Models.AnonymousAPI.Downloader;
 using MadWorld.Website.Extensions;
 using MadWorld.Website.Services.Interfaces;
@@ -20,7 +19,7 @@ namespace MadWorld.Website.Services
         {
             var response = await _client.GetWithoutHttpRequestExceptionAsync($"Download?id={id}");
 
-            if (!response?.IsSuccessStatusCode ?? true) return new ResponseDownloadAnonymous();
+            if (!response.IsSuccessStatusCode) return new ResponseDownloadAnonymous();
             return await response.Content.ReadFromJsonAsync<ResponseDownloadAnonymous>() ?? new ResponseDownloadAnonymous();
         }
 
