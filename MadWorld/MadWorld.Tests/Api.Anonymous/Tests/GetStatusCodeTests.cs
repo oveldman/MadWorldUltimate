@@ -17,6 +17,7 @@ public class GetStatusCodeTests
     [AutoDomainInlineData("200", 200)]
     [AutoDomainInlineData("403", 403)]
     [AutoDomainInlineData("503", 503)]
+    [AutoDomainInlineData("NonExisting", 400)]
     public async Task Run_StatusCodeQuery_ThrowError(
         string statusCode, 
         int expectedStatusCode,
@@ -50,6 +51,7 @@ public class GetStatusCodeTests
     [AutoDomainInlineData("200", 200)]
     [AutoDomainInlineData("403", 403)]
     [AutoDomainInlineData("503", 503)]
+    [AutoDomainInlineData("NonExisting", 400)]
     public async Task Run_StatusCodeBody_ThrowError(
         string statusCode, 
         int expectedStatusCode,

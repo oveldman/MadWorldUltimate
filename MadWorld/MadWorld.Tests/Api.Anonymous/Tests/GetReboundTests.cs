@@ -60,4 +60,25 @@ public class GetReboundTests
         
         // No Teardown
     }
+    
+    [Theory]
+    [AutoDomainData]
+    public async Task Run_EmptyRequest_ReturnNoData(
+        Mock<HttpRequest> request,
+        Mock<ILogger> logger)
+    {
+        // No Test data
+
+        // Setup
+        request.Setup(r => r.Body).Returns(new MemoryStream());
+        request.Setup(r => r.Query).Returns(new QueryCollection());
+        
+        // Act
+        var result = await GetRebound.Run(request.Object, logger.Object);
+
+        // Assert
+        Assert.Equal("No data", result);
+        
+        // No Teardown
+    }
 }
