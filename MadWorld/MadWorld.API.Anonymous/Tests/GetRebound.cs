@@ -12,10 +12,10 @@ using Optional;
 
 namespace MadWorld.API.Anonymous.Tests;
 
-public class GetRebound
+public static class GetRebound
 {
     [FunctionName(nameof(GetRebound))]
-    public async Task<string> Run(
+    public static async Task<string> Run(
         [HttpTrigger(AuthorizationLevel.Anonymous, RequestType.Get, RequestType.Delete, RequestType.Post, RequestType.Put, Route = null)] HttpRequest req,
         ILogger log)
     {

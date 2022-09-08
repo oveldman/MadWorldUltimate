@@ -28,8 +28,8 @@ namespace MadWorld.Shared.Managers
                 MeasurementType.Kilometers => converter.ConvertToKilometers(startValue),
                 MeasurementType.Meter => converter.ConvertToMeter(startValue),
                 MeasurementType.Mile => converter.ConvertToMile(startValue),
-                MeasurementType.Unknown => throw new NotImplementedException(),
-                _ => throw new NotImplementedException()
+                MeasurementType.Unknown => throw new ArgumentOutOfRangeException(nameof(lengthTypeTo), lengthTypeTo, "Not Found: MeasurementType.Unknown"),
+                _ => throw new ArgumentOutOfRangeException(nameof(lengthTypeTo), lengthTypeTo, "Not found: Enum MeasurementType")
             };
         }
     }

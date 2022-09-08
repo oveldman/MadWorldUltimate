@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using MadWorld.Functions.Common.Info;
+using MadWorld.Shared.Common;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
@@ -8,13 +9,13 @@ using Microsoft.Extensions.Logging;
 
 namespace MadWorld.API.Anonymous.Tests;
 
-public class Ping
+public static class Ping
 {
     [FunctionName(nameof(Ping))]
-    public string Run(
+    public static string Run(
         [HttpTrigger(AuthorizationLevel.Anonymous, RequestType.Get, RequestType.Delete, RequestType.Post, RequestType.Put, Route = null)] HttpRequest req,
         ILogger log)
     {
-        return $"Ping: {DateTime.Now:dd-MM-yyyy hh:mm:ss}";
+        return $"Ping: {SystemTime.Now():dd-MM-yyyy hh:mm:ss}";
     }
 }

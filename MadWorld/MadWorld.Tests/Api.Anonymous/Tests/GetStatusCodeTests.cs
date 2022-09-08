@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Primitives;
 
-namespace MadWorld.Tests.Api.Anonymous;
+namespace MadWorld.Tests.Api.Anonymous.Tests;
 
 public class GetStatusCodeTests
 {
