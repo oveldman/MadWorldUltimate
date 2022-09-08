@@ -10,9 +10,7 @@ public class FeetConverterTests
     [AutoDomainInlineData(3.2808, 1.0)]
     public void Convert_DoubleFeetToMeter_double(double startValue, double expectedResult, FeetConverter converter)
     {
-        // Test data
-        const MeasurementType measureTo = MeasurementType.Meter;
-
+        // No Test data
         // No Setup
 
         // Act
@@ -29,9 +27,7 @@ public class FeetConverterTests
     [AutoDomainInlineData(3.2808, 3.2808)]
     public void Convert_DoubleFeetToFeet_double(double startValue, double expectedResult, FeetConverter converter)
     {
-        // Test data
-        const MeasurementType measureTo = MeasurementType.Meter;
-
+        // No Test data
         // No Setup
 
         // Act
