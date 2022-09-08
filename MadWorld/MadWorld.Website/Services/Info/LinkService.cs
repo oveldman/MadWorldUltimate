@@ -19,7 +19,7 @@ namespace MadWorld.Website.Services.Info
         public async Task<List<LinkGroupDto>> GetAll()
         {
             var response = await _client.GetWithoutHttpRequestExceptionAsync($"GetLinks");
-            if (!response?.IsSuccessStatusCode ?? true) return new List<LinkGroupDto>();
+            if (!response.IsSuccessStatusCode) return new List<LinkGroupDto>();
             var responseLinks = await response.Content.ReadFromJsonAsync<ResponseLinks>();
             return responseLinks?.Groups ?? new List<LinkGroupDto>();
         }

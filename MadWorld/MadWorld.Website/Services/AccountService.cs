@@ -20,7 +20,7 @@ namespace MadWorld.Website.Services
         {
             var response = await _client.GetWithoutHttpRequestExceptionAsync("GetCurrentUserRoles");
 
-            if (!response?.IsSuccessStatusCode ?? true) return new List<string>();
+            if (!response.IsSuccessStatusCode) return new List<string>();
             var responseRoles = await response.Content.ReadFromJsonAsync<ResponseRoles>();
             return responseRoles?.Roles ?? new List<string>();
 

@@ -18,6 +18,6 @@ public class TesterService : ITesterService
     {
         const int statusCode = (int)HttpStatusCode.ServiceUnavailable;
         var response = await _client.GetWithoutHttpRequestExceptionAsync($"GetStatusCode?StatusCode={statusCode}");
-        return response?.IsSuccessStatusCode ?? false ? await response.Content.ReadAsStringAsync() : string.Empty;
+        return response.IsSuccessStatusCode ? await response.Content.ReadAsStringAsync() : string.Empty;
     }
 }

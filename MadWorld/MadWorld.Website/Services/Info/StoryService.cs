@@ -20,7 +20,7 @@ namespace MadWorld.Website.Services.Info
         {
             var response = await _client.GetWithoutHttpRequestExceptionAsync($"GetStory");
             
-            if (!response?.IsSuccessStatusCode ?? true) return new ResponseStory();
+            if (!response.IsSuccessStatusCode) return new ResponseStory();
             return await response.Content.ReadFromJsonAsync<ResponseStory>() ?? new ResponseStory();
         }
     }
