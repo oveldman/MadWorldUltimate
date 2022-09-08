@@ -28,8 +28,9 @@ namespace MadWorld.Website.Services
         {
             var response = await _client.GetWithoutHttpRequestExceptionAsync($"GetDownloads");
 
-            if (!response?.IsSuccessStatusCode ?? true) return new ResponseDownloadsAnonymous();
-            return await response.Content.ReadFromJsonAsync<ResponseDownloadsAnonymous>() ?? new ResponseDownloadsAnonymous();
+            if (!response.IsSuccessStatusCode) return new ResponseDownloadsAnonymous();
+            return await response.Content.ReadFromJsonAsync<ResponseDownloadsAnonymous>() 
+                   ?? new ResponseDownloadsAnonymous();
         }
     }
 }
