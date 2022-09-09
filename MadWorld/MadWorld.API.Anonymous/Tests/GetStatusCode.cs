@@ -1,4 +1,3 @@
-using System.Net;
 using System.Threading.Tasks;
 using MadWorld.Functions.Common.Extensions;
 using MadWorld.Functions.Common.Info;

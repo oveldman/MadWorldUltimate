@@ -55,8 +55,7 @@
     <Folder Include="Business\Mappers\" />
     <Folder Include="General\" />
     <Folder Include="Functions.Common\" />
-    <Folder Include="Functions.Common\Extentions\" />
-    <Folder Include="Functions.Common\Extentions\Mocks\" />
+    <Folder Include="Functions.Common\Extensions\" />
     <Folder Include="Shared\" />
     <Folder Include="Shared\Common\" />
     <Folder Include="Shared\Common\Mockups\" />

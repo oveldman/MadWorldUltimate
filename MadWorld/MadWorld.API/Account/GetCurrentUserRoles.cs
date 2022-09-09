@@ -1,12 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
-using MadWorld.API.Attributes;
-using MadWorld.Functions.Common.Extensions;
+﻿using MadWorld.API.Attributes;
 using MadWorld.Functions.Common.Validators.Interfaces;
 using MadWorld.Shared.Enums;
 using MadWorld.Shared.Models.API.Account;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;

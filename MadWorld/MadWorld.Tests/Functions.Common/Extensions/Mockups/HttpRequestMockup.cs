@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 
-namespace MadWorld.Tests.Functions.Common.Extentions.Mockups
+namespace MadWorld.Tests.Functions.Common.Extensions.Mockups
 {
 	public class HttpRequestMockup : HttpRequest
 	{
@@ -30,7 +30,7 @@ namespace MadWorld.Tests.Functions.Common.Extentions.Mockups
         public override IRequestCookieCollection Cookies { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public override long? ContentLength { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public override string ContentType { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public override Stream Body { get; set; }
+        public sealed override Stream Body { get; set; }
 
         public override bool HasFormContentType => throw new NotImplementedException();
 

@@ -15,7 +15,7 @@ namespace MadWorld.API.Anonymous.Info
             [HttpTrigger(AuthorizationLevel.Anonymous, RequestType.Get, Route = null)] HttpRequest req,
             ILogger log)
         {
-            return new()
+            return new ResponseStory
             {
                 Body = "<h1>Story</h1>"
             };

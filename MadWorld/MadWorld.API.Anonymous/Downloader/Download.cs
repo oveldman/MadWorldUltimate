@@ -1,5 +1,4 @@
-﻿using System;
-using MadWorld.Business.Managers.Interfaces;
+﻿using MadWorld.Business.Managers.Interfaces;
 using MadWorld.Functions.Common.Info;
 using MadWorld.Shared.Models.AnonymousAPI.Downloader;
 using Microsoft.AspNetCore.Http;

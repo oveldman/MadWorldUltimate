@@ -1,14 +1,12 @@
-﻿using System;
-using System.IO;
-using System.Threading.Tasks;
+﻿using System.IO;
 using MadWorld.Functions.Common.Extensions;
 using MadWorld.Shared.Common;
-using MadWorld.Tests.Functions.Common.Extentions.Mockups;
+using MadWorld.Tests.Functions.Common.Extensions.Mockups;
 using Microsoft.AspNetCore.Http;
 
-namespace MadWorld.Tests.Functions.Common.Extentions
+namespace MadWorld.Tests.Functions.Common.Extensions
 {
-	public class HttpRequestExtentionsTests
+	public class HttpRequestExtensionsTests
 	{
 		[Theory]
 		[AutoDomainData]
@@ -16,7 +14,7 @@ namespace MadWorld.Tests.Functions.Common.Extentions
 			RequestMockup request)
 		{
 			// Test data
-			Stream bodyStream = StreamConverter.Convert(request);
+			var bodyStream = StreamConverter.Convert(request);
 
 			// Setup
 			HttpRequest httpRequest = new HttpRequestMockup(bodyStream);
@@ -36,7 +34,7 @@ namespace MadWorld.Tests.Functions.Common.Extentions
 			RequestWrongMockup request)
 		{
 			// Test data
-			Stream bodyStream = StreamConverter.Convert(request) ?? new MemoryStream();
+			Stream bodyStream = StreamConverter.Convert(request);
 
 			// Setup
 			HttpRequest httpRequest = new HttpRequestMockup(bodyStream);

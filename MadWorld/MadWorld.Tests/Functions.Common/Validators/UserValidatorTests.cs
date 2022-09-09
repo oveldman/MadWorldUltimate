@@ -12,12 +12,12 @@ namespace MadWorld.Tests.Functions.Common.Validators
 		public void GetAllRoles_AzureID_ThreeRoles(
 			[Frozen] Mock<IUserQueries> userQueries,
 			UserValidator userValidator,
-			Guid azureID,
+			Guid azureId,
 			User user
 			)
 		{
 			// Test data
-			user.AzureID = azureID;
+			user.AzureID = azureId;
 			user.IsAdminstrator = true;
 			user.IsViewer = true;
 
@@ -25,7 +25,7 @@ namespace MadWorld.Tests.Functions.Common.Validators
 			userQueries.Setup(aq => aq.FindUser(It.IsAny<Guid>())).Returns(Option.Some(user));
 
 			// Act
-			List<string> roles = userValidator.GetAllRoles(azureID.ToString());
+			List<string> roles = userValidator.GetAllRoles(azureId.ToString());
 
 			// Assert
 			Assert.True(roles.Count == 3, "Expected a list of 3 role");
@@ -41,12 +41,12 @@ namespace MadWorld.Tests.Functions.Common.Validators
 		public void GetAllRoles_AzureID_TwoRoles(
 			[Frozen] Mock<IUserQueries> userQueries,
 			UserValidator userValidator,
-			Guid azureID,
+			Guid azureId,
 			User user
 			)
 		{
 			// Test data
-			user.AzureID = azureID;
+			user.AzureID = azureId;
 			user.IsAdminstrator = false;
 			user.IsViewer = true;
 
@@ -54,7 +54,7 @@ namespace MadWorld.Tests.Functions.Common.Validators
 			userQueries.Setup(aq => aq.FindUser(It.IsAny<Guid>())).Returns(Option.Some(user));
 
 			// Act
-			List<string> roles = userValidator.GetAllRoles(azureID.ToString());
+			List<string> roles = userValidator.GetAllRoles(azureId.ToString());
 
 			// Assert
 			Assert.True(roles.Count == 2, "Expected a list of 2 role");
@@ -69,12 +69,12 @@ namespace MadWorld.Tests.Functions.Common.Validators
 		public void GetAllRoles_AzureID_OneRoles(
 			[Frozen] Mock<IUserQueries> userQueries,
 			UserValidator userValidator,
-			Guid azureID,
+			Guid azureId,
 			User user
 			)
 		{
 			// Test data
-			user.AzureID = azureID;
+			user.AzureID = azureId;
 			user.IsAdminstrator = false;
 			user.IsViewer = false;
 
@@ -82,7 +82,7 @@ namespace MadWorld.Tests.Functions.Common.Validators
 			userQueries.Setup(aq => aq.FindUser(It.IsAny<Guid>())).Returns(Option.Some(user));
 
 			// Act
-			List<string> roles = userValidator.GetAllRoles(azureID.ToString());
+			List<string> roles = userValidator.GetAllRoles(azureId.ToString());
 
 			// Assert
 			Assert.True(roles.Count == 1, "Expected a list of 1 role");
@@ -104,12 +104,12 @@ namespace MadWorld.Tests.Functions.Common.Validators
 			bool expectedHasAcces,
 			[Frozen] Mock<IUserQueries> userQueries,
 			UserValidator userValidator,
-			Guid azureID,
+			Guid azureId,
 			User user
 			)
 		{
 			// Test data
-			user.AzureID = azureID;
+			user.AzureID = azureId;
 			user.IsAdminstrator = isAdminstrator;
 			user.IsViewer = isViewer;
 
@@ -117,7 +117,7 @@ namespace MadWorld.Tests.Functions.Common.Validators
 			userQueries.Setup(aq => aq.FindUser(It.IsAny<Guid>())).Returns(Option.Some(user));
 
 			// Act
-			bool hasAccess = userValidator.HasRole(azureID.ToString(), role);
+			bool hasAccess = userValidator.HasRole(azureId.ToString(), role);
 
 			// Assert
 			Assert.Equal(expectedHasAcces, hasAccess);

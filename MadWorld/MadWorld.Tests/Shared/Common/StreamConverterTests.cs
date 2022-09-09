@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Globalization;
 using System.IO;
 using MadWorld.Shared.Common;
 using MadWorld.Tests.Shared.Common.Mockups;
@@ -19,7 +19,7 @@ namespace MadWorld.Tests.Shared.Common
 			// No Setup
 
 			// Act
-			Stream result = StreamConverter.Convert(testObject) ?? new MemoryStream();
+			Stream result = StreamConverter.Convert(testObject);
 
 			// Assert
 			string stringResult = new StreamReader(result).ReadToEnd();
@@ -38,7 +38,7 @@ namespace MadWorld.Tests.Shared.Common
 			// No Setup
 
 			// Act
-			Stream result = StreamConverter.Convert(testData) ?? new MemoryStream();
+			Stream result = StreamConverter.Convert(testData);
 
 			// Assert
 			string stringResult = new StreamReader(result).ReadToEnd();
@@ -57,7 +57,7 @@ namespace MadWorld.Tests.Shared.Common
 			// No Setup
 
 			// Act
-			Stream result = StreamConverter.Convert(testData) ?? new MemoryStream();
+			Stream result = StreamConverter.Convert(testData);
 
 			// Assert
 			string stringResult = new StreamReader(result).ReadToEnd();
@@ -76,7 +76,7 @@ namespace MadWorld.Tests.Shared.Common
 			// No Setup
 
 			// Act
-			Stream result = StreamConverter.Convert(testData) ?? new MemoryStream();
+			Stream result = StreamConverter.Convert(testData);
 
 			// Assert
 			string stringResult = new StreamReader(result).ReadToEnd();
@@ -95,12 +95,12 @@ namespace MadWorld.Tests.Shared.Common
 			// No Setup
 
 			// Act
-			Stream result = StreamConverter.Convert(testData) ?? new MemoryStream();
+			Stream result = StreamConverter.Convert(testData);
 
 			// Assert
 			string stringResult = new StreamReader(result).ReadToEnd();
 
-			Assert.Equal(testData.ToString(), stringResult);
+			Assert.Equal(testData.ToString(CultureInfo.InvariantCulture), stringResult);
 
 			// No Teardown
 		}

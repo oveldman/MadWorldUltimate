@@ -1,5 +1,3 @@
-using System;
-using System.IO;
 using MadWorld.Functions.Common.Info;
 using MadWorld.Shared.Common;
 using Microsoft.AspNetCore.Http;
