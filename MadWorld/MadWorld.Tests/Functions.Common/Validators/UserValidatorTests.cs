@@ -152,6 +152,28 @@ namespace MadWorld.Tests.Functions.Common.Validators
 
 			// No Teardown
 		}
+		
+		[Theory]
+		[AutoDomainData]
+		public void HasRole_AzureIDNoUser_False(
+			Guid azureId,
+			UserValidator userValidator,
+			[Frozen] Mock<IUserQueries> userQueries
+		)
+		{
+			// No Test data
+
+			// No Setup
+			userQueries.Setup(aq => aq.FindUser(It.IsAny<Guid>())).Returns(Option.None<User>());
+
+			// Act
+			var hasRole = userValidator.HasRole(azureId.ToString(), RoleTypes.Administrator);
+
+			// Assert
+			Assert.False(hasRole);
+
+			// No Teardown
+		}
 
 		[Theory]
 		[AutoDomainInlineData(RoleTypes.Administrator, true, true, true)]
