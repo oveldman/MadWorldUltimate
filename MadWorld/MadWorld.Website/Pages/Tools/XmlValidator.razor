@@ -1,4 +1,4 @@
-﻿@page "/Tools/JsonValidator"
+@page "/Tools/XmlValidator"
 
 @using MadWorld.Blazor.Components.Monaco.Pages;
 
@@ -7,14 +7,14 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h1>Json Validator</h1>
+            <h1>XML Validator</h1>
         </div>
     </div>
     @if (showSuccess)
     {
         <div class="row">
             <div class="alert alert-success" role="alert">
-                The json is valid
+                The XML is valid
             </div>
         </div>
     }
@@ -41,17 +41,13 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <button type="button" class="btn btn-success" @onclick="async () => await FormatJson()">Format JSON</button>
+            <button type="button" class="btn btn-success" @onclick="async () => await FormatXml()">Format XML</button>
         </div>
         <div class="col">
-            <button type="button" class="btn btn-success" @onclick="async () => await EscapeJson()">Escape JSON</button>
-        </div>
-        <div class="col">
-            <button type="button" class="btn btn-success" @onclick="async () => await ValidateJson()">Validate JSON</button>
+            <button type="button" class="btn btn-success" @onclick="async () => await ValidateXml()">Validate XML</button>
         </div>
         <div class="col">
             <button type="button" class="btn btn-success" @onclick="async () => await Test()">Test</button>
         </div>
     </div>
 </div>
-

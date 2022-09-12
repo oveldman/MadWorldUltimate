@@ -16,7 +16,7 @@ namespace MadWorld.Website.Pages.Tools
 
 		protected override void OnInitialized()
 		{
-			_settings = new()
+			_settings = new MonacoSettings
 			{
 				Language = "html"
 			};

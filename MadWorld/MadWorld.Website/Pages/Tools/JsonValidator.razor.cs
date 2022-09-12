@@ -16,7 +16,7 @@ namespace MadWorld.Website.Pages.Tools
 
         protected override void OnInitialized()
         {
-			_settings = new()
+			_settings = new MonacoSettings
 			{
 				Language = "json"
 			};
@@ -92,7 +92,7 @@ namespace MadWorld.Website.Pages.Tools
 			errorMessage = exception.Message;
 		}
 
-        public async Task Test()
+		private async Task Test()
         {
 			await _editor.SetDecorations();
         }
