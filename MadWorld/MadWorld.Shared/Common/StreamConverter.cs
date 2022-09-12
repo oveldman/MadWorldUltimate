@@ -21,14 +21,8 @@ namespace MadWorld.Shared.Common
 		private static string GetStringFromObject<T>(T item)
         {
 			var itemType = typeof(T);
-
-			if (itemType.IsPrimitiveType())
-            {
-				return item?.ToString() ?? string.Empty;
-            }
-
-			return JsonConvert.SerializeObject(item);
-		}
+			return itemType.IsPrimitiveType() ? item!.ToString()! : JsonConvert.SerializeObject(item);
+        }
 
 		private static bool IsPrimitiveType(this Type type)
         {

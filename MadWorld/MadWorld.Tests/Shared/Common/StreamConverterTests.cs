@@ -33,12 +33,12 @@ namespace MadWorld.Tests.Shared.Common
 		public void Convert_String_Stream()
 		{
 			// No Test data
-			string testData = "test";
+			const string testData = "test";
 
 			// No Setup
 
 			// Act
-			Stream result = StreamConverter.Convert(testData);
+			var result = StreamConverter.Convert(testData);
 
 			// Assert
 			string stringResult = new StreamReader(result).ReadToEnd();
