@@ -22,7 +22,7 @@ namespace MadWorld.Functions.Common.Validators
                 return new List<string>();
             }
 
-            Option<User> user = _userQueries.FindUser(id);
+            var user = _userQueries.FindUser(id);
             return CreateRoleListForUser(user);
         }
 
@@ -44,7 +44,7 @@ namespace MadWorld.Functions.Common.Validators
                 return new List<string>();
             }
 
-            User user = userOption.ValueOr(new User());
+            var user = userOption.ValueOr(new User());
 
             List<string> userRoles = new()
             {
@@ -78,7 +78,7 @@ namespace MadWorld.Functions.Common.Validators
                 RoleTypes.Administrator => user.IsAdminstrator,
                 RoleTypes.Viewer => user.IsViewer,
                 RoleTypes.Guest or RoleTypes.None => true,
-                _ => false
+                _ => throw new ArgumentOutOfRangeException(nameof(role))
             };
         }
     }

@@ -137,7 +137,7 @@ namespace MadWorld.Tests.Functions.Common.Validators
 		[AutoDomainInlineData(RoleTypes.Viewer, false, true, true)]
 		[AutoDomainInlineData(RoleTypes.Viewer, false, false, false)]
 		[AutoDomainInlineData(RoleTypes.Guest, false, false, true)]
-		[AutoDomainInlineData(null!, false, false, false)]
+		[AutoDomainInlineData(RoleTypes.None, false, false, true)]
 		public void HasRole_AzureIDRole_HasRole(
 			RoleTypes role,
 			bool isAdministrator,
