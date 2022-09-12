@@ -6,8 +6,8 @@ namespace MadWorld.Business.Mappers.Interfaces
 	public interface IMapTranslator
 	{
 		MapperConfiguration LoadConfigMapper();
-		Y Translate<T, Y>(T request);
-		Y Translate<T, Y>(T request, Y baseObject);
+		TResponse Translate<TRequest, TResponse>(TRequest request);
+		TResponse Translate<TRequest, TResponse>(TRequest request, TResponse baseObject);
 	}
 }
 

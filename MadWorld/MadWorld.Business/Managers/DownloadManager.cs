@@ -25,15 +25,9 @@ namespace MadWorld.Business.Managers
 
         public ResponseDownloadAnonymous Get(string id)
         {
-            Option<Download> download = _downloadQueries.GetDownload(id);
+            var download = _downloadQueries.GetDownload(id);
 
-            if (download.HasValue)
-            {
-                return TranslateDownload(download.ValueOr(new Download()));
-
-            }
-
-            return new ResponseDownloadAnonymous();
+            return download.HasValue ? TranslateDownload(download.ValueOr(new Download())) : new ResponseDownloadAnonymous();
         }
 
         public ResponseDownloadsAnonymous GetAll()
@@ -48,7 +42,7 @@ namespace MadWorld.Business.Managers
 
         private ResponseDownloadAnonymous TranslateDownload(Download download)
         {
-            ResponseDownloadAnonymous response = _mapper.Translate<Download, ResponseDownloadAnonymous>(download);
+            var response = _mapper.Translate<Download, ResponseDownloadAnonymous>(download);
             response.BodyBase64 = _blobContainer.DownloadBase64(download.GetBlobFileName(), BlobPathNames.Downloads);
             response.Found = true;
             return response;

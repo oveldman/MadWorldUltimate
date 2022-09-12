@@ -14,10 +14,10 @@ namespace MadWorld.Tests.Business.Mappers
             // No Test data
 
             // Setup
-            UserMapper userMapper = UserMapper.Create();
+            var userMapper = UserMapper.Create();
 
             // Act
-            UserDto userModel = userMapper.Translate<User, UserDto>(user);
+            var userModel = userMapper.Translate<User, UserDto>(user);
 
             // Assert
             UserDto expectedModel = new()

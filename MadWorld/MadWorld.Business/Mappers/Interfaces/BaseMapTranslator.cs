@@ -20,12 +20,12 @@ namespace MadWorld.Business.Mappers.Interfaces
 
         public abstract MapperConfiguration LoadConfigMapper();
 
-        public Y Translate<T, Y>(T request)
+        public TResponse Translate<TRequest, TResponse>(TRequest request)
         {
-            return _mapper.Map<Y>(request);
+            return _mapper.Map<TResponse>(request);
         }
 
-        public Y Translate<T, Y>(T request, Y baseObject)
+        public TResponse Translate<TRequest, TResponse>(TRequest request, TResponse baseObject)
         {
             return _mapper.Map(request, baseObject);
         }

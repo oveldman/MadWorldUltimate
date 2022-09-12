@@ -2,15 +2,15 @@
 
 namespace MadWorld.Website.Parts.DragParts
 {
-	public abstract partial class DragList<T, Y> : ComponentBase where Y : DragContainer<T> 
+	public abstract partial class DragList<TDragItem, TContainer> : ComponentBase where TContainer : DragContainer<TDragItem> 
     {
-        [CascadingParameter] protected Y Container { get; set; }
+        [CascadingParameter] protected TContainer Container { get; set; }
         [Parameter] public int ListColumnOrder { get; set; }
         [Parameter] public int[] AllowedColumnOrders { get; set; } = Array.Empty<int>();
 
         private int LastTouchedRow = 0;
 
-        protected List<T> DragItems = new();
+        protected List<TDragItem> DragItems = new();
         protected string dropClass = "";
 
         protected abstract void AddNewDragItem(int columnOrder);

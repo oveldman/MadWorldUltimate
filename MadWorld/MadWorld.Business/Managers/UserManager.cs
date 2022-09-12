@@ -39,19 +39,19 @@ namespace MadWorld.Business.Managers
                 return false;
             }
 
-            Option<User> user = _userQueries.FindUser(id);
+            var user = _userQueries.FindUser(id);
             return user.HasValue || CreateUser(id, email);
         }
 
         public UserDetailDto GetUser(string id)
         {
-            Option<User> user = _userQueries.FindUser(id);
+            var user = _userQueries.FindUser(id);
             return _userMapper.Translate<User, UserDetailDto>(user.ValueOr(new User()));
         }
 
         public List<UserDto> GetUsers()
         {
-            List<User> users = _userQueries.GetAllUsers();
+            var users = _userQueries.GetAllUsers();
             return _userMapper.Translate<List<User>, List<UserDto>>(users);
         }
 
@@ -68,7 +68,7 @@ namespace MadWorld.Business.Managers
             user = _userMapper.Translate(userDto, user);
             _userQueries.UpdateUser(user);
 
-            return new()
+            return new CommonResponse
             {
                 Succeed = true
             };
@@ -76,7 +76,7 @@ namespace MadWorld.Business.Managers
 
         private static CommonResponse CreateUserNotFoundResponse()
         {
-            return new()
+            return new CommonResponse
             {
                 ErrorMessage = "User not found"
             };
