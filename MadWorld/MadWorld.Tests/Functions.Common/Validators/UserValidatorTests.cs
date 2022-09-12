@@ -38,7 +38,7 @@ namespace MadWorld.Tests.Functions.Common.Validators
 		
 		[Theory]
 		[AutoDomainData]
-		public void GetAllRoles_AzureIDNotValid_TNoRoles(
+		public void GetAllRoles_AzureIDNotValid_NoRoles(
 			UserValidator userValidator
 		)
 		{
@@ -49,6 +49,28 @@ namespace MadWorld.Tests.Functions.Common.Validators
 
 			// Act
 			var roles = userValidator.GetAllRoles(randomData);
+
+			// Assert
+			Assert.True(roles.Count == 0, "Expected a list of 0 role");
+
+			// No Teardown
+		}
+		
+		[Theory]
+		[AutoDomainData]
+		public void GetAllRoles_AzureIDNoUser_NoRoles(
+			Guid azureId,
+			[Frozen] Mock<IUserQueries> userQueries,
+			UserValidator userValidator
+		)
+		{
+			// No Test data
+
+			// Setup
+			userQueries.Setup(uq => uq.FindUser(It.IsAny<string>())).Returns(Option.None<User>());
+
+			// Act
+			var roles = userValidator.GetAllRoles(azureId.ToString());
 
 			// Assert
 			Assert.True(roles.Count == 0, "Expected a list of 0 role");
@@ -113,7 +135,7 @@ namespace MadWorld.Tests.Functions.Common.Validators
 		
 		[Theory]
 		[AutoDomainData]
-		public void GetAllRoles_AzureIDNotValid_False(
+		public void HasRole_AzureIDNotValid_False(
 			UserValidator userValidator
 		)
 		{
@@ -123,10 +145,10 @@ namespace MadWorld.Tests.Functions.Common.Validators
 			// No Setup
 
 			// Act
-			var roles = userValidator.GetAllRoles(randomData);
+			var hasRole = userValidator.HasRole(randomData, RoleTypes.Administrator);
 
 			// Assert
-			Assert.True(roles.Count == 0, "Expected a list of 0 role");
+			Assert.False(hasRole);
 
 			// No Teardown
 		}
@@ -162,6 +184,30 @@ namespace MadWorld.Tests.Functions.Common.Validators
 
 			// Assert
 			Assert.Equal(expectedHasAccess, hasAccess);
+
+			// No Teardown
+		}
+		
+		[Theory]
+		[AutoDomainData]
+		public void HasRole_AzureIDRoleNotValid_HasNoRole(
+			[Frozen] Mock<IUserQueries> userQueries,
+			UserValidator userValidator,
+			Guid azureId,
+			User user
+		)
+		{
+			// Test data
+			user.AzureID = azureId;
+			user.IsAdminstrator = false;
+			user.IsViewer = false;
+			const RoleTypes notValidRole = (RoleTypes) (-2);
+
+			// Setup
+			userQueries.Setup(aq => aq.FindUser(It.IsAny<Guid>())).Returns(Option.Some(user));
+
+			// Act & Assert
+			Assert.Throws<ArgumentOutOfRangeException>(() => userValidator.HasRole(azureId.ToString(), notValidRole));
 
 			// No Teardown
 		}
