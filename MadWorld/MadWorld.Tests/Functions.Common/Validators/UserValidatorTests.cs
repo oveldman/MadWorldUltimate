@@ -25,7 +25,7 @@ namespace MadWorld.Tests.Functions.Common.Validators
 			userQueries.Setup(aq => aq.FindUser(It.IsAny<Guid>())).Returns(Option.Some(user));
 
 			// Act
-			List<string> roles = userValidator.GetAllRoles(azureId.ToString());
+			var roles = userValidator.GetAllRoles(azureId.ToString());
 
 			// Assert
 			Assert.True(roles.Count == 3, "Expected a list of 3 role");
@@ -137,7 +137,7 @@ namespace MadWorld.Tests.Functions.Common.Validators
 		[AutoDomainInlineData(RoleTypes.Viewer, false, true, true)]
 		[AutoDomainInlineData(RoleTypes.Viewer, false, false, false)]
 		[AutoDomainInlineData(RoleTypes.Guest, false, false, true)]
-		[AutoDomainInlineData(null, false, false, false)]
+		[AutoDomainInlineData(null!, false, false, false)]
 		public void HasRole_AzureIDRole_HasRole(
 			RoleTypes role,
 			bool isAdministrator,
