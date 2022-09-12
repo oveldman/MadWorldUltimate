@@ -35,6 +35,26 @@ namespace MadWorld.Tests.Functions.Common.Validators
 
 			// No Teardown
 		}
+		
+		[Theory]
+		[AutoDomainData]
+		public void GetAllRoles_AzureIDNotValid_TNoRoles(
+			UserValidator userValidator
+		)
+		{
+			// Test data
+			const string randomData = "RandomString";
+
+			// No Setup
+
+			// Act
+			var roles = userValidator.GetAllRoles(randomData);
+
+			// Assert
+			Assert.True(roles.Count == 0, "Expected a list of 0 role");
+
+			// No Teardown
+		}
 
 		[Theory]
 		[AutoDomainData]
@@ -82,11 +102,31 @@ namespace MadWorld.Tests.Functions.Common.Validators
 			userQueries.Setup(aq => aq.FindUser(It.IsAny<Guid>())).Returns(Option.Some(user));
 
 			// Act
-			List<string> roles = userValidator.GetAllRoles(azureId.ToString());
+			var roles = userValidator.GetAllRoles(azureId.ToString());
 
 			// Assert
 			Assert.True(roles.Count == 1, "Expected a list of 1 role");
 			Assert.Equal(RoleTypes.Guest.ToString(), roles[0]);
+
+			// No Teardown
+		}
+		
+		[Theory]
+		[AutoDomainData]
+		public void GetAllRoles_AzureIDNotValid_False(
+			UserValidator userValidator
+		)
+		{
+			// Test data
+			const string randomData = "RandomString";
+
+			// No Setup
+
+			// Act
+			var roles = userValidator.GetAllRoles(randomData);
+
+			// Assert
+			Assert.True(roles.Count == 0, "Expected a list of 0 role");
 
 			// No Teardown
 		}
@@ -97,11 +137,12 @@ namespace MadWorld.Tests.Functions.Common.Validators
 		[AutoDomainInlineData(RoleTypes.Viewer, false, true, true)]
 		[AutoDomainInlineData(RoleTypes.Viewer, false, false, false)]
 		[AutoDomainInlineData(RoleTypes.Guest, false, false, true)]
+		[AutoDomainInlineData(null, false, false, false)]
 		public void HasRole_AzureIDRole_HasRole(
 			RoleTypes role,
-			bool isAdminstrator,
+			bool isAdministrator,
 			bool isViewer,
-			bool expectedHasAcces,
+			bool expectedHasAccess,
 			[Frozen] Mock<IUserQueries> userQueries,
 			UserValidator userValidator,
 			Guid azureId,
@@ -110,17 +151,17 @@ namespace MadWorld.Tests.Functions.Common.Validators
 		{
 			// Test data
 			user.AzureID = azureId;
-			user.IsAdminstrator = isAdminstrator;
+			user.IsAdminstrator = isAdministrator;
 			user.IsViewer = isViewer;
 
 			// Setup
 			userQueries.Setup(aq => aq.FindUser(It.IsAny<Guid>())).Returns(Option.Some(user));
 
 			// Act
-			bool hasAccess = userValidator.HasRole(azureId.ToString(), role);
+			var hasAccess = userValidator.HasRole(azureId.ToString(), role);
 
 			// Assert
-			Assert.Equal(expectedHasAcces, hasAccess);
+			Assert.Equal(expectedHasAccess, hasAccess);
 
 			// No Teardown
 		}

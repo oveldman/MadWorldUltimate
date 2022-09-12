@@ -15,25 +15,25 @@ namespace MadWorld.Functions.Common.Validators
             _userQueries = userQueries;
         }
 
-        public List<string> GetAllRoles(string azureID)
+        public List<string> GetAllRoles(string azureId)
         {
-            if (!Guid.TryParse(azureID, out Guid id))
+            if (!Guid.TryParse(azureId, out Guid id))
             {
-                return new();
+                return new List<string>();
             }
 
             Option<User> user = _userQueries.FindUser(id);
             return CreateRoleListForUser(user);
         }
 
-        public bool HasRole(string azureID, RoleTypes role)
+        public bool HasRole(string azureId, RoleTypes role)
         {
-            if (!Guid.TryParse(azureID, out Guid id))
+            if (!Guid.TryParse(azureId, out Guid id))
             {
                 return false;
             }
 
-            Option<User> user = _userQueries.FindUser(id);
+            var user = _userQueries.FindUser(id);
             return CheckRole(user, role);
         }
 
@@ -41,7 +41,7 @@ namespace MadWorld.Functions.Common.Validators
         {
             if (!userOption.HasValue)
             {
-                return new();
+                return new List<string>();
             }
 
             User user = userOption.ValueOr(new User());
@@ -71,14 +71,14 @@ namespace MadWorld.Functions.Common.Validators
                 return false;
             }
 
-            User user = userOption.ValueOr(new User());
+            var user = userOption.ValueOr(new User());
 
             return role switch
             {
                 RoleTypes.Administrator => user.IsAdminstrator,
                 RoleTypes.Viewer => user.IsViewer,
                 RoleTypes.Guest or RoleTypes.None => true,
-                _ => false,
+                _ => false
             };
         }
     }
