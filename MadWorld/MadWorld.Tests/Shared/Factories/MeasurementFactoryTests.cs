@@ -8,7 +8,9 @@ public class MeasurementFactoryTests
 {
     [Theory]
     [AutoDomainInlineData(MeasurementType.Feet, typeof(FeetConverter))]
+    [AutoDomainInlineData(MeasurementType.Kilometers, typeof(KilometersConverter))]
     [AutoDomainInlineData(MeasurementType.Meter, typeof(MeterConverter))]
+    [AutoDomainInlineData(MeasurementType.Mile, typeof(MileConverter))]
     [AutoDomainInlineData(MeasurementType.Unknown, typeof(UnknownConverter))]
     public void GetMeasurementConverter_MeasurementType_GetMeasurementClass(MeasurementType measurementType,
         Type expectedType, 
@@ -23,6 +25,22 @@ public class MeasurementFactoryTests
 
         // Assert
         Assert.IsType(expectedType, result);
+
+        // No Teardown
+    }
+    
+    [Theory]
+    [AutoDomainData]
+    public void GetMeasurementConverter_MeasurementTypeNotValid_ThrowsException(
+        MeasurementFactory factory)
+    {
+        // Test data
+        const MeasurementType measurementType = (MeasurementType)(-2);
+        
+        // No Setup
+
+        // Act & Assert
+        Assert.Throws<ArgumentOutOfRangeException>(() => factory.GetMeasurementConverter(measurementType));
 
         // No Teardown
     }

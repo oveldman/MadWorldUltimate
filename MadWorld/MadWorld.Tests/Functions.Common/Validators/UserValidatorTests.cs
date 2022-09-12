@@ -212,7 +212,7 @@ namespace MadWorld.Tests.Functions.Common.Validators
 		
 		[Theory]
 		[AutoDomainData]
-		public void HasRole_AzureIDRoleNotValid_HasNoRole(
+		public void HasRole_AzureIDRoleNotValid_ThrowsException(
 			[Frozen] Mock<IUserQueries> userQueries,
 			UserValidator userValidator,
 			Guid azureId,
