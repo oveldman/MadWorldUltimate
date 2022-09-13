@@ -5,9 +5,9 @@ env:
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, dev ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, dev ]
 
 jobs:
   build:
@@ -20,12 +20,12 @@ jobs:
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 6.0.x
-    - name: Restore dependencies
+    - name: .NET Restore dependencies
       run: dotnet restore
       working-directory: ${{ env.MainProject }}
-    - name: Build
+    - name: .NET Build
       run: dotnet build --no-restore
       working-directory: ${{ env.MainProject }}
-    - name: Test
+    - name: .NET Test
       run: dotnet test --no-build --verbosity normal
       working-directory: ${{ env.MainProject }}
