@@ -5,7 +5,7 @@ using MadWorld.Shared.Managers.Interfaces;
 
 namespace MadWorld.Shared.Factories;
 
-public class MeasurementFactory : IMeasurementFactory
+public sealed class MeasurementFactory : IMeasurementFactory
 {
     public IMeasurementConverter GetMeasurementConverter(MeasurementType measurementType)
     {
