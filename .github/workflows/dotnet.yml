@@ -10,8 +10,8 @@ on:
     branches: [ main, dev ]
 
 jobs:
-  .Net Test & Build:
-
+  build:
+    name: .Net Build & Test
     runs-on: ubuntu-latest
 
     steps:
