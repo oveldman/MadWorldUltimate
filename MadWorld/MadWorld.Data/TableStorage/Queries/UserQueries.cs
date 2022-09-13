@@ -19,7 +19,7 @@ namespace MadWorld.Data.TableStorage.Queries
 
         public bool CreateUser(User user)
         {
-            Response response = _context.AddEntity(user);
+            var response = _context.AddEntity(user);
             return response.IsError;
         }
 
