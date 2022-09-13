@@ -7,7 +7,7 @@ using MadWorld.Shared.Models.API.Downloads;
 
 namespace MadWorld.Business.Mappers
 {
-	public class DownloadMapper : BaseMapTranslator, IDownloadMapper
+	public sealed class DownloadMapper : BaseMapTranslator, IDownloadMapper
 	{
         private DownloadMapper() { }
 

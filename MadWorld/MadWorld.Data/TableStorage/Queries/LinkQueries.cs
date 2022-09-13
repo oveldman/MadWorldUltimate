@@ -7,7 +7,7 @@ using MadWorld.Data.TableStorage.Tables;
 
 namespace MadWorld.Data.TableStorage.Queries
 {
-	public class LinkQueries : ILinkQueries
+	public sealed class LinkQueries : ILinkQueries
 	{
         private readonly ITableContext _context;
 

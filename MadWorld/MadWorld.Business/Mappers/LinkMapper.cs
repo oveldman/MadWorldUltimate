@@ -7,7 +7,7 @@ using MadWorld.Shared.Models.API.Links;
 
 namespace MadWorld.Business.Mappers
 {
-	public class LinkMapper : BaseMapTranslator, ILinkMapper
+	public sealed class LinkMapper : BaseMapTranslator, ILinkMapper
 	{
         private LinkMapper() { }
 

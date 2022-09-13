@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 [assembly: FunctionsStartup(typeof(MadWorld.API.Startup))]
 namespace MadWorld.API
 {
-	public class Startup : FunctionsStartup
+	public sealed class Startup : FunctionsStartup
 	{
         public override void Configure(IFunctionsHostBuilder builder)
         {

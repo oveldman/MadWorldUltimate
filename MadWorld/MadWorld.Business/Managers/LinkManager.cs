@@ -7,7 +7,7 @@ using MadWorld.Shared.Models.AnonymousAPI.Info;
 
 namespace MadWorld.Business.Managers
 {
-	public class LinkManager : ILinkManager
+	public sealed class LinkManager : ILinkManager
 	{
 		private readonly ILinkQueries _linkQueries;
 		private readonly ILinkMapper _mapper;

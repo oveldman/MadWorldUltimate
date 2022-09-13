@@ -6,7 +6,7 @@ using MadWorld.Shared.Models.API.Users;
 
 namespace MadWorld.Business.Mappers
 {
-    public class UserMapper : BaseMapTranslator, IUserMapper
+    public sealed class UserMapper : BaseMapTranslator, IUserMapper
     {
         private UserMapper() { }
 

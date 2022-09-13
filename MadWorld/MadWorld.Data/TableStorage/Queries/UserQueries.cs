@@ -8,7 +8,7 @@ using MadWorld.Data.TableStorage.Tables;
 
 namespace MadWorld.Data.TableStorage.Queries
 {
-	public class UserQueries : IUserQueries
+	public sealed class UserQueries : IUserQueries
     {
         private readonly ITableContext _context;
 

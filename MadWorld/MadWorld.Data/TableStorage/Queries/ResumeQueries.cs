@@ -9,7 +9,7 @@ using MadWorld.Data.TableStorage.Tables;
 
 namespace MadWorld.Data.TableStorage.Queries
 {
-	public class ResumeQueries : IResumeQueries
+	public sealed class ResumeQueries : IResumeQueries
 	{
         private readonly ITableContext _context;
 

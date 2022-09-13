@@ -8,7 +8,7 @@ using MadWorld.Shared.Models.API.Links;
 
 namespace MadWorld.Business.Managers
 {
-	public class LinkAdminManager : ILinkAdminManager
+	public sealed class LinkAdminManager : ILinkAdminManager
 	{
 		private readonly ILinkQueries _linkQueries;
         private readonly ILinkMapper _mapper;

@@ -8,7 +8,7 @@ using MadWorld.Shared.Models.API.Users;
 
 namespace MadWorld.Business.Managers
 {
-	public class UserManager : IUserManager
+	public sealed class UserManager : IUserManager
 	{
         private readonly IUserMapper _userMapper;
         private readonly IUserQueries _userQueries;

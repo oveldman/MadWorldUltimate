@@ -10,7 +10,7 @@ using MadWorld.Shared.Models.AnonymousAPI.Downloader;
 
 namespace MadWorld.Business.Managers
 {
-    public class DownloadManager : IDownloadManager
+    public sealed class DownloadManager : IDownloadManager
     {
         private readonly IBlobStorageContainer _blobContainer;
         private readonly IDownloadQueries _downloadQueries;
@@ -32,9 +32,9 @@ namespace MadWorld.Business.Managers
 
         public ResponseDownloadsAnonymous GetAll()
         {
-            List<Download> downloads = _downloadQueries.GetDownloads();
+            var downloads = _downloadQueries.GetDownloads();
 
-            return new()
+            return new ResponseDownloadsAnonymous
             {
                 Downloads = _mapper.Translate<List<Download>, List<DownloadAnonymousDto>>(downloads)
             };

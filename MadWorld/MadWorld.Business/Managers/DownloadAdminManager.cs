@@ -11,7 +11,7 @@ using MadWorld.Shared.Models.API.Downloads;
 
 namespace MadWorld.Business.Managers
 {
-	public class DownloadAdminManager : IDownloadAdminManager
+	public sealed class DownloadAdminManager : IDownloadAdminManager
 	{
 		private const string AddErrorMessage = "Something went wrong while adding a new file";
 		private const string UpdateErrorMessage = "Something went wrong while updating a file";

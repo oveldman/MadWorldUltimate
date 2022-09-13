@@ -7,7 +7,7 @@ using MadWorld.Data.TableStorage.Tables;
 
 namespace MadWorld.Data.TableStorage.Queries
 {
-    public class DownloadQueries : IDownloadQueries
+    public sealed class DownloadQueries : IDownloadQueries
     {
         private readonly ITableContext _context;
 

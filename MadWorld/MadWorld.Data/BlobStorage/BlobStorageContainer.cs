@@ -7,7 +7,7 @@ using MadWorld.Data.BlobStorage.Interfaces;
 
 namespace MadWorld.Data.BlobStorage
 {
-	public class BlobStorageContainer : IBlobStorageContainer
+	public sealed class BlobStorageContainer : IBlobStorageContainer
 	{
 		private readonly IBlobContainerClient _containerClient;
 
