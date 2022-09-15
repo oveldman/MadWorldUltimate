@@ -16,95 +16,95 @@
     <nav class="flex-column">
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
+                <i class="fa-solid fa-house"></i> Home
             </NavLink>
         </div>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="CurriculumVitae">
-                <span class="oi oi-clipboard" aria-hidden="true"></span> Curriculum Vitae
+                <i class="fa-solid fa-circle-user"></i> Curriculum Vitae
             </NavLink>
         </div>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="Story">
-                <span class="oi oi-book" aria-hidden="true"></span> Story
+                <i class="fa-solid fa-book"></i> Story
             </NavLink>
         </div>
         <div class="nav-item px-3">
             <NavLink class="nav-link" @onclick="ToggleToolsMenu">
-                <span class="oi oi-calculator" aria-hidden="true"></span> Tools <span class="tool-space oi oi-chevron-@ToolMenuArror"></span>
+                <i class="fa-solid fa-calculator"></i> Tools <i class="tool-space fa-solid fa-angle-@ToolMenuArrow"></i>
             </NavLink>
         </div>
         @if (!collapseToolMenu)
         {
             <div class="nav-item nav-item-submenu px-3">
                 <NavLink class="nav-link" href="/Tools/GuidGenerator">
-                    <span class="oi oi-wrench" aria-hidden="true"></span> Guid Generator
+                    <i class="fa-solid fa-wrench"></i> Guid Generator
                 </NavLink>
             </div>
             <div class="nav-item nav-item-submenu px-3">
                 <NavLink class="nav-link" href="/Tools/HtmlValidator">
-                    <span class="oi oi-wrench" aria-hidden="true"></span> HTML Validator
+                    <i class="fa-solid fa-wrench"></i> HTML Validator
                 </NavLink>
             </div>
             <div class="nav-item nav-item-submenu px-3">
                 <NavLink class="nav-link" href="/Tools/JsonValidator">
-                    <span class="oi oi-wrench" aria-hidden="true"></span> Json Validator
+                    <i class="fa-solid fa-wrench"></i> Json Validator
                 </NavLink>
             </div>
             <div class="nav-item nav-item-submenu px-3">
                 <NavLink class="nav-link" href="/Tools/XmlValidator">
-                    <span class="oi oi-wrench" aria-hidden="true"></span> XML Validator
+                    <i class="fa-solid fa-wrench"></i> XML Validator
                 </NavLink>
             </div>
         }
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="DnD">
-                <span class="oi oi-book" aria-hidden="true"></span> DnD
+                <i class="fa-brands fa-d-and-d"></i> DnD
             </NavLink>
         </div>
         <AuthorizeView Roles="@nameof(RoleTypes.Administrator)">
             <div class="nav-item px-3">
                 <NavLink class="nav-link" @onclick="ToggleAdminMenu">
-                    <span class="oi oi-image" aria-hidden="true"></span> Admin <span class="tool-space oi oi-chevron-@AdminMenuArror"></span>
+                    <i class="fa-solid fa-lock"></i> Admin <i class="tool-space fa-solid fa-angle-@AdminMenuArrow"></i>
                 </NavLink>
             </div>
             @if (!collapseAdminMenu)
             {
                 <div class="nav-item nav-item-submenu px-3">
                     <NavLink class="nav-link" href="Admin/Users">
-                        <span class="oi oi-people" aria-hidden="true"></span> Users
+                        <i class="fa-solid fa-users"></i> Users
                     </NavLink>
                 </div>
                 <div class="nav-item nav-item-submenu px-3">
                     <NavLink class="nav-link" href="Admin/StoryEditor">
-                        <span class="oi oi-book" aria-hidden="true"></span> Story
+                        <i class="fa-solid fa-book"></i> Story
                     </NavLink>
                 </div>
                 <div class="nav-item nav-item-submenu px-3">
                     <NavLink class="nav-link" href="Admin/Downloads">
-                        <span class="oi oi-cloud-download" aria-hidden="true"></span> Downloads
+                        <i class="fa-solid fa-cloud-arrow-down"></i> Downloads
                     </NavLink>
                 </div>
                 <div class="nav-item nav-item-submenu px-3">
                     <NavLink class="nav-link" href="Admin/LinkGroups">
-                        <span class="oi oi-link-intact" aria-hidden="true"></span> Links
+                        <i class="fa-solid fa-link"></i> Links
                     </NavLink>
                 </div>
                 <div class="nav-item nav-item-submenu px-3">
                     <NavLink class="nav-link" href="Development">
-                        <span class="oi oi-book" aria-hidden="true"></span> Development
+                        <i class="fa-solid fa-code"></i> Development
                     </NavLink>
                 </div>
             }
         </AuthorizeView>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="Downloads">
-                <span class="oi oi-cloud-download" aria-hidden="true"></span> Downloads
+                <i class="fa-solid fa-cloud-arrow-down"></i> Downloads
             </NavLink>
         </div>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="Links">
-                <span class="oi oi-link-intact" aria-hidden="true"></span> Links
+                <i class="fa-solid fa-link"></i> Links
             </NavLink>
         </div>
     </nav>

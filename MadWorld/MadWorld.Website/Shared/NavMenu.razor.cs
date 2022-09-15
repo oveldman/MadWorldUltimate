@@ -8,8 +8,8 @@ namespace MadWorld.Website.Shared
         private bool collapseAdminMenu = true;
 
         private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-        private string? ToolMenuArror => collapseToolMenu ? "left" : "bottom";
-        private string? AdminMenuArror => collapseAdminMenu ? "left" : "bottom";
+        private string? ToolMenuArrow => collapseToolMenu ? "left" : "down";
+        private string? AdminMenuArrow => collapseAdminMenu ? "left" : "bottom";
 
         private void ToggleNavMenu()
         {
