@@ -1,4 +1,5 @@
 ﻿using System;
+using BlazorApplicationInsights;
 using BlazorDownloadFile;
 using BlazorTable;
 using MadWorld.Blazor.Components.Monaco.Extensions;
@@ -51,6 +52,7 @@ namespace MadWorld.Website.Extensions
 		public static IServiceCollection AddPackages(this IServiceCollection services)
 		{
 			//Services
+			services.AddBlazorApplicationInsights();
 			services.AddBlazorTable();
 			services.AddBlazorDownloadFile();
 			services.AddHttpClientInterceptor(); 
