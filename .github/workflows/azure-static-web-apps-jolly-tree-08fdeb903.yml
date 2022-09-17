@@ -20,13 +20,13 @@ jobs:
           submodules: true
       - name: UpdateVersion
         uses: datamonsters/replace-action@v2
-        id: version
+        id: sub
         with:
           files: 'MadWorld/MadWorld.Website/wwwroot/service-worker.published.js'
           replacements: '#CACHE_VERSION#=${{ github.run_id }}'
       - name: SetInstrumentationKey
         uses: datamonsters/replace-action@v2
-        id: instrumentationkey
+        id: instrumentation_key
         with:
           files: 'MadWorld/MadWorld.Website/wwwroot/index.html'
           replacements: '#InstrumentationKey#=6253b735-aac6-4d0c-bc81-397b0b5d1873'
