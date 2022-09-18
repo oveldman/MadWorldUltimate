@@ -29,7 +29,7 @@ jobs:
         id: instrumentation_key
         with:
           files: 'MadWorld/MadWorld.Website/wwwroot/index.html'
-          replacements: '#InstrumentationKey#=6253b735-aac6-4d0c-bc81-397b0b5d1873'
+          replacements: '428c1626-944e-47f3-a452-c6c8e542736d=6253b735-aac6-4d0c-bc81-397b0b5d1873'
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
