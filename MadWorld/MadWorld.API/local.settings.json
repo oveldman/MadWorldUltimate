@@ -1,8 +1,9 @@
-﻿{
+﻿  {
   "IsEncrypted": false,
   "Values": {
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-    "FUNCTIONS_WORKER_RUNTIME": "dotnet"
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "APPINSIGHTS_INSTRUMENTATIONKEY": "428c1626-944e-47f3-a452-c6c8e542736d"
   },
   "Host": {
     "LocalHttpPort": 7072,
