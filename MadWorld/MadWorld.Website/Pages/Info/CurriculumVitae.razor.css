@@ -101,7 +101,7 @@
     width: 3px;
     height: 100%;
     background: #aab4c3;
-    left: 6px;
+    left: 10px;
     top: 10px;
     position: absolute;
 }
@@ -145,6 +145,10 @@
 }
 
 @media only screen and (max-width: 1200px) {
+    .cv-timeline:before {
+        left: 6px !important;
+    }
+    
     .cv-header-image {
         margin: auto;
         width: 50%;
