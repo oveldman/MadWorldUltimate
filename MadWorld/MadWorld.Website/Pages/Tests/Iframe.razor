@@ -1,0 +1,19 @@
+@page "/Development/Test/IFrame"
+
+@using MadWorld.Website.Parts;
+
+<BootstrapAlerts @ref="_bootstrapAlerts" @bind-Status="Status" />
+
+<div class="mb-3">
+    <label for="Url" class="form-label">IFrame Url</label>
+    <input type="text" class="form-control" id="Url" @bind-value="_url">
+</div>
+
+<div class="mb-3 row">
+    <button type="button" class="btn btn-primary" @onclick="OpenIFrame">Get Page</button>
+</div>
+
+@if (_showIFrame)
+{
+    <iframe width="1000" height="500" src="@_url"></iframe>    
+}
