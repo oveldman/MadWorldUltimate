@@ -22,3 +22,27 @@ I deployed the following resources on azure:
 - Azure Active Directory B2C
 - Resource Group
 - Subscription
+
+## Running the project
+
+You need to run the following projects inside the solution:
+- MadWorld.Api
+- MadWorld.Api.Anonymous
+- MadWorld.Web
+
+You need also to run the following services locally:
+- Azurite (Azure Storage Emulator)
+
+Set our own appinsight instrumentation key in the following files:
+- MadWorld.Api/local.settings.json
+- MadWorld.Api.Anonymous/local.settings.json
+- MadWorld.Web/wwwroot/index.html
+
+Set our own Azure B2C settings in the following file:
+- MadWorld.Web/wwwroot/appsettings.development.json
+
+Now you can run the project.
+
+## Tests
+
+You can run the tests from the main folder by typing `dotnet test MadWorld`
