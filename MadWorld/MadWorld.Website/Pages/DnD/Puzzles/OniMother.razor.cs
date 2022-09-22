@@ -31,7 +31,7 @@ namespace MadWorld.Website.Pages.DnD.Puzzles
             base.OnInitialized();
         }
 
-        public void Press(Totem totem)
+        private void Press(Totem totem)
         {
             if (Blocked || DoorOpen)
             {

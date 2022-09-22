@@ -10,7 +10,7 @@ namespace MadWorld.Website.Pages.Admin
 	{
         private bool PageLoaded = false;
 
-        private List<UserDto> _users = new();
+        private IEnumerable<UserDto> _users = Enumerable.Empty<UserDto>();
 
         [Inject]
         private IUserService _userService { get; set; } = null!;

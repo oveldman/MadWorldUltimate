@@ -16,8 +16,8 @@ builder.Services.AddScoped<MadWorldAuthorizationMessageHandler>();
 
 string? apiUrlAnonymous = builder.Configuration["ApiUrls:Anonymous"] ;
 string? apiUrlAuthorized = builder.Configuration["ApiUrls:Authorized"];
-apiUrlAnonymous = Guard.Against.Null(apiUrlAnonymous, nameof(apiUrlAnonymous)) ?? string.Empty;
-apiUrlAuthorized = Guard.Against.Null(apiUrlAuthorized, nameof(apiUrlAuthorized)) ?? string.Empty;
+apiUrlAnonymous = Guard.Against.Null(apiUrlAnonymous) ?? string.Empty;
+apiUrlAuthorized = Guard.Against.Null(apiUrlAuthorized) ?? string.Empty;
 
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });

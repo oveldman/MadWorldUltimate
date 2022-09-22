@@ -23,7 +23,7 @@ public static class IFunctionsHostBuilderExtensions
     public static void AddMadWorldCommonClasses(this IFunctionsHostBuilder builder)
     {
         IConfiguration? configuration = builder.Services.BuildServiceProvider().GetService<IConfiguration>();
-        configuration = Guard.Against.Null(configuration, nameof(configuration))!;
+        configuration = Guard.Against.Null(configuration)!;
 
         AddInternPackages(builder);
         AddExternPackages(builder, configuration);

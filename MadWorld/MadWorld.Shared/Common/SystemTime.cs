@@ -2,7 +2,7 @@ namespace MadWorld.Shared.Common;
 
 public static class SystemTime
 {
-    public static Func<DateTime> Now = () => DateTime.Now;
+    public static Func<DateTime> Now { get; private set; } = () => DateTime.Now;
 
     /// <summary> Set time to return when SystemTime.Now() is called.
     /// </summary>

@@ -58,11 +58,11 @@ namespace MadWorld.API.Attributes
             // you can also use registered services
             var (azureId, email) = GetClaims(identity);
             var userManager = defaultHttpRequest?.HttpContext.RequestServices.GetService<IUserManager>();
-            Guard.Against.Null(userManager, nameof(userManager));
+            Guard.Against.Null(userManager);
             userManager.CreateUserIfNotExists(azureId, email);
 
             var userValidator = defaultHttpRequest?.HttpContext.RequestServices.GetService<IUserValidator>();
-            Guard.Against.Null(userValidator, nameof(userValidator));
+            Guard.Against.Null(userValidator);
             if (!userValidator.HasRole(azureId, _role))
             {
                 throw new UnauthorizedAccessException();
