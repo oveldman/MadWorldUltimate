@@ -25,18 +25,24 @@ public class StoryAdminManager : IStoryAdminManager
     public ResponseStory GetConcept()
     {
         var story = _storyQueries.GetConcept();
-        return Translate(story);
+        return Translate(story, true);
     }
     
     public ResponseStory GetFinal()
     {
         var story = _storyQueries.GetFinal();
-        return Translate(story);
+        return Translate(story, false);
     }
 
-    private ResponseStory Translate(Option<Story> storyOption)
+    private ResponseStory Translate(Option<Story> storyOption, bool isConcept)
     {
-        if (!storyOption.HasValue) return new ResponseStory();
+        if (!storyOption.HasValue)
+        {
+            return new ResponseStory()
+            {
+                IsConcept = isConcept
+            };   
+        }
 
         var story = storyOption.ValueOr(new Story());
         var responseStory = _storyMapper.Translate<Story, ResponseStory>(story);
