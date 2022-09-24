@@ -29,7 +29,12 @@ namespace MadWorld.Data.TableStorage.Context
             return new TableContext(_client, TableNames.Resumes);
 		}
 
-		public ITableContext CreateUserContext()
+        public ITableContext CreateStoryContext()
+        {
+	        return new TableContext(_client, TableNames.Stories);
+        }
+
+        public ITableContext CreateUserContext()
 		{
 			return new TableContext(_client, TableNames.Users);
 		}

@@ -9,21 +9,21 @@ using Microsoft.Extensions.Logging;
 
 namespace MadWorld.API.Admin.StoryManagement;
 
-public class GetStory
+public class GetConceptStory
 {
     private readonly IStoryAdminManager _storyManager;
 
-    public GetStory(IStoryAdminManager storyManager)
+    public GetConceptStory(IStoryAdminManager storyManager)
     {
         _storyManager = storyManager;
     }
 
     [AuthorizeFunction(RoleTypes.Administrator)]
-    [FunctionName(nameof(GetStory))]
+    [FunctionName(nameof(GetConceptStory))]
     public ResponseStory Run(
         [HttpTrigger(AuthorizationLevel.Anonymous, RequestType.Get, Route = null)] HttpRequest req,
         ILogger log)
     {
-        return _storyManager.GetLatest();
+        return _storyManager.GetConcept();
     }
 }

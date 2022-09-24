@@ -6,6 +6,7 @@ namespace MadWorld.Data.TableStorage.Context.Interfaces
 		ITableContext CreateDownloadContext();
 		ITableContext CreateLinkContext();
 		ITableContext CreateResumeContext();
+		ITableContext CreateStoryContext();
 		ITableContext CreateUserContext();
 	}
 }
