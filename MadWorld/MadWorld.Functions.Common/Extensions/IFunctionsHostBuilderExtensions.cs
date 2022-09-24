@@ -52,6 +52,7 @@ public static class IFunctionsHostBuilderExtensions
         builder.Services.AddScoped<IUserManager, UserManager>();
         builder.Services.AddSingleton<IDownloadMapper>(_ => DownloadMapper.Create());
         builder.Services.AddSingleton<ILinkMapper>(_ => LinkMapper.Create());
+        builder.Services.AddSingleton<IStoryMapper>(_ => StoryMapper.Create());
         builder.Services.AddSingleton<IUserMapper>(_ => UserMapper.Create());
     }
 
@@ -61,6 +62,7 @@ public static class IFunctionsHostBuilderExtensions
         builder.Services.AddScoped<IDownloadQueries, DownloadQueries>();
         builder.Services.AddScoped<ILinkQueries, LinkQueries>();
         builder.Services.AddScoped<IResumeQueries, ResumeQueries>();
+        builder.Services.AddScoped<IStoryQueries, StoryQueries>();
         builder.Services.AddScoped<IUserQueries, UserQueries>();
     }
 

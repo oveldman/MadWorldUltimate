@@ -7,6 +7,7 @@ namespace MadWorld.Data.TableStorage.Info
 		public const string Link = nameof(Link);
 		public const string LinkGroup = nameof(LinkGroup);
 		public const string Resume = nameof(Resume);
+		public const string Story = nameof(Story);
 		public const string User = nameof(User);
 	}
 }

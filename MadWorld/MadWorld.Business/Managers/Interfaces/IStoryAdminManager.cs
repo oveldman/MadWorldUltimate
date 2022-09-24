@@ -4,5 +4,6 @@ namespace MadWorld.Business.Managers.Interfaces;
 
 public interface IStoryAdminManager
 {
-    ResponseStory GetLatest();
+    ResponseStory GetConcept();
+    ResponseStory GetFinal();
 }
