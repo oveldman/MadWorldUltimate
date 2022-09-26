@@ -7,6 +7,7 @@ namespace MadWorld.Functions.Common.Info
 		public const string Id = nameof(Id);
 		public const string StatusCode = nameof(StatusCode);
 		public const string Request = nameof(Request);
+		public const string WaitSeconds = nameof(WaitSeconds);
 	}
 }
 

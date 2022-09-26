@@ -24,11 +24,11 @@ namespace MadWorld.API.Account
             [HttpTrigger(AuthorizationLevel.Anonymous, RequestType.Get, Route = null)] HttpRequest req,
             ILogger log)
         {
-            string azureID = req.HttpContext.User.Identity.GetAzureID();
+            var azureId = req.HttpContext.User.Identity!.GetAzureID();
 
             ResponseRoles response = new()
             {
-                Roles = _userValidator.GetAllRoles(azureID)
+                Roles = _userValidator.GetAllRoles(azureId)
             };
 
             return response;
