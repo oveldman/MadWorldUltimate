@@ -22,19 +22,19 @@ public class StoryAdminManager : IStoryAdminManager
         _storyQueries = storyQueries;
     }
     
-    public ResponseStory GetConcept()
+    public ResponseStory GetConcept(CancellationToken cancellationToken)
     {
-        var story = _storyQueries.GetConcept();
-        return Translate(story, true);
+        var story = _storyQueries.GetConcept(cancellationToken);
+        return Translate(story, true, cancellationToken);
     }
     
-    public ResponseStory GetFinal()
+    public ResponseStory GetFinal(CancellationToken cancellationToken)
     {
-        var story = _storyQueries.GetFinal();
-        return Translate(story, false);
+        var story = _storyQueries.GetFinal(cancellationToken);
+        return Translate(story, false, cancellationToken);
     }
 
-    private ResponseStory Translate(Option<Story> storyOption, bool isConcept)
+    private ResponseStory Translate(Option<Story> storyOption, bool isConcept, CancellationToken cancellationToken)
     {
         if (!storyOption.HasValue)
         {
@@ -47,7 +47,7 @@ public class StoryAdminManager : IStoryAdminManager
         var story = storyOption.ValueOr(new Story());
         var responseStory = _storyMapper.Translate<Story, ResponseStory>(story);
         responseStory.Found = true;
-        responseStory.BodyBase64 = _blobContainer.DownloadBase64(story.GetBlobFileName(), BlobPathNames.Stories);
+        responseStory.BodyBase64 = _blobContainer.DownloadBase64(story.GetBlobFileName(), BlobPathNames.Stories, cancellationToken);
 
         return responseStory;
     }

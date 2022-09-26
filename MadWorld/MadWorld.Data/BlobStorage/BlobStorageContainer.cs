@@ -23,7 +23,7 @@ namespace MadWorld.Data.BlobStorage
 			return client.DeleteIfExists().Value;
 		}
 
-		public Stream Download(string fileName, string path = "")
+		public Stream Download(string fileName, string path = "", CancellationToken cancellationToken = default)
         {
 			string filePath = Path.Combine(path, fileName);
 
@@ -40,7 +40,7 @@ namespace MadWorld.Data.BlobStorage
 			return result.Value.Content ?? new MemoryStream();
 		}
 
-		public byte[] DownloadBytes(string fileName, string path = "")
+		public byte[] DownloadBytes(string fileName, string path = "", CancellationToken cancellationToken = default)
 		{
 			Stream body = Download(fileName, path);
 
@@ -49,13 +49,13 @@ namespace MadWorld.Data.BlobStorage
             return memoryStream.ToArray();
         }
 
-		public string DownloadBase64(string fileName, string path = "")
+		public string DownloadBase64(string fileName, string path = "", CancellationToken cancellationToken = default)
 		{
 			byte[] body = DownloadBytes(fileName, path);
 			return Convert.ToBase64String(body);
 		}
 
-		public string DownloadString(string fileName, string path = "")
+		public string DownloadString(string fileName, string path = "", CancellationToken cancellationToken = default)
         {
 			byte[] body = DownloadBytes(fileName, path);
 			return Encoding.Default.GetString(body);

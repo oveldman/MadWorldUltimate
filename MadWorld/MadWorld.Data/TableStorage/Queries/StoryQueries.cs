@@ -15,19 +15,19 @@ public class StoryQueries : IStoryQueries
         _context = tableStorageFactory.CreateStoryContext();
     }
 
-    public Option<Story> GetConcept()
+    public Option<Story> GetConcept(CancellationToken cancellationToken)
     {
-        return Get(true);
+        return Get(true, cancellationToken);
     }
 
-    public Option<Story> GetFinal()
+    public Option<Story> GetFinal(CancellationToken cancellationToken)
     {
-        return Get(false);
+        return Get(false, default);
     }
 
-    private Option<Story> Get(bool isConcept)
+    private Option<Story> Get(bool isConcept, CancellationToken cancellationToken)
     {
-        var stories = _context.Query<Story>(s => s.PartitionKey == PartitionKeys.Story && s.IsConcept == isConcept);
+        var stories = _context.Query<Story>(s => s.PartitionKey == PartitionKeys.Story && s.IsConcept == isConcept, cancellationToken: cancellationToken);
         return stories.FirstOrNone();
     }
 }
