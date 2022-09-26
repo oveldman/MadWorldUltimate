@@ -23,8 +23,9 @@ public class GetConceptStory
     [FunctionName(nameof(GetConceptStory))]
     public ResponseStory Run(
         [HttpTrigger(AuthorizationLevel.Anonymous, RequestType.Get, Route = null)] HttpRequest req,
-        ILogger log, CancellationToken cancellationToken)
+        ILogger log)
     {
+        var cancellationToken = req.HttpContext.RequestAborted;
         return _storyManager.GetConcept(cancellationToken);
     }
 }
