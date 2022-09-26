@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 
 namespace MadWorld.API.Anonymous.Tests;
 
-public class TestCancellationToken
+public static class TestCancellationToken
 {
     private const int DefaultWaitSeconds = 1;
     private const int MaximumWaitSeconds = 10;
