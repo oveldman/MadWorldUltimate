@@ -1,3 +1,4 @@
+using System.Threading;
 using MadWorld.Business.Managers;
 using MadWorld.Business.Mappers.Interfaces;
 using MadWorld.Data.BlobStorage.Interfaces;
@@ -20,10 +21,10 @@ public class StoryAdminManagerTests
         // No Test data
 
         // Setup
-        storyQueries.Setup(s => s.GetConcept()).Returns(Option.None<Story>());
+        storyQueries.Setup(s => s.GetConcept(It.IsAny<CancellationToken>())).Returns(Option.None<Story>());
 
         // Act
-        var result = manager.GetConcept();
+        var result = manager.GetConcept(default);
 
         // Assert
         result.IsConcept.ShouldBe(true);
@@ -56,15 +57,15 @@ public class StoryAdminManagerTests
 
         // Setup
         container.Setup(c => 
-            c.DownloadBase64(It.IsAny<string>(), It.IsAny<string>()))
+            c.DownloadBase64(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<CancellationToken>()))
             .Returns(base64Test);
         mapper.Setup(m => 
                 m.Translate<Story, ResponseStory>(It.IsAny<Story>()))
             .Returns(mockResponse);
-        storyQueries.Setup(s => s.GetConcept()).Returns(story.Some());
+        storyQueries.Setup(s => s.GetConcept(It.IsAny<CancellationToken>())).Returns(story.Some());
 
         // Act
-        var result = manager.GetConcept();
+        var result = manager.GetConcept(default);
 
         // Assert
         result.Id.ShouldBe(story.RowKey);
@@ -86,10 +87,10 @@ public class StoryAdminManagerTests
         // No Test data
 
         // Setup
-        storyQueries.Setup(s => s.GetFinal()).Returns(Option.None<Story>());
+        storyQueries.Setup(s => s.GetFinal(It.IsAny<CancellationToken>())).Returns(Option.None<Story>());
 
         // Act
-        var result = manager.GetFinal();
+        var result = manager.GetFinal(default);
 
         // Assert
         result.IsConcept.ShouldBe(false);
@@ -122,15 +123,15 @@ public class StoryAdminManagerTests
 
         // Setup
         container.Setup(c => 
-                c.DownloadBase64(It.IsAny<string>(), It.IsAny<string>()))
+                c.DownloadBase64(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<CancellationToken>()))
             .Returns(base64Test);
         mapper.Setup(m => 
                 m.Translate<Story, ResponseStory>(It.IsAny<Story>()))
             .Returns(mockResponse);
-        storyQueries.Setup(s => s.GetConcept()).Returns(story.Some());
+        storyQueries.Setup(s => s.GetConcept(It.IsAny<CancellationToken>())).Returns(story.Some());
 
         // Act
-        var result = manager.GetConcept();
+        var result = manager.GetConcept(default);
 
         // Assert
         result.Id.ShouldBe(story.RowKey);

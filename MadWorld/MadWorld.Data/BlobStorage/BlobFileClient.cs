@@ -20,9 +20,9 @@ namespace MadWorld.Data.BlobStorage
 			return _blobClient.DeleteIfExists();
 		}
 
-		public Response<BlobDownloadStreamingResult> DownloadStreaming()
+		public Response<BlobDownloadStreamingResult> DownloadStreaming(CancellationToken cancellationToken = default)
         {
-			return _blobClient.DownloadStreaming();
+			return _blobClient.DownloadStreaming(cancellationToken: cancellationToken);
         }
 
 		public Response<BlobContentInfo> Upload(Stream content, BlobHttpHeaders httpHeaders)

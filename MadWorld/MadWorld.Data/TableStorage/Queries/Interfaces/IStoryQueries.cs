@@ -4,6 +4,6 @@ namespace MadWorld.Data.TableStorage.Queries.Interfaces;
 
 public interface IStoryQueries
 {
-    Option<Story> GetConcept();
-    Option<Story> GetFinal();
+    Option<Story> GetConcept(CancellationToken cancellationToken);
+    Option<Story> GetFinal(CancellationToken cancellationToken);
 }

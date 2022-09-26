@@ -1,3 +1,4 @@
+using System.Threading;
 using MadWorld.API.Attributes;
 using MadWorld.Business.Managers.Interfaces;
 using MadWorld.Shared.Enums;
@@ -22,8 +23,8 @@ public class GetConceptStory
     [FunctionName(nameof(GetConceptStory))]
     public ResponseStory Run(
         [HttpTrigger(AuthorizationLevel.Anonymous, RequestType.Get, Route = null)] HttpRequest req,
-        ILogger log)
+        ILogger log, CancellationToken cancellationToken)
     {
-        return _storyManager.GetConcept();
+        return _storyManager.GetConcept(cancellationToken);
     }
 }
