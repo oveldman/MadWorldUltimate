@@ -20,8 +20,16 @@ using Toolbelt.Blazor.Extensions.DependencyInjection;
 
 namespace MadWorld.Website.Extensions
 {
-	public static class IServiceCollectionExtensions
+	public static class ServiceCollectionExtensions
 	{
+		public static IServiceCollection AddComponents(this IServiceCollection services)
+		{
+			//Services
+			services.AddMonacoEditor();
+
+			return services;
+		}
+		
 		public static IServiceCollection AddInternalClasses(this IServiceCollection services)
 		{
 			//Shared
@@ -37,14 +45,6 @@ namespace MadWorld.Website.Extensions
 			services.AddScoped<ITesterService, TesterService>();
 			services.AddScoped<IStoryService, StoryService>();
 			services.AddScoped<IUserService, UserService>();
-
-			return services;
-		}
-
-		public static IServiceCollection AddComponents(this IServiceCollection services)
-		{
-			//Services
-			services.AddMonacoEditor();
 
 			return services;
 		}
