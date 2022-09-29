@@ -16,8 +16,10 @@ builder.Services.AddScoped<MadWorldAuthorizationMessageHandler>();
 
 string? apiUrlAnonymous = builder.Configuration["ApiUrls:Anonymous"] ;
 string? apiUrlAuthorized = builder.Configuration["ApiUrls:Authorized"];
+string? apiUrlDevTools = builder.Configuration["ApiUrls:DevTools"];
 apiUrlAnonymous = Guard.Against.Null(apiUrlAnonymous) ?? string.Empty;
 apiUrlAuthorized = Guard.Against.Null(apiUrlAuthorized) ?? string.Empty;
+apiUrlDevTools = Guard.Against.Null(apiUrlDevTools) ?? string.Empty;
 
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
@@ -27,10 +29,16 @@ builder.Services.AddHttpClient(ApiTypes.MadWorldApiAnonymous, (serviceProvider, 
     client.EnableIntercept(serviceProvider);
 }).AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
 
-builder.Services.AddScoped<DelegatingHandlerMW>();
-builder.Services.AddHttpClient(ApiTypes.MadWorldApiAuthorization, (serviceProvider, client) =>
+builder.Services.AddHttpClient(ApiTypes.MadWorldApiAnonymous, (serviceProvider, client) =>
 {
-    client.BaseAddress = new Uri(apiUrlAuthorized);
+    client.BaseAddress = new Uri(apiUrlAnonymous);
+    client.EnableIntercept(serviceProvider);
+}).AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
+
+builder.Services.AddScoped<DelegatingHandlerMW>();
+builder.Services.AddHttpClient(ApiTypes.DevTools, (serviceProvider, client) =>
+{
+    client.BaseAddress = new Uri(apiUrlDevTools);
     client.EnableIntercept(serviceProvider);
 }).AddHttpMessageHandler<DelegatingHandlerMW>();
 
