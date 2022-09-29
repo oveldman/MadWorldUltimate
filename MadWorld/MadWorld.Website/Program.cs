@@ -29,16 +29,16 @@ builder.Services.AddHttpClient(ApiTypes.MadWorldApiAnonymous, (serviceProvider, 
     client.EnableIntercept(serviceProvider);
 }).AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
 
-builder.Services.AddHttpClient(ApiTypes.MadWorldApiAnonymous, (serviceProvider, client) =>
+builder.Services.AddHttpClient(ApiTypes.DevTools, (serviceProvider, client) =>
 {
-    client.BaseAddress = new Uri(apiUrlAnonymous);
+    client.BaseAddress = new Uri(apiUrlDevTools);
     client.EnableIntercept(serviceProvider);
 }).AddHttpMessageHandler<BaseAddressAuthorizationMessageHandler>();
 
 builder.Services.AddScoped<DelegatingHandlerMW>();
-builder.Services.AddHttpClient(ApiTypes.DevTools, (serviceProvider, client) =>
+builder.Services.AddHttpClient(ApiTypes.MadWorldApiAuthorization, (serviceProvider, client) =>
 {
-    client.BaseAddress = new Uri(apiUrlDevTools);
+    client.BaseAddress = new Uri(apiUrlAuthorized);
     client.EnableIntercept(serviceProvider);
 }).AddHttpMessageHandler<DelegatingHandlerMW>();
 
