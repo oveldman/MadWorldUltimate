@@ -11,7 +11,7 @@ public class TesterService : ITesterService
 
     public TesterService(IHttpClientFactory clientFactory)
     {
-        _client = clientFactory.CreateClient(ApiTypes.MadWorldApiAnonymous);
+        _client = clientFactory.CreateClient(ApiTypes.DevTools);
     }
     
     public async Task<string> GetServiceUnavailable()
